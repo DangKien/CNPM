@@ -105,11 +105,10 @@ class NewController extends Controller
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-	        'title' => 'required|unique:catetogys,name',
+	        'title' => 'required',
 	        'content' => 'required',
 	    	], [
 	        'title.required' => 'Nội dung không được để trống',
-	        'title.unique' => 'Đã có tên tiêu đề này',
 	        'content.required' => 'Nội dung không được bỏ trống',
 	    	]
 		);
