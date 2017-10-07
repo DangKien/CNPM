@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Rest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB,
-    Session;
+use DB, Session;
 use App\Models\ClassModel;
 
-class CateController extends Controller {
+class ClassController extends Controller {
 
     public function getList() {
         $class = ClassModel::all();
