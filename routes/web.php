@@ -44,6 +44,14 @@ Route::group(['prefix' => 'rest'], function() {
     Route::get('/cate/{id}', 'Rest\CateController@getEdit');
 	Route::put('/cate/{id}', 'Rest\CateController@getUpdate');
 	Route::delete('/cate/{id}', 'Rest\CateController@getDelete');
+
+
+
+    Route::get('/class', 'Rest\ClassController@getList');
+    Route::post('/class', 'Rest\ClassController@getInsert');
+    Route::get('/class/{id}', 'Rest\ClassController@getEdit');
+    Route::put('/class/{id}', 'Rest\ClassController@getUpdate');
+    Route::delete('/class/{id}', 'Rest\ClassController@getDelete');
 });
 
 Auth::routes();

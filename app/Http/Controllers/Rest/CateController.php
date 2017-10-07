@@ -20,12 +20,12 @@ class CateController extends Controller
 		$this->validateInsert($request);
 		DB::beginTransaction();
 		try {
-			$cate = new CateModel();
-			$cate->name = $request->name;
-			$cate->title = $request->title;
+			$cate              = new CateModel();
+			$cate->name        = $request->name;
+			$cate->title       = $request->title;
 			$cate->description = $request->description;
-			$cate->status = $request->status;
-			$cate->id_cate = $request->id_cate;
+			$cate->status      = $request->status;
+			$cate->id_cate     = $request->id_cate;
 			$cate->save();
 
 			DB::commit();
@@ -54,11 +54,11 @@ class CateController extends Controller
 			try {
 				$cate = CateModel::find($id);
 
-				$cate->name = $request->name;
-				$cate->title = $request->title;
+				$cate->name        = $request->name;
+				$cate->title       = $request->title;
 				$cate->description = $request->description;
-				$cate->status = $request->status;
-				$cate->id_cate = $request->id_cate;
+				$cate->status      = $request->status;
+				$cate->id_cate     = $request->id_cate;
 				$cate->save();
 
 				DB::commit();
@@ -95,32 +95,32 @@ class CateController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-	        'name' => 'required|unique:catetogys,name',
-	        'title' => 'required',
-	        'description' => 'required',
-	        'status' => 'required|numeric'
+			'name'        => 'required|unique:catetogys,name',
+			'title'       => 'required',
+			'description' => 'required',
+			'status'      => 'required|numeric'
 	    	], [
-	        'name.required' => 'Tên tiêu đề không được để trống',
-	        'name.unique' => 'Đã có tên tiêu đề này',
-	        'title.required' => 'Địa chỉ đơn vị không được bỏ trống',
-	        'description.required' => 'Mô tả không được bỏ trống',
-	        'status.required' => 'Trạng thái liên lạc không được bỏ trống',
-	        'status.numeric' => 'Trạng thái phải là số'
+			'name.required'        => 'Tên tiêu đề không được để trống',
+			'name.unique'          => 'Đã có tên tiêu đề này',
+			'title.required'       => 'Địa chỉ đơn vị không được bỏ trống',
+			'description.required' => 'Mô tả không được bỏ trống',
+			'status.required'      => 'Trạng thái liên lạc không được bỏ trống',
+			'status.numeric'       => 'Trạng thái phải là số'
 	    	]
 		);
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-	        'name' => 'required',
-	        'title' => 'required',
-	        'description' => 'required',
-	        'status' => 'required|numeric'
+			'name'        => 'required',
+			'title'       => 'required',
+			'description' => 'required',
+			'status'      => 'required|numeric'
 	    	], [
-	        'name.required' => 'Tên tiêu đề không được để trống',
-	        'title.required' => 'Địa chỉ đơn vị không được bỏ trống',
-	        'description.required' => 'Mô tả không được bỏ trống',
-	        'status.required' => 'Trạng thái liên lạc không được bỏ trống',
-	        'status.numeric' => 'Trạng thái phải là số'
+			'name.required'        => 'Tên tiêu đề không được để trống',
+			'title.required'       => 'Địa chỉ đơn vị không được bỏ trống',
+			'description.required' => 'Mô tả không được bỏ trống',
+			'status.required'      => 'Trạng thái liên lạc không được bỏ trống',
+			'status.numeric'       => 'Trạng thái phải là số'
 	    	]
 		);
 	}

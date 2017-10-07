@@ -20,11 +20,11 @@ class NewController extends Controller
 		DB::beginTransaction();
 		try {
 			$new = new NewModel();
-			$new->title = $request->title;
-			$new->image = $request->image;
+			$new->title   = $request->title;
+			$new->image   = $request->image;
 			$new->content = $request->content;
-			$new->tag = $request->tag;
-			$new->cate = $request->id_cate;
+			$new->tag     = $request->tag;
+			$new->cate    = $request->id_cate;
 			$new->save();
 
 			DB::commit();
@@ -53,11 +53,11 @@ class NewController extends Controller
 			try {
 				$new = NewModel::find($id);
 
-				$new->title = $request->title;
-				$new->image = $request->image;
+				$new->title   = $request->title;
+				$new->image   = $request->image;
 				$new->content = $request->content;
-				$new->tag = $request->tag;
-				$new->cate = $request->id_cate;
+				$new->tag     = $request->tag;
+				$new->cate    = $request->id_cate;
 				$new->save();
 
 				DB::commit();
@@ -94,22 +94,22 @@ class NewController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-	        'title' => 'required|unique:catetogys,name',
-	        'content' => 'required',
+			'title'   => 'required|unique:catetogys,name',
+			'content' => 'required',
 	    	], [
-	        'title.required' => 'Nội dung không được để trống',
-	        'title.unique' => 'Đã có tên tiêu đề này',
-	        'content.required' => 'Nội dung không được bỏ trống',
+			'title.required'   => 'Nội dung không được để trống',
+			'title.unique'     => 'Đã có tên tiêu đề này',
+			'content.required' => 'Nội dung không được bỏ trống',
 	    	]
 		);
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-	        'title' => 'required',
-	        'content' => 'required',
+			'title'   => 'required',
+			'content' => 'required',
 	    	], [
-	        'title.required' => 'Nội dung không được để trống',
-	        'content.required' => 'Nội dung không được bỏ trống',
+			'title.required'   => 'Nội dung không được để trống',
+			'content.required' => 'Nội dung không được bỏ trống',
 	    	]
 		);
 	}

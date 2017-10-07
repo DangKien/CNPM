@@ -19,12 +19,12 @@ class SlideController extends Controller
 		$this->validateInsert($request);
 		DB::beginTransaction();
 		try {
-			$slide = new SlideModel();
-			$slide->title = $request->title;
-			$slide->image = $request->image;
+			$slide          = new SlideModel();
+			$slide->title   = $request->title;
+			$slide->image   = $request->image;
 			$slide->content = $request->content;
-			$slide->status = $request->status;
-			$slide->cate = $request->id_cate;
+			$slide->status  = $request->status;
+			$slide->cate    = $request->id_cate;
 			$slide->save();
 
 			DB::commit();
@@ -53,11 +53,11 @@ class SlideController extends Controller
 			try {
 				$slide = SlideModel::find($id);
 
-				$slide->title = $request->title;
-				$slide->image = $request->image;
+				$slide->title   = $request->title;
+				$slide->image   = $request->image;
 				$slide->content = $request->content;
-				$slide->status = $request->status;
-				$slide->cate = $request->id_cate;
+				$slide->status  = $request->status;
+				$slide->cate    = $request->id_cate;
 				$slide->save();
 
 				DB::commit();
@@ -96,8 +96,8 @@ class SlideController extends Controller
 	    return $this->validate($request, [
 	        'title' => 'required|unique:catetogys,name',
 	    	], [
-	        'title.required' => 'Nội dung không được để trống',
-	        'title.unique' => 'Đã có tên tiêu đề này',
+			'title.required' => 'Nội dung không được để trống',
+			'title.unique'   => 'Đã có tên tiêu đề này',
 	    	]
 		);
 	}
@@ -105,8 +105,8 @@ class SlideController extends Controller
 	    return $this->validate($request, [
 	        'title' => 'required',
 	    	], [
-	        'title.required' => 'Nội dung không được để trống',
-	        'title.unique' => 'Đã có tên tiêu đề này',
+			'title.required' => 'Nội dung không được để trống',
+			'title.unique'   => 'Đã có tên tiêu đề này',
 	    	]
 		);
 	}
