@@ -10,17 +10,22 @@ use App\Models\CateModel;
 
 class CateController extends Controller
 {
-	public function getList() {
-		$cate = CateModel::all();
-		return response()->json($cate);
+	public function getList(Request $request, CateModel $cate) {
+		$a = $cate->fillterName($request->name)
+				  ->fillterTitle($request->title)
+				  ->fillterIdCate($request->id_cate)
+				  ->fillterStatus($request->status)	
+				  ->buildCond()
+				  ->get();
+
+		return response()->json($a);
 	}
 
-	public function getInsert(Request $request) { 
+	public function getInsert(Request $request, CateModel $cate) { 
 
 		$this->validateInsert($request);
 		DB::beginTransaction();
 		try {
-			$cate              = new CateModel();
 			$cate->name        = $request->name;
 			$cate->title       = $request->title;
 			$cate->description = $request->description;
