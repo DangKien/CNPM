@@ -13,8 +13,23 @@
 
 Route::get('/', function () {
     return view('back.layouts.default');
-
 });
+Route::get('/users', function () {
+    return view('back.content.user.user');
+});
+
+Route::get('/cate-new', function () {
+    return view('back.content.new.cate');
+});
+
+Route::get('/', function () {
+    return view('back.layouts.default');
+});
+
+Route::get('/', function () {
+    return view('back.layouts.default');
+});
+
 
 Route::group(['prefix' => 'rest'], function() {
 
