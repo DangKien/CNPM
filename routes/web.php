@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('back.layouts.default');
 
 });
 
@@ -52,6 +52,13 @@ Route::group(['prefix' => 'rest'], function() {
     Route::get('/class/{id}', 'Rest\ClassController@getEdit');
     Route::put('/class/{id}', 'Rest\ClassController@getUpdate');
     Route::delete('/class/{id}', 'Rest\ClassController@getDelete');
+
+
+    Route::get('/dishes', 'Rest\DishesController@getList');
+    Route::post('/dishes', 'Rest\DishesController@getInsert');
+    Route::get('/dishes/{id}', 'Rest\DishesController@getEdit');
+    Route::put('/dishes/{id}', 'Rest\DishesController@getUpdate');
+    Route::delete('/dishes/{id}', 'Rest\DishesController@getDelete');
 });
 
 Auth::routes();

@@ -36,7 +36,10 @@ class CateModel extends MyModel
 
     public function fillterStatus ($param) {
 
-    	$this->setFunctionCond('where', ['status', $param]);
+    	if (!empty($param)){
+			$this->setFunctionCond('where', ['status', $param]);
+		}
+    	
     	
     	return $this;
     }

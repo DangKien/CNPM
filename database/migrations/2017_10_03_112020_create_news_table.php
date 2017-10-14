@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
             $table->string('tag');
             $table->integer('view')->default(0);
             $table->integer('cate');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

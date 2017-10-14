@@ -34,7 +34,7 @@ class ClassController extends Controller {
 
     public function getEdit($id, Request $request) {
 
-        if (isset($id)) {
+        if (isset($id) && !empty($id)) {
             $class = ClassModel::find($id);
             return response()->json($class);
         } else {
@@ -43,7 +43,7 @@ class ClassController extends Controller {
     }
 
     public function getUpdate($id, Request $request) {
-        if (isset($id)) {
+        if (isset($id) && !empty($id)) {
             $this->validateUpdate($request);
             DB::beginTransaction();
             try {
@@ -67,7 +67,7 @@ class ClassController extends Controller {
 
     public function getDelete($id) {
 
-        if (isset($id)) {
+        if (isset($id) && !empty($id)) {
             DB::beginTransaction();
             try {
                 $class = ClassModel::find($id)->delete();

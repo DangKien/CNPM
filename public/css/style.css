@@ -1,0 +1,359 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 24, 2017, 2:13:55 PM
+    Author     : truon
+*/
+.cls-container a, .cls-container a:hover, .cls-container a:focus
+{
+	color: #23527c;
+	background: transparent;
+}
+.cls-container{
+	background-image: url('../Nifty/img/bg-login.jpg');
+	background-repeat: no-repeat;
+}
+.nav-tabs>li.active>p, .nav-tabs>li.active>p:focus, .nav-tabs>li.active>p:hover
+{
+	color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+
+.nav-tabs>li>p{
+	border-radius: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    height: 100%;
+    line-height: 40px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0 15px;
+
+}
+
+.modal-dialog .modal-content .modal-body .bootbox-body{
+	margin-top: 20px;
+	text-align: center;
+}
+.bootbox-body-fix{
+	padding: 20px;
+	font-size: 13px;
+	text-align: center;
+}
+.tab
+{
+	padding-bottom: 0px;
+}
+.hover-co
+{
+	cursor: pointer;
+}
+.image-main-oum
+{
+	padding: 15px;
+}
+.info-tab
+{
+	margin: 0px;
+	padding: 15px;
+	position: relative;
+}
+.tabphr
+{
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+.page-oum> .ng-isolate-scope> .pagination{
+	background: #fff;
+}
+.tabphr ul li
+{
+	padding: 3px;
+}
+.margin
+{
+	margin: 0px;
+}
+.padding
+{
+	padding: 0px;
+}
+.margin-right-10
+{
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.blood-pressure
+{
+	margin-top: 10px;
+}
+.blood
+{
+	padding-top: 28px;
+}
+
+.boder-phr
+{
+	border-right: 1px solid #eee;
+}
+.border-image-height
+{
+	border-left: 1px solid #eee;
+	position: relative;
+}
+.border-bottom-phr
+{
+	border-bottom: 1px solid #eee;
+}
+.mouse-hover
+{
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 40px;
+
+}
+.margin-5{
+	margin-right: 5px;
+}
+.lankham{
+	height: 40px;
+}
+.fix-scro
+{
+	overflow-y: auto; 
+	height: 500px;
+}
+.text-fix-phr
+{
+	color: #000;
+}
+.text-brand-phr:before
+{
+	background-color: #fff;
+}
+.panel-info .fix-color-phr
+{
+	background: #f7f7f7;
+	border: none;
+	color: #fff;
+}
+.panel-info .fix-color-phr h6
+{
+	color: #6F6F6F;
+}
+.fix-time
+{
+	min-height: 0px;
+}
+
+.panel>.panel-heading:after, .panel.panel-colorful>.lankham:after
+{
+	border: none;
+}
+.panel .changed:after
+{
+	border-right-color: #4ebcda;
+}
+.border-fix.panel-default.panel-bordered
+{
+	border-radius: 4px;
+	border: 1px solid #e7ebee;
+}
+
+.panel
+{
+	border-radius: 4px;
+}
+
+.font-fix-phr
+{
+	font-size: 18px;
+	color: #999;
+	margin: 0px;
+	line-height: 1px;
+}
+.ntha
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.value-ntha
+{
+	font-size: 16px;
+	font-weight: 600;
+}
+.icon-chiso
+{
+	margin-right: 40px;
+	margin-left: 30px;
+}
+.table-scroll
+{
+	 overflow-x:scroll;
+}
+.margin-left-10
+{
+	margin-left: 20px;
+}
+.patient-info h3
+{
+	font-size: 20px;
+	color: #37BC9B;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+.padding-detail{
+	margin-left: 10px;
+	margin-right: 5px;
+}
+.department-detail
+{
+	background: #fff;
+}
+.padding-right-0
+{
+	padding-right: 0px;
+}
+.patient-info p
+{
+	font-size: 14px;
+	color: #999;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
+.patient-info p span
+{
+	font-size: 14px;
+	color: #000;
+	font-weight: 300;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+.font-fix
+{
+	font-size: 14px;
+	color: #000;
+	font-weight: 300;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	padding-top: 10px;
+}
+.font-info p span {
+	font-style:  normal;
+	font-size: 14px;
+	color: #000;
+	font-weight: 300;
+	font-family: 'Time New Normal';
+}
+
+.font-info p
+{
+	padding-top: 5px;
+	padding-left: 15px;
+	font-style:  italic;
+	font-size: 14px;
+	color: #999;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+
+}
+.info-fix h5
+{
+	margin-top: 0px;
+	font-weight: 500;
+	color: #4ebcda;
+	font-size: 20px;
+}
+.fix-line-30
+{
+	line-height: 30px;
+}
+.img-kham
+{
+	padding: 20px;
+	margin: 0px;
+}
+.margin-top-10px
+{
+	margin-top: 10px;
+}
+.icon-edit
+{
+	font-size: 20px;
+}
+.fix-posi
+{
+	position: absolute;
+	top: 11px;
+	right: 20px;
+	font-size: 20px;
+}
+
+.modal-dialog {}
+.thumbnail {margin-bottom:6px;}
+
+.carousel-control.left,.carousel-control.right{
+  background-image:none;
+  margin-top:10%;
+  width:5%;
+}
+.progress
+{
+	border-radius: 50px;
+}
+.fix-img-height
+{
+	position: absolute;
+	top: 116px;
+	right: 24px;
+}
+
+.font-fix-height
+{
+	padding-top: 5px;
+	padding-left: 14px;
+	font-size: 16px;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+.fix-padding-panel
+{
+	padding-left: 0px;
+}
+.margin-plus{
+	margin-top: 14px;
+	font-size: 25px;
+}
+.avatar
+{
+	position: relative;
+
+}
+.change-avatar{
+	bottom: 0px;
+	left: 12px;
+	height: 20px;
+	width: 150px;
+	background: #000;
+	opacity: 0.7;
+	color: #FFF;
+	position: absolute;
+}
+.font14{
+	font-size: 14px;
+}
+
+.background-table-oum
+{
+	background: #fff;
+}
+.color-font-oum
+{
+	color: #6F8DEF;
+}

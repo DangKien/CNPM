@@ -20,6 +20,7 @@ class CreateCatetogysTable extends Migration
             $table->string('description');
             $table->integer('status');
             $table->integer('id_cate');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

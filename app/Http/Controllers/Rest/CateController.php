@@ -11,14 +11,14 @@ use App\Models\CateModel;
 class CateController extends Controller
 {
 	public function getList(Request $request, CateModel $cate) {
-		$a = $cate->fillterName($request->name)
+		$data = $cate->fillterName($request->name)
 				  ->fillterTitle($request->title)
 				  ->fillterIdCate($request->id_cate)
 				  ->fillterStatus($request->status)	
 				  ->buildCond()
 				  ->get();
-
-		return response()->json($a);
+				  
+		return response()->json($data);
 	}
 
 	public function getInsert(Request $request, CateModel $cate) { 
@@ -44,7 +44,7 @@ class CateController extends Controller
 
 	public function getEdit($id, Request $request) {
 
-		if (isset($id)) {
+		if (isset($id) && !empty($id)) {
 			$cate = CateModel::find($id);
 			return response()->json($cate);
 		} else {
@@ -53,7 +53,7 @@ class CateController extends Controller
 	}
 
 	public function getUpdate($id, Request $request) {
-		if (isset($id)){
+		if (isset($id) && !empty($id)) {
 			$this->validateUpdate($request);
 			DB::beginTransaction();
 			try {
@@ -80,7 +80,7 @@ class CateController extends Controller
 	
 	public function getDelete($id) {
 
-		if (isset($id)) {
+		if (isset($id) && !empty($id)) {
 			DB::beginTransaction();
 			try {
 				$cate = CateModel::find($id)->delete();
