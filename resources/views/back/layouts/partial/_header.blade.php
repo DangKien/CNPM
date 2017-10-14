@@ -38,7 +38,7 @@
 								<span class="pull-right">
 									<img class="img-circle img-user media-object" src="{{ url('') }}/Nifty/img/av1.png" alt="Profile Picture">
 								</span>
-								<div class="username hidden-xs">@if (Auth::check()){{ Auth::user()->name }} @endif</div>
+								<div class="username hidden-xs"> Đặng Trung Kiên<!-- @if (Auth::check()){{ Auth::user()->name }} @endif --></div>
 							</a>
 
 
