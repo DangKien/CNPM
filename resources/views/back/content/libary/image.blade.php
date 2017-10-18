@@ -28,7 +28,16 @@
 				</div>
 			</div>
 			<div class="row">
-				
+			    <div class="col-sm-6 col-md-4">
+				    <a href="">
+			    	    <div class="thumbnail">
+			    		    <img src="{{ url('Nifty/img/123.jpg') }}" alt="..." class="img-responsive">
+			    		    <div class="caption">
+			    		        <h3>Tên Abum</h3>
+			    		    </div>
+			    	    </div>
+				    </a>
+			    </div>
 			</div>	
 		</div>
 		<!--===================================================-->
