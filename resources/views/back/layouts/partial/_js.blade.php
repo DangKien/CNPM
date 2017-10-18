@@ -5,6 +5,9 @@
 <script src="{{ url('') }}/js/plugin/parsley/parsley.min.js"></script>
 <script src="{{ url('') }}/js/plugin/parsley/locale/vi.js"></script>
 
+<!-- Slide Image Light box -->
+<script src="{{ url('') }}/js/plugin/blueimp-gallery.min.js"></script>
+
 <script src="{{ url('') }}/js/plugin/bootbox.min.js"></script>
 <script src="{{ url('') }}/js/factory/apply.js"></script>
 <script src="{{ url('') }}/js/directives/ngEnter.js"></script>

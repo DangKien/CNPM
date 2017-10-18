@@ -25,6 +25,9 @@ Route::group(['prefix' => ''], function (){
     Route::get('/file-video', 'View\ViewController@fileVideo')->name('file-video');
     Route::get('/file-music', 'View\ViewController@fileMusic')->name('file-music');
     Route::get('/file', 'View\ViewController@file')->name('file');
+     Route::get('/filealbum', function(){
+        return view('back.content.libary.albumImage');
+     })->name('filealbum');
 
 });
 
