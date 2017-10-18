@@ -1,8 +1,5 @@
 @extends('back.layouts.default')
 @section ('title', 'Loại tin')
-@section ('myJs')
-	<script src=""></script>
-@endsection
 
 @section('content')
 	<div id="content-container">
@@ -27,104 +24,44 @@
 					</span>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-5">
-					<div class="panel">
-						<!-- insert cate -->
-						<form action="" method="get" accept-charset="utf-8">
-							<div class="panel-heading">
-								<h3 class="panel-title">Thêm mới loại tin</h3>
-							</div>
-							<div class="panel-body">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên loại tin: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại tin: </label>
-									<div class="col-sm-8 mar-btm">
-										<select class="selectpicker" data-width="100%">
-											<option>--Giới thiệu--</option>
-											<option>--- Cơ sở vật chất ---</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tag: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Trạng thái: </label>
-									<div class="col-sm-8 text-left">
-										<label class="form-radio form-normal active form-text"><input type="radio" checked="" name="def-w-label"> Hoạt động</label>
-										<label class="form-radio form-normal active form-text"><input type="radio" name="def-w-label"> Không hoạt động</label>
-									</div>
-									
-								</div>
-
-								
-							</div>
-							<div class="modal-footer">
-							    <button type="button" class="btn btn-primary">Cập nhật</button>
-							</div>
-
-						</form>
-						<!-- end cate -->
+			<div class="panel">
+				<!--Data Table-->
+				<!--===================================================-->
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="text-center">STT</th>
+									<th>Tuần</th>
+									<th>Ngày bắt đầu</th>
+									<th>Ngày kết thúc</th>
+									<th>Trạng thái</th>
+									<th>Hành động</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a class="btn-link" href="#"> Order #53431</a></td>
+									<td>Steve N. Horton</td>
+									<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
+									<td>$45.00</td>
+									<td>
+										<div class="label label-table label-success">Paid</div>
+									</td>
+									<td>-</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<!-- datatable -->
-				<div class="col-sm-7">
-					<div class="panel">
-						<!--Data Table-->
-						<!--===================================================-->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th class="text-center">Invoice</th>
-											<th>STT</th>
-											<th> Tên loại tin</th>
-											<th>Loại tin cha</th>
-											<th>Tag</th>
-											<th>Trạng thái</th>
-											<th>Hành động</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><a class="btn-link" href="#"> Order #53431</a></td>
-											<td>Steve N. Horton</td>
-											<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-											<td>$45.00</td>
-											<td>
-												<div class="label label-table label-success">Paid</div>
-											</td>
-											<td>-</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<!--===================================================-->
-						<!--End Data Table-->
-					</div>
-				</div>
-				<!-- end datatable -->
-			</div>	
+				<!--===================================================-->
+				<!--End Data Table-->
+			</div>
 		</div>
 		<!--===================================================-->
 		<!--End page content-->
-	<button 
+		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
 	data-toggle="modal" data-target="#edit-user"

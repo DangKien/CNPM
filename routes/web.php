@@ -11,23 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('back.layouts.default');
-});
-Route::get('/users', function () {
-    return view('back.content.user.user');
-});
+Route::group(['prefix' => ''], function (){
+    Route::get('/', 'View\ViewController@user');
+    Route::get('/user', 'View\ViewController@user')->name('user');
+    Route::get('/slide', 'View\ViewController@slide')->name('slide');
+    Route::get('/cate-new', 'View\ViewController@cateNew')->name('cate-new');
+    Route::get('/new', 'View\ViewController@new')->name('new');
+    Route::get('/dishes', 'View\ViewController@dishes')->name('dishes');
+    Route::get('/menu', 'View\ViewController@menu')->name('menu');
+    Route::get('/addmission', 'View\ViewController@addmission')->name('addmission');
+    Route::get('/class', 'View\ViewController@class')->name('class');
 
-Route::get('/cate-new', function () {
-    return view('back.content.new.cate');
-});
-
-Route::get('/', function () {
-    return view('back.layouts.default');
-});
-
-Route::get('/', function () {
-    return view('back.layouts.default');
 });
 
 

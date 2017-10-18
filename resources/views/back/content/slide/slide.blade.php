@@ -33,11 +33,11 @@
 						<!-- insert cate -->
 						<form action="" method="get" accept-charset="utf-8">
 							<div class="panel-heading">
-								<h3 class="panel-title">Thêm mới loại tin</h3>
+								<h3 class="panel-title">Thêm mới ảnh slide</h3>
 							</div>
 							<div class="panel-body">
 								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên loại tin: </label>
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tiêu đề: </label>
 									<div class="col-sm-8">
 										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
 										id="demo-is-inputsmall">
@@ -45,19 +45,28 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại tin: </label>
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nội dùng: </label>
+									<div class="col-sm-8">
+										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
+										id="demo-is-inputsmall">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại: </label>
 									<div class="col-sm-8 mar-btm">
 										<select class="selectpicker" data-width="100%">
-											<option>--Giới thiệu--</option>
-											<option>--- Cơ sở vật chất ---</option>
+											<option>Nam</option>
+											<option>Nữ</option>
+											<option>Khác</option>
 										</select>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tag: </label>
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Ảnh: </label>
 									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
+										<input type="file" placeholder="Tài khoản" class="form-control input-sm"
 										id="demo-is-inputsmall">
 									</div>
 								</div>
@@ -68,8 +77,9 @@
 										<label class="form-radio form-normal active form-text"><input type="radio" checked="" name="def-w-label"> Hoạt động</label>
 										<label class="form-radio form-normal active form-text"><input type="radio" name="def-w-label"> Không hoạt động</label>
 									</div>
-									
 								</div>
+
+
 
 								
 							</div>
@@ -92,12 +102,11 @@
 									<thead>
 										<tr>
 											<th class="text-center">Invoice</th>
-											<th>STT</th>
-											<th> Tên loại tin</th>
-											<th>Loại tin cha</th>
-											<th>Tag</th>
-											<th>Trạng thái</th>
-											<th>Hành động</th>
+											<th>User</th>
+											<th>Order date</th>
+											<th>Amount</th>
+											<th>Status</th>
+											<th>Tracking Number</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -124,7 +133,7 @@
 		</div>
 		<!--===================================================-->
 		<!--End page content-->
-	<button 
+		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
 	data-toggle="modal" data-target="#edit-user"

@@ -33,11 +33,11 @@
 						<!-- insert cate -->
 						<form action="" method="get" accept-charset="utf-8">
 							<div class="panel-heading">
-								<h3 class="panel-title">Thêm mới loại tin</h3>
+								<h3 class="panel-title">Thêm mới lớp học</h3>
 							</div>
 							<div class="panel-body">
 								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên loại tin: </label>
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên lớp học: </label>
 									<div class="col-sm-8">
 										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
 										id="demo-is-inputsmall">
@@ -45,20 +45,22 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại tin: </label>
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Năm học: </label>
+									<div class="col-sm-8">
+										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
+										id="demo-is-inputsmall">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall"> Loại lớp học: </label>
 									<div class="col-sm-8 mar-btm">
 										<select class="selectpicker" data-width="100%">
-											<option>--Giới thiệu--</option>
-											<option>--- Cơ sở vật chất ---</option>
+											<option>Mẫu giáo bé</option>
+											<option>Mẫu giáo nhỡ</option>
+											<option>Mẫu giáo lớn</option>
+											<option>Lớp học thử</option>
 										</select>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tag: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
 									</div>
 								</div>
 
@@ -91,11 +93,10 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th class="text-center">Invoice</th>
-											<th>STT</th>
-											<th> Tên loại tin</th>
-											<th>Loại tin cha</th>
-											<th>Tag</th>
+											<th class="text-center">STT</th>
+											<th>Tên lớp</th>
+											<th>Năm học</th>
+											<th>Loại lớp học</th>
 											<th>Trạng thái</th>
 											<th>Hành động</th>
 										</tr>
@@ -124,7 +125,7 @@
 		</div>
 		<!--===================================================-->
 		<!--End page content-->
-	<button 
+		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
 	data-toggle="modal" data-target="#edit-user"

@@ -9,7 +9,7 @@
 	<!--Page Title-->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<div id="page-title">
-		<h1 class="page-header tẽt-overflow">Nhân viên trường </h1>
+		<h1 class="page-header tẽt-overflow">@if(isset($title) ) {{ $title }} @endif</h1>
 	</div>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End page title-->
@@ -22,7 +22,7 @@
 			<div class="input-group custom-search-form">
 				<input type="tẽt" class="form-control" placeholder="Tìm kiếm..">
 				<span class="input-group-btn">
-					<button class="tẽt-muted" type="button"><i class="fa fa-search"></i></button>
+					<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
 				</span>
 			</div>
 		</div>
