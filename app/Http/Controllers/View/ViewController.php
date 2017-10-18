@@ -40,4 +40,20 @@ class ViewController extends Controller
 		return view('back.content.addmission.class', ['active'=>'class'])->with('title', 'Lớp học');
 	}
 
+
+	public function fileImage(){
+		return view('back.content.libary.image', ['active'=>'file-image'])->with('title', 'Thư viện ảnh');
+	}
+
+	public function fileVideo(){
+		return view('back.content.libary.video', ['active'=>'file-video'])->with('title', 'Thư viện video');
+	}
+
+	public function fileMusic(){
+		return view('back.content.libary.music', ['active'=>'file-music'])->with('title', 'Thư viện nhạc');
+	}
+
+	public function file(){
+		return view('back.content.libary.file', ['active'=>'file'])->with('title', 'Thư viện tài liệu');
+	}
 }

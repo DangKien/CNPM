@@ -45,21 +45,26 @@
 							<!--Submenu-->
 							<ul class="collapse">
 								<li class="
-								@if (isset($active) && $active == 'new' ) 
+								@if (isset($active) && $active == 'newCate' ) 
 									{{ 'active-link' }}  
 								@endif" 
 								>
-								<a href="{{ route('new') }}"><i class="fa fa-address-card-o"></i> Loại tin</a></li>
+								<a href="{{ route('cate-new') }}"><i class="fa fa-address-card-o"></i> Loại tin</a></li>
 
 								<li class="
-								@if (isset($active) && $active == 'newCate' ) 
+								@if (isset($active) && $active == 'new' ) 
 									{{ 'active-link' }}  
 								@endif"
-								><a href="{{ route('cate-new') }}"><i class="fa fa-map-o"></i> Tin tức</a></li>
+								><a href="{{ route('new') }}"><i class="fa fa-map-o"></i> Tin tức</a></li>
 							</ul>
 						</li>
 
-						<li class="">
+						<li class="
+								@if (isset($active) )
+									@if ( $active == 'file' || $active == 'file-image' ||$active == 'file-music' || $active == 'file-video') 
+										{{ 'active active-sub' }} 
+									@endif 
+								@endif">
 							<a href="#">
 								<i class="fa fa-file"></i>
 								<span class="menu-title"> Thư viện</span>
@@ -68,10 +73,30 @@
 						
 							<!--Submenu-->
 							<ul class="collapse">
-								<li><a><i class="fa fa-picture-o"></i> Thư viện ảnh</a></li>
-								<li><a><i class="fa fa-video-camera"></i> Thứ viện video</a></li>
-								<li><a><i class="fa fa-music"></i> Thư viện nhạc</a></li>
-								<li><a><i class="fa fa-file-text-o"></i> Thư viện tài liệu</a></li>
+								<li class="
+								@if (isset($active) && $active == 'file-image' ) 
+									{{ 'active-link' }}  
+								@endif">
+									<a href="{{ route('file-image') }}"><i class="fa fa-picture-o"></i> Thư viện ảnh</a>
+								</li>
+								<li class="
+								@if (isset($active) && $active == 'file-video' ) 
+									{{ 'active-link' }}  
+								@endif">
+									<a href="{{ route('file-video') }}"><i class="fa fa-video-camera"></i> Thứ viện video</a>
+								</li >
+								<li class="
+								@if (isset($active) && $active == 'file-music' ) 
+									{{ 'active-link' }}  
+								@endif">
+									<a href="{{ route('file-music') }}"><i class="fa fa-music"></i> Thư viện nhạc</a>
+								</li>
+								<li class="
+								@if (isset($active) && $active == 'file' ) 
+									{{ 'active-link' }}  
+								@endif">
+									<a href="{{ route('file') }}"><i class="fa fa-file-text-o"></i> Thư viện tài liệu</a>
+								</li>
 							</ul>
 						</li>
 

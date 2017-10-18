@@ -21,6 +21,10 @@ Route::group(['prefix' => ''], function (){
     Route::get('/menu', 'View\ViewController@menu')->name('menu');
     Route::get('/addmission', 'View\ViewController@addmission')->name('addmission');
     Route::get('/class', 'View\ViewController@class')->name('class');
+    Route::get('/file-image', 'View\ViewController@fileImage')->name('file-image');
+    Route::get('/file-video', 'View\ViewController@fileVideo')->name('file-video');
+    Route::get('/file-music', 'View\ViewController@fileMusic')->name('file-music');
+    Route::get('/file', 'View\ViewController@file')->name('file');
 
 });
 

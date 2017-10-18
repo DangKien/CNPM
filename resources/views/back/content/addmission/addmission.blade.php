@@ -16,12 +16,21 @@
 		<!--Page content-->
 		<!--===================================================-->
 		<div id="page-content">
-			<div class="searchbox">
-				<div class="input-group custom-search-form">
-					<input type="text" class="form-control" placeholder="Tìm kiếm..">
-					<span class="input-group-btn">
-						<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
-					</span>
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<div class="searchbox">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Tìm kiếm..">
+							<span class="input-group-btn">
+								<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 pull-right search-nc">
+					<button type="button" class="btn btn-primary pull-right" data-target="#demo-panel-collapse-default"
+					        data-toggle="collapse">Tìm kiếm nâng cao
+					</button>
 				</div>
 			</div>
 			<div class="panel">
