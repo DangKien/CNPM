@@ -1,24 +1,25 @@
 @extends('back.layouts.default')
-@section ('title', 'Nhân viên')
+@section ('title', 'Loại tin')
 @section ('myJs')
-<script src=""></script>
-<script src=""></script>
-@section('content')
-<div id="content-container">
-	
-	<!--Page Title-->
-	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-	<div id="page-title">
-		<h1 class="page-header tẽt-overflow">@if(isset($title) ) {{ $title }} @endif</h1>
-	</div>
-	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-	<!--End page title-->
+	<script src=""></script>
+@endsection
 
-	<!--Page content-->
-	<!--===================================================-->
-	<div id="page-content">
-		<!-- searchbox -->
-		<div class="row">
+@section('content')
+	<div id="content-container">
+		
+		<!--Page Title-->
+		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+		<div id="page-title">
+			<h1 class="page-header text-overflow">@if(isset($title) ) {{ $title }} @endif</h1>
+			<!--Searchbox-->
+		</div>
+		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+		<!--End page title-->
+
+		<!--Page content-->
+		<!--===================================================-->
+		<div id="page-content">
+			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<div class="searchbox">
 						<div class="input-group custom-search-form">
@@ -35,8 +36,8 @@
 					</button>
 				</div>
 			</div>
-		<!-- end searchbox 	-->
-		<div class="row">
+
+			<div class="row">
 				<div class="col-md-12">
 					<div class="panel">
 					    <!--Panel body-->
@@ -86,129 +87,115 @@
 					    </div>
 					</div>
 				</div>
-		</div>
-		<!-- content  -->
-		<div class="col-md-6 col-lg-3">
-			<div class="panel text-center">
-				<div class="panel-body">
-					<img alt="Avatar" class="img-md img-circle img-border mar-btm" src="{{ url('Nifty/') }}/img/av6.png">
-					<h4 class="mar-no">Tên</h4>
-					<p>Chức vụ</p>
-				</div>
-				<div class="pad-all">
-					<p class="text-left font14">
-						<i class="fa fa-envelope"> &nbsp; &nbsp; Email</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-phone"> &nbsp; &nbsp; Số điện thoại</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-address-card"> &nbsp; &nbsp; Địa chỉ nhà</i>
-					</p>
-					<br>
-					<div class="pad-btm">
-						<button  ng-click="actions.showModal('edit', user.id)"
-						class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="panel">
+						<!-- insert cate -->
+						<form action="" method="get" accept-charset="utf-8">
+							<div class="panel-heading">
+								<h3 class="panel-title">Thêm mới ảnh slide</h3>
+							</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tiêu đề: </label>
+									<div class="col-sm-8">
+										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
+										id="demo-is-inputsmall">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nội dùng: </label>
+									<div class="col-sm-8">
+										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
+										id="demo-is-inputsmall">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại: </label>
+									<div class="col-sm-8 mar-btm">
+										<select class="selectpicker" data-width="100%">
+											<option>Nam</option>
+											<option>Nữ</option>
+											<option>Khác</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Ảnh: </label>
+									<div class="col-sm-8">
+										<input type="file" placeholder="Tài khoản" class="form-control input-sm"
+										id="demo-is-inputsmall">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Trạng thái: </label>
+									<div class="col-sm-8 text-left">
+										<label class="form-radio form-normal active form-text"><input type="radio" checked="" name="def-w-label"> Hoạt động</label>
+										<label class="form-radio form-normal active form-text"><input type="radio" name="def-w-label"> Không hoạt động</label>
+									</div>
+								</div>
+
+
+
+								
+							</div>
+							<div class="modal-footer">
+							    <button type="button" class="btn btn-primary">Cập nhật</button>
+							</div>
+
+						</form>
+						<!-- end cate -->
 					</div>
 				</div>
-			</div>
-			<!--===================================================-->
-		</div>
-
-		<div class="col-md-6 col-lg-3">
-			<div class="panel text-center">
-				<div class="panel-body">
-					<img alt="Avatar" class="img-md img-circle img-border mar-btm" src="{{ url('Nifty/') }}/img/av6.png">
-					<h4 class="mar-no">Tên</h4>
-					<p>Chức vụ</p>
-				</div>
-				<div class="pad-all">
-					<p class="text-left font14">
-						<i class="fa fa-envelope"> &nbsp; &nbsp; Email</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-phone"> &nbsp; &nbsp; Số điện thoại</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-address-card"> &nbsp; &nbsp; Địa chỉ nhà</i>
-					</p>
-					<br>
-					<div class="pad-btm">
-						<button  ng-click="actions.showModal('edit', user.id)"
-						class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+				<!-- datatable -->
+				<div class="col-sm-7">
+					<div class="panel">
+						<!--Data Table-->
+						<!--===================================================-->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th class="text-center">Invoice</th>
+											<th>User</th>
+											<th>Order date</th>
+											<th>Amount</th>
+											<th>Status</th>
+											<th>Tracking Number</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><a class="btn-link" href="#"> Order #53431</a></td>
+											<td>Steve N. Horton</td>
+											<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
+											<td>$45.00</td>
+											<td>
+												<div class="label label-table label-success">Paid</div>
+											</td>
+											<td>-</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--===================================================-->
+						<!--End Data Table-->
 					</div>
 				</div>
-			</div>
-			<!--===================================================-->
+				<!-- end datatable -->
+			</div>	
 		</div>
-
-		<div class="col-md-6 col-lg-3">
-			<div class="panel text-center">
-				<div class="panel-body">
-					<img alt="Avatar" class="img-md img-circle img-border mar-btm" src="{{ url('Nifty/') }}/img/av6.png">
-					<h4 class="mar-no">Tên</h4>
-					<p>Chức vụ</p>
-				</div>
-				<div class="pad-all">
-					<p class="text-left font14">
-						<i class="fa fa-envelope"> &nbsp; &nbsp; Email</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-phone"> &nbsp; &nbsp; Số điện thoại</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-address-card"> &nbsp; &nbsp; Địa chỉ nhà</i>
-					</p>
-					<br>
-					<div class="pad-btm">
-						<button  ng-click="actions.showModal('edit', user.id)"
-						class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
-					</div>
-				</div>
-			</div>
-			<!--===================================================-->
-		</div>
-
-		<div class="col-md-6 col-lg-3">
-			<div class="panel text-center">
-				<div class="panel-body">
-					<img alt="Avatar" class="img-md img-circle img-border mar-btm" src="{{ url('Nifty/') }}/img/av6.png">
-					<h4 class="mar-no">Tên</h4>
-					<p>Chức vụ</p>
-				</div>
-				<div class="pad-all">
-					<p class="text-left font14">
-						<i class="fa fa-envelope"> &nbsp; &nbsp; Email</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-phone"> &nbsp; &nbsp; Số điện thoại</i>
-					</p>
-					<p class="text-left font14">
-						<i class="fa fa-address-card"> &nbsp; &nbsp; Địa chỉ nhà</i>
-					</p>
-					<br>
-					<div class="pad-btm">
-						<button  ng-click="actions.showModal('edit', user.id)"
-						class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button>
-						<button ng-click="actions.resetPassword(user.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
-					</div>
-				</div>
-			</div>
-			<!--===================================================-->
-		</div>
-		<!-- end content -->
-	</div>
-	<!--===================================================-->
-	<!--End page content-->
-
-	<button 
+		<!--===================================================-->
+		<!--End page content-->
+		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
 	data-toggle="modal" data-target="#edit-user"
@@ -316,5 +303,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 @endsection

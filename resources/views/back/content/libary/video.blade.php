@@ -1,5 +1,5 @@
 @extends('back.layouts.default')
-@section ('title', 'Loại tin')
+@section ('title', 'Thư viện video')
 @section ('myJs')
 	<script src=""></script>
 @endsection
@@ -19,76 +19,14 @@
 		<!--Page content-->
 		<!--===================================================-->
 		<div id="page-content">
-			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="searchbox">
-						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Tìm kiếm..">
-							<span class="input-group-btn">
-								<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6 pull-right search-nc">
-					<button type="button" class="btn btn-primary pull-right" data-target="#demo-panel-collapse-default"
-					        data-toggle="collapse">Tìm kiếm nâng cao
-					</button>
+			<div class="searchbox">
+				<div class="input-group custom-search-form">
+					<input type="text" class="form-control" placeholder="Tìm kiếm..">
+					<span class="input-group-btn">
+						<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+					</span>
 				</div>
 			</div>
-			<!-- tim kiem nang cao -->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="panel">
-					    <!--Panel body-->
-					    <div id="demo-panel-collapse-default" class="collapse">
-					        <form>
-					            <div class="panel-body">
-					                <div class="row">
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Họ tên: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Email: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                </div>
-					                <div class="row">
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Số điện thoại</label>
-					                            <input type="email" class="form-control">
-					                        </div>
-					                    </div>
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Trạng thái: </label>
-					                            <br>
-					                            <select class="selectpicker" data-width="100%">
-					                                <option>Hoạt động</option>
-					                                <option>Không hoạt động</option>
-					                            </select>
-					                        </div>
-					                    </div>
-					                    
-					                    
-					                </div>
-					            </div>
-					            <div class="panel-footer text-right">
-					                <button class="btn btn-info" type="submit"><i class="fa fa-search"> Tìm kiếm</i>
-					                </button>
-					            </div>
-					        </form>
-					    </div>
-					</div>
-				</div>
-			</div>
-			<!-- het tim kiem nang cao -->
 			<div class="row">
 				<div class="col-sm-5">
 					<div class="panel">
