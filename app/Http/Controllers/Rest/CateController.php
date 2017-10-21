@@ -35,7 +35,7 @@ class CateController extends Controller
 
 			DB::commit();
 
-			return response()->json(['status' => true, 200]);
+			return response()->json(['status' => true], 200);
 
 		} catch (Exception $e) {
 			DB::rollback();
@@ -48,7 +48,7 @@ class CateController extends Controller
 			$cate = CateModel::find($id);
 			return response()->json($cate);
 		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['status' => 'Id không tồn tại'], 422); 
 		}
 	}
 
@@ -68,13 +68,13 @@ class CateController extends Controller
 
 				DB::commit();
 
-				return response()->json(['status' => true, 200]);
+				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {
 				DB::rollback();
 			}
 		}else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['status' => 'Id không tồn tại'], 422); 
 		}
 	}
 	
@@ -84,7 +84,7 @@ class CateController extends Controller
 			DB::beginTransaction();
 			try {
 				$cate = CateModel::find($id)->delete();
-				return response()->json(['status' => true, 200]); 
+				return response()->json(['status' => true], 200); 
 				DB::commit();
 
 			} catch (Exception $e) {
@@ -93,7 +93,7 @@ class CateController extends Controller
 			
 
 		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['status' => 'Id không tồn tại'], 422); 
 		}
 	}
 

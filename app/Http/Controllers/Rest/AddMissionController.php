@@ -33,7 +33,7 @@ class CateController extends Controller
 
 			DB::commit();
 
-			return response()->json(['status' => true, 200]);
+			return response()->json(['status' => true], 200);
 
 		} catch (Exception $e) {
 			DB::rollback();

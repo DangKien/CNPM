@@ -3,9 +3,35 @@
 }
 .form-control{
 	height: 30px;
-	margin-bottom: 20px;
+
 }
 .search-nc {
 	padding-bottom: 20px;
 	margin-right: 5px;
 }
+.fix-album{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background: rgba(74, 53, 53, 0.15);
+	padding-left: 3%;
+	height: 64px;
+	opacity: 0;
+}
+.fix-album h3{
+	line-height: 10px;
+}
+.fix-thumbnail{
+	position: relative;
+	padding: 0px;
+	border-radius: 10px;
+}
+
+.fix-thumbnail img{
+	border-radius: 10px;
+}
+
+.fix-thumbnail:hover .fix-album{
+	opacity: 1;
+}
+

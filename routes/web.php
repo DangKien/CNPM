@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/modal/{view}', 'View\ViewController@modal');
+
 Route::group(['prefix' => ''], function (){
     Route::get('/', 'View\ViewController@user');
     Route::get('/user', 'View\ViewController@user')->name('user');
@@ -25,9 +27,13 @@ Route::group(['prefix' => ''], function (){
     Route::get('/file-video', 'View\ViewController@fileVideo')->name('file-video');
     Route::get('/file-music', 'View\ViewController@fileMusic')->name('file-music');
     Route::get('/file', 'View\ViewController@file')->name('file');
-     Route::get('/filealbum', function(){
+    Route::get('/filealbum', function(){
         return view('back.content.libary.albumImage');
      })->name('filealbum');
+
+    Route::get('/dishes-menu', function(){
+        return view('back.content.menu.dishesMenu');
+     })->name('dishes-menu');
 
 });
 
@@ -37,7 +43,7 @@ Route::group(['prefix' => 'rest'], function() {
 	Route::get('/user', 'Rest\UserController@getList');
     Route::post('/user', 'Rest\UserController@getInsert');
     Route::get('/user/{id}', 'Rest\UserController@getEdit');
-	Route::put('/user/{id}', 'Rest\UserController@getUpdate');
+	Route::post('/user-update/{id}', 'Rest\UserController@getUpdate');
 	Route::delete('/user/{id}', 'Rest\UserController@getDelete');
 
     Route::get('/new', 'Rest\NewController@getList');

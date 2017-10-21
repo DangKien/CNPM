@@ -24,8 +24,8 @@ class DishesController extends Controller
 			$dishes->name        = $request->name;
 			$dishes->image       = $request->image;
 			$dishes->description = $request->description;
-			$dishes->user_id      = $request->user_id;
-			$dishes->speacies     = $request->speacies;
+			$dishes->user_id     = $request->user_id;
+			$dishes->speacies    = $request->speacies;
 			$dishes->save();
 
 			DB::commit();

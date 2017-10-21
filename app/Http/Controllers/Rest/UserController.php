@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Rest;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use DB, Session;
 use App\User;
 
@@ -17,6 +17,11 @@ class UserController extends Controller
 	public function getInsert(Request $request) { 
 
 		$this->validateInsert($request);
+		if ($request->hasFile('avatar')){
+			$avatar = "default-image1.png";
+		} else {
+			$avatar = "default-image.png";
+		}
 		DB::beginTransaction();
 		try {
 			$user           = new User();
@@ -28,16 +33,16 @@ class UserController extends Controller
 			$user->phone    = $request->phone;
 			$user->birthday = $request->birthday;
 			$user->address  = $request->address;
-			$user->status   = $request->status;
-			$user->avatar   = $request->avatar;
+			$user->status   = 1;
+			$user->avatar   = $avatar;
 			$user->job      = $request->job;
-			$user->is_admin = $request->is_admin;
+			$user->is_admin = 0;
 
 			$user->save();
 
 			DB::commit();
 
-			return response()->json(['status' => true, 200]);
+			return response()->json(['status' => true], 200);
 
 		} catch (Exception $e) {
 			DB::rollback();
@@ -50,15 +55,21 @@ class UserController extends Controller
 			$user = User::find($id);
 			return response()->json($user);
 		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['message' => 'Id không tồn tại'], 422); 
 		}
 	}
 
 	public function getUpdate($id, Request $request) {
 		if (isset($id)){
 			$this->validateUpdate($request);
+
 			DB::beginTransaction();
 			try {
+				if ($request->hasFile('avatar')){
+					$avatar = "default-image1.png";
+				} else {
+					$avatar = "default-image.png";
+				}
 				$user = User::find($id);
 
 				$user->name     = $request->name;
@@ -67,32 +78,34 @@ class UserController extends Controller
 				$user->phone    = $request->phone;
 				$user->birthday = $request->birthday;
 				$user->address  = $request->address;
-				$user->status   = $request->status;
+				$user->status   = 1;
 				$user->avatar   = $request->avatar;
 				$user->job      = $request->job;
-				$user->is_admin = $request->is_admin;
+				$user->is_admin = 0;
 				$user->save();
 
 				DB::commit();
 
-				return response()->json(['status' => true, 200]);
+				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {
 				DB::rollback();
 			}
 		}else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['message' => 'Id không tồn tại'], 422); 
 		}
 	}
 	
 	public function getDelete($id) {
-
 		if (isset($id)) {
 			DB::beginTransaction();
 			try {
-				$user = User::find($id)->delete();
-				return response()->json(['status' => true, 200]); 
+				$user = User::find($id);
+				$user->status = 0;
+				$user->save();
+				 
 				DB::commit();
+				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {
 				DB::rollback();
@@ -100,7 +113,7 @@ class UserController extends Controller
 			
 
 		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['message' => 'Id không tồn tại'], 422); 
 		}
 	}
 
@@ -147,7 +160,7 @@ class UserController extends Controller
 			'email'    => 'required|',
 			'name'     => 'required',
 			'gender'   => 'required',
-			'phone'    => 'required|number',
+			'phone'    => 'required|numeric',
 			'birthday' => 'required|date',
 			'address'  => 'required',
 			'status'   => 'required',
@@ -158,7 +171,9 @@ class UserController extends Controller
 			'name.required'     => 'Tên người dùng không được để trống',
 			'gender.required'   => 'Giới tính không được để trống',
 			'phone.required'    => 'Số điện thoại không được để trống',
+			'phone.numeric'     => 'Số điện thoại không đúng định dạng',
 			'birthday.required' => 'Ngày sinh không được để trống',
+			'birthday.date'     => 'Ngày sinh không đúng định dạng',
 			'address.required'  => 'Địa chỉ không được để trống',
 			'status.required'   => 'Trạng thái không được để trống',
 			'job.required'      => 'Công việc không được để trống',

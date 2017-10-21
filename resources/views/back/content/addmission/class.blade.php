@@ -30,7 +30,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-6 pull-right search-nc">
+				<div class="col-md-5 col-sm-5 pull-right search-nc">
 					<button type="button" class="btn btn-primary pull-right" data-target="#demo-panel-collapse-default"
 					        data-toggle="collapse">Tìm kiếm nâng cao
 					</button>

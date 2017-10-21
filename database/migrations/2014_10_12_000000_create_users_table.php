@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('status');
             $table->string('avatar');
             $table->string('job');
-            $table->integer('is_admin');
+            $table->integer('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

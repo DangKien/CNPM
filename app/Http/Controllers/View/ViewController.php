@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ViewController extends Controller
 {
+
+	public function modal($view) {
+		return view('back.modal.'.$view);
+	}
+
 	public function user(){
 		return view('back.content.user.user', ['active'=>'user'])->with('title', 'Nhân viên trường');
 	}
@@ -56,4 +61,7 @@ class ViewController extends Controller
 	public function file(){
 		return view('back.content.libary.file', ['active'=>'file'])->with('title', 'Thư viện tài liệu');
 	}
+
+
+
 }

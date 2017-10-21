@@ -83,12 +83,11 @@
 					    </div>
 					</div>
 				</div>
-		</div>
+			</div>
 			<div class="panel">
 				<!--Data Table-->
 				<!--===================================================-->
 				<div class="panel-body">
-					
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
@@ -103,7 +102,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><a class="btn-link" href="{{ route('dishes-menu') }}"> Order #53431</a></td>
+									<td><a class="btn-link" href="#"> Order #53431</a></td>
 									<td>Steve N. Horton</td>
 									<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
 									<td>$45.00</td>
