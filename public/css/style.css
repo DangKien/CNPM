@@ -34,4 +34,17 @@
 .fix-thumbnail:hover .fix-album{
 	opacity: 1;
 }
+.padding-top-7 {
+	padding-top: 7px;
+}
+.padding-left-5 {
+	padding-left: 5px;
+}
+.margin-bottom-0{
+    margin-bottom: 0px;
+}
+
+.form-horizontal .fix-form-cate{
+	padding-left: 0px;
+}
 

@@ -16,11 +16,11 @@ class CreateCatetogysTable extends Migration
         Schema::create('catetogys', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('title');
-            $table->string('description');
-            $table->integer('status');
-            $table->integer('id_cate');
-            $table->integer('user_id');
+            $table->string('slug');
+            $table->string('tag')->nullable();
+            $table->integer('status')->default(1);
+            $table->integer('cate_id');
+            $table->integer('user_create');
             $table->timestamps();
         });
     }

@@ -17,7 +17,13 @@ ngApp.factory('$conf', function(){
 		                timer : timeOut
 		            });
 			};
-
+	service.confirmDelete = function (size, message, func){
+	    bootbox.confirm({ 
+	        size: size,
+	        message: message, 
+	        callback: func
+	      });
+	};
 
 	return service;
 })

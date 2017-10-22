@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers\Rest;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, Session;
+use App\Http\Controllers\Controller;
 use App\Models\CateModel;
-
-
+use DB;
 class CateController extends Controller
 {
-	public function getList(Request $request, CateModel $cate) {
-		$data = $cate->fillterName($request->name)
-				  ->fillterTitle($request->title)
-				  ->fillterIdCate($request->id_cate)
-				  ->fillterStatus($request->status)	
-				  ->buildCond()
-				  ->get();
-				  
-		return response()->json($data);
+	public function getList(CateModel $cate, Request $request) {
+		$page = $request->per_page;
+		if ($page != 0) {
+			$data = $cate->filterName($request->name)
+					 ->filterStatus($request->status)
+					 ->buildCond()
+					 ->with('users')
+					 ->orderBy('id', 'desc')
+					 ->paginate($page);
+		} else if ($page == 0) {
+			$data = $cate->select("name", "id", 'cate_id')
+						 ->get();
+		}
+		
+		return $data;
 	}
 
 	public function getInsert(Request $request, CateModel $cate) { 
@@ -27,10 +31,11 @@ class CateController extends Controller
 		DB::beginTransaction();
 		try {
 			$cate->name        = $request->name;
-			$cate->title       = $request->title;
-			$cate->description = $request->description;
+			$cate->slug        = sanitizeTitle($request->name);
+			$cate->tag         = $request->tag;
 			$cate->status      = $request->status;
-			$cate->id_cate     = $request->id_cate;
+			$cate->cate_id     = $request->cate_id;
+			$cate->user_create = 1;
 			$cate->save();
 
 			DB::commit();
@@ -60,10 +65,11 @@ class CateController extends Controller
 				$cate = CateModel::find($id);
 
 				$cate->name        = $request->name;
-				$cate->title       = $request->title;
-				$cate->description = $request->description;
+				$cate->slug        = sanitizeTitle($request->name);
+				$cate->tag         = $request->tag;
 				$cate->status      = $request->status;
-				$cate->id_cate     = $request->id_cate;
+				$cate->cate_id     = $request->cate_id;
+				$cate->user_create = 1;
 				$cate->save();
 
 				DB::commit();
@@ -84,8 +90,9 @@ class CateController extends Controller
 			DB::beginTransaction();
 			try {
 				$cate = CateModel::find($id)->delete();
-				return response()->json(['status' => true], 200); 
 				DB::commit();
+				return response()->json(['status' => true], 200); 
+				
 
 			} catch (Exception $e) {
 				DB::rollback();
@@ -101,34 +108,18 @@ class CateController extends Controller
 	public function validateInsert($request){
 	    return $this->validate($request, [
 			'name'        => 'required|unique:catetogys,name',
-			'title'       => 'required',
-			'description' => 'required',
-			'status'      => 'required|numeric'
 	    	], [
 			'name.required'        => 'Tên tiêu đề không được để trống',
 			'name.unique'          => 'Đã có tên tiêu đề này',
-			'title.required'       => 'Địa chỉ đơn vị không được bỏ trống',
-			'description.required' => 'Mô tả không được bỏ trống',
-			'status.required'      => 'Trạng thái liên lạc không được bỏ trống',
-			'status.numeric'       => 'Trạng thái phải là số'
 	    	]
 		);
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
 			'name'        => 'required',
-			'title'       => 'required',
-			'description' => 'required',
-			'status'      => 'required|numeric'
 	    	], [
 			'name.required'        => 'Tên tiêu đề không được để trống',
-			'title.required'       => 'Địa chỉ đơn vị không được bỏ trống',
-			'description.required' => 'Mô tả không được bỏ trống',
-			'status.required'      => 'Trạng thái liên lạc không được bỏ trống',
-			'status.numeric'       => 'Trạng thái phải là số'
 	    	]
 		);
 	}
-
-
 }

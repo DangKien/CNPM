@@ -1,11 +1,13 @@
 @extends('back.layouts.default')
 @section ('title', 'Loại tin')
 @section ('myJs')
-	<script src=""></script>
+    <script src="{{ url('')}}/js/ctrl/cateCtrl.js"></script>
+    <script src="{{ url('')}}/js/factory/services/cateService.js"></script>
+    <script src="{{ url('')}}/js/directives/modal/cateModal.js"></script>
 @endsection
 
 @section('content')
-	<div id="content-container">
+	<div id="content-container" ng-controller="cateCtrl">
 		
 		<!--Page Title-->
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -45,42 +47,29 @@
 					        <form>
 					            <div class="panel-body">
 					                <div class="row">
-					                    <div class="col-sm-6">
+					                   <form class="" ng-enter="actions.listCate()">
+					                   		 <div class="col-sm-6">
 					                        <div class="form-group">
-					                            <label class="control-label">Họ tên: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Email: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                </div>
-					                <div class="row">
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Số điện thoại</label>
-					                            <input type="email" class="form-control">
+					                            <label class="control-label">Tên loại tin: </label>
+					                            <input ng-model = "data.filter.name" type="text" class="form-control">
 					                        </div>
 					                    </div>
 					                    <div class="col-sm-6">
 					                        <div class="form-group">
 					                            <label class="control-label">Trạng thái: </label>
 					                            <br>
-					                            <select class="selectpicker" data-width="100%">
-					                                <option>Hoạt động</option>
-					                                <option>Không hoạt động</option>
+					                            <select id ="statusFilter"  class="form-control" data-width="100%">
+					                                <option value="1" selected ="selected">Hoạt động</option>
+					                                <option value="2">Không hoạt động</option>
 					                            </select>
 					                        </div>
 					                    </div>
-					                    
-					                    
+					                   
 					                </div>
 					            </div>
 					            <div class="panel-footer text-right">
-					                <button class="btn btn-info" type="submit"><i class="fa fa-search"> Tìm kiếm</i>
+					                <button ng-click="actions.listCate()" class="btn btn-info" type="submit">
+					                	<i class="fa fa-search"> Tìm kiếm</i>
 					                </button>
 					            </div>
 					        </form>
@@ -90,61 +79,8 @@
 			</div>
 			<!-- het tim kiem nang cao -->
 			<div class="row">
-				<div class="col-sm-5">
-					<div class="panel">
-						<!-- insert cate -->
-						<form action="" method="get" accept-charset="utf-8">
-							<div class="panel-heading">
-								<h3 class="panel-title">Thêm mới loại tin</h3>
-							</div>
-							<div class="panel-body">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên loại tin: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại tin: </label>
-									<div class="col-sm-8 mar-btm">
-										<select class="selectpicker" data-width="100%">
-											<option>--Giới thiệu--</option>
-											<option>--- Cơ sở vật chất ---</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tag: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Trạng thái: </label>
-									<div class="col-sm-8 text-left">
-										<label class="form-radio form-normal active form-text"><input type="radio" checked="" name="def-w-label"> Hoạt động</label>
-										<label class="form-radio form-normal active form-text"><input type="radio" name="def-w-label"> Không hoạt động</label>
-									</div>
-									
-								</div>
-
-								
-							</div>
-							<div class="modal-footer">
-							    <button type="button" class="btn btn-primary">Cập nhật</button>
-							</div>
-
-						</form>
-						<!-- end cate -->
-					</div>
-				</div>
 				<!-- datatable -->
-				<div class="col-sm-7">
+				<div class="col-sm-12">
 					<div class="panel">
 						<!--Data Table-->
 						<!--===================================================-->
@@ -153,25 +89,25 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th class="text-center">Invoice</th>
-											<th>STT</th>
-											<th> Tên loại tin</th>
+											<th>Tên loại tin</th>
 											<th>Loại tin cha</th>
 											<th>Tag</th>
 											<th>Trạng thái</th>
-											<th>Hành động</th>
+											<th>Người sửa</th>
+											<th>Thao tác</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td><a class="btn-link" href="#"> Order #53431</a></td>
-											<td>Steve N. Horton</td>
-											<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-											<td>$45.00</td>
-											<td>
-												<div class="label label-table label-success">Paid</div>
+										<tr ng-repeat="(key, cate) in data.listCate">
+											<td> @{{ cate.name }} </td>
+											<td> @{{ cate.cate_id }} </td>
+											<td> @{{ cate.tag }} </td>
+											<td> @{{ cate.status }} </td>
+											<td> @{{ cate.users.name }} </td>
+											<td> 
+												<button ng-click= "actions.showModal(cate.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
+												<button ng-click= "actions.deleteCate(cate.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
 											</td>
-											<td>-</td>
 										</tr>
 									</tbody>
 								</table>
@@ -189,110 +125,9 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	data-toggle="modal" data-target="#edit-user"
+	ng-click="actions.showModal()"
 	>
 	</button>
-
-	<div class="modal fade" id="edit-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="myModalLabel">Sửa thông tin người dùng</h5>
-				</div>
-				<div class="modal-body">
-					<div class="panel panel-primary">
-						<div class="panel-body">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên người dùng: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tên người dùng" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tài khoản: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Giới tính: </label>
-									<div class="col-sm-8">
-										<select class="selectpicker" data-width="100%">
-											<option>Nam</option>
-											<option>Nữ</option>
-											<option>Khác</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Ngày sinh: </label>
-									<div class="col-sm-8 input-group date" id="sandbox-container">
-										<input type="text" class="form-control"><span class="input-group-addon"><i
-											class="fa fa-calendar"></i></span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Điện thoại: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Điện thoại" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Địa chỉ: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Địa chỉ" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Email: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Email" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nghề nghiệp: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Nghề nghiệp" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="demo-vs-definput" class="control-label col-sm-3">Ảnh đại diện: </label>
-										<div class="col-md-8">
-											<input type="file" name="" value="" placeholder="">
-											<br>
-											<img class="avatar" src="{{ url('Nifty') }}/img/av6.png" alt="" style="width: 140px; height: 150px;">
-											<br>
-										</div>
-									</div>
-								<div class="radio">
-									<label for="demo-vs-definput" class="control-label col-sm-3" style="padding-top:3px;">Trạng
-									thái:</label>
-									&nbsp; &nbsp;
-									<label class="form-radio form-normal"><input type="radio" name="de-blk2" checked>Hoạt
-									động </label>
-									<label class="form-radio form-normal"><input type="radio" name="de-blk2">Không hoạt động</label>
-								</div>
-							</form>
-						</div>
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Cập nhật</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<cate-modal cate-data = "data" cate-save = "actions.save(data, conf)"> </cate-modal>	
 	</div>
 @endsection

@@ -43,19 +43,19 @@
                 <div class="panel">
                     <!--Panel body-->
                     <div id="demo-panel-collapse-default" class="collapse">
-                        <form>
+                        <form ng-enter = "actions.listUser()">
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Họ tên: </label>
-                                            <input type="text" class="form-control">
+                                            <input ng-model = "data.filter.name" type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Email: </label>
-                                            <input type="text" class="form-control">
+                                            <input ng-model = "data.filter.email" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -63,16 +63,16 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Số điện thoại</label>
-                                            <input type="email" class="form-control">
+                                            <input ng-model = "data.filter.phone" type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Trạng thái: </label>
                                             <br>
-                                            <select class="selectpicker" data-width="100%">
-                                                <option>Hoạt động</option>
-                                                <option>Không hoạt động</option>
+                                            <select id="statusFilter" class="form-control" data-width="100%">
+                                                <option value="1">Hoạt động</option>
+                                                <option value="2">Không hoạt động</option>
                                             </select>
                                         </div>
                                     </div>
@@ -81,7 +81,8 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
-                                <button class="btn btn-info" type="submit"><i class="fa fa-search"> Tìm kiếm</i>
+                                <button ng-click="actions.listUser()" class="btn btn-info" type="submit">
+                                    <i class="fa fa-search"> Tìm kiếm</i>
                                 </button>
                             </div>
                         </form>

@@ -77,10 +77,12 @@ class NewController extends Controller
 		if (isset($id)) {
 			DB::beginTransaction();
 			try {
-				$new = NewModel::find($id)->delete();
-				return response()->json(['status' => true, 200]); 
+				$new = NewModel::find($id);
+				return $new;
 				DB::commit();
 
+				return response()->json(['status' => true, 200]); 
+				
 			} catch (Exception $e) {
 				DB::rollback();
 			}

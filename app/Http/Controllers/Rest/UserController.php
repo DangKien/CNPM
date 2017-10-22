@@ -5,16 +5,21 @@ namespace App\Http\Controllers\Rest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Session;
-use App\User;
+use App\Models\UserModel;
 
 class UserController extends Controller
 {
-	public function getList() {
-		$user = User::all();
+	public function getList(UserModel $user, Request $request) {
+		$user = $user->filterName($request->name)
+					 ->filterEmail($request->email)
+					 ->filterPhone($request->phone)
+					 ->filterStatus($request->status)
+					 ->buildCond()
+					 ->paginate(8);
 		return response()->json($user);
 	}
 
-	public function getInsert(Request $request) { 
+	public function getInsert(Request $request, UserModel $userModel) { 
 
 		$this->validateInsert($request);
 		if ($request->hasFile('avatar')){
@@ -24,7 +29,7 @@ class UserController extends Controller
 		}
 		DB::beginTransaction();
 		try {
-			$user           = new User();
+			$user           = $userModel;
 			$user->name     = $request->name;
 			$user->account  = $request->account;
 			$user->email    = $request->email;
@@ -49,17 +54,17 @@ class UserController extends Controller
 		}
 	}
 
-	public function getEdit($id, Request $request) {
+	public function getEdit($id, Request $request, UserModel $userModel) {
 
 		if (isset($id)) {
-			$user = User::find($id);
+			$user = $userModel::find($id);
 			return response()->json($user);
 		} else {
 			return response()->json(['message' => 'Id không tồn tại'], 422); 
 		}
 	}
 
-	public function getUpdate($id, Request $request) {
+	public function getUpdate($id, Request $request, UserModel $userModel) {
 		if (isset($id)){
 			$this->validateUpdate($request);
 
@@ -70,7 +75,7 @@ class UserController extends Controller
 				} else {
 					$avatar = "default-image.png";
 				}
-				$user = User::find($id);
+				$user = $userModel::find($id);
 
 				$user->name     = $request->name;
 				$user->email    = $request->email;
@@ -96,12 +101,12 @@ class UserController extends Controller
 		}
 	}
 	
-	public function getDelete($id) {
+	public function getDelete($id, UserModel $userModel) {
 		if (isset($id)) {
 			DB::beginTransaction();
 			try {
-				$user = User::find($id);
-				$user->status = 0;
+				$user = $userModel::find($id);
+				$user->status = 2;
 				$user->save();
 				 
 				DB::commit();

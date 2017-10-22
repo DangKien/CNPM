@@ -9,7 +9,12 @@ class CateModel extends MyModel
 {
     protected $table = 'catetogys';
 
-    public function fillterName ($param) {
+    public function users()
+    {
+        return $this->belongsTo('App\Models\UserModel', 'user_create');
+    }
+
+    public function filterName ($param) {
     	if (!empty($param))
     	{
     		$this->setFunctionCond('where', ['name', 'like', '%'.$param.'%']);
@@ -17,30 +22,8 @@ class CateModel extends MyModel
     	return $this;
     }
 
-    public function fillterTitle ($param) {
-    	if (!empty($param))
-    	{
-    		$this->setFunctionCond('where', ['name', 'like', '%'.$param.'%']);
-    	}
-    	return $this;
-    }
-
-    public function fillterIdCate ($param) {
-		if (!empty($param)){
-			$this->setFunctionCond('where', ['id_cate', $param]);
-		}
-    	
-    	
-    	return $this;
-    }
-
-    public function fillterStatus ($param) {
-
-    	if (!empty($param)){
-			$this->setFunctionCond('where', ['status', $param]);
-		}
-    	
-    	
-    	return $this;
+    function filterStatus($status){
+        $this->setFunctionCond('where', ['status', $status]);
+        return $this;
     }
 }

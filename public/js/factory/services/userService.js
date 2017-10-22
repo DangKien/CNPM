@@ -2,30 +2,44 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
     var $service = {
         action: {},
         data: {},
-        fillter: {},
+        filter: {},
     };
+
+    $service.filter = function ($name, $phone, $email, $status) {
+        var params = {
+            name: $name || '',
+            phone: $phone || '',
+            email: $email || '',
+            status: $status || '1'
+        }
+        return params;
+    }
+
+
+
+
     $service.data = function ($name, $account, $gender,
         $birthday, $phone, $address, $email, $job, $avatar, $status
         ) {
         var params = new FormData();
-        params.append('name', $name);
-        params.append('account', $account);
-        params.append('gender', $gender);
-        params.append('birthday', $birthday);
-        params.append('phone', $phone);
-        params.append('address', $address);
-        params.append('email', $email);
-        params.append('job', $job);
-        params.append('avatar', $avatar);
-        params.append('status', $status);
+        params.append('name', $name || '');
+        params.append('account', $account || '');
+        params.append('gender', $gender || '');
+        params.append('birthday', $birthday || '');
+        params.append('phone', $phone || '');
+        params.append('address', $address || '');
+        params.append('email', $email || '');
+        params.append('job', $job || '');
+        params.append('avatar', $avatar || '');
+        params.append('status', $status || '');
 
 
         return params;
         
     };
 
-    $service.action.listUser = function () {
-        var url = SiteUrl + "/rest/user";
+    $service.action.listUser = function (filter) {
+        var url = SiteUrl + "/rest/user?" + $httpParamSerializer(filter);
         return $http.get(url);
     };
     

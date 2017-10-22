@@ -11,9 +11,7 @@ ngApp.directive('userModal', function ($apply, $userService) {
 						scope.data.params.email, scope.data.params.job, avatar, scope.data.params.status
 						);
 					$userService.action.insertUser(params).then(function (resp) {
-
 						scope.onSave({data: true, conf: "insert"});
-
 					}, function (error) {
 						scope.onSave({data: error.data, conf: "insert"});
 					});
@@ -25,7 +23,6 @@ ngApp.directive('userModal', function ($apply, $userService) {
 					var avatar = $('input[name *= "avatar" ]')[0].files[0];
 					birthday = $('input[name *= "birthday" ]').val();
 					var birthday = moment($('input[name *= "birthday" ]').val(), 'DD/MM/YYYY').format("YYYY-MM-DD");
-					console.log(birthday);
 					var params = $userService.data (scope.data.params.name, scope.data.params.account, 
 						scope.data.params.gender, birthday ,scope.data.params.phone, scope.data.params.address,
 						scope.data.params.email, scope.data.params.job, avatar, scope.data.params.status
@@ -39,9 +36,18 @@ ngApp.directive('userModal', function ($apply, $userService) {
 
 				save: function () {
 					if (scope.data.idUser) {
-						scope.actions.updateUser(scope.data.idUser);
+						if ($('#form-user').parsley().validate()) {
+							console.log(123);
+							scope.actions.updateUser(scope.data.idUser);
+						}
+						
 					} else {
-						scope.actions.insertUser();
+						if ($('#form-user').parsley().validate()) {
+							console.log(1223);
+							scope.actions.insertUser();
+						}
+
+						
 					}
 				},
 		}
