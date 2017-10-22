@@ -48,3 +48,18 @@
 	padding-left: 0px;
 }
 
+.clear {
+	clear: both;
+}
+.fix-back-page ul li a{
+	background: #fff;
+}
+.fix-pad-all {
+	padding-top:0px;
+}
+.fix-panel-body-user {
+	padding-bottom: 15px;
+}
+.font14{
+	font-size: 14px;
+}

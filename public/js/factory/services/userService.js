@@ -5,12 +5,13 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
         filter: {},
     };
 
-    $service.filter = function ($name, $phone, $email, $status) {
+    $service.filter = function ($name, $phone, $email, $status, current_page = 1) {
         var params = {
             name: $name || '',
             phone: $phone || '',
             email: $email || '',
-            status: $status || '1'
+            status: $status || '1',
+            page: current_page,
         }
         return params;
     }

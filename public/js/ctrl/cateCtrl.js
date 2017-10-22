@@ -9,19 +9,28 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 		nameCate:[],
 		title: "",
 		idCate: '',
+		pageCate: {},
+		allListCate:{},
 	};
 
 	$scope.actions = {
+
+		changePage: function (page) {
+			$scope.data.pageCate.current_page = page;
+			$scope.actions.listCate();
+		},
 
 		// Danh sach loai tin
 		listCate: function () {
 			var name   = $scope.data.filter.name;
 			var status = $('#statusFilter').val();
-			var params = $cateService.filter (name, status, 10);
+			var current_page =  $scope.data.pageCate.current_page;
+			var params = $cateService.filter (name, status, current_page , 10);
 			$cateService.action.listCate(params).then(function (resp) {
 				$scope.data.listCate = resp.data.data;
+				$scope.data.pageCate = resp.data;
 				changStatus.change($scope.data.listCate);
-				$scope.actions.changeNameCate($scope.data.listCate);
+				$scope.actions.changeNameCate($scope.data.listCate, $scope.data.allListCate);
 			}, function (error) {
 				console.log(error);
 			});
@@ -29,16 +38,17 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 
 
 		allListCate: function () {
-			var params = $cateService.filter('', '', 0);
+			var params = $cateService.filter('', '', '', 0);
 			$cateService.action.allListCate(params).then(function (resp) {
-				$scope.actions.menuBarLevel(resp.data);
+				$scope.data.allListCate = resp.data;
+				$scope.actions.menuBarLevel($scope.data.allListCate);
 			}, function (error) {
 				console.log(error);
 			});
 		},
 
 		menuBarLevel: function (data, parent = 0, str = " -- ") {
-			angular.forEach(data, function(item, key){
+			angular.forEach(data, function(item, key) {
 				if (item.cate_id == parent) {
 					$scope.data.nameCate.push({'name': str + item.name + str, id: item.id});
 					$scope.actions.menuBarLevel(data, item.id, str + " -- ");    
@@ -47,18 +57,20 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 		},
 
 		// chuyen id loai tin cha thanh ten tieng viet
-		changeNameCate: function (listCate) {
-			angular.forEach(listCate, function(item, key){
+		changeNameCate: function (listCate, allListCate) {
+			$apply(function() {
+				angular.forEach(listCate, function(item, key){
 				if (item.cate_id != 0) {
 					var cate_id = item.cate_id;
-					angular.forEach(listCate, function(value, key1){
+					angular.forEach(allListCate, function(value, key1){
 						if (cate_id === value.id) {
 							listCate[key].cate_id = value.name;
 						}
 					});
-				} else {
-					listCate[key].cate_id = "";
-				}
+					} else {
+						listCate[key].cate_id = "";
+					}
+				});
 			});
 		},
 
@@ -122,7 +134,8 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 			}
 		},
 	};
-	$scope.actions.listCate();
 	$scope.actions.allListCate();
+	$scope.actions.listCate();
+	
 
 });

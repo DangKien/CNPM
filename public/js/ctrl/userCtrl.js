@@ -5,21 +5,30 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 		params: {},
 		listUsers: {},
 		filter: {},
+		pageUser: {},
 
 	}; 
 	$scope.actions = {
+
+		changePage: function (page) {
+			$scope.data.pageUser.currentPage = page;
+			$scope.actions.listUser();
+		},
+
 		listUser : function () {
+			// lay du lieu tim kiem va page
 			var name   = $scope.data.filter.name;
 			var phone  = $scope.data.filter.phone;
 			var email  = $scope.data.filter.email;
 			var status = $('#statusFilter').val();
-
-			var params = $userService.filter(name, phone, email, status);
+			var current_page = $scope.data.pageUser.currentPage;
+			var params = $userService.filter(name, phone, email, status, current_page);
+			// thuc hien tim kiem
 			$userService.action.listUser(params).then(function (resp) {
 				$scope.data.listUsers = resp.data.data;
+				$scope.data.pageUser  = resp.data;
 			  }, function (error) {
 			  	console.log(error);
-
 			  });
 		},
 

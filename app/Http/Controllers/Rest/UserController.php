@@ -70,12 +70,14 @@ class UserController extends Controller
 
 			DB::beginTransaction();
 			try {
+				
+				$user = $userModel::find($id);
+
 				if ($request->hasFile('avatar')){
 					$avatar = "default-image1.png";
 				} else {
-					$avatar = "default-image.png";
+					$avatar = $user->avatar;
 				}
-				$user = $userModel::find($id);
 
 				$user->name     = $request->name;
 				$user->email    = $request->email;
@@ -84,7 +86,7 @@ class UserController extends Controller
 				$user->birthday = $request->birthday;
 				$user->address  = $request->address;
 				$user->status   = 1;
-				$user->avatar   = $request->avatar;
+				$user->avatar   = $avatar;
 				$user->job      = $request->job;
 				$user->is_admin = 0;
 				$user->save();

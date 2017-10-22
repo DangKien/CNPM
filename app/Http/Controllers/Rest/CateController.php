@@ -9,15 +9,15 @@ use DB;
 class CateController extends Controller
 {
 	public function getList(CateModel $cate, Request $request) {
-		$page = $request->per_page;
-		if ($page != 0) {
+		$current_page = $request->per_page;
+		if ($current_page != 0) {
 			$data = $cate->filterName($request->name)
 					 ->filterStatus($request->status)
 					 ->buildCond()
 					 ->with('users')
 					 ->orderBy('id', 'desc')
-					 ->paginate($page);
-		} else if ($page == 0) {
+					 ->paginate($current_page);
+		} else if ($current_page == 0) {
 			$data = $cate->select("name", "id", 'cate_id')
 						 ->get();
 		}

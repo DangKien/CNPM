@@ -91,14 +91,14 @@
             </div>
         </div>
         <!-- content  -->
-        <div class="col-md-6 col-lg-3" ng-repeat="(key, data) in data.listUsers">
+        <div class="col-md-3" ng-repeat="(key, data) in data.listUsers" my-repeat-directive>
             <div class="panel text-center">
-                <div class="panel-body">
+                <div class="panel-body fix-panel-body-user" ng-click="actions.showModal(data.id)">
                     <img alt="Avatar" class="img-md img-circle img-border mar-btm" src="{{ url('Nifty/')}}/img/av6.png">
                     <h4 class="mar-no">@{{ data.name }}</h4>
                     <p>@{{ data.job }}</p>
                 </div>
-                <div class="pad-all">
+                <div class="pad-all fix-pad-all">
                     <p class="text-left font14">
                         <i class="fa fa-envelope"> &nbsp; &nbsp; @{{ data.email }}</i>
                     </p>
@@ -119,6 +119,19 @@
             </div>
             <!--===================================================-->
         </div>
+        
+        <div class="clear"></div>
+        <div class="row text-center" >
+            <div class="page-oum fix-back-page">
+                <div paging
+                    page="page"
+                    page-size = "data.pageUser.per_page"
+                    total="data.pageUser.total"
+                    paging-action="actions.changePage(page)">
+                </div>
+            </div>
+        </div>
+        
         <!-- end content -->
     </div>
     <!--===================================================-->
@@ -130,7 +143,6 @@
         ng-click="actions.showModal()"
         >
     </button>
-
     <user-modal data = "data" user-save = "actions.saveUser(data, conf)"> </user-modal>
 
 </div>

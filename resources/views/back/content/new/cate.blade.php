@@ -112,6 +112,17 @@
 									</tbody>
 								</table>
 							</div>
+
+							<div class="row text-center">
+							   <div class="page-oum">
+							       <div paging
+							           page="page"
+							           page-size = "data.pageCate.per_page"
+							           total="data.pageCate.total"
+							           paging-action="actions.changePage(page)">
+							       </div>
+							   </div>
+							</div>
 						</div>
 						<!--===================================================-->
 						<!--End Data Table-->
