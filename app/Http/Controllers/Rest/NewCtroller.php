@@ -9,8 +9,14 @@ use App\Models\NewModel;
 
 class NewController extends Controller
 {
-	public function getList() {
-		$new = NewModel::all();
+	public function getList(NewModel $newModel, Request $request) {
+
+		$new = $newModel->filterTitle($request->title)
+						->filterCate($request->cate_id)
+					    ->buildCond()
+					    ->with('users')
+					    ->with('cates')
+					    ->paginate(10);
 		return response()->json($new);
 	}
 

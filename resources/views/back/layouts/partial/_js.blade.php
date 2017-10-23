@@ -9,6 +9,8 @@
 <!-- Slide Image Light box -->
 <script src="{{ url('') }}/js/plugin/blueimp-gallery.min.js"></script>
 
+{{-- ckeditor --}}
+
 <script src="{{ url('') }}/js/plugin/bootbox.min.js"></script>
 <script src="{{ url('') }}/js/factory/apply.js"></script>
 <script src="{{ url('') }}/js/factory/changStatus.js"></script>

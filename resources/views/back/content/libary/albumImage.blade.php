@@ -105,11 +105,11 @@
 	                <!-- Anh image slide ng-reapet -->
 	                <div id="links">
 	                    <div class="col-md-3 ">
-	                    	<a href="http://cnpm.com/public/Nifty/img/123.jpg"
+	                    	<a href="http://cnpm.com/Nifty/img/123.jpg"
 	                    	   title="anh 2" data-gallery>
 	                    	       <div class="thumbnail fix-thumbnail">
 	                    	   	    <img class="img-responsive" 
-	                    	         src="http://cnpm.com/public/Nifty/img/123.jpg"
+	                    	         src="http://cnpm.com/Nifty/img/123.jpg"
 	                    	         alt="Apple">
 	                    	       </div>
 	                    	    
@@ -117,11 +117,11 @@
 	                    </div>
 
 	                    <div class="col-md-3">
-	                    	<a href="http://cnpm.com/public/Nifty/img/123.jpg"
+	                    	<a href="http://cnpm.com/Nifty/img/123.jpg"
 	                    	   title="anh 1" data-gallery>
 	                    	       <div class="thumbnail fix-thumbnail">
 	                    	   	    <img class="img-responsive" 
-	                    	         src="http://cnpm.com/public/Nifty/img/123.jpg"
+	                    	         src="http://cnpm.com/Nifty/img/123.jpg"
 	                    	         alt="Apple">
 	                    	       </div>
 	                    	    

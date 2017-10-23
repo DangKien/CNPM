@@ -58,7 +58,6 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 			  	console.log(error);
 			  });
 			} else {
-
 				$scope.data.params = {};
 				$apply(function () {
 					$scope.data.params.gender = "MALE";
@@ -66,6 +65,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 				$scope.data.title = "Thêm mới nhân viên";
 			}
 			$('#user').modal('show');
+			$('#form-cate').parsley().reset();
 		},
 
 

@@ -3,11 +3,14 @@
 
 @section ('myJs')
 	<script src="{{ url('') }}/js/directives/modal/newModal.js"></script>
+	<script src="{{ url('')}}/js/ctrl/newCtrl.js"></script>
+    <script src="{{ url('')}}/js/factory/services/newService.js"></script>
+    <script src="{{ url('')}}/js/factory/services/cateService.js"></script>
 	<script src=""></script>
 @endsection
 
 @section('content')
-	<div id="content-container">
+	<div id="content-container" ng-controller="newCtrl">
 		
 		<!--Page Title-->
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -51,40 +54,22 @@
 					                <div class="row">
 					                    <div class="col-sm-6">
 					                        <div class="form-group">
-					                            <label class="control-label">Họ tên: </label>
-					                            <input type="text" class="form-control">
+					                            <label class="control-label">Tiêu đề: </label>
+					                            <input ng-model="filter.title" type="text" class="form-control">
 					                        </div>
 					                    </div>
 					                    <div class="col-sm-6">
 					                        <div class="form-group">
-					                            <label class="control-label">Email: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                </div>
-					                <div class="row">
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Số điện thoại</label>
-					                            <input type="email" class="form-control">
-					                        </div>
-					                    </div>
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Trạng thái: </label>
-					                            <br>
-					                            <select class="selectpicker" data-width="100%">
-					                                <option>Hoạt động</option>
-					                                <option>Không hoạt động</option>
+					                            <label class="control-label">Loại tin: </label>
+					                            <select class="form-control" data-width="100%">
+					                                <option ng-repeat="(key, cate) in data.nameCate" value="@{{ cate.id }}"> @{{ cate.name }} </option>
 					                            </select>
 					                        </div>
 					                    </div>
-					                    
-					                    
 					                </div>
 					            </div>
 					            <div class="panel-footer text-right">
-					                <button class="btn btn-info" type="submit"><i class="fa fa-search"> Tìm kiếm</i>
+					                <button ng-click="actions.listNew()" class="btn btn-info" type="submit"><i class="fa fa-search"> Tìm kiếm</i>
 					                </button>
 					            </div>
 					        </form>
@@ -100,28 +85,25 @@
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
-								<tr>
-									<th class="text-center">Invoice</th>
+								<tr class="text-center">
 									<th>Bài viết</th>
 									<th>Ảnh minh họa</th>
 									<th>Nội dung</th>
-									<th>Lượng người xem</th>
 									<th>Loại tin</th>
 									<th>Người đăng tin</th>
-									<th>Trạng thái</th>
+									<th>Lượng người xem</th>
 									<th>Hành động</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><a class="btn-link" href="#"> Order #53431</a></td>
-									<td>Steve N. Horton</td>
-									<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-									<td>$45.00</td>
-									<td>
-										<div class="label label-table label-success">Paid</div>
-									</td>
-									<td>-</td>
+								<tr ng-repeat="(key, new) in data.listNews">
+									<td>@{{ new.title }}</td>
+									<td>@{{ new.image }}</td>
+									<td>@{{ new.content }}</td>
+									<td>@{{ new.cates.name }}</td>
+									<td>@{{ new.users.name }}</td>
+									<td>@{{ new.view }}</td>
+									<td>action</td>
 								</tr>
 							</tbody>
 						</table>
@@ -129,6 +111,16 @@
 				</div>
 				<!--===================================================-->
 				<!--End Data Table-->
+				<div class="row text-center">
+				   <div class="page-oum">
+				       <div paging
+				           page="page"
+				           page-size = "data.pageNew.per_page"
+				           total="data.pageNew.total"
+				           paging-action="actions.changePage(page)">
+				       </div>
+				   </div>
+				</div>
 			</div>
 		</div>
 		<!--===================================================-->

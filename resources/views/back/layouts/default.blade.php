@@ -2,14 +2,15 @@
 <html>
     <head>
         <title> @yield('title') </title>
+        <script>
+            var SiteUrl = '{{url("/")}}';
+        </script>
         @includeif('back.layouts.partial._default_css')
         @includeif ('back.layouts.partial._angular')
         @includeif('back.layouts.partial._css')
         @yield('myCss')
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script>
-            var SiteUrl = '{{url("/")}}';
-        </script>
+        
     </head>
     <body ng-app="ngApp" class="nifty-ready pace-done">
         <div id="container" class="effect mainnav-lg">

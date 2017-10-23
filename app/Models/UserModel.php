@@ -9,6 +9,8 @@ class UserModel extends MyModel
 {
     protected $table = 'users';
 
+
+
     public function filterName ($param) {
     	if (!empty($param))
     	{

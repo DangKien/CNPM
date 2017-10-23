@@ -8,7 +8,7 @@
 					<a class="navbar-brand">
 						<img src="{{ url('') }}/Nifty/img/logo.png" alt="Nifty Logo" class="brand-icon">
 						<div class="brand-title">
-							<span class="brand-text">OUM</span>
+							<span class="brand-text">ROYAL</span>
 						</div>
 					</a>
 				</div>

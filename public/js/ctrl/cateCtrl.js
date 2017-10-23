@@ -74,7 +74,6 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 			});
 		},
 
-
 		deleteCate: function (idCate) {
 			$conf.confirmDelete ('small', 'Bạn muốn xóa loại tin này?', function (resp) {
 				if (resp == true){
@@ -95,11 +94,16 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 		showModal: function (idCate) {
 			$scope.data.idCate = idCate;
 			$('#cate').modal('show');
-
+			$('#form-cate').parsley().reset();
 			if (!idCate) {
-
+				
+				$scope.data.params = {
+					status: 1,
+					cate_id: 0,
+				};
 				$scope.data.title = "Thêm mới loại tin";
 			} else {
+
 				$cateService.action.editCate(idCate).then (function (resp) {
 					$scope.data.params = resp.data;
 					
