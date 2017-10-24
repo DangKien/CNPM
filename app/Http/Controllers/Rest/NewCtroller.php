@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Session;
 use App\Models\NewModel;
+use Storage;
 
 class NewController extends Controller
 {
@@ -20,22 +21,26 @@ class NewController extends Controller
 		return response()->json($new);
 	}
 
-	public function getInsert(Request $request) { 
+	public function getInsert(Request $request, NewModel $newModel) { 
 
 		$this->validateInsert($request);
 		DB::beginTransaction();
 		try {
-			$new = new NewModel();
-			$new->title   = $request->title;
-			$new->image   = $request->image;
-			$new->content = $request->content;
-			$new->tag     = $request->tag;
-			$new->cate    = $request->id_cate;
-			$new->save();
+			if ($request->hasFile('file')){
+				$path = $request->file->store('images/new');
+			}
+			$newModel->title   = $request->title;
+			$newModel->slug    = sanitizeTitle($request->title);
+			$newModel->image   = $path;
+			$newModel->content = $request->content;
+			$newModel->tag     = $request->tag;
+			$newModel->cate    = $request->cate_id;
+			$newModel->user_id = 1;
+			$newModel->save();
 
 			DB::commit();
 
-			return response()->json(['status' => true, 200]);
+			return response()->json(['status' => true], 200);
 
 		} catch (Exception $e) {
 			DB::rollback();
@@ -52,23 +57,29 @@ class NewController extends Controller
 		}
 	}
 
-	public function getUpdate($id, Request $request) {
+	public function getUpdate($id, Request $request, NewModel $newModel) {
 		if (isset($id)){
 			$this->validateUpdate($request);
 			DB::beginTransaction();
 			try {
-				$new = NewModel::find($id);
-
+				$new = $newModel::find($id);
+				if ($request->hasFile('file')){
+					$path = $request->file->store('images/new');
+				}else {
+					$path = $new->image;
+				}
 				$new->title   = $request->title;
-				$new->image   = $request->image;
+				$new->slug    = sanitizeTitle($request->title);
+				$new->image   = $path;
 				$new->content = $request->content;
 				$new->tag     = $request->tag;
-				$new->cate    = $request->id_cate;
+				$new->cate    = $request->cate_id;
+				$new->user_id = 1;
 				$new->save();
 
 				DB::commit();
 
-				return response()->json(['status' => true, 200]);
+				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {
 				DB::rollback();
@@ -87,7 +98,7 @@ class NewController extends Controller
 				return $new;
 				DB::commit();
 
-				return response()->json(['status' => true, 200]); 
+				return response()->json(['status' => true], 200); 
 				
 			} catch (Exception $e) {
 				DB::rollback();
@@ -102,12 +113,14 @@ class NewController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-			'title'   => 'required|unique:catetogys,name',
+			'title'   => 'required|unique:news,title',
 			'content' => 'required',
+			'file'    => 'required'
 	    	], [
-			'title.required'   => 'Nội dung không được để trống',
+			'title.required'   => 'Tiêu đề không được để trống',
 			'title.unique'     => 'Đã có tên tiêu đề này',
 			'content.required' => 'Nội dung không được bỏ trống',
+			'file.required'    => 'Ảnh minh họa không được bỏ trống',
 	    	]
 		);
 	}

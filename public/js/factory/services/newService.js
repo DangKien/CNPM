@@ -6,13 +6,13 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
 		filter: {},
 	};
 
-	service.data = function (name, status, newId, tag) {
-		var params = {
-			name: name || '',
-			status: status || '1',
-			new_id: newId || '0',
-			tag: tag
-		};
+	service.data = function (title, cateId, tag, file, content) {
+		var params = new FormData();
+		params.append('title', title || '');
+		params.append('cate_id', cateId || '');
+		params.append('tag', tag || '');
+		params.append('file', file || '');
+		params.append('content', content || '');
 		return params;
 	};
 
@@ -32,8 +32,15 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
 	};
 
 	service.action.insertNew = function (params) {
+		config = {
+			headers : {
+                    'Content-Type': undefined,
+                    'processData': false,
+                    'contentType': false,
+            },
+		};
 		var url = SiteUrl + "/rest/new";
-        return $http.post(url, params);
+        return $http.post(url, params, config);
 	};
 
 	service.action.editNew = function (idnew) {
@@ -42,8 +49,15 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
 	};
 
 	service.action.updateNew = function (idnew, params) {
+		config = {
+			headers : {
+                    'Content-Type': undefined,
+                    'processData': false,
+                    'contentType': false,
+            },
+		};
 		var url = SiteUrl + "/rest/new/" + idnew;
-        return $http.put(url, params);
+        return $http.post(url, params, config);
 	};
 
 	service.action.deleteNew = function (idnew) {

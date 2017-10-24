@@ -49,7 +49,7 @@
 					<div class="panel">
 					    <!--Panel body-->
 					    <div id="demo-panel-collapse-default" class="collapse">
-					        <form>
+					        <form ng-enter="actions.listNew()">
 					            <div class="panel-body">
 					                <div class="row">
 					                    <div class="col-sm-6">
@@ -99,11 +99,13 @@
 								<tr ng-repeat="(key, new) in data.listNews">
 									<td>@{{ new.title }}</td>
 									<td>@{{ new.image }}</td>
-									<td>@{{ new.content }}</td>
+									<td ng-bind-html="new.content"></td>
 									<td>@{{ new.cates.name }}</td>
 									<td>@{{ new.users.name }}</td>
 									<td>@{{ new.view }}</td>
-									<td>action</td>
+									<td>
+										<button ng-click= "actions.showModal(new.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
+										<button ng-click= "actions.deleteCate(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -128,10 +130,10 @@
 		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	data-toggle="modal" data-target="#new"
+	ng-click="actions.showModal()"
 	>
 	</button>
 
-	<new-modal> </new-modal>
+	<new-modal data = "data" save-new="actions.saveNew(data)"> </new-modal>
 </div>
 @endsection

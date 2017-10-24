@@ -1,7 +1,7 @@
 ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateService) {
     
 	$scope.data = {
-		idNew: {},
+		idNew: "",
 		params: {},
 		listNews: {},
 		pageNew: {},
@@ -23,7 +23,6 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 			$cateService.action.allListCate(params).then(function (resp) {
 				$scope.data.allListCate = resp.data;
 				$scope.actions.menuBarLevel($scope.data.allListCate);
-				console.log($scope.data.allListCate)
 			}, function (error) {
 				console.log(error);
 			});
@@ -52,6 +51,52 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 			  	console.log(error);
 			  });
 		},
+
+		showModal: function (idNew) {
+			$scope.data.idNew = idNew;
+			$('#form-new').parsley().reset();
+			if ($scope.data.idNew) {
+				$newService.action.editNew($scope.data.idNew).then(function (resp) {
+					$scope.data.params = resp.data;
+				}, function (error) {
+
+				});
+				$scope.data.title = "Cập nhật tin tức";
+			} else {
+				$scope.data.params = {};
+				$scope.data.title = "Thêm mới tin tức";
+			}
+			$('#new').modal('show');
+		},
+
+		saveNew: function (data) {
+			$scope.actions.listNew();
+			$scope.actions.allListCate();
+			if (data == true) {
+				if ($scope.data.idNew) {
+					$conf.confirmNotifi('success', 'Cập nhật tin thành công');
+				} else {
+					$conf.confirmNotifi('success', 'Thêm mới tin thành công');
+				}
+				$('#new').modal('hide');
+			}else {
+				if ($scope.data.idNew) {
+					
+				} else {
+					
+				}
+
+			}
+		},
+		deleteNew: function (idNew) {
+			$newService.action.deleteNew(idNew).then(function (resp) {
+				$conf.confirmNotifi('success', 'Xóa tin thành công');
+			}, function (error) {
+				$conf.confirmNotifi('error', 'Xóa tin thất bại', "fa fa-ban");
+			});
+			$scope.actions.listNew();
+			$scope.actions.allListCate();
+		}
 
 	}
 

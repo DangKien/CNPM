@@ -49,7 +49,7 @@ Route::group(['prefix' => 'rest'], function() {
     Route::get('/new', 'Rest\NewController@getList');
     Route::post('/new', 'Rest\NewController@getInsert');
     Route::get('/new/{id}', 'Rest\NewController@getEdit');
-	Route::put('/new/{id}', 'Rest\NewController@getUpdate');
+	Route::post('/new/{id}', 'Rest\NewController@getUpdate');
 	Route::delete('/new/{id}', 'Rest\NewController@getDelete');
 
 
