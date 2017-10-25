@@ -98,7 +98,7 @@
 							<tbody>
 								<tr ng-repeat="(key, new) in data.listNews">
 									<td>@{{ new.title }}</td>
-									<td>@{{ new.image }}</td>
+									<td><img height="50px" width="50px" src="{{ url('storage/')}}/@{{ new.image }}" alt=""  ></td>
 									<td ng-bind-html="new.content"></td>
 									<td>@{{ new.cates.name }}</td>
 									<td>@{{ new.users.name }}</td>

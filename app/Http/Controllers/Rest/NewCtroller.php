@@ -27,7 +27,7 @@ class NewController extends Controller
 		DB::beginTransaction();
 		try {
 			if ($request->hasFile('file')){
-				$path = $request->file->store('images/new');
+				$path = Storage::disk('public')->putFile('images/news', $request->file);
 			}
 			$newModel->title   = $request->title;
 			$newModel->slug    = sanitizeTitle($request->title);
@@ -64,7 +64,7 @@ class NewController extends Controller
 			try {
 				$new = $newModel::find($id);
 				if ($request->hasFile('file')){
-					$path = $request->file->store('images/new');
+					$path = Storage::disk('public')->putFile('images/news', $request->file);
 				}else {
 					$path = $new->image;
 				}
