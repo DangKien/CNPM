@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Rest;
+namespace App\Http\Controllers\Rest\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Session;
-use App\Models\NewModel;
+use App\Models\FileImageModel;
 use Storage;
 
-class NewController extends Controller
+class FileImgController extends Controller
 {
-	public function getList(NewModel $newModel, Request $request) {
+	public function getList(FileImageModel $fileImageModel, Request $request) {
 
-		$new = $newModel->filterTitle($request->title)
-						->filterCate($request->cate_id)
-					    ->buildCond()
-					    ->with('users')
-					    ->with('cates')
-					    ->paginate(10);
-		return response()->json($new);
+		$fileImage = $fileImageModel->filterAlbumId($request->album_id)
+									->buildCond()
+									->paginate(10);
+		return response()->json($fileImage);
 	}
 
 	public function getInsert(Request $request, NewModel $newModel) { 
@@ -44,16 +41,6 @@ class NewController extends Controller
 
 		} catch (Exception $e) {
 			DB::rollback();
-		}
-	}
-
-	public function getEdit($id, Request $request) {
-
-		if (isset($id)) {
-			$new = NewModel::find($id);
-			return response()->json($new);
-		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
 		}
 	}
 
@@ -85,7 +72,7 @@ class NewController extends Controller
 				DB::rollback();
 			}
 		}else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['status' => 'Id không tồn tại'], 422); 
 		}
 	}
 	
@@ -115,12 +102,13 @@ class NewController extends Controller
 	    return $this->validate($request, [
 			'title'   => 'required|unique:news,title',
 			'content' => 'required',
-			'file'    => 'required'
+			'file'    => 'required|image',
 	    	], [
 			'title.required'   => 'Tiêu đề không được để trống',
 			'title.unique'     => 'Đã có tên tiêu đề này',
 			'content.required' => 'Nội dung không được bỏ trống',
 			'file.required'    => 'Ảnh minh họa không được bỏ trống',
+			'file.image'       => 'File không phải hình ảnh',
 	    	]
 		);
 	}
@@ -128,9 +116,11 @@ class NewController extends Controller
 	    return $this->validate($request, [
 			'title'   => 'required',
 			'content' => 'required',
+			'file'    => 'image',
 	    	], [
 			'title.required'   => 'Nội dung không được để trống',
 			'content.required' => 'Nội dung không được bỏ trống',
+			'file.image'       => 'File không phải hình ảnh',
 	    	]
 		);
 	}

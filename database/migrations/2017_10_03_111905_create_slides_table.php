@@ -19,7 +19,6 @@ class CreateSlidesTable extends Migration
             $table->string('content');
             $table->string('image');
             $table->string('status');
-            $table->integer('cate');
             $table->integer('user_create');
             $table->timestamps();
         });

@@ -98,14 +98,15 @@
 							<tbody>
 								<tr ng-repeat="(key, new) in data.listNews">
 									<td>@{{ new.title }}</td>
-									<td><img height="50px" width="50px" src="{{ url('storage/')}}/@{{ new.image }}" alt=""  ></td>
+									<td><img class="img-responsive" style="width: 100px; height: 100px;" src="{{ url('storage/')}}/@{{ new.image }}" alt=""  ></td>
 									<td ng-bind-html="new.content"></td>
 									<td>@{{ new.cates.name }}</td>
 									<td>@{{ new.users.name }}</td>
 									<td>@{{ new.view }}</td>
 									<td>
 										<button ng-click= "actions.showModal(new.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-										<button ng-click= "actions.deleteCate(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button></td>
+										<button ng-click= "actions.deleteCate(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+									</td>
 								</tr>
 							</tbody>
 						</table>

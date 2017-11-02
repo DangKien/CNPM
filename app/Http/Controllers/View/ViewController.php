@@ -47,7 +47,7 @@ class ViewController extends Controller
 
 
 	public function fileImage(){
-		return view('back.content.libary.image', ['active'=>'file-image'])->with('title', 'Thư viện ảnh');
+		return view('back.content.libary.image.mainImage', ['active'=>'file-image'])->with('title', 'Thư viện ảnh');
 	}
 
 	public function fileVideo(){

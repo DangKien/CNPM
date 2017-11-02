@@ -27,60 +27,65 @@ Route::group(['prefix' => ''], function (){
     Route::get('/file-video', 'View\ViewController@fileVideo')->name('file-video');
     Route::get('/file-music', 'View\ViewController@fileMusic')->name('file-music');
     Route::get('/file', 'View\ViewController@file')->name('file');
-    Route::get('/filealbum', function(){
-        return view('back.content.libary.albumImage');
-     })->name('filealbum');
-
-    Route::get('/dishes-menu', function(){
-        return view('back.content.menu.dishesMenu');
-     })->name('dishes-menu');
+    Route::get('/fileAlbum', function(){
+        return view('back.content.libary.image.albumImage');
+     })->name('fileAlbum');
+    Route::get('/album', function(){
+        return view('back.content.libary.image.image');
+     });
 
 });
 
 
 Route::group(['prefix' => 'rest'], function() {
 
-	Route::get('/user', 'Rest\UserController@getList');
-    Route::post('/user', 'Rest\UserController@getInsert');
-    Route::get('/user/{id}', 'Rest\UserController@getEdit');
-	Route::post('/user-update/{id}', 'Rest\UserController@getUpdate');
-	Route::delete('/user/{id}', 'Rest\UserController@getDelete');
+	Route::get('/user', 'Rest\Backend\UserController@getList');
+    Route::post('/user', 'Rest\Backend\UserController@getInsert');
+    Route::get('/user/{id}', 'Rest\Backend\UserController@getEdit');
+	Route::post('/user-update/{id}', 'Rest\Backend\UserController@getUpdate');
+	Route::delete('/user/{id}', 'Rest\Backend\UserController@getDelete');
 
-    Route::get('/new', 'Rest\NewController@getList');
-    Route::post('/new', 'Rest\NewController@getInsert');
-    Route::get('/new/{id}', 'Rest\NewController@getEdit');
-	Route::post('/new/{id}', 'Rest\NewController@getUpdate');
-	Route::delete('/new/{id}', 'Rest\NewController@getDelete');
-
-
-    Route::get('/slide', 'Rest\SlideController@getList');
-    Route::post('/slide', 'Rest\SlideController@getInsert');
-    Route::get('/slide/{id}', 'Rest\SlideController@getEdit');
-	Route::put('/slide/{id}', 'Rest\SlideController@getUpdate');
-	Route::delete('/slide/{id}', 'Rest\SlideController@getDelete');
+    Route::get('/new', 'Rest\Backend\NewController@getList');
+    Route::post('/new', 'Rest\Backend\NewController@getInsert');
+    Route::get('/new/{id}', 'Rest\Backend\NewController@getEdit');
+	Route::post('/new/{id}', 'Rest\Backend\NewController@getUpdate');
+	Route::delete('/new/{id}', 'Rest\Backend\NewController@getDelete');
 
 
-
-    Route::get('/cate', 'Rest\CateController@getList');
-    Route::post('/cate', 'Rest\CateController@getInsert');
-    Route::get('/cate/{id}', 'Rest\CateController@getEdit');
-	Route::put('/cate/{id}', 'Rest\CateController@getUpdate');
-	Route::delete('/cate/{id}', 'Rest\CateController@getDelete');
+    Route::get('/slide', 'Rest\Backend\SlideController@getList');
+    Route::post('/slide', 'Rest\Backend\SlideController@getInsert');
+    Route::get('/slide/{id}', 'Rest\Backend\SlideController@getEdit');
+	Route::post('/slide/{id}', 'Rest\Backend\SlideController@getUpdate');
+	Route::delete('/slide/{id}', 'Rest\Backend\SlideController@getDelete');
 
 
 
-    Route::get('/class', 'Rest\ClassController@getList');
-    Route::post('/class', 'Rest\ClassController@getInsert');
-    Route::get('/class/{id}', 'Rest\ClassController@getEdit');
-    Route::put('/class/{id}', 'Rest\ClassController@getUpdate');
-    Route::delete('/class/{id}', 'Rest\ClassController@getDelete');
+    Route::get('/cate', 'Rest\Backend\CateController@getList');
+    Route::post('/cate', 'Rest\Backend\CateController@getInsert');
+    Route::get('/cate/{id}', 'Rest\Backend\CateController@getEdit');
+	Route::put('/cate/{id}', 'Rest\Backend\CateController@getUpdate');
+	Route::delete('/cate/{id}', 'Rest\Backend\CateController@getDelete');
 
 
-    Route::get('/dishes', 'Rest\DishesController@getList');
-    Route::post('/dishes', 'Rest\DishesController@getInsert');
-    Route::get('/dishes/{id}', 'Rest\DishesController@getEdit');
-    Route::put('/dishes/{id}', 'Rest\DishesController@getUpdate');
-    Route::delete('/dishes/{id}', 'Rest\DishesController@getDelete');
+
+    Route::get('/class', 'Rest\Backend\ClassController@getList');
+    Route::post('/class', 'Rest\Backend\ClassController@getInsert');
+    Route::get('/class/{id}', 'Rest\Backend\ClassController@getEdit');
+    Route::put('/class/{id}', 'Rest\Backend\ClassController@getUpdate');
+    Route::delete('/class/{id}', 'Rest\Backend\ClassController@getDelete');
+
+
+    Route::get('/dishes', 'Rest\Backend\DishesController@getList');
+    Route::post('/dishes', 'Rest\Backend\DishesController@getInsert');
+    Route::get('/dishes/{id}', 'Rest\Backend\DishesController@getEdit');
+    Route::put('/dishes/{id}', 'Rest\Backend\DishesController@getUpdate');
+    Route::delete('/dishes/{id}', 'Rest\Backend\DishesController@getDelete');
+
+    Route::get('/album', 'Rest\Backend\AlbumController@getList');
+    Route::post('/album', 'Rest\Backend\AlbumController@getInsert');
+    Route::get('/album/{id}', 'Rest\Backend\AlbumController@getEdit');
+    Route::post('/album/{id}', 'Rest\Backend\AlbumController@getUpdate');
+    Route::delete('/album/{id}', 'Rest\Backend\AlbumController@getDelete');
 });
 
 Auth::routes();

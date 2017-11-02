@@ -65,7 +65,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 				$scope.data.title = "Thêm mới nhân viên";
 			}
 			$('#user').modal('show');
-			$('#form-cate').parsley().reset();
+			$('#form-user').parsley().reset();
 		},
 
 
@@ -80,11 +80,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 					$scope.actions.listUser();
 					$('#user').modal('hide');
 				} else {
-					if (conf == "insert") {
-						$conf.confirmNotifi ('error', "Thêm mới nhân viên thất bại !!!", 'fa fa-ban')
-					} else if (conf == "update") {
-						$conf.confirmNotifi ('error', "Cập nhật nhân viên thật bại !!!", 'fa fa-ban')
-					}
+					
 				}
 
 			});

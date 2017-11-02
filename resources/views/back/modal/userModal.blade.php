@@ -72,7 +72,7 @@
 								<div class="form-group">
 									<label for="demo-vs-definput" class="control-label col-sm-3">Ảnh đại diện: </label>
 									<div class="col-md-8">
-										<input type="file" name="avatar" value="" placeholder="">
+										<input class="image-support" type="file" name="avatar" value="" placeholder="">
 										<br>
 										<img class="avatar" src="{{ url('Nifty') }}/img/av6.png" alt="" style="width: 140px; height: 150px;">
 										<br>

@@ -53,3 +53,4 @@ function confirmDelete(size, message, func){
         callback: func
       });
 }
+

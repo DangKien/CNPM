@@ -18,6 +18,7 @@
 <script src="{{ url('') }}/js/directives/ngEnter.js"></script>
 <script src="{{ url('') }}/js/directives/ngdom.js"></script>
 <script src="{{ url('') }}/js/directives/mySelectpicker.js"></script>
+<script src="{{ url('') }}/js/directives/imageSupport.js"></script>
 <script src="{{ url('') }}/js/directives/myFormatdate.js"></script>
 <script src="{{ url('') }}/js/directives/myHeightDirective.js"></script>
 <script src="{{ url('') }}/js/directives/myDatePicker.js"></script>

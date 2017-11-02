@@ -129,12 +129,7 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 				});
 				
 			} else {
-				if (conf == "insert") {
-					console.log(data);
-				}
-				else if (conf == "update") {
-					console.log(data);
-				}
+				
 			}
 		},
 	};

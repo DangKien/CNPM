@@ -13,10 +13,14 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background: rgba(74, 53, 53, 0.15);
+	background: rgba(0, 0, 0, 0.55);
 	padding-left: 3%;
 	height: 64px;
 	opacity: 0;
+}
+.thumbnail .caption{
+	padding: 9px;
+    color: #e7ebee;
 }
 .fix-album h3{
 	line-height: 10px;
@@ -25,6 +29,11 @@
 	position: relative;
 	padding: 0px;
 	border-radius: 10px;
+	width: 270px;
+	height: 280px;
+	overflow: hidden;
+	background-color: initial; 
+
 }
 
 .fix-thumbnail img{

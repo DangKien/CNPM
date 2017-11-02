@@ -80,11 +80,7 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 				}
 				$('#new').modal('hide');
 			}else {
-				if ($scope.data.idNew) {
-					
-				} else {
-					
-				}
+				
 
 			}
 		},

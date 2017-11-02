@@ -13,11 +13,11 @@ class CreateTableMenuDishesTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_dishes', function (Blueprint $table) {
+        Schema::create('album', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('week_id');
-            $table->integer('day_id');
-            $table->integer('dishes_id');
+            $table->string('image');
+            $table->string('name');
+            $table->string('cate');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTableMenuDishesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_dishes');
+        Schema::dropIfExists('album');
     }
 }
