@@ -3,6 +3,7 @@
 
 @section ('myJs')
 	<script src="{{ url('') }}/js/directives/modal/newModal.js"></script>
+	<script src="{{ url('') }}/js/directives/modal/seeMoreModal.js"></script>
 	<script src="{{ url('')}}/js/ctrl/newCtrl.js"></script>
     <script src="{{ url('')}}/js/factory/services/newService.js"></script>
     <script src="{{ url('')}}/js/factory/services/cateService.js"></script>
@@ -97,13 +98,15 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="(key, new) in data.listNews">
-									<td>@{{ new.title }}</td>
-									<td><img class="img-responsive" style="width: 100px; height: 100px;" src="{{ url('storage/')}}/@{{ new.image }}" alt=""  ></td>
-									<td ng-bind-html="new.content"></td>
-									<td>@{{ new.cates.name }}</td>
-									<td>@{{ new.users.name }}</td>
-									<td>@{{ new.view }}</td>
-									<td>
+									<td style="min-width: 150px; max-width: 200px;">@{{ new.title }}</td>
+									<td style="min-width: 150px;"><img class="img-responsive" style="width: 100px; height: 100px;" src="{{ url('storage/')}}/@{{ new.image }}" alt="@{{ new.title }}"></td>
+									{{-- in ra html angular  --}}
+									<td ng-click="actions.seeMore(new.id)" ng-bind-html="new.content | ellipsis:200 ">
+									</td>
+									<td style="min-width: 100px;"> @{{ new.cates.name }} </td>
+									<td style="min-width: 100px;"> @{{ new.users.name }} </td>
+									<td style="min-width: 50px;"> @{{ new.view }} </td>
+									<td style="min-width: 100px;">
 										<button ng-click= "actions.showModal(new.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
 										<button ng-click= "actions.deleteCate(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
 									</td>
@@ -136,5 +139,6 @@
 	</button>
 
 	<new-modal data = "data" save-new="actions.saveNew(data)"> </new-modal>
+	<see-more-modal see-more-new="data.seeMore"> </see-more-modal>
 </div>
 @endsection

@@ -12,7 +12,7 @@ class FileImgController extends Controller
 {
 	public function getList(FileImageModel $fileImageModel, Request $request) {
 
-		$fileImage = $fileImageModel->filterAlbumId($request->album_id)
+		$fileImage = $fileImageModel->filterAlbumId($request->albumId)
 									->buildCond()
 									->paginate(10);
 		return response()->json($fileImage);

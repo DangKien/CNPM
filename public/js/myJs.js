@@ -1,37 +1,15 @@
-$(document).ready(function () {
-    $('.icon-chiso').click(function () {
-        $('#chi-so').modal('show');
-    });
-
-    $('.icon-diung').click(function () {
-        $('#di-ung').modal('show');
-    });
-
-    $('.lankham').click(function (event)
-    {
-        $(this).toggleClass('panel-info fix-color-phr');
-        //$('.panel .timeline-label').toggleClass('changed');
-        $(this).parent().parent().parent().children('.timeline-label').toggleClass('changed');
-
-    });
-
-    var maxheight = 0;
-    $('.department-detail').each(function ()
-    {
-        var height = $(this).height();
-        if (maxheight < height)
-        {
-            maxheight = height;
+function remove(obj) {
+    var files = $(obj).attr('data');
+    console.log(files.trim());
+    for(var i = 0 ; i < fileList.length; i++) {
+       if(files == fileList[i].name) {
+            console.log(files);
+            fileList.splice(i,1);
+            break;
         }
-    });
-    $('.department-detail').height(maxheight);
-
-    $('.datepicker').datepicker();
-    $('#sandbox-container input').datepicker({
-        language: "vi"
-    });
-     
-});
+    }
+    $(obj).parent().remove();
+}
 
 function confirmSuccess(type, message, icon ,container , timeOut){
     icon = icon || 'fa fa-check';

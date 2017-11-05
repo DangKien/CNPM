@@ -1,7 +1,6 @@
 ngApp.directive('imageSupport', function () {
 	var link = function(scope, element, attrs) {
         $(element).change(function () {
-                 console.log(element[0].files[0]);
                     if (element[0].files && element[0].files[0]) {
                         var reader = new FileReader();
                         reader.onload = function (e) {

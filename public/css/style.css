@@ -18,6 +18,9 @@
 	height: 64px;
 	opacity: 0;
 }
+.sda{
+	color: red;
+}
 .thumbnail .caption{
 	padding: 9px;
     color: #e7ebee;
@@ -71,4 +74,65 @@
 }
 .font14{
 	font-size: 14px;
+}
+
+.fileimg-upload {
+	position: relative;
+
+}
+.image-file input[type=file] {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	margin: 0px;
+	opacity: 0;
+	direction: ltr;
+	cursor: pointer;
+	font-size: 23px !important;
+	height: 100%;
+	width: 100%;
+	}
+.images-upload {
+	width: 114px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 5px;
+    margin-top:20px;
+    padding:0px;
+}
+
+.image-file{
+	background-image: url('/css/img/plus.png');
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	width: 100px;
+    height: 100px;
+    border: 2px dashed rgba(158, 132, 132, 0.61);
+    position: relative;
+}
+.images-upload img{
+	height: 100px;
+	width: 100px;
+}
+.images-upload .reomve-image{
+	background-image: url('/css/img/icon.png');
+	background-repeat: no-repeat;
+    background-size: auto;
+    background-position: -170px -213px;
+    position: absolute;
+    right: 17px;
+    height: 12px;
+    width: 12px;
+    padding: 0px;
+    margin:0px;
+    border: none;
+    top: 5px;
+    z-index: 1;
+    background-color: transparent;
+}
+
+.fix-upload{
+	min-height: 1500px;
 }

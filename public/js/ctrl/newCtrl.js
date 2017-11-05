@@ -7,6 +7,7 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 		pageNew: {},
 		allListCate:{},
 		nameCate: [],
+		seeMore:{},
 
 	}; 
 	$scope.filter = {};
@@ -36,7 +37,13 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 				} 
 			});
 		},
-
+		seeMore: function (idNew) {
+			$('#seeMore').modal('show');
+			$newService.action.editNew(idNew).then(function (resp) {
+					$scope.data.seeMore = resp.data;
+				}, function (error) {
+			});
+		},
 		listNew : function () {
 			//lay du lieu tim kiem va page
 			var title         = $scope.filter.title;

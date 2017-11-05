@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-md-5 col-sm-5 pull-right search-nc">
 					<button type="button" class="btn btn-primary pull-right" >Xóa Album</button>
-					<button type="button" class="btn btn-primary pull-right" ng-click="actions.showModal(data.idAlbum)" style="margin-right: 10px;">Chỉnh sửa Album</button>
+					<button type="button" class="btn btn-primary pull-right" ng-click="actions.showModalAlbum(data.idAlbum)" style="margin-right: 10px;">Chỉnh sửa Album</button>
 				</div>
 			</div>
 			<div class="row pad-top mar-top">
@@ -45,23 +45,12 @@
 	                </div>
 	                <!-- Anh image slide ng-reapet -->
 	                <div id="links">
-	                    <div class="col-md-3">
-	                    	<a href="http://cnpm.com/Nifty/img/123.jpg"
-	                    	   title="anh 2" data-gallery>
+	                    <div class="col-md-3" ng-repeat="(key, listImage) in data.listImage">
+	                    	<a href="{{ url('storage/images/album/lib_images') }}/@{{ listImage.url_image }}"
+	                    	   title="" data-gallery>
 	                    	       <div class="thumbnail fix-thumbnail">
 	                    	   	    <img class="img-responsive" 
-	                    	         src="http://cnpm.com/Nifty/img/123.jpg"
-	                    	         alt="Apple">
-	                    	       </div>
-	                    	    
-	                    	</a>
-	                    </div>
-	                    <div class="col-md-3">
-	                    	<a href="http://cnpm.com/Nifty/img/123.jpg"
-	                    	   title="anh 1" data-gallery>
-	                    	       <div class="thumbnail fix-thumbnail">
-	                    	   	    <img class="img-responsive" 
-	                    	         src="http://cnpm.com/Nifty/img/123.jpg"
+	                    	         src="{{ url('storage/images/album/title_images') }}/@{{ listImage.url_image }}"
 	                    	         alt="Apple">
 	                    	       </div>
 	                    	    
@@ -76,7 +65,9 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
+	ng-click="actions.showModalUpload()"
 	>
 	</button>
 	<album-modal data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>
+	<upload-image-modal> </upload-image-modal>
 </div>

@@ -86,6 +86,12 @@ Route::group(['prefix' => 'rest'], function() {
     Route::get('/album/{id}', 'Rest\Backend\AlbumController@getEdit');
     Route::post('/album/{id}', 'Rest\Backend\AlbumController@getUpdate');
     Route::delete('/album/{id}', 'Rest\Backend\AlbumController@getDelete');
+
+    Route::get('/image', 'Rest\Backend\FileImgController@getList');
+    Route::post('/image', 'Rest\Backend\FileImgController@getInsert');
+    Route::get('/image/{id}', 'Rest\Backend\FileImgController@getEdit');
+    Route::post('/image/{id}', 'Rest\Backend\FileImgController@getUpdate');
+    Route::delete('/image/{id}', 'Rest\Backend\FileImgController@getDelete');
 });
 
 Auth::routes();

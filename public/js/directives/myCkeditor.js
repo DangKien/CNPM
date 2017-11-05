@@ -29,3 +29,12 @@ ngApp.directive('myCkeditor', function($apply) {
         }
     }
 });
+
+ngApp.filter('ellipsis', function () {
+    return function (text, length) {
+        if (text.length > length) {
+            return text.substr(0, length) + '<a class="sda" href=""> See More...</a>';
+        }
+        return text;
+    }
+});

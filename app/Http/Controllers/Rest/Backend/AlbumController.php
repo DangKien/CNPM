@@ -29,13 +29,15 @@ Class AlbumController extends Controller {
             //lay ten anh moi
             $path      = $request->imageAlbum->hashName('');
             //cho anh vao lam anh ben trong album
-            $image     = Storage::disk('public')->put('images/file_image', $request->imageAlbum);
-            //anh moi thu nho lam anh title
+            $image     = Storage::disk('public')->put('images/album/lib_images', $request->imageAlbum);
+            //anh moi thu nho 500x500 px
             $newImage  = Image::make($request->imageAlbum)->resize(500, 500, function ($constraint) {
                  $constraint->aspectRatio();
-            });
-            //cho anh vao 
-            $url_image = Storage::disk('public')->put('images/album/'.$path, $newImage);
+            })->encode('png');
+            //cho anh vao title_album
+            $url_image = Storage::disk('public')->put('images/album/title_albums/'.$path, $newImage);
+            // anh cho vao title_image
+            $url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);
             
             DB::beginTransaction();
             try {
@@ -82,13 +84,16 @@ Class AlbumController extends Controller {
                     $this->validateUpdate($request);
                     $path      = $request->imageAlbum->hashName('');
                     //cho anh vao lam anh ben trong album
-                    $image     = Storage::disk('public')->put('images/file_image', $request->imageAlbum);
+                    $image     = Storage::disk('public')->put('images/album/lib_images', $request->imageAlbum);
                     //anh moi thu nho lam anh title
                     $newImage  = Image::make($request->imageAlbum)->resize(500, 500, function ($constraint) {
                          $constraint->aspectRatio();
-                    });
-                    //cho anh vao 
-                    $url_image = Storage::disk('public')->put('images/album/'.$path, $newImage);
+                    })->encode('png');
+                    //cho anh vao title album
+                    $url_image = Storage::disk('public')->put('images/album/title_albums/'.$path, $newImage);
+
+                    //cho anh vao title image
+                    $url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);
                 }
                 
                 $album->name  = $request->name;
