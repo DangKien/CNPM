@@ -8,8 +8,8 @@
 				<div class="panel panel-primary">
 					<div class="panel-body">
 						<form class="form-horizontal">
-							<div class="image-file upload-multi-image" ng-model="data">
-								<input type="file" name="image[]" multiple>
+							<div class="image-file upload-multi-image" ng-model="data.images">
+								<input type="file" name="image[]" multiple accept="image/*">
 							</div>
 							<div id="images">
 							</div>
@@ -19,7 +19,7 @@
 
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" ng-click="actions.save()">Cập nhật</button>
+				<button type="button" class="btn btn-primary" ng-click="actions.saveUploadImg()">Cập nhật</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 			</div>
 		</div>

@@ -95,7 +95,6 @@ class NewController extends Controller
 			DB::beginTransaction();
 			try {
 				$new = NewModel::find($id);
-				return $new;
 				DB::commit();
 
 				return response()->json(['status' => true], 200); 

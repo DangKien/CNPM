@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Session;
 use App\Models\FileImageModel;
-use Storage;
+use Storage, Image, File;
 
 class FileImgController extends Controller
 {
@@ -18,25 +18,31 @@ class FileImgController extends Controller
 		return response()->json($fileImage);
 	}
 
-	public function getInsert(Request $request, NewModel $newModel) { 
+	public function getInsert(Request $request) { 
 
 		$this->validateInsert($request);
 		DB::beginTransaction();
 		try {
-			if ($request->hasFile('file')){
-				$path = Storage::disk('public')->putFile('images/news', $request->file);
+			if ($request->hasFile('image')) {
+				$album_id = $request->idAblum;
+				//lap anh vao 
+				foreach ($request->image as $key => $image) {
+					$path      = $image->hashName('');
+
+					$newImage  = Image::make($image)->resize(500, 500, function ($constraint) {
+					     $constraint->aspectRatio();
+					})->encode('png');
+
+					$image     = Storage::disk('public')->put('images/album/lib_images', $image);
+					$url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);
+					$fileImageModel = new FileImageModel; 
+					$fileImageModel->url_image = $path;
+					$fileImageModel->album_id  = $album_id;
+					$fileImageModel->save();
+					
+				}
 			}
-			$newModel->title   = $request->title;
-			$newModel->slug    = sanitizeTitle($request->title);
-			$newModel->image   = $path;
-			$newModel->content = $request->content;
-			$newModel->tag     = $request->tag;
-			$newModel->cate    = $request->cate_id;
-			$newModel->user_id = 1;
-			$newModel->save();
-
 			DB::commit();
-
 			return response()->json(['status' => true], 200);
 
 		} catch (Exception $e) {
@@ -44,49 +50,20 @@ class FileImgController extends Controller
 		}
 	}
 
-	public function getUpdate($id, Request $request, NewModel $newModel) {
-		if (isset($id)){
-			$this->validateUpdate($request);
-			DB::beginTransaction();
-			try {
-				$new = $newModel::find($id);
-				if ($request->hasFile('file')){
-					$path = Storage::disk('public')->putFile('images/news', $request->file);
-				}else {
-					$path = $new->image;
-				}
-				$new->title   = $request->title;
-				$new->slug    = sanitizeTitle($request->title);
-				$new->image   = $path;
-				$new->content = $request->content;
-				$new->tag     = $request->tag;
-				$new->cate    = $request->cate_id;
-				$new->user_id = 1;
-				$new->save();
-
-				DB::commit();
-
-				return response()->json(['status' => true], 200);
-
-			} catch (Exception $e) {
-				DB::rollback();
-			}
-		}else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
-		}
-	}
-	
-	public function getDelete($id) {
+	public function getDelete($id, FileImageModel $fileImageModel) {
 
 		if (isset($id)) {
 			DB::beginTransaction();
 			try {
-				$new = NewModel::find($id);
-				return $new;
-				DB::commit();
+				$fileImage = $fileImageModel::find($id);
+				$filename_lib = public_path().'/storage/images/album/lib_images/'.$fileImage->url_image;
+				$filename_title = public_path().'/storage/images/album/title_images/'.$fileImage->url_image;
+				File::delete([$filename_lib, $filename_title]);
 
+				$fileImage->delete();
+				DB::commit();
 				return response()->json(['status' => true], 200); 
-				
+
 			} catch (Exception $e) {
 				DB::rollback();
 			}
@@ -100,30 +77,13 @@ class FileImgController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-			'title'   => 'required|unique:news,title',
-			'content' => 'required',
-			'file'    => 'required|image',
+			'image'    => 'required',
+			'idAblum'  => 'required'
 	    	], [
-			'title.required'   => 'Tiêu đề không được để trống',
-			'title.unique'     => 'Đã có tên tiêu đề này',
-			'content.required' => 'Nội dung không được bỏ trống',
-			'file.required'    => 'Ảnh minh họa không được bỏ trống',
-			'file.image'       => 'File không phải hình ảnh',
+			'image.required'    => 'Ảnh minh họa không được bỏ trống',
+			'idAblum.required'  => 'Id Album không được trống',
 	    	]
 		);
 	}
-	public function validateUpdate($request){
-	    return $this->validate($request, [
-			'title'   => 'required',
-			'content' => 'required',
-			'file'    => 'image',
-	    	], [
-			'title.required'   => 'Nội dung không được để trống',
-			'content.required' => 'Nội dung không được bỏ trống',
-			'file.image'       => 'File không phải hình ảnh',
-	    	]
-		);
-	}
-
 
 }

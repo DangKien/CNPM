@@ -6,11 +6,13 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
 		filter: {},
 	};
 
-	service.data = function (name, image) {
-
+	service.data = function (idAblum, images) {
 		var params = new FormData();
-		params.append('name', name || '');
-		params.append('imageAlbum', image || '');
+		params.append('idAblum', idAblum || '');
+		angular.forEach(images, function(image, key){
+			params.append('image['+ key +']', image);
+		});
+
 		return params;
 	};
 
@@ -27,7 +29,7 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
         return $http.get(url);
 	};
 
-	service.action.insertAlbum = function (params) {
+	service.action.insertImage = function (params) {
 		var config = {
 			headers : {
                     'Content-Type': undefined,
@@ -35,7 +37,7 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/album";
+		var url = SiteUrl + "/rest/image";
         return $http.post(url, params, config);
 	};
 
@@ -56,8 +58,8 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
         return $http.post(url, params, config);
 	};
 
-	service.action.deleteAlbum = function (idAlbum) {
-		var url = SiteUrl + "/rest/album/" + idAlbum;
+	service.action.deleteImage = function (idAlbum) {
+		var url = SiteUrl + "/rest/image/" + idAlbum;
         return $http.delete(url);
 	};
 

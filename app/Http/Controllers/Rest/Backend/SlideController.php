@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Rest\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Session;
-use Storage;
+use Storage, Image, File;
 use App\Models\SlideModel;
 
 class SlideController extends Controller
@@ -21,9 +21,14 @@ class SlideController extends Controller
 		$this->validateInsert($request);
 		DB::beginTransaction();
 		try {
-			$slide              = new SlideModel();
+			$slide  = new SlideModel();
 			if ($request->hasFile('imageSlide')) {
-				$path = Storage::disk('public')->putFile('images/slides', $request->imageSlide);
+				$path      = $request->imageSlide->hashName('');
+
+				$newImageTitle  = Image::make($request->imageSlide)->resize(380, 133)->encode('png');
+
+				$newImageSlide  = Image::make($request->imageSlide)->resize(1000, 350)->encode('png');
+				
 			} else {
 				return response()->json(['message' => "Không tìm thấy ảnh"], 422);
 			}
@@ -34,6 +39,10 @@ class SlideController extends Controller
 			$slide->user_create = 1;
 			$slide->save();
 
+			// cho lam anh slide show
+			$imageSlide = Storage::disk('public')->put('images/slides/images_slides/'.$path, $newImageSlide);
+			// chov vao lam anh quan li
+			$imageTitle = Storage::disk('public')->put('images/slides/title_slides/'.$path, $newImageTitle);
 			DB::commit();
 
 			return response()->json(['status' => true], 200);
@@ -59,11 +68,17 @@ class SlideController extends Controller
 		if (isset($id)){
 
 			$slide = SlideModel::find($id);
+			$url_image_slide = $slide->image;
 			if ($request->hasFile('imageSlide')) {
 				$this->validateUpdate($request);
-				$path = Storage::disk('public')->putFile('images/slides', $request->imageSlide);
+
+				$path      = $request->imageSlide->hashName('');
+
+				$newImageTitle  = Image::make($request->imageSlide)->resize(380, 133)->encode('png');
+
+				$newImageSlide  = Image::make($request->imageSlide)->resize(1000, 350)->encode('png');
 			} else {
-				$path = $slide->image;
+				$path = $url_image_slide;
 			}
 
 			DB::beginTransaction();
@@ -75,8 +90,14 @@ class SlideController extends Controller
 				$slide->user_create = 1;
 				$slide->save();
 
-				DB::commit();
+				$imageSlide = Storage::disk('public')->put('images/slides/images_slides/'.$path, $newImageSlide);
+				// chov vao lam anh quan li
+				$imageTitle = Storage::disk('public')->put('images/slides/title_slides/'.$path, $newImageTitle);
 
+				DB::commit();
+				$slideImage = public_path().'/storage/images/slides/images_slides/'.$url_image_slide;
+				$slideTitle = public_path().'/storage/images/slides/title_slides/'.$url_image_slide;
+				File::delete([$slideImage, $slideImage]);
 				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {
@@ -93,9 +114,16 @@ class SlideController extends Controller
 		if (isset($id)) {
 			DB::beginTransaction();
 			try {
-				$slide = SlideModel::find($id)->delete();
-				return response()->json(['status' => true], 200); 
+				$slide = SlideModel::find($id);
+
+				$slideImage = public_path().'/storage/images/slides/images_slides/'.$slide->image;
+				$slideTitle = public_path().'/storage/images/slides/title_slides/'.$slide->image;
+
+				File::delete([$slideImage, $slideTitle]);
+				$slide->delete();
+
 				DB::commit();
+				return response()->json(['status' => true], 200); 
 
 			} catch (Exception $e) {
 				DB::rollback();

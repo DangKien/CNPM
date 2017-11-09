@@ -1,5 +1,5 @@
 <div class="modal fade" id="album" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog" role="document" ng-enter="actions.saveAlbum()">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="myModalLabel">@{{ data.title }}</h5>

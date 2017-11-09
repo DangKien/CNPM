@@ -14,6 +14,7 @@ Class AlbumController extends Controller {
     public function getList(Request $request, AlbumModel $albumModel) {
         $album = $albumModel->filterName($request->name)
                             ->buildCond()
+                            ->with('images')
                             ->paginate(8);
 
         return response()->json($album);
@@ -29,28 +30,28 @@ Class AlbumController extends Controller {
             //lay ten anh moi
             $path      = $request->imageAlbum->hashName('');
             //cho anh vao lam anh ben trong album
-            $image     = Storage::disk('public')->put('images/album/lib_images', $request->imageAlbum);
+            
             //anh moi thu nho 500x500 px
             $newImage  = Image::make($request->imageAlbum)->resize(500, 500, function ($constraint) {
                  $constraint->aspectRatio();
             })->encode('png');
-            //cho anh vao title_album
-            $url_image = Storage::disk('public')->put('images/album/title_albums/'.$path, $newImage);
             // anh cho vao title_image
-            $url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);
+            
             
             DB::beginTransaction();
             try {
                 $albumModel->name  = $request->name;
-                $albumModel->image = $path;
                 $albumModel->cate  = "IMAGE";
                 $albumModel->save();
 
                 $fileImageModel->album_id  = $albumModel->id;
                 $fileImageModel->url_image = $path;
                 $fileImageModel->save();
-
+                
+                $image     = Storage::disk('public')->put('images/album/lib_images', $request->imageAlbum);
+                $url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);
                 DB::commit();
+
                 return response()->json(['status' => true], 200);
             } catch (Exception $e) {
                 DB::rollback();
@@ -62,7 +63,7 @@ Class AlbumController extends Controller {
     public function getEdit($id, Request $request) {
 
         if (isset($id) && !empty($id)) {
-            $album = AlbumModel::find($id);
+            $album = AlbumModel::where('id', $id)->with('images')->first();
             return response()->json($album);
         } else {
             return response()->json(['status' => 'Id không tồn tại'], 422);
@@ -89,8 +90,6 @@ Class AlbumController extends Controller {
                     $newImage  = Image::make($request->imageAlbum)->resize(500, 500, function ($constraint) {
                          $constraint->aspectRatio();
                     })->encode('png');
-                    //cho anh vao title album
-                    $url_image = Storage::disk('public')->put('images/album/title_albums/'.$path, $newImage);
 
                     //cho anh vao title image
                     $url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);

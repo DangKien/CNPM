@@ -18,6 +18,20 @@
 	height: 64px;
 	opacity: 0;
 }
+.image-lib {
+	position: relative;
+}
+.image-lib .remove-images {
+	position: absolute;
+	z-index: 100;
+	right: 2%;
+	top: 2%;
+	display: none;
+	background-color: transparent;
+}
+.image-lib:hover .remove-images {
+	display: block;
+}
 .sda{
 	color: red;
 }
@@ -41,6 +55,7 @@
 
 .fix-thumbnail img{
 	border-radius: 10px;
+	min-height: 280px;
 }
 
 .fix-thumbnail:hover .fix-album{

@@ -79,7 +79,7 @@
 			    <div class="col-sm-6 col-md-3" ng-repeat="(key, album) in data.listAlbum">
 				    <a href="#@{{ album.id }}">
 			    	    <div class="thumbnail fix-thumbnail">
-			    		    <img src="{{ url('storage/images/album/title_albums') }}/@{{ album.image }}" alt="...">
+			    		    <img ng-src="{{ url('storage/images/album/title_images') }}/@{{ album.images[0].url_image }}" alt="...">
 			    		    <div class="caption fix-album">
 			    		        <h3>@{{ album.name }}</h3>
 			    		    </div>

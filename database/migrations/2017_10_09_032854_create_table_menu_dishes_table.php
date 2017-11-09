@@ -15,7 +15,6 @@ class CreateTableMenuDishesTable extends Migration
     {
         Schema::create('album', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
             $table->string('name');
             $table->string('cate');
             $table->timestamps();

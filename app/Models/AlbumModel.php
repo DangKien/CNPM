@@ -9,6 +9,10 @@ class AlbumModel extends MyModel
 {
     protected $table = 'album';
 
+    public function images() {
+    	return $this->hasMany('App\Models\FileImageModel', 'album_id', 'id');
+    }
+
     public function filterName ($param) {
     	if (!empty($param))
     	{

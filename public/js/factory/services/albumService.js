@@ -7,7 +7,6 @@ ngApp.factory('$albumService', function ($http, $httpParamSerializer){
 	};
 
 	service.data = function (name, image) {
-
 		var params = new FormData();
 		params.append('name', name || '');
 		params.append('imageAlbum', image || '');

@@ -99,7 +99,7 @@
 							<tbody>
 								<tr ng-repeat="(key, new) in data.listNews">
 									<td style="min-width: 150px; max-width: 200px;">@{{ new.title }}</td>
-									<td style="min-width: 150px;"><img class="img-responsive" style="width: 100px; height: 100px;" src="{{ url('storage/')}}/@{{ new.image }}" alt="@{{ new.title }}"></td>
+									<td style="min-width: 150px;"><img class="img-responsive" style="width: 100px; height: 100px;" ng-src="{{ url('storage/')}}/@{{ new.image }}" alt="@{{ new.title }}"></td>
 									{{-- in ra html angular  --}}
 									<td ng-click="actions.seeMore(new.id)" ng-bind-html="new.content | ellipsis:200 ">
 									</td>

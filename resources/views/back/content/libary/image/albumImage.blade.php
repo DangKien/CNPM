@@ -44,17 +44,18 @@
 	                    
 	                </div>
 	                <!-- Anh image slide ng-reapet -->
-	                <div id="links">
-	                    <div class="col-md-3" ng-repeat="(key, listImage) in data.listImage">
+	                <div id="links" class="row">
+	                    <div class="col-md-3 col-sm-6" ng-repeat="(key, listImage) in data.listImage">
 	                    	<a href="{{ url('storage/images/album/lib_images') }}/@{{ listImage.url_image }}"
 	                    	   title="" data-gallery>
-	                    	       <div class="thumbnail fix-thumbnail">
+                    	       <div class="thumbnail fix-thumbnail image-lib">
 	                    	   	    <img class="img-responsive" 
-	                    	         src="{{ url('storage/images/album/title_images') }}/@{{ listImage.url_image }}"
-	                    	         alt="Apple">
-	                    	       </div>
-	                    	    
-	                    	</a>
+	                    	         ng-src="{{ url('storage/images/album/title_images') }}/@{{ listImage.url_image }}"
+	                    	         alt="">
+	                    	    </a>
+	                    	    <button ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
+                    	       		</button>
+                    	       </div>
 	                    </div>
 	                </div>
 			    </div>
@@ -69,5 +70,5 @@
 	>
 	</button>
 	<album-modal data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>
-	<upload-image-modal> </upload-image-modal>
+	<upload-image-modal id-album-image = "data.idAlbum" upload-save = "actions.saveModalUploadImg(data)"> </upload-image-modal>
 </div>

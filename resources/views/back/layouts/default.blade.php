@@ -5,14 +5,14 @@
         <script>
             var SiteUrl = '{{url("/")}}';
         </script>
-        @includeif('back.layouts.partial._default_css')
         @includeif ('back.layouts.partial._angular')
+        @includeif('back.layouts.partial._default_css')
         @includeif('back.layouts.partial._css')
         @yield('myCss')
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
     </head>
-    <body ng-app="ngApp" class="nifty-ready pace-done">
+    <body ng-app="ngApp" ng-cloak class="nifty-ready pace-done">
         <div id="container" class="effect mainnav-lg">
             <div class="boxed">
                 @includeif('back.layouts.partial._header')
