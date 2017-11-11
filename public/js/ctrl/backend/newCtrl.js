@@ -1,5 +1,7 @@
 ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateService) {
-    
+    $scope.domNewModal;
+    $scope.domNewForm;
+    $scope.domSeeMore;
 	$scope.data = {
 		idNew: "",
 		params: {},
@@ -8,6 +10,7 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 		allListCate:{},
 		nameCate: [],
 		seeMore:{},
+		errors: {},
 
 	}; 
 	$scope.filter = {};
@@ -37,13 +40,15 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 				} 
 			});
 		},
+
 		seeMore: function (idNew) {
-			$('#seeMore').modal('show');
+			$($scope.domSeeMore).modal('show');
 			$newService.action.editNew(idNew).then(function (resp) {
 					$scope.data.seeMore = resp.data;
 				}, function (error) {
 			});
 		},
+
 		listNew : function () {
 			//lay du lieu tim kiem va page
 			var title         = $scope.filter.title;
@@ -61,7 +66,8 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 
 		showModal: function (idNew) {
 			$scope.data.idNew = idNew;
-			$('#form-new').parsley().reset();
+			$($scope.domNewForm).parsley().reset();
+			$($scope.domNewModal).modal('show');
 			if ($scope.data.idNew) {
 				$newService.action.editNew($scope.data.idNew).then(function (resp) {
 					$scope.data.params = resp.data;
@@ -73,7 +79,7 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 				$scope.data.params = {};
 				$scope.data.title = "Thêm mới tin tức";
 			}
-			$('#new').modal('show');
+			
 		},
 
 		saveNew: function (data) {
@@ -85,12 +91,13 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 				} else {
 					$conf.confirmNotifi('success', 'Thêm mới tin thành công');
 				}
-				$('#new').modal('hide');
+				$($scope.domNewModal).modal('hide');
 			}else {
-				
+				$scope.data.errors = data.errors;
 
 			}
 		},
+
 		deleteNew: function (idNew) {
 			$newService.action.deleteNew(idNew).then(function (resp) {
 				$conf.confirmNotifi('success', 'Xóa tin thành công');

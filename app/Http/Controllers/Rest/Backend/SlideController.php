@@ -30,7 +30,7 @@ class SlideController extends Controller
 				$newImageSlide  = Image::make($request->imageSlide)->resize(1000, 350)->encode('png');
 				
 			} else {
-				return response()->json(['message' => "Không tìm thấy ảnh"], 422);
+				return response()->json(['messages' => "Không tìm thấy ảnh"], 422);
 			}
 			$slide->title       = $request->title;
 			$slide->image       = $path;
@@ -50,7 +50,7 @@ class SlideController extends Controller
 		} catch (Exception $e) {
 
 			DB::rollback();
-			return response()->json(['message' => "Lỗi hệ thống"], 422);
+			return response()->json(['messages' => "Lỗi hệ thống"], 422);
 		}
 	}
 
@@ -60,7 +60,7 @@ class SlideController extends Controller
 			$slide = SlideModel::find($id);
 			return response()->json($slide);
 		} else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 
@@ -71,12 +71,9 @@ class SlideController extends Controller
 			$url_image_slide = $slide->image;
 			if ($request->hasFile('imageSlide')) {
 				$this->validateUpdate($request);
-
-				$path      = $request->imageSlide->hashName('');
-
-				$newImageTitle  = Image::make($request->imageSlide)->resize(380, 133)->encode('png');
-
-				$newImageSlide  = Image::make($request->imageSlide)->resize(1000, 350)->encode('png');
+				$path          = $request->imageSlide->hashName('');
+				$newImageTitle = Image::make($request->imageSlide)->resize(380, 133)->encode('png');
+				$newImageSlide = Image::make($request->imageSlide)->resize(1000, 350)->encode('png');
 			} else {
 				$path = $url_image_slide;
 			}
@@ -102,10 +99,10 @@ class SlideController extends Controller
 
 			} catch (Exception $e) {
 				DB::rollback();
-				return response()->json(['message' => "Lỗi hệ thống"], 422);
+				return response()->json(['messages' => "Lỗi hệ thống"], 422);
 			}
 		}else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 	
@@ -131,25 +128,29 @@ class SlideController extends Controller
 			
 
 		} else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
+			'title'      =>'required',
 			'imageSlide' => 'required|image',
 	    	], [
 			'imageSlide.required' => 'Ảnh không được để trống',
 			'imageSlide.image'    => 'File không phải ảnh ',
+			'title.title'         => 'Tiêu đề không phải ảnh ',
 	    	]
 		);
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-	        'imageSlide' => 'image',
+			'imageSlide' => 'image',
+			'title'      =>'required'
 	    	], [
-			'imageSlide.image'    => 'File không phải ảnh ',
+			'imageSlide.image' => 'File không phải ảnh ',
+			'title.title'      => 'Tiêu đề không phải ảnh ',
 	    	]
 		);
 	}

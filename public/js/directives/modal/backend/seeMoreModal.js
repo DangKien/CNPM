@@ -7,6 +7,7 @@ ngApp.directive('seeMoreModal', function ($apply, $newService) {
 		restrict: 'E',
 		scope: {
 			data: "=seeMoreNew",
+			seeMore: "=domSeeMore",
 		},
 		link: link,
 		templateUrl: templateUrl,

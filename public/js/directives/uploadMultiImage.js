@@ -3,7 +3,6 @@ ngApp.directive('uploadMultiImage', function () {
 	var link = function (scope, element, attrs) {
 		fileList = [];
 		element.find('input').on('change', function (e) {
-
 				var filesImage = e.target.files;
 				$.each(filesImage, function(key, file) {
 					fileList[key] = file;
@@ -17,7 +16,6 @@ ngApp.directive('uploadMultiImage', function () {
                     };
                     reader.readAsDataURL(file);
 				});
-
 			});
 		scope.imagesUpload = fileList;
 	}

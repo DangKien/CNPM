@@ -94,7 +94,7 @@
 		ng-click="actions.showModal()"
 		>
 		</button>
-		<slide-modal data = "data" save-slide= "actions.saveSlide(data)"> </slide-modal>
+		<slide-modal data="data" save-slide="actions.saveSlide(data)" dom-slide-form="domSlideForm" dom-slide-modal="domSlideModal"></slide-modal>
 
 </div>
 @endsection

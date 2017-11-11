@@ -15,10 +15,7 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
         }
         return params;
     }
-
-
-
-
+    
     $service.data = function ($name, $account, $gender,
         $birthday, $phone, $address, $email, $job, $avatar, $status
         ) {

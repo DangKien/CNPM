@@ -1,4 +1,6 @@
 ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus, $conf) {
+	$scope.domCateForm;
+	$scope.domCateModal;
 	$scope.data = {
 		listCate: {},
 		params: {
@@ -11,6 +13,7 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 		idCate: '',
 		pageCate: {},
 		allListCate:{},
+		errors:{},
 	};
 
 	$scope.actions = {
@@ -81,10 +84,10 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 						if (resp) {
 							$scope.actions.listCate();
 							$scope.actions.allListCate();
-							$conf.confirmNotifi('success', 'Xóa loại tin thành công!!!');
+							$conf.confirmNotifi('success', 'Xóa loại tin thành công');
 						}
 					}, function (error) {
-							$conf.confirmNotifi('error', 'Xóa loại tin thất bại!!!', "fa fa-ban");
+							$conf.confirmNotifi('error', 'Xóa loại tin thất bại', "fa fa-ban");
 					});
 				}
 			});
@@ -93,8 +96,8 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 
 		showModal: function (idCate) {
 			$scope.data.idCate = idCate;
-			$('#cate').modal('show');
-			$('#form-cate').parsley().reset();
+			$($scope.domCateModal).modal('show');
+			$($scope.domCateForm).parsley().reset();
 			if (!idCate) {
 				
 				$scope.data.params = {
@@ -103,7 +106,6 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 				};
 				$scope.data.title = "Thêm mới loại tin";
 			} else {
-
 				$cateService.action.editCate(idCate).then (function (resp) {
 					$scope.data.params = resp.data;
 					
@@ -116,20 +118,20 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 
 		save: function (data, conf) {
 			if (data == true) {
-				if (conf == "insert") {
-					$conf.confirmNotifi('success', 'Thêm mới thành công!!!');
+				if (!$scope.data.idCate) {
+					$conf.confirmNotifi('success', 'Thêm mới thành công');
 				}
-				else if (conf == "update") {
-					$conf.confirmNotifi('success', 'Cập nhật thành công!!!');			
+				else {
+					$conf.confirmNotifi('success', 'Cập nhật thành công');			
 				}
 				$apply(function () {
 					$scope.actions.allListCate();
 					$scope.actions.listCate();
-					$('#cate').modal('hide');
+					$($scope.domCateModal).modal('hide');
 				});
 				
 			} else {
-				
+				$scope.data.errors = data.errors;
 			}
 		},
 	};

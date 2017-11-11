@@ -101,7 +101,7 @@
 									<td style="min-width: 150px; max-width: 200px;">@{{ new.title }}</td>
 									<td style="min-width: 150px;"><img class="img-responsive" style="width: 100px; height: 100px;" ng-src="{{ url('storage/')}}/@{{ new.image }}" alt="@{{ new.title }}"></td>
 									{{-- in ra html angular  --}}
-									<td ng-click="actions.seeMore(new.id)" ng-bind-html="new.content | ellipsis:200 ">
+									<td ng-click="actions.seeMore(new.id)" ng-bind-html="new.content | ellipsis:100">
 									</td>
 									<td style="min-width: 100px;"> @{{ new.cates.name }} </td>
 									<td style="min-width: 100px;"> @{{ new.users.name }} </td>
@@ -138,7 +138,7 @@
 	>
 	</button>
 
-	<new-modal data = "data" save-new="actions.saveNew(data)"> </new-modal>
-	<see-more-modal see-more-new="data.seeMore"> </see-more-modal>
+	<new-modal data="data" save-new="actions.saveNew(data)" dom-new-form = "domNewForm" dom-new-modal="domNewModal"> </new-modal>
+	<see-more-modal see-more-new="data.seeMore" dom-see-more="domSeeMore"> </see-more-modal>
 </div>
 @endsection

@@ -35,11 +35,11 @@ ngApp.directive('newModal', function ($apply, $newService) {
 			},
 			saveNew: function () {
 				if (!scope.data.idNew){
-					if ($('#form-new').parsley().validate()) {
+					if ($(scope.newForm).parsley().validate()) {
 						scope.actions.insertNew();
 					}
 				} else {
-					if ($('#form-new').parsley().validate()) {
+					if ($(scope.newForm).parsley().validate()) {
 						scope.actions.updateNew(scope.data.idNew);
 					}
 					
@@ -53,6 +53,8 @@ ngApp.directive('newModal', function ($apply, $newService) {
 		scope: {
 			data: "=data",
 			onSave: "&saveNew",
+			newForm: "=domNewForm",
+			newModal: "=domNewModal",
 		},
 		link: link,
 		templateUrl: templateUrl,

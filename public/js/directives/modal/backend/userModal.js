@@ -4,50 +4,45 @@ ngApp.directive('userModal', function ($apply, $userService) {
 	var link = function (scope) {
 			scope.actions = {
 				insertUser: function () {
-					var avatar = $('input[name *= "avatar" ]')[0].files[0];
+					var avatar   = scope.data.params.image;
 					var birthday = moment($('input[name *= "birthday" ]').val(), 'DD/MM/YYYY').format("YYYY-MM-DD");
 					var params = $userService.data (scope.data.params.name, scope.data.params.account, 
 						scope.data.params.gender, birthday ,scope.data.params.phone, scope.data.params.address,
 						scope.data.params.email, scope.data.params.job, avatar, scope.data.params.status
 						);
 					$userService.action.insertUser(params).then(function (resp) {
-						scope.onSave({data: true, conf: "insert"});
+						scope.onSave({data: true});
 					}, function (error) {
-						scope.onSave({data: error.data, conf: "insert"});
+						scope.onSave({data: error.data});
 					});
 
 				},
 
 
 				updateUser: function (id) {
-					var avatar = $('input[name *= "avatar" ]')[0].files[0];
-					birthday = $('input[name *= "birthday" ]').val();
+					var avatar   = scope.data.params.image;
+					birthday     = $('input[name *= "birthday" ]').val();
 					var birthday = moment($('input[name *= "birthday" ]').val(), 'DD/MM/YYYY').format("YYYY-MM-DD");
 					var params = $userService.data (scope.data.params.name, scope.data.params.account, 
 						scope.data.params.gender, birthday ,scope.data.params.phone, scope.data.params.address,
 						scope.data.params.email, scope.data.params.job, avatar, scope.data.params.status
 						);
 					$userService.action.updateUser(id, params).then(function (resp) {
-						scope.onSave({data: true, conf: "update"});
+						scope.onSave({data: true});
 					}, function (error) {
-						scope.onSave({data: error.data, conf: "update"});
+						scope.onSave({data: error.data});
 					});
 				},
 
 				save: function () {
 					if (scope.data.idUser) {
-						if ($('#form-user').parsley().validate()) {
-							console.log(123);
+						if ($(scope.userForm).parsley().validate()) {
 							scope.actions.updateUser(scope.data.idUser);
 						}
-						
 					} else {
-						if ($('#form-user').parsley().validate()) {
-							console.log(1223);
+						if ($(scope.userForm).parsley().validate()) {
 							scope.actions.insertUser();
 						}
-
-						
 					}
 				},
 		}
@@ -58,7 +53,9 @@ ngApp.directive('userModal', function ($apply, $userService) {
 		restrict: 'E',
 		scope: {
 			data : "=data",
-			onSave : "&userSave" 
+			onSave : "&userSave",
+			userModal: "=domUserModal",
+			userForm: "=domUserForm", 
 		},
 		link: link,
 		templateUrl: templateUrl,

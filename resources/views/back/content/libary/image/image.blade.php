@@ -87,6 +87,16 @@
 				    </a>
 			    </div>
 			</div>	
+			<div class="row text-center">
+			   <div class="page-oum">
+			       <div paging
+			           page="page"
+			           page-size = "data.pageAlbum.per_page"
+			           total="data.pageAlbum.total"
+			           paging-action="actions.changePage(page)">
+			       </div>
+			   </div>
+			</div>
 		</div>
 		<!--===================================================-->
 		<!--End page content-->
@@ -96,6 +106,6 @@
 	ng-click="actions.showModal()"
 	>
 	</button>
-	<album-modal data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>
+	<album-modal data="data" album-save="actions.saveModalAlbum(data)" dom-album-form = "domAlbumForm" dom-album-modal="domAlbumModal"> </album-modal>
 	
 </div>

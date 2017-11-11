@@ -37,13 +37,12 @@ ngApp.directive('albumModal', function($apply, $albumService){
 			saveAlbum: function () {
 				
 				if (!scope.data.idAlbum) {
-					if ($('#album-form').parsley().validate())
+					if ($(scope.albumForm).parsley().validate())
 					{
 						scope.actions.insertAlbum();
 					}
-					
 				}else {
-					if ($('#form-cate').parsley().validate())
+					if ($(scope.albumForm).parsley().validate())
 					{
 						scope.actions.updateAlbum(scope.data.idAlbum);
 					}
@@ -57,7 +56,9 @@ ngApp.directive('albumModal', function($apply, $albumService){
 		name: '',
 		scope: {
 			data: '=data',
-			onSave: '&albumSave'
+			onSave: '&albumSave',
+			albumModal: "=domAlbumModal",
+			albumForm: "=domAlbumForm",
 		},
 		restrict: 'E',
 		templateUrl: templateUrl,

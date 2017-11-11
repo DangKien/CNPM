@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Rest\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, Session;
+use DB, Session, Image, Storage;
+use App\Libs\Config\UserConfig;
 use App\Models\UserModel;
 
 class UserController extends Controller
@@ -23,9 +24,13 @@ class UserController extends Controller
 
 		$this->validateInsert($request);
 		if ($request->hasFile('avatar')){
-			$avatar = "default-image1.png";
+			$avatar    = $request->avatar->hashName('');
+			$newImage  = Image::make($request->avatar)->resize(400, 400, function ($constraint) {
+			                    $constraint->aspectRatio();
+			            })->encode('png');
+			Storage::disk('public')->put('images/avatar/'.$avatar, $newImage);
 		} else {
-			$avatar = "default-image.png";
+			$avatar = UserConfig::CONST_USER_AVATAR;
 		}
 		DB::beginTransaction();
 		try {
@@ -33,7 +38,7 @@ class UserController extends Controller
 			$user->name     = $request->name;
 			$user->account  = $request->account;
 			$user->email    = $request->email;
-			$user->password = "123456";
+			$user->password = UserConfig::CONST_USER_PASSWORD;
 			$user->gender   = $request->gender;
 			$user->phone    = $request->phone;
 			$user->birthday = $request->birthday;
@@ -42,11 +47,8 @@ class UserController extends Controller
 			$user->avatar   = $avatar;
 			$user->job      = $request->job;
 			$user->is_admin = 0;
-
 			$user->save();
-
 			DB::commit();
-
 			return response()->json(['status' => true], 200);
 
 		} catch (Exception $e) {
@@ -60,7 +62,7 @@ class UserController extends Controller
 			$user = $userModel::find($id);
 			return response()->json($user);
 		} else {
-			return response()->json(['message' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 
@@ -74,11 +76,14 @@ class UserController extends Controller
 				$user = $userModel::find($id);
 
 				if ($request->hasFile('avatar')){
-					$avatar = "default-image1.png";
+					$avatar    = $request->avatar->hashName('');
+					$newImage  = Image::make($request->avatar)->resize(400, 400, function ($constraint) {
+					            $constraint->aspectRatio();
+					            })->encode('png');
+					Storage::disk('public')->put('images/avatar/'.$avatar, $newImage);
 				} else {
 					$avatar = $user->avatar;
 				}
-
 				$user->name     = $request->name;
 				$user->email    = $request->email;
 				$user->gender   = $request->gender;
@@ -90,16 +95,14 @@ class UserController extends Controller
 				$user->job      = $request->job;
 				$user->is_admin = 0;
 				$user->save();
-
 				DB::commit();
-
 				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {
 				DB::rollback();
 			}
 		}else {
-			return response()->json(['message' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 	
@@ -110,7 +113,6 @@ class UserController extends Controller
 				$user = $userModel::find($id);
 				$user->status = 2;
 				$user->save();
-				 
 				DB::commit();
 				return response()->json(['status' => true], 200);
 
@@ -120,7 +122,7 @@ class UserController extends Controller
 			
 
 		} else {
-			return response()->json(['message' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 
@@ -129,7 +131,6 @@ class UserController extends Controller
 			$user = User::find($id);
 			$user->password = $request->new_password;
 		}
-		
 	}
 
 
@@ -142,7 +143,6 @@ class UserController extends Controller
 			'phone'    => 'required|numeric',
 			'birthday' => 'required|date',
 			'address'  => 'required',
-			'status'   => 'required',
 			'job'      => 'required',
 
 	    	], [
@@ -157,11 +157,11 @@ class UserController extends Controller
 			'birthday.required' => 'Ngày sinh không được để trống',
 			'birthday.date'     => 'Ngày sinh không đúng định dạng',
 			'address.required'  => 'Địa chỉ không được để trống',
-			'status.required'   => 'Trạng thái không được để trống',
 			'job.required'      => 'Công việc không được để trống',
 	    	]
 		);
 	}
+
 	public function validateUpdate($request){
 	    return $this->validate($request, [
 			'email'    => 'required|',

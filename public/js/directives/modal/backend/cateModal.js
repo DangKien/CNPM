@@ -17,10 +17,10 @@ ngApp.directive('cateModal', function($apply, $cateService){
 				var params = scope.dataParams();
 				$cateService.action.insertCate(params).then( function (resp) {
 						if (resp) {
-							scope.onSave({data : true, conf:"insert"});
+							scope.onSave({data : true});
 						}
 					}, function (error) {
-						scope.onSave({data : error.data, conf:"insert"});
+						scope.onSave({data : error.data});
 					});
 			},
 
@@ -28,22 +28,21 @@ ngApp.directive('cateModal', function($apply, $cateService){
 				var params = scope.dataParams();
 				$cateService.action.updateCate(idCate, params).then( function (resp) {
 						if (resp) {
-							scope.onSave({data : true, conf:"update"});
+							scope.onSave({data : true});
 						}
 					}, function (error) {
-						scope.onSave({data : error.data, conf:"update"});
+						scope.onSave({data : error.data});
 					});
 			},
 
 			saveCate: function () {
 				if (!scope.data.idCate) {
-					if ($('#form-cate').parsley().validate())
+					if ($(scope.cateForm).parsley().validate())
 					{
 						scope.actions.insertCate();
 					}
-					
 				}else {
-					if ($('#form-cate').parsley().validate())
+					if ($(scope.cateForm).parsley().validate())
 					{
 						scope.actions.updateCate(scope.data.idCate);
 					}
@@ -59,6 +58,8 @@ ngApp.directive('cateModal', function($apply, $cateService){
 		scope: {
 			data: "=cateData",
 			onSave: "&cateSave",
+			cateForm: "=domCateForm",
+			cateModal: "=domCateModal",
 		},
 		restrict: 'E',
 		templateUrl: templateUrl,

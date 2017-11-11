@@ -24,7 +24,7 @@ Class AlbumController extends Controller {
 
         $this->validateInsert($request);
         if (!$request->hasFile('imageAlbum')) {
-            return response()->json(['message' => 'Id không tồn tại'], 422);
+            return response()->json(['messages' => 'Id không tồn tại'], 422);
         } 
         else {
             //lay ten anh moi
@@ -66,7 +66,7 @@ Class AlbumController extends Controller {
             $album = AlbumModel::where('id', $id)->with('images')->first();
             return response()->json($album);
         } else {
-            return response()->json(['status' => 'Id không tồn tại'], 422);
+            return response()->json(['messages' => 'Id không tồn tại'], 422);
         }
     }
 
@@ -111,7 +111,7 @@ Class AlbumController extends Controller {
                 DB::rollback();
             }
         } else {
-            return response()->json(['status' => 'Id không tồn tại'], 422);
+            return response()->json(['messages' => 'Id không tồn tại'], 422);
         }
     }
 
@@ -126,11 +126,11 @@ Class AlbumController extends Controller {
                 return response()->json(['status' => true], 200);
 
             } catch (Exception $e) {
-                return response()->json(['message' => 'Lỗi hệ thống'], 422);
+                return response()->json(['messages' => 'Lỗi hệ thống'], 422);
                 DB::rollback();
             }
         } else {
-            return response()->json(['status' => 'Id không tồn tại'], 422);
+            return response()->json(['messages' => 'Id không tồn tại'], 422);
         }
     }
 

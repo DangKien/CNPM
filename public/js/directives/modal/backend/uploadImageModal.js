@@ -5,8 +5,9 @@ ngApp.directive('uploadImageModal', function ($apply, $imageService) {
 		scope.actions = {
 			paramsUploadImg: function (){
 				var idAlbum = scope.idAlbum;
-				var images = scope.data.images;
+				var images  = scope.data.images;
 				var params = $imageService.data(idAlbum, images);
+				console.log(images);
 				return params;
 			},
 
@@ -17,7 +18,7 @@ ngApp.directive('uploadImageModal', function ($apply, $imageService) {
 						scope.onSave({data: true});
 					}
 				}, function (error) {
-
+					scope.onSave({data: error.data});
 				});
 			},
 
@@ -32,7 +33,10 @@ ngApp.directive('uploadImageModal', function ($apply, $imageService) {
 		restrict: 'E',
 		scope: {
 			idAlbum: "=idAlbumImage",
-			onSave: "&uploadSave"
+			onSave: "&uploadSave",
+			data: "=data",
+			imageModal: "=domImageModal",
+			imageForm: "=domImageForm"
 		},
 		link: link,
 		templateUrl: templateUrl,

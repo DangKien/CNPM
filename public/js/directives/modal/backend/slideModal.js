@@ -32,9 +32,13 @@ ngApp.directive('slideModal', function ($apply, $slideService) {
 
 			save: function () {
 				if (scope.data.idSlide) {
-					scope.actions.updateSlide(scope.data.idSlide);
+					if ($(scope.slideForm).parsley().validate()) {
+						scope.actions.updateSlide(scope.data.idSlide);
+					}
 				} else {
-					scope.actions.insertSlide();
+					if ($(scope.slideForm).parsley().validate()) {
+						scope.actions.insertSlide();
+					}
 				}
 			},
 		}
@@ -44,6 +48,8 @@ ngApp.directive('slideModal', function ($apply, $slideService) {
 		scope: {
 			data: "=data",
 			onSave: "&saveSlide",
+			slideModal: "=domSlideModal",
+			slideForm: "=domSlideForm",
 		},
 		link: link,
 		templateUrl: templateUrl,

@@ -76,8 +76,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
@@ -94,13 +92,13 @@
         <div class="col-md-3" ng-repeat="(key, data) in data.listUsers" my-repeat-directive>
             <div class="panel text-center">
                 <div class="panel-body fix-panel-body-user" ng-click="actions.showModal(data.id)">
-                    <img alt="Avatar" class="img-md img-circle img-border mar-btm" src="{{ url('Nifty/')}}/img/av6.png">
+                    <img alt="Avatar" class="img-md img-circle img-border mar-btm" ng-src="{{ url('storage/images/avatar')}}/@{{ data.avatar }}">
                     <h4 class="mar-no">@{{ data.name }}</h4>
                     <p>@{{ data.job }}</p>
                 </div>
                 <div class="pad-all fix-pad-all">
                     <p class="text-left font14">
-                        <i class="fa fa-envelope"> &nbsp; &nbsp; @{{ data.email }}</i>
+                        <i class="fa fa-envelope">&nbsp; &nbsp; @{{ data.email }}</i>
                     </p>
                     <p class="text-left font14">
                         <i class="fa fa-phone"> &nbsp; &nbsp; @{{ data.phone }}</i>
@@ -143,7 +141,7 @@
         ng-click="actions.showModal()"
         >
     </button>
-    <user-modal data = "data" user-save = "actions.saveUser(data, conf)"> </user-modal>
+    <user-modal data="data" user-save="actions.saveUser(data)" dom-user-modal="domUserModal" dom-user-form="domUserForm"> </user-modal>
 
 </div>
 @endsection

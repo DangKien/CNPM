@@ -139,6 +139,6 @@
 	ng-click="actions.showModal()"
 	>
 	</button>
-	<cate-modal cate-data = "data" cate-save = "actions.save(data, conf)"> </cate-modal>	
+	<cate-modal cate-data="data" cate-save="actions.save(data)" dom-cate-form="domCateForm" dom-cate-modal="domCateModal"> </cate-modal>	
 	</div>
 @endsection

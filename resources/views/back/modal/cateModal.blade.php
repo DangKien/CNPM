@@ -1,6 +1,6 @@
-<div class="modal fade" id="cate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-enter="actions.saveCate()">
+<div class="modal fade" ng-dom="cateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-enter="actions.saveCate()">
 	<div class="modal-dialog" role="document">
-		<form id="form-cate" method="get" accept-charset="utf-8">
+		<form ng-dom="cateForm" method="get" accept-charset="utf-8">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="myModalLabel">@{{ data.title }}</h5>
@@ -9,10 +9,24 @@
 					<!-- insert cate -->
 					<div class="form-horizontal">
 							<div class="form-group">
+								<label class="col-sm-3 control-label" for="demo-is-inputsmall"></label>
+								<div class="col-sm-8">
+									<div class="text-danger" style="margin-top: 5px;">
+									    @{{ data.errors.messages }}
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label class="col-sm-3 control-label fix-form-cate" for="demo-is-inputsmall">Tên loại tin: </label>
 								<div class="col-sm-8">
 									<input required type="text" placeholder="Tên loại tin" class="form-control input-sm"
 									id="demo-is-inputsmall" ng-model = "data.params.name">
+									<p class="text-danger" style="margin-top: 5px;"
+										ng-repeat="er in data.errors.name"
+									>
+									    @{{ er }}
+									</p>
 								</div>
 							</div>
 

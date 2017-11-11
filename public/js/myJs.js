@@ -1,9 +1,7 @@
 function remove(obj) {
     var files = $(obj).attr('data');
-    console.log(files.trim());
     for(var i = 0 ; i < fileList.length; i++) {
        if(files == fileList[i].name) {
-            console.log(files);
             fileList.splice(i,1);
             break;
         }

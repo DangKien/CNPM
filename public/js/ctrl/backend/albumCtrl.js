@@ -1,4 +1,6 @@
 ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStatus, $conf) {
+	$scope.domAlbumModal;
+	$scope.domAlbumForm;
 	$scope.data = {
 		listAlbum: {},
 		params: {},
@@ -13,29 +15,32 @@ ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStat
 	$scope.actions = {
 
 		changePage: function (page) {
-			$scope.data.pageAlbum.current_page = page;
+			console.log(page);
+			$scope.data.pageAlbum.page = page;
 			$scope.actions.listAlbum();
 		},
 
 		// Danh sach loai tin
 		listAlbum: function () {
-			$albumService.action.listAlbum().then(function (resp) {
+			var params = $albumService.filter($scope.data.pageAlbum.page, 8);
+			$albumService.action.listAlbum(params).then(function (resp) {
 				$scope.data.listAlbum = resp.data.data;
+				$scope.data.pageAlbum = resp.data;
 			}, function (error) {
 				console.log(error);
 			});
 		},
 
 		showModal: function () {
-			$('#album').modal('show');
-			$('#album-form').parsley().reset()
+			$($scope.domAlbumModal).modal('show');
+			$($scope.domAlbumForm).parsley().reset()
 			$scope.data.title = "Thêm mới album";
 		},
 
 		saveModalAlbum: function (data) {
 			if (data == true) {
 				$conf.confirmNotifi('success', 'Thêm mới thành công!!!');
-				$('#album').modal('hide');
+				$($scope.domAlbumModal).modal('hide');
 				$scope.actions.listAlbum();
 			} else {
 				$scope.data.errors = data.errors;

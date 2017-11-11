@@ -1,4 +1,8 @@
 ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $scope, changStatus, $conf, $routeParams) {
+	$scope.domAlbumModal;
+	$scope.domAlbumForm;
+	$scope.domImageModal;
+	$scope.domImageForm;
 	$scope.data = {
 		listAlbum: {},
 		listImage:{},
@@ -6,59 +10,55 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 		filter: {},
 		title: "",
 		idAlbum: '',
-		pageAlbum: {},
+		pageImage: {},
 		allListAlbum:{},
 		errors: {
 			album: {},
 			upload:{}
 		},
-
 	};
 
 	$scope.data.idAlbum = $routeParams.id;
 	$scope.actions = {
 
 		changePage: function (page) {
-			$scope.data.pageAlbum.current_page = page;
+			$scope.data.pageImage.page = page;
 			$scope.actions.listAlbum();
-		},
-		filterParams: function () {
-			var idAlbum = $scope.data.idAlbum;
-			var params = $imageService.filter(idAlbum);
-			return params;
 		},
 		// Danh sach loai tin
 		listAlbum: function () {
-			var params = $scope.actions.filterParams();
+			var params = $imageService.filter($scope.data.pageImage.page, 16);
 			$imageService.action.listImage(params).then(function (resp) {
 				$scope.data.listImage = resp.data.data;
+				$scope.data.pageImage = resp.data;
 			}, function (error) {
 				console.log(error);
 			});
 		},
 
 		showModalAlbum: function () {
-			$('#album').modal('show');
+			$($scope.domAlbumModal).modal('show');
+			$($scope.domAlbumForm).parsley().reset();
 			$scope.data.title = "Cập nhật album";
 			$albumService.action.editAlbum($scope.data.idAlbum).then(function (resp) {
 				$scope.data.params = resp.data;
-				console.log($scope.data.params);
 				$('.avatar').attr('src', SiteUrl + '/storage/images/album/title_images/' + $scope.data.params.images[0].url_image);
 			}, function (error) {
 			});
 
 		},
 		showModalUpload: function () {
-			$('#uploadImage').modal('show');
+			$($scope.domImageModal).modal('show');
 		},
 
 		saveModalAlbum: function (data) {
+
 			if (data == true) {
 				$conf.confirmNotifi('success', 'Cập nhật album thành công!!!');
-				$('#album').modal('hide');
+				$($scope.domAlbumModal).modal('hide');
 				$scope.actions.listAlbum();
 			} else {
-				$scope.data.errors.album = data.errors;
+				$scope.data.errors = data.errors;
 			}
 		},
 
@@ -82,7 +82,7 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 		saveModalUploadImg: function (data) {
 			if (data == true) {
 				$conf.confirmNotifi('success', 'Cập nhật ảnh thành công!!!');
-				$('#album').modal('hide');
+				$($scope.domImageModal).modal('hide');
 				$scope.actions.listAlbum();
 				$('#uploadImage').modal('hide');
 			} else {

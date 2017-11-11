@@ -1,15 +1,16 @@
 ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
-    
+	$scope.domUserForm;
+	$scope.domUserModal;
+
 	$scope.data = {
 		idUser: {},
 		params: {},
 		listUsers: {},
 		filter: {},
 		pageUser: {},
-
+		errors: {},
 	}; 
 	$scope.actions = {
-
 		changePage: function (page) {
 			$scope.data.pageUser.currentPage = page;
 			$scope.actions.listUser();
@@ -37,6 +38,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 				if (resp == true) {
 					$userService.action.deleteUser(id).then(function (resp) {
 						$conf.confirmNotifi('success', 'Xóa loại tin thành công!!!');
+						$scope.actions.listUser();
 					  }, function (error) {
 					  	$conf.confirmNotifi('error', 'Xóa loại tin thất bại!!!', "fa fa-ban");
 					  });
@@ -44,48 +46,45 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 			});
 			
 		},	
-
-
 		showModal: function (idUser) {
-			$scope.data.idUser = idUser;
+			$scope.data.idUser       = idUser;
+			$scope.data.params       = {};
+
 			if (idUser) {
 				$scope.data.title = "Cập nhật thông tin nhân viên";
 				$userService.action.editUser(idUser).then(function (resp) {
 					$scope.data.params = resp.data;
 					$scope.data.params.birthday = moment($scope.data.params.birthday,'YYYY-MM-DD').format('DD-MM-YYYY');
-					console.log($scope.data.params.birthday);
 			  }, function (error) {
 			  	console.log(error);
 			  });
 			} else {
-				$scope.data.params = {};
 				$apply(function () {
 					$scope.data.params.gender = "MALE";
 				});
 				$scope.data.title = "Thêm mới nhân viên";
 			}
-			$('#user').modal('show');
-			$('#form-user').parsley().reset();
+			$($scope.domUserModal).modal('show');
+			$($scope.domUserForm).parsley().reset();
 		},
-
 
 		saveUser: function (data, conf) {
 			$apply(function () {
 				if (data == true) {
-					if (conf == "insert") {
+					$scope.actions.listUser();
+					$($scope.domUserModal).modal('hide');
+
+					if (!$scope.data.idUser) {
 						$conf.confirmNotifi ('success', "Thêm mới nhân viên thành công !!!")
-					} else if (conf == "update") {
+					} else {
 						$conf.confirmNotifi ('success', "Cập nhật nhân viên thành công !!!")
 					}
-					$scope.actions.listUser();
-					$('#user').modal('hide');
-				} else {
 					
+				} else {
+					$scope.data.errors = data.errors;
 				}
 
 			});
-			
-
 		}
 	}
 

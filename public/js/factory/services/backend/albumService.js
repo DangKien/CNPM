@@ -13,10 +13,8 @@ ngApp.factory('$albumService', function ($http, $httpParamSerializer){
 		return params;
 	};
 
-	service.filter = function (name, status, page = 1 , perPage = 10) {
+	service.filter = function (page = 1 , perPage = 8) {
 		var params = {
-			name: name || '',
-			status: status || '',
 			per_page: perPage,
 			page: page || '1',
 		};

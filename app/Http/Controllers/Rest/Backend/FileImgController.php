@@ -14,7 +14,7 @@ class FileImgController extends Controller
 
 		$fileImage = $fileImageModel->filterAlbumId($request->albumId)
 									->buildCond()
-									->paginate(10);
+									->paginate(16);
 		return response()->json($fileImage);
 	}
 
@@ -70,7 +70,7 @@ class FileImgController extends Controller
 			
 
 		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['messages' => 'Id không tồn tại', 422]); 
 		}
 	}
 
@@ -80,7 +80,7 @@ class FileImgController extends Controller
 			'image'    => 'required',
 			'idAblum'  => 'required'
 	    	], [
-			'image.required'    => 'Ảnh minh họa không được bỏ trống',
+			'image.required'    => 'Ảnh không được bỏ trống',
 			'idAblum.required'  => 'Id Album không được trống',
 	    	]
 		);

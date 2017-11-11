@@ -54,12 +54,22 @@
 	                    	         alt="">
 	                    	    </a>
 	                    	    <button ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
-                    	       		</button>
+                    	       	</button>
                     	       </div>
 	                    </div>
 	                </div>
 			    </div>
 			</div>	
+			<div class="row text-center">
+			   <div class="page-oum">
+			       <div paging
+			           page="page"
+			           page-size = "data.pageImage.per_page"
+			           total="data.pageImage.total"
+			           paging-action="actions.changePage(page)">
+			       </div>
+			   </div>
+			</div>
 		</div>
 		<!--===================================================-->
 		<!--End page content-->
@@ -69,6 +79,6 @@
 	ng-click="actions.showModalUpload()"
 	>
 	</button>
-	<album-modal data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>
-	<upload-image-modal id-album-image = "data.idAlbum" upload-save = "actions.saveModalUploadImg(data)"> </upload-image-modal>
+	<album-modal dom-album-modal="domAlbumModal" dom-album-form="domAlbumForm" data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>
+	<upload-image-modal dom-image-modal="domImageModal"  id-album-image="data.idAlbum" upload-save="actions.saveModalUploadImg(data)" data="data" dom-image-form="domImageForm"> </upload-image-modal>
 </div>

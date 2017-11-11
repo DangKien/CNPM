@@ -53,7 +53,7 @@ class CateController extends Controller
 			$cate = CateModel::find($id);
 			return response()->json($cate);
 		} else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 
@@ -80,7 +80,7 @@ class CateController extends Controller
 				DB::rollback();
 			}
 		}else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 	
@@ -100,7 +100,7 @@ class CateController extends Controller
 			
 
 		} else {
-			return response()->json(['status' => 'Id không tồn tại'], 422); 
+			return response()->json(['messages' => 'Id không tồn tại'], 422); 
 		}
 	}
 
