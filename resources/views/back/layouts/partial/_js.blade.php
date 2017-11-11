@@ -23,6 +23,7 @@
 <script src="{{ url('') }}/js/directives/myHeightDirective.js"></script>
 <script src="{{ url('') }}/js/directives/myDatePicker.js"></script>
 <script src="{{ url('') }}/js/directives/uploadMultiImage.js"></script>
+<script src="{{ url('') }}/js/directives/fileModel.js"></script>
 <script src="{{ url('') }}/js/myJs.js"></script>
 
 

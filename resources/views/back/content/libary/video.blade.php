@@ -1,16 +1,18 @@
 @extends('back.layouts.default')
 @section ('title', 'Thư viện video')
 @section ('myJs')
-	<script src=""></script>
+	<script src="{{ url('')}}/js/ctrl/backend/videoCtrl.js"></script>
+	<script src="{{ url('')}}/js/factory/services/backend/videoService.js"></script>
+	<script src="{{ url('')}}/js/directives/modal/backend/videoModal.js"></script>
 @endsection
 
 @section('content')
-	<div id="content-container">
+	<div id="content-container" ng-controller="videoCtrl">
 		
 		<!--Page Title-->
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">@if(isset($title) ) {{ $title }} @endif</h1>
+			<h1 class="page-header text-overflow">@if(isset($title)) {{ $title }} @endif</h1>
 			<!--Searchbox-->
 		</div>
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -28,61 +30,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-5">
-					<div class="panel">
-						<!-- insert cate -->
-						<form action="" method="get" accept-charset="utf-8">
-							<div class="panel-heading">
-								<h3 class="panel-title">Thêm mới loại tin</h3>
-							</div>
-							<div class="panel-body">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên loại tin: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại tin: </label>
-									<div class="col-sm-8 mar-btm">
-										<select class="selectpicker" data-width="100%">
-											<option>--Giới thiệu--</option>
-											<option>--- Cơ sở vật chất ---</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tag: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Trạng thái: </label>
-									<div class="col-sm-8 text-left">
-										<label class="form-radio form-normal active form-text"><input type="radio" checked="" name="def-w-label"> Hoạt động</label>
-										<label class="form-radio form-normal active form-text"><input type="radio" name="def-w-label"> Không hoạt động</label>
-									</div>
-									
-								</div>
-
-								
-							</div>
-							<div class="modal-footer">
-							    <button type="button" class="btn btn-primary">Cập nhật</button>
-							</div>
-
-						</form>
-						<!-- end cate -->
-					</div>
-				</div>
-				<!-- datatable -->
-				<div class="col-sm-7">
+				<div class="col-sm-12">
 					<div class="panel">
 						<!--Data Table-->
 						<!--===================================================-->
@@ -91,25 +39,29 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th class="text-center">Invoice</th>
-											<th>STT</th>
-											<th> Tên loại tin</th>
-											<th>Loại tin cha</th>
-											<th>Tag</th>
-											<th>Trạng thái</th>
-											<th>Hành động</th>
+											<th>Tiêu đề</th>
+											<th>Ảnh minh họa</th>
+											<th>Video</th>
+											<th>Nội dung</th>
+											<th>Người đăng</th>
+											<th>Lượt xem</th>
+											<th>Thao tác</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td><a class="btn-link" href="#"> Order #53431</a></td>
-											<td>Steve N. Horton</td>
-											<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-											<td>$45.00</td>
+										<tr ng-repeat="(key, video) in data.listVideo">
+											<td>@{{ video.title }}</td>
+											<td>@{{ video.url_image }}</td>
+											<td>@{{ video.url_video }}</td>
+											<td>@{{ video.content }}</td>
+											<td>@{{ video.title }}</td>
+											<td>@{{ video.title }}</td>
 											<td>
-												<div class="label label-table label-success">Paid</div>
+												<button ng-click="actions.showModalVideo(video.id)"
+												        class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
+												<button ng-click="actions.deleteVideo(video.id)" 
+														class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
 											</td>
-											<td>-</td>
 										</tr>
 									</tbody>
 								</table>
@@ -127,110 +79,10 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	data-toggle="modal" data-target="#edit-user"
+	ng-click="actions.showModalVideo()"
 	>
 	</button>
 
-	<div class="modal fade" id="edit-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="myModalLabel">Sửa thông tin người dùng</h5>
-				</div>
-				<div class="modal-body">
-					<div class="panel panel-primary">
-						<div class="panel-body">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên người dùng: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tên người dùng" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tài khoản: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Giới tính: </label>
-									<div class="col-sm-8">
-										<select class="selectpicker" data-width="100%">
-											<option>Nam</option>
-											<option>Nữ</option>
-											<option>Khác</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Ngày sinh: </label>
-									<div class="col-sm-8 input-group date" id="sandbox-container">
-										<input type="text" class="form-control"><span class="input-group-addon"><i
-											class="fa fa-calendar"></i></span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Điện thoại: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Điện thoại" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Địa chỉ: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Địa chỉ" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Email: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Email" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nghề nghiệp: </label>
-										<div class="col-sm-8">
-											<input type="text" placeholder="Nghề nghiệp" class="form-control input-sm"
-											id="demo-is-inputsmall">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="demo-vs-definput" class="control-label col-sm-3">Ảnh đại diện: </label>
-										<div class="col-md-8">
-											<input type="file" name="" value="" placeholder="">
-											<br>
-											<img class="avatar" src="{{ url('Nifty') }}/img/av6.png" alt="" style="width: 140px; height: 150px;">
-											<br>
-										</div>
-									</div>
-								<div class="radio">
-									<label for="demo-vs-definput" class="control-label col-sm-3" style="padding-top:3px;">Trạng
-									thái:</label>
-									&nbsp; &nbsp;
-									<label class="form-radio form-normal"><input type="radio" name="de-blk2" checked>Hoạt
-									động </label>
-									<label class="form-radio form-normal"><input type="radio" name="de-blk2">Không hoạt động</label>
-								</div>
-							</form>
-						</div>
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Cập nhật</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
+	<video-modal data = "data" video-save="actions.saveModalVideo(data)"></video-modal>
+</div>
 @endsection
