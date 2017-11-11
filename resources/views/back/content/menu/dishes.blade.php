@@ -1,7 +1,7 @@
 @extends('back.layouts.default')
 @section ('title', 'Loại tin')
 @section ('myJs')
-	<script src="{{ url('') }}/js/directives/modal/dishesModal.js"></script>
+	<script src="{{ url('') }}/js/directives/modal/backend/dishesModal.js"></script>
 @endsection
 @section('content')
 	<div id="content-container">

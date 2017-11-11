@@ -1,9 +1,9 @@
 @extends('back.layouts.default')
 @section ('title', 'Nhân viên')
 @section ('myJs')
-    <script src="{{ url('')}}/js/directives/modal/userModal.js"></script>
-    <script src="{{ url('')}}/js/ctrl/userCtrl.js"></script>
-    <script src="{{ url('')}}/js/factory/services/userService.js"></script>
+    <script src="{{ url('')}}/js/directives/modal/backend/userModal.js"></script>
+    <script src="{{ url('')}}/js/ctrl/backend/userCtrl.js"></script>
+    <script src="{{ url('')}}/js/factory/services/backend/userService.js"></script>
 @endsection
 @section('content')
 <div id="content-container" ng-controller="userCtrl">

@@ -2,11 +2,11 @@
 @section ('title', 'Loại tin')
 
 @section ('myJs')
-	<script src="{{ url('') }}/js/directives/modal/newModal.js"></script>
-	<script src="{{ url('') }}/js/directives/modal/seeMoreModal.js"></script>
-	<script src="{{ url('')}}/js/ctrl/newCtrl.js"></script>
-    <script src="{{ url('')}}/js/factory/services/newService.js"></script>
-    <script src="{{ url('')}}/js/factory/services/cateService.js"></script>
+	<script src="{{ url('') }}/js/directives/modal/backend/newModal.js"></script>
+	<script src="{{ url('') }}/js/directives/modal/backend/seeMoreModal.js"></script>
+	<script src="{{ url('')}}/js/ctrl/backend/newCtrl.js"></script>
+    <script src="{{ url('')}}/js/factory/services/backend/newService.js"></script>
+    <script src="{{ url('')}}/js/factory/services/backend/cateService.js"></script>
 	<script src=""></script>
 @endsection
 

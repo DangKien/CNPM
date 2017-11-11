@@ -1,9 +1,9 @@
 @extends('back.layouts.default')
 @section ('title', 'Loại tin')
 @section ('myJs')
-	<script src="{{ url('')}}/js/ctrl/slideCtrl.js"></script>
-	<script src="{{ url('')}}/js/factory/services/slideService.js"></script>
-	<script src="{{ url('')}}/js/directives/modal/SlideModal.js"></script>
+	<script src="{{ url('')}}/js/ctrl/backend/slideCtrl.js"></script>
+	<script src="{{ url('')}}/js/factory/services/backend/slideService.js"></script>
+	<script src="{{ url('')}}/js/directives/modal/backend/SlideModal.js"></script>
 @endsection
 
 @section('content')

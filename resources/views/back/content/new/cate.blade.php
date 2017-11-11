@@ -1,9 +1,9 @@
 @extends('back.layouts.default')
 @section ('title', 'Loại tin')
 @section ('myJs')
-    <script src="{{ url('')}}/js/ctrl/cateCtrl.js"></script>
-    <script src="{{ url('')}}/js/factory/services/cateService.js"></script>
-    <script src="{{ url('')}}/js/directives/modal/cateModal.js"></script>
+    <script src="{{ url('')}}/js/ctrl/backend/cateCtrl.js"></script>
+    <script src="{{ url('')}}/js/factory/services/backend/cateService.js"></script>
+    <script src="{{ url('')}}/js/directives/modal/backend/cateModal.js"></script>
 @endsection
 
 @section('content')

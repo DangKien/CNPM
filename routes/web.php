@@ -92,6 +92,12 @@ Route::group(['prefix' => 'rest'], function() {
     Route::get('/image/{id}', 'Rest\Backend\FileImgController@getEdit');
     Route::post('/image/{id}', 'Rest\Backend\FileImgController@getUpdate');
     Route::delete('/image/{id}', 'Rest\Backend\FileImgController@getDelete');
+
+    Route::get('/file', 'Rest\Backend\UploadFileController@getList');
+    Route::post('/file', 'Rest\Backend\UploadFileController@getInsert');
+    Route::get('/file/{id}', 'Rest\Backend\UploadFileController@getEdit');
+    Route::post('/file/{id}', 'Rest\Backend\UploadFileController@getUpdate');
+    Route::delete('/file/{id}', 'Rest\Backend\UploadFileController@getDelete');
 });
 
 Auth::routes();
