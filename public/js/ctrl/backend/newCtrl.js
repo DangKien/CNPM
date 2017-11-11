@@ -66,6 +66,7 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 
 		showModal: function (idNew) {
 			$scope.data.idNew = idNew;
+			$scope.data.errors = {};
 			$($scope.domNewForm).parsley().reset();
 			$($scope.domNewModal).modal('show');
 			if ($scope.data.idNew) {

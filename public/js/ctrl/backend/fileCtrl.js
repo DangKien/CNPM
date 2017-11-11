@@ -1,9 +1,12 @@
 ngApp.controller('fileCtrl', function ($apply, $fileService, $scope, $conf) {
+	$scope.domFileModal;
+	$scope.domFileForm;
 	$scope.data = {
 		params: {},
 		listFile: {},
 		title: "",
 		idFile:{},
+		errors: {},
 	};
 	$scope.actions = {
 		changePage: function (page) {
@@ -27,9 +30,11 @@ ngApp.controller('fileCtrl', function ($apply, $fileService, $scope, $conf) {
 		},
 
 		showModalFile: function ($idFile) {
-			$('#uploadFile').modal('show');
+			$($scope.domFileModal).modal('show');
+			$($scope.domFileForm).parsley().reset();
 			$scope.data.idFile = $idFile;
 			$scope.data.params = {};
+			$scope.data.errors = {};
 			$('.image-support').attr('src', "");
 			$('input[name*="image-title"]').val('');
 			$('input[name*="file"').val();
@@ -57,10 +62,10 @@ ngApp.controller('fileCtrl', function ($apply, $fileService, $scope, $conf) {
 				}else {
 					$conf.confirmNotifi('success', 'Cập nhật album thành công');
 				}
-				$('#uploadFile').modal('hide');
+				$($scope.domFileModal).modal('hide');
 				$scope.actions.listFile();
 			} else {
-				$scope.data.errors.file = data.errors;
+				$scope.data.errors = data.errors;
 			}
 		},
 

@@ -49,6 +49,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 		showModal: function (idUser) {
 			$scope.data.idUser       = idUser;
 			$scope.data.params       = {};
+			$scope.data.errors = {};
 
 			if (idUser) {
 				$scope.data.title = "Cập nhật thông tin nhân viên";

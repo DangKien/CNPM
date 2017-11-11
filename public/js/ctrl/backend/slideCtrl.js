@@ -44,6 +44,7 @@ ngApp.controller('slideCtrl', function ($scope, $apply, $slideService, $conf) {
 		},	
 		showModal: function (idSlide) {
 			$scope.data.idSlide = idSlide;
+			$scope.data.errors = {};
 			$($scope.domSlideModal).modal('show');
 			$($scope.domSlideForm).parsley().reset();
 			if ($scope.data.idSlide) {

@@ -98,6 +98,7 @@ ngApp.controller('cateCtrl', function ($apply, $cateService, $scope, changStatus
 			$scope.data.idCate = idCate;
 			$($scope.domCateModal).modal('show');
 			$($scope.domCateForm).parsley().reset();
+			$scope.data.errors = {};
 			if (!idCate) {
 				
 				$scope.data.params = {

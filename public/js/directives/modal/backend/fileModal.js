@@ -39,14 +39,11 @@ ngApp.directive('fileModal', function($apply, $fileService){
 
 			saveFile: function () {
 				if (!scope.data.idFile) {
-					if ($('#formUploadFile').parsley().validate())
-					{
+					if ($(scope.fileForm).parsley().validate()) {
 						scope.actions.insertFile();
 					}
-					
 				}else {
-					if ($('#formUploadFile').parsley().validate())
-					{
+					if ($(scope.fileForm).parsley().validate()) {
 						scope.actions.updateFile(scope.data.idFile);
 					}
 				}
@@ -59,7 +56,9 @@ ngApp.directive('fileModal', function($apply, $fileService){
 		name: '',
 		scope: {
 			data: '=data',
-			onSave: '&fileSave'
+			onSave: '&fileSave',
+			fileForm: '=domFileForm',
+			fileModal: '=domFileModal',
 		},
 		restrict: 'E',
 		templateUrl: templateUrl,

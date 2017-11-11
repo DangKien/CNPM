@@ -33,6 +33,7 @@ ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStat
 
 		showModal: function () {
 			$($scope.domAlbumModal).modal('show');
+			$scope.data.errors = {};
 			$($scope.domAlbumForm).parsley().reset()
 			$scope.data.title = "Thêm mới album";
 		},

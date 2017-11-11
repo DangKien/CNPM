@@ -38,6 +38,7 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 
 		showModalAlbum: function () {
 			$($scope.domAlbumModal).modal('show');
+			$scope.data.errors = {};
 			$($scope.domAlbumForm).parsley().reset();
 			$scope.data.title = "Cập nhật album";
 			$albumService.action.editAlbum($scope.data.idAlbum).then(function (resp) {
@@ -48,6 +49,7 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 
 		},
 		showModalUpload: function () {
+			$scope.data.errors.upload = {};
 			$($scope.domImageModal).modal('show');
 		},
 

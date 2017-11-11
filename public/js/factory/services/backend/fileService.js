@@ -14,10 +14,8 @@ ngApp.factory('$fileService', function ($http, $httpParamSerializer){
 		return params;
 	};
 
-	service.filter = function (name, status, page = 1 , perPage = 10) {
+	service.filter = function (page = 1 , perPage = 10) {
 		var params = {
-			title: name || '',
-			status: status || '',
 			per_page: perPage,
 			page: page || '1',
 		};

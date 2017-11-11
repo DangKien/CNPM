@@ -65,6 +65,6 @@
 	>
 	</button>
 
-	<file-modal data = "data" file-save = "actions.saveModalFile(data)"> </file-modal>
+	<file-modal data = "data" file-save = "actions.saveModalFile(data)" dom-file-modal="domFileModal" dom-file-form="domFileForm"> </file-modal>
 </div>
 @endsection

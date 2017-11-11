@@ -53,7 +53,7 @@ class UploadFileController extends Controller
 		    $file = FileModel::find($id);
 		    return response()->json($file);
 		} else {
-		    return response()->json(['status' => 'Id không tồn tại'], 422);
+		    return response()->json(['messages' => 'Id không tồn tại'], 422);
 		}
 	}
 
@@ -115,7 +115,7 @@ class UploadFileController extends Controller
 				DB::rollback();
 			}
 		} else {
-			return response()->json(['status' => 'Id không tồn tại', 422]); 
+			return response()->json(['messages' => 'Id không tồn tại', 422]); 
 		}
 	}
 
