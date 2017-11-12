@@ -11,13 +11,10 @@ class DailySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('daily')->insert([
-        	['name' => 'Thứ 2'],
-        	['name' => 'Thứ 3'],
-        	['name' => 'Thứ 4'],
-        	['name' => 'Thứ 5'],
-        	['name' => 'Thứ 6'],
-        	['name' => 'Thứ 7'],
+        DB::table('cate_menu')->insert([
+        	['name' => 'Mẫu giáo lớn' ],
+        	['name' => 'Mẫu giao nhỡ' ],
+        	['name' => 'Mẫu giáo bé' ],
         ]);
     }
 }

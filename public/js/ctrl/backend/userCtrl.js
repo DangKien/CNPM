@@ -37,10 +37,10 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 			$conf.confirmDelete ('small', 'Bạn muốn xóa loại tin này?', function (resp) {
 				if (resp == true) {
 					$userService.action.deleteUser(id).then(function (resp) {
-						$conf.confirmNotifi('success', 'Xóa loại tin thành công!!!');
+						$conf.confirmNotifi('success', 'Xóa loại tin thành công');
 						$scope.actions.listUser();
 					  }, function (error) {
-					  	$conf.confirmNotifi('error', 'Xóa loại tin thất bại!!!', "fa fa-ban");
+					  	$conf.confirmNotifi('error', 'Xóa loại tin thất bại', "fa fa-ban");
 					  });
 				}
 			});
@@ -76,9 +76,9 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 					$($scope.domUserModal).modal('hide');
 
 					if (!$scope.data.idUser) {
-						$conf.confirmNotifi ('success', "Thêm mới nhân viên thành công !!!")
+						$conf.confirmNotifi ('success', "Thêm mới nhân viên thành công")
 					} else {
-						$conf.confirmNotifi ('success', "Cập nhật nhân viên thành công !!!")
+						$conf.confirmNotifi ('success', "Cập nhật nhân viên thành công")
 					}
 					
 				} else {

@@ -19,7 +19,6 @@ Route::group(['prefix' => ''], function (){
     Route::get('/slide', 'View\ViewController@slide')->name('slide');
     Route::get('/cate-new', 'View\ViewController@cateNew')->name('cate-new');
     Route::get('/new', 'View\ViewController@new')->name('new');
-    Route::get('/dishes', 'View\ViewController@dishes')->name('dishes');
     Route::get('/menu', 'View\ViewController@menu')->name('menu');
     Route::get('/addmission', 'View\ViewController@addmission')->name('addmission');
     Route::get('/class', 'View\ViewController@class')->name('class');
@@ -104,11 +103,12 @@ Route::group(['prefix' => 'rest'], function() {
     Route::delete('/class/{id}', 'Rest\Backend\ClassController@getDelete');
 
     //them mon
-    Route::get('/dishes', 'Rest\Backend\DishesController@getList');
-    Route::post('/dishes', 'Rest\Backend\DishesController@getInsert');
-    Route::get('/dishes/{id}', 'Rest\Backend\DishesController@getEdit');
-    Route::put('/dishes/{id}', 'Rest\Backend\DishesController@getUpdate');
-    Route::delete('/dishes/{id}', 'Rest\Backend\DishesController@getDelete');
+    Route::get('/cate-menu', 'Rest\Backend\MenuController@getListCateMenu');
+    Route::get('/menu', 'Rest\Backend\MenuController@getList');
+    Route::post('/menu', 'Rest\Backend\MenuController@getInsert');
+    Route::get('/menu/{id}', 'Rest\Backend\MenuController@getEdit');
+    Route::post('/menu/{id}', 'Rest\Backend\MenuController@getUpdate');
+    Route::delete('/menu/{id}', 'Rest\Backend\MenuController@getDelete');
 
 
     // album ảnh

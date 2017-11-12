@@ -13,7 +13,7 @@ class CreateDayTable extends Migration
      */
     public function up()
     {
-        Schema::create('daily', function (Blueprint $table) {
+        Schema::create('cate_menu', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
         });
@@ -26,6 +26,6 @@ class CreateDayTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('daily');
+        Schema::dropIfExists('cate_menu');
     }
 }

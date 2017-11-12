@@ -13,11 +13,13 @@ class CreateWeekDishesTable extends Migration
      */
     public function up()
     {
-        Schema::create('week', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('week');
-            $table->date('begin_date');
-            $table->date('end_date');
+            $table->string('month');
+            $table->string('year');
+            $table->string('cate_menu');
+            $table->string('url_image');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateWeekDishesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('week');
+        Schema::dropIfExists('menus');
     }
 }

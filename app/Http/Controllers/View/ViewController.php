@@ -29,10 +29,6 @@ class ViewController extends Controller
 		return view('back.content.new.new', ['active'=>'new'])->with('title', 'Tin tức ');
 	}
 
-	public function dishes(){
-		return view('back.content.menu.dishes', ['active'=>'dishes'])->with('title', 'Món ăn');
-	}
-
 	public function menu(){
 		return view('back.content.menu.menu', ['active'=>'menu'])->with('title', 'Thực đơn');
 	}

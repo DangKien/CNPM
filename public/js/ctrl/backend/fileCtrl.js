@@ -7,23 +7,24 @@ ngApp.controller('fileCtrl', function ($apply, $fileService, $scope, $conf) {
 		title: "",
 		idFile:{},
 		errors: {},
+		pageFile: {},
 	};
 	$scope.actions = {
 		changePage: function (page) {
-			$scope.data.pageAlbum.current_page = page;
+			$scope.data.pageFile.page = page;
 			$scope.actions.listFile();
 		},
-		// filterParams: function () {
-		// 	var idAlbum = $scope.data.idAlbum;
-		// 	var params = $imageService.filter(idAlbum);
-		// 	return params;
-		// },
+		filterParams: function () {
+			var params = $fileService.filter($scope.data.pageFile.page, 10);
+			return params;
+		},
 
 		// Danh sach loai tin
 		listFile: function () {
-			//var params = $scope.actions.filterParams();
-			$fileService.action.listFile().then(function (resp) {
+			var params = $scope.actions.filterParams();
+			$fileService.action.listFile(params).then(function (resp) {
 				$scope.data.listFile = resp.data.data;
+				$scope.data.pageFile = resp.data;
 			}, function (error) {
 				console.log(error);
 			});
