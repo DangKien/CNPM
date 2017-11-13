@@ -66,7 +66,7 @@
 									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại: </label>
 									<div class="col-sm-8">
 										<select class="form-control" ng-model="data.params.cateId">
-											<option ng-repeat="(key, cateMenu) in data.listCateMenu" ng-value="cateMenu.id">
+											<option ng-repeat="(key, cateMenu) in data.listCateMenu" ng-value="cateMenu.id" ng-selected="(cateMenu.id == data.params.cateId )">
 												@{{ cateMenu.name }}
 											</option>
 										</select>

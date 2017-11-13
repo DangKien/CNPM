@@ -1,0 +1,353 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.active-li {
+	background-color: #2d6d92;
+}
+.active-li a {
+	color: #fff;	
+}
+.fa-chevron-up:before {
+    content: "\f077";
+ }
+.content-news .title {
+	font-weight: bold;
+	color: #e200bc;
+}
+.content-news span {
+	font-size: 11px;
+    color: #f74df2;
+}
+.lq {
+	margin-top: 20px;
+}
+.new img{
+	height: 300px;
+}
+
+.content-lq .title {
+	font-weight: bold;
+	color: #e200bc;
+}
+.content-lq span{
+	font-size: 11px;
+    color: #f74df2;
+}
+.go-up a {
+    background-color: #db3762;
+    -webkit-border-radius: 0;
+    color: white;
+    display: inline-block;
+    line-height: 33pt;
+	width: 33pt;
+    height: 33pt;
+    opacity: 0;
+}
+.go-up .show {
+    opacity: 1;
+}
+.go-up {
+	right: 6.75pt;
+	z-index: 999;
+	text-align: center;
+	bottom: 6.75pt;
+	margin-bottom: 0;
+	position: fixed;
+}
+body {
+	background: #7fb967;
+}
+.padding-0 {
+	padding: 0px;
+}
+.magin-0{
+	margin: 0px;
+}
+#bg-header {
+	height: 340px;
+	background: url(../img/image.jpg) no-repeat top center;
+	position: relative;
+}
+#hottel {
+	height: 40px;
+	background-color: #22c3d4;
+}
+.logo {
+	display: inline;
+	z-index: 10;
+	margin-top: 10px;
+}
+.fix-margin{
+	margin-left: -17%;
+	margin-top: 3%;
+}
+.fix-nav ul{
+		margin: 0;
+	    padding: 0;
+	    border: 0;
+	    list-style: none;
+	    line-height: 1;
+	    display: block;
+	    position: relative;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+.fix-nav ul li {
+	 margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+} 
+
+.menu-header {
+	background: red; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(#277d00, #81ba69); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#277d00, #81ba69); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#277d00, #81ba69); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#277d00, #81ba69); /* Standard syntax */
+}
+
+.fix-nav ul> li {
+	float: left;
+	border-left: 2px dashed #fff;
+}
+.fix-nav ul li a {
+    padding: 17px;
+    font-size: 12px;
+    width: 100%;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height:58px;
+} 
+.fix-nav ul li:first-child {
+	border: none;
+}
+.fix-nav ul li:last-child {
+	border-right: 2px dashed #fff;
+}
+#video-home {
+	background-color: #000;
+}
+.button-video-play {
+	width: 50px;
+	height: 50px;
+	z-index: 1000;
+	background: url(../img/image.jpg) no-repeat top center;
+}
+
+.slider-image-t {
+	margin-top: 10px;
+}
+
+footer {
+	background-color: #68b4f0;
+	margin-top:20px;
+	overflow: auto;
+	color: #fff;
+}
+footer .department {
+	padding:0px;
+}
+footer .container p span{
+	font-weight: bold;
+	font-size: 15px;
+}
+footer h3{
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+footer ul li {
+	list-style: none;
+}
+.menu-footer ul li a{
+	color: #fff;
+
+}
+.image-footer {
+	min-height: 340px;
+	background: url(../img/footer.png) no-repeat bottom center;
+	position: relative;
+	overflow: auto;
+}
+.menu-footer ul li a:hover {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+.fix-nav .bg-nav{
+	background-color: rgba(38, 173, 245, 0.81);
+	border:rgba(38, 173, 245, 0.81);
+	height: 58px;
+}
+
+.fix-nav .icon {
+	display: none;
+}
+
+[class^="col-"]:not(.pad-no) {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#nav-menu-icon{
+		position: absolute;
+	    top: 10px;
+	    right: 10px;
+	    z-index: 1000;
+}
+.button-icon-nav {
+	color: rgb(253, 0, 0);
+    border: none;
+    background: rgb(222, 216, 135);
+}
+.fix-slider-product {
+	width: 233.5px;
+    margin-right: 10px;
+}
+
+.fix-slider-product img{
+	width: 100%;
+	height: 155px;
+    margin-right: 10px;
+}
+
+.album-image {
+	margin-top: 15px;
+}
+.fix-backdrop {
+	opacity: 0;
+}
+
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 768px) {
+	.fix-nav .icon {
+		font-weight: 700;
+	    padding: 10px;
+	    float: right;
+	    font-size: 30px;
+	    display: block;
+	    cursor: pointer;
+	}
+	.nav-bar-ul ul li a {
+		display: block;
+	    background: linear-gradient(#3e3e3e, #383838);
+	    border-top: 1px solid #484848;
+	    border-bottom: 1px solid #2E2E2E;
+	    color: white;
+	    padding: 15px;
+	}
+	.fix-nav .bg-nav{
+		background-color: transparent;
+		border: none;
+		height: 100%;
+	}
+	.fix-nav ul li:last-child {
+		border-right: none;
+	}
+	.nav-bar-ul{
+		display: none;
+	}
+	.nav-bar-ul {
+		position: fixed;
+	    width: 250px;
+	    left: 0px;
+	    top: 0px;
+	    z-index: 100;
+	    min-height: 100%;	
+	    background: linear-gradient(#3e3e3e, #383838);
+	}
+	.fix-nav .nav-bar-ul li {
+		width: 250px;
+		border: none;
+	}
+	.hotline {
+		margin-bottom:150px;
+	}
+	footer .department, .menu-footer, .hotline {
+		padding: 0px;
+	}
+	.new img {
+		height: 200px;
+	}
+	
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 992px) { 
+	.nav-bg{
+		background-color: #00c6e6;
+		border: #00c6e6;
+	}
+	.fix-nav .icon {
+		display: none;
+	}
+	.fix-nav ul li a {
+		padding: 6px;
+		font-size: 12px;
+		width: 50px;
+		letter-spacing: 1px;
+		text-decoration: none;
+		color: #fff;
+		font-weight: 700;
+		text-transform: uppercase;
+		line-height: 58px;
+	}
+	.menu-footer h3, ul{
+		padding-left: 10%;
+	}
+	
+	.new img{
+		height: 200px;
+	} 
+
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+	.nav-bg{
+		background-color: #00c6e6;
+		border: #00c6e6;
+	}
+	.fix-nav .icon {
+		display: none;
+	}
+	.fix-nav ul li{
+		min-width: 100px;
+	}
+	.menu-footer h3, ul{
+		padding-left: 25%;
+	}
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+	.nav-bg {
+		background-color: #00c6e6;
+		border: #00c6e6;	
+	}
+	.fix-nav ul li a{
+		padding: 20px 30px;
+	}
+	.menu-footer h3, ul{
+		padding-left: 25%;
+	}
+	.fix-nav .icon {
+		display: none;
+	}
+}
+
+
+
+

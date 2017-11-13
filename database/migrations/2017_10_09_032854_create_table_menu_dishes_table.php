@@ -17,6 +17,7 @@ class CreateTableMenuDishesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('cate');
+            $table->string('slug');
             $table->timestamps();
         });
     }

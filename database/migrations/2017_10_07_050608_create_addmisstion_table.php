@@ -22,6 +22,7 @@ class CreateAddmisstionTable extends Migration
             $table->string('name_parent');
             $table->string('phone');
             $table->string('email');
+            $table->string('slug');
             $table->string('address');
             $table->integer('status');
             $table->timestamps();

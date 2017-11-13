@@ -76,7 +76,6 @@ ngApp.controller('menuCtrl', function ($apply, $menuService, $scope, changStatus
 				$menuService.action.editMenu(idMenu).then (function (resp) {
 					$scope.data.params = resp.data;
 					$scope.data.params.cateId = resp.data.cate_menu;
-					console.log($scope.data.params.cateId);
 				}, function (error) {
 					console.log(error);
 				});

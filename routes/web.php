@@ -11,21 +11,21 @@
 |
 */
 
-Route::get('/modal/{view}', 'View\ViewController@modal');
+Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
 
-Route::group(['prefix' => ''], function (){
-    Route::get('/', 'View\ViewController@user');
-    Route::get('/user', 'View\ViewController@user')->name('user');
-    Route::get('/slide', 'View\ViewController@slide')->name('slide');
-    Route::get('/cate-new', 'View\ViewController@cateNew')->name('cate-new');
-    Route::get('/new', 'View\ViewController@new')->name('new');
-    Route::get('/menu', 'View\ViewController@menu')->name('menu');
-    Route::get('/addmission', 'View\ViewController@addmission')->name('addmission');
-    Route::get('/class', 'View\ViewController@class')->name('class');
-    Route::get('/file-image', 'View\ViewController@fileImage')->name('file-image');
-    Route::get('/file-video', 'View\ViewController@fileVideo')->name('file-video');
-    Route::get('/file-music', 'View\ViewController@fileMusic')->name('file-music');
-    Route::get('/file', 'View\ViewController@file')->name('file');
+Route::group(['prefix' => 'backend'], function (){
+    Route::get('/', 'BackEnd\View\ViewController@user');
+    Route::get('/user', 'BackEnd\View\ViewController@user')->name('user');
+    Route::get('/slide', 'BackEnd\View\ViewController@slide')->name('slide');
+    Route::get('/cate-new', 'BackEnd\View\ViewController@cateNew')->name('cate-new');
+    Route::get('/new', 'BackEnd\View\ViewController@new')->name('new');
+    Route::get('/menu', 'BackEnd\View\ViewController@menu')->name('menu');
+    Route::get('/addmission', 'BackEnd\View\ViewController@addmission')->name('addmission');
+    Route::get('/class', 'BackEnd\View\ViewController@class')->name('class');
+    Route::get('/file-image', 'BackEnd\View\ViewController@fileImage')->name('file-image');
+    Route::get('/file-video', 'BackEnd\View\ViewController@fileVideo')->name('file-video');
+    Route::get('/file-music', 'BackEnd\View\ViewController@fileMusic')->name('file-music');
+    Route::get('/file', 'BackEnd\View\ViewController@file')->name('file');
     Route::get('/fileAlbum', function(){
         return view('back.content.libary.image.albumImage');
      })->name('fileAlbum');
@@ -61,86 +61,91 @@ Route::group(['prefix' => ''], function (){
     });
 
 });
+Route::group(['prefix' => ''], function (){
+    Route::get('/', function () {
+    return view('front.content.home');
+})->name('home');
+});
+
 
 
 Route::group(['prefix' => 'rest'], function() {
 
     // người dùng
-	Route::get('/user', 'Rest\Backend\UserController@getList');
-    Route::post('/user', 'Rest\Backend\UserController@getInsert');
-    Route::get('/user/{id}', 'Rest\Backend\UserController@getEdit');
-	Route::post('/user-update/{id}', 'Rest\Backend\UserController@getUpdate');
-	Route::delete('/user/{id}', 'Rest\Backend\UserController@getDelete');
+	Route::get('/user', 'BackEnd\Rest\UserController@getList');
+    Route::post('/user', 'BackEnd\Rest\UserController@getInsert');
+    Route::get('/user/{id}', 'BackEnd\Rest\UserController@getEdit');
+	Route::post('/user-update/{id}', 'BackEnd\Rest\UserController@getUpdate');
+	Route::delete('/user/{id}', 'BackEnd\Rest\UserController@getDelete');
 
     // Tin tức mới
-    Route::get('/new', 'Rest\Backend\NewController@getList');
-    Route::post('/new', 'Rest\Backend\NewController@getInsert');
-    Route::get('/new/{id}', 'Rest\Backend\NewController@getEdit');
-	Route::post('/new/{id}', 'Rest\Backend\NewController@getUpdate');
-	Route::delete('/new/{id}', 'Rest\Backend\NewController@getDelete');
+    Route::get('/new', 'BackEnd\Rest\NewController@getList');
+    Route::post('/new', 'BackEnd\Rest\NewController@getInsert');
+    Route::get('/new/{id}', 'BackEnd\Rest\NewController@getEdit');
+	Route::post('/new/{id}', 'BackEnd\Rest\NewController@getUpdate');
+	Route::delete('/new/{id}', 'BackEnd\Rest\NewController@getDelete');
 
     // slide image 
-    Route::get('/slide', 'Rest\Backend\SlideController@getList');
-    Route::post('/slide', 'Rest\Backend\SlideController@getInsert');
-    Route::get('/slide/{id}', 'Rest\Backend\SlideController@getEdit');
-	Route::post('/slide/{id}', 'Rest\Backend\SlideController@getUpdate');
-	Route::delete('/slide/{id}', 'Rest\Backend\SlideController@getDelete');
+    Route::get('/slide', 'BackEnd\Rest\SlideController@getList');
+    Route::post('/slide', 'BackEnd\Rest\SlideController@getInsert');
+    Route::get('/slide/{id}', 'BackEnd\Rest\SlideController@getEdit');
+	Route::post('/slide/{id}', 'BackEnd\Rest\SlideController@getUpdate');
+	Route::delete('/slide/{id}', 'BackEnd\Rest\SlideController@getDelete');
 
 
     // loại tin
-    Route::get('/cate', 'Rest\Backend\CateController@getList');
-    Route::post('/cate', 'Rest\Backend\CateController@getInsert');
-    Route::get('/cate/{id}', 'Rest\Backend\CateController@getEdit');
-	Route::put('/cate/{id}', 'Rest\Backend\CateController@getUpdate');
-	Route::delete('/cate/{id}', 'Rest\Backend\CateController@getDelete');
+    Route::get('/cate', 'BackEnd\Rest\CateController@getList');
+    Route::post('/cate', 'BackEnd\Rest\CateController@getInsert');
+    Route::get('/cate/{id}', 'BackEnd\Rest\CateController@getEdit');
+	Route::put('/cate/{id}', 'BackEnd\Rest\CateController@getUpdate');
+	Route::delete('/cate/{id}', 'BackEnd\Rest\CateController@getDelete');
 
 
     // lớp học
-    Route::get('/class', 'Rest\Backend\ClassController@getList');
-    Route::post('/class', 'Rest\Backend\ClassController@getInsert');
-    Route::get('/class/{id}', 'Rest\Backend\ClassController@getEdit');
-    Route::put('/class/{id}', 'Rest\Backend\ClassController@getUpdate');
-    Route::delete('/class/{id}', 'Rest\Backend\ClassController@getDelete');
+    Route::get('/class', 'BackEnd\Rest\ClassController@getList');
+    Route::post('/class', 'BackEnd\Rest\ClassController@getInsert');
+    Route::get('/class/{id}', 'BackEnd\Rest\ClassController@getEdit');
+    Route::put('/class/{id}', 'BackEnd\Rest\ClassController@getUpdate');
+    Route::delete('/class/{id}', 'BackEnd\Rest\ClassController@getDelete');
 
     //them mon
-    Route::get('/cate-menu', 'Rest\Backend\MenuController@getListCateMenu');
-    Route::get('/menu', 'Rest\Backend\MenuController@getList');
-    Route::post('/menu', 'Rest\Backend\MenuController@getInsert');
-    Route::get('/menu/{id}', 'Rest\Backend\MenuController@getEdit');
-    Route::post('/menu/{id}', 'Rest\Backend\MenuController@getUpdate');
-    Route::delete('/menu/{id}', 'Rest\Backend\MenuController@getDelete');
+    Route::get('/cate-menu', 'BackEnd\Rest\MenuController@getListCateMenu');
+    Route::get('/menu', 'BackEnd\Rest\MenuController@getList');
+    Route::post('/menu', 'BackEnd\Rest\MenuController@getInsert');
+    Route::get('/menu/{id}', 'BackEnd\Rest\MenuController@getEdit');
+    Route::post('/menu/{id}', 'BackEnd\Rest\MenuController@getUpdate');
+    Route::delete('/menu/{id}', 'BackEnd\Rest\MenuController@getDelete');
 
 
     // album ảnh
-    Route::get('/album', 'Rest\Backend\AlbumController@getList');
-    Route::post('/album', 'Rest\Backend\AlbumController@getInsert');
-    Route::get('/album/{id}', 'Rest\Backend\AlbumController@getEdit');
-    Route::post('/album/{id}', 'Rest\Backend\AlbumController@getUpdate');
-    Route::delete('/album/{id}', 'Rest\Backend\AlbumController@getDelete');
+    Route::get('/album', 'BackEnd\Rest\AlbumController@getList');
+    Route::post('/album', 'BackEnd\Rest\AlbumController@getInsert');
+    Route::get('/album/{id}', 'BackEnd\Rest\AlbumController@getEdit');
+    Route::post('/album/{id}', 'BackEnd\Rest\AlbumController@getUpdate');
+    Route::delete('/album/{id}', 'BackEnd\Rest\AlbumController@getDelete');
 
     // ảnh trong album
-    Route::get('/image', 'Rest\Backend\FileImgController@getList');
-    Route::post('/image', 'Rest\Backend\FileImgController@getInsert');
-    Route::get('/image/{id}', 'Rest\Backend\FileImgController@getEdit');
-    Route::post('/image/{id}', 'Rest\Backend\FileImgController@getUpdate');
-    Route::delete('/image/{id}', 'Rest\Backend\FileImgController@getDelete');
+    Route::get('/image', 'BackEnd\Rest\FileImgController@getList');
+    Route::post('/image', 'BackEnd\Rest\FileImgController@getInsert');
+    Route::get('/image/{id}', 'BackEnd\Rest\FileImgController@getEdit');
+    Route::post('/image/{id}', 'BackEnd\Rest\FileImgController@getUpdate');
+    Route::delete('/image/{id}', 'BackEnd\Rest\FileImgController@getDelete');
 
     // tài liệu
-    Route::get('/file', 'Rest\Backend\UploadFileController@getList');
-    Route::post('/file', 'Rest\Backend\UploadFileController@getInsert');
-    Route::get('/file/{id}', 'Rest\Backend\UploadFileController@getEdit');
-    Route::post('/file/{id}', 'Rest\Backend\UploadFileController@getUpdate');
-    Route::delete('/file/{id}', 'Rest\Backend\UploadFileController@getDelete');
+    Route::get('/file', 'BackEnd\Rest\UploadFileController@getList');
+    Route::post('/file', 'BackEnd\Rest\UploadFileController@getInsert');
+    Route::get('/file/{id}', 'BackEnd\Rest\UploadFileController@getEdit');
+    Route::post('/file/{id}', 'BackEnd\Rest\UploadFileController@getUpdate');
+    Route::delete('/file/{id}', 'BackEnd\Rest\UploadFileController@getDelete');
 
     // video
-    Route::get('/video', 'Rest\Backend\VideoController@getList');
-    Route::post('/video', 'Rest\Backend\VideoController@getInsert');
-    Route::get('/video/{id}', 'Rest\Backend\VideoController@getEdit');
-    Route::post('/video/{id}', 'Rest\Backend\VideoController@getUpdate');
-    Route::delete('/video/{id}', 'Rest\Backend\VideoController@getDelete');
+    Route::get('/video', 'BackEnd\Rest\VideoController@getList');
+    Route::post('/video', 'BackEnd\Rest\VideoController@getInsert');
+    Route::get('/video/{id}', 'BackEnd\Rest\VideoController@getEdit');
+    Route::post('/video/{id}', 'BackEnd\Rest\VideoController@getUpdate');
+    Route::delete('/video/{id}', 'BackEnd\Rest\VideoController@getDelete');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 

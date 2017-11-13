@@ -19,6 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('url_image');
             $table->string('cate_file');
             $table->string('url_file');
+            $table->string('slug');
             $table->timestamps();
         });
     }

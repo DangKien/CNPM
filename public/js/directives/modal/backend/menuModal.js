@@ -2,7 +2,6 @@ ngApp.directive('menuMoal', function($apply, $menuService){
 	templateUrl = SiteUrl + '/modal/menuModal';
 
 	var link = function (scope) {
-		console.log(scope.data);
 		scope.dataParams = function () {
 			var week   = scope.data.params.week;
 			var month  = scope.data.params.month;

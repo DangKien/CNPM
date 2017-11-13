@@ -19,6 +19,7 @@ class CreateClassTable extends Migration
             $table->string('year');
             $table->integer('quatity')->default(0);
             $table->integer('status')->default(1);
+            $table->string('slug');
             $table->integer('user_id');
             $table->timestamps();
         });
