@@ -1,5 +1,5 @@
 <footer>
-	<div id="footer" class="col-md-12 image-footer">
+	<div id="footer" class="col-md-12 image-footer" ng-controller="mainMenuCtrl">
 		<div class="container">
 			<div class="department col-md-4 col-sm-4 text-left">
 				<h3>Trường mần non acb Kid</h3>
@@ -10,12 +10,7 @@
 				<h3>Danh mục</h3>
 				<ul>
 				    <li><a href="">Trang chủ</a></li>
-				    <li><a href="">Giới thiệu</a></li>
-				    <li><a href="">Chương trình học</a></li>
-				    <li><a href="">Thư viện</a></li>
-				    <li><a href="">Tuyển sinh</a></li>
-				    <li><a href="">Thông báo</a></li>
-				    <li><a href="">Liên hệ</a></li>
+				    <li ng-repeat="(key, menu) in data.listMainMenu"><a href="">@{{ menu.name }}</a></li>
 				</ul>
 			</div>
 			<div class="hotline col-md-4 col-sm-4 col-xs-6 text-left">
@@ -27,3 +22,7 @@
 		</div>
 	</div>
 </footer>
+
+<div class="go-up" style="display: block;">
+		<a href="#"><i class="fa fa-chevron-up"></i></a>    
+</div>

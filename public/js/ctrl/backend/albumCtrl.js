@@ -54,8 +54,8 @@ ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStat
 
 ngApp.config(['$routeProvider','$locationProvider',
     function($routeProvider, $locationProvider) {
-        var urlAlbum = SiteUrl + "/album";
-        var urlImage = SiteUrl + "/fileAlbum";
+        var urlAlbum = SiteUrl + "/backend/album";
+        var urlImage = SiteUrl + "/backend/fileAlbum";
         $routeProvider.
         when('/', {
             templateUrl: urlAlbum,

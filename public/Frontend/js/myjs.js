@@ -21,12 +21,6 @@ $(document).ready(function () {
 		var h = $(this).height();
 		
 	});
-	
-	$("#lightSlider").lightSlider({
-		autoWidth: true,
-		loop: true,
-		responsive : [],
-	}); 
 
 	$(window).resize(function() {
 	    if(window.innerWidth >= 768){

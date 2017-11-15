@@ -45,17 +45,17 @@
 	                </div>
 	                <!-- Anh image slide ng-reapet -->
 	                <div id="links" class="row">
-	                    <div class="col-md-3 col-sm-6" ng-repeat="(key, listImage) in data.listImage">
+	                    <div class="col-md-3 col-sm-6 image-lib" ng-repeat="(key, listImage) in data.listImage">
 	                    	<a href="{{ url('storage/images/album/lib_images') }}/@{{ listImage.url_image }}"
 	                    	   title="" data-gallery>
-                    	       <div class="thumbnail fix-thumbnail image-lib">
+                    	       <div class="thumbnail fix-thumbnail">
 	                    	   	    <img class="img-responsive" 
 	                    	         ng-src="{{ url('storage/images/album/title_images') }}/@{{ listImage.url_image }}"
 	                    	         alt="">
-	                    	    </a>
-	                    	    <button ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
-                    	       	</button>
-                    	       </div>
+	                    	    </div>
+	                    	</a>
+	                    	<button style="z-index: 10000;" ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
+                    	    </button>
 	                    </div>
 	                </div>
 			    </div>

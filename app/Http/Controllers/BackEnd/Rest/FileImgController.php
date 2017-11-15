@@ -11,7 +11,6 @@ use Storage, Image, File;
 class FileImgController extends Controller
 {
 	public function getList(FileImageModel $fileImageModel, Request $request) {
-
 		$fileImage = $fileImageModel->filterAlbumId($request->albumId)
 									->buildCond()
 									->paginate(16);

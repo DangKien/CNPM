@@ -1,42 +1,35 @@
 @extends('front.layouts.default')
 @section ('title', 'Thư viện tài liệu')
 @section ('myJs')
-	
+	<script src="{{ url('Frontend') }}/js/ctrl/homeCtrl.js"></script>
+	<script src="{{ url('Frontend') }}/js/factory/service/homeService.js"></script>
 @endsection
 
 @section('content')
-	<section>
+	<section ng-controller="homeCtrl">
 		<div class="container slider-image-t">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
 			  <!-- Indicators -->
 				<ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				  </ol>
+				    <li ng-repeat="(key, slide) in data.listSlider" data-target="#carousel-example-generic" data-slide-to="@{{ key + 1 }}" ng-class="key == 0? 'active' : ' ' "></li>
+				</ol>
 
 			  <!-- Wrapper for slides -->
-			<div class="carousel-inner" style="min-height: 250px" role="listbox">
-			    <div class="item active">
-			      <img src="{{ url('Frontend') }}/img/slide/slide1.jpg" style="width:100%; min-height: 250px" alt="...">
-			    </div>
-			    <div class="item">
-			      <img src="{{ url('Frontend') }}/img/slide/slide2.jpg" style="width:100%; min-height: 250px" alt="...">
-			    </div>
-			    <div class="item">
-			      <img src="{{ url('Frontend') }}/img/slide/slide3.jpg" style="width:100%; min-height: 250px;" alt="...">
-			    </div>
-			</div>
+				<div class="carousel-inner" style="min-height: 250px" role="listbox">
+				    <div ng-repeat="(key, slide) in data.listSlider" class="item" ng-class="key == 0 ? 'active' : ' ' ">
+				      <img ng-src="{{ url('storage/images/slides/images_slides') }}/@{{ slide.image }}" style="width:100%; min-height: 250px" alt="@{{  }}">
+				    </div>
+				</div>
 
 			  <!-- Controls -->
-			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			</a>
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				</a>
 			</div>
 
 			<div class="row" style="margin-top:15px;">
@@ -59,7 +52,7 @@
 
 							<div class="row lq">
 								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img//3.jpg" alt="">
+									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
 								</div>
 								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
 										<p class="title">Các con vui chơi</p>
@@ -150,7 +143,7 @@
 
 					<div class="embed-responsive embed-responsive-16by9">
 						<!-- <iframe src="image/logo1.png?rel=0"></iframe> -->
-						<video id="video-home" class=" embed-responsive-item" poster="image/logo1.png" controls autoplay="autoplay" frameborder="0" allowfullscreen>
+						<video id="video-home" class=" embed-responsive-item" poster="{{ url('Frontend') }}/img/logo1.png" controls autoplay="autoplay" frameborder="0" allowfullscreen>
 						  	<source src="video/vido1.mp4" type="video/mp4">
 						</video>
 						<button class="button-video-play">
@@ -177,20 +170,8 @@
 			<div class="row album-image">
 				<div class="container">
 					<ul id="lightSlider">
-					   <li class="fix-slider-product">
-					       <img class="img-responsive" src="{{ url('Frontend') }}/img/4.jpg" alt="">
-					   </li>
-					   <li class="fix-slider-product">
-					       <img class="img-responsive" src="{{ url('Frontend') }}/img/2.jpg" alt="">
-					   </li>
-					   <li class="fix-slider-product">
-					       <img class="img-responsive" src="{{ url('Frontend') }}/img/1.jpg" alt="">
-					   </li>
-					   <li class="fix-slider-product">
-					       <img class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-					   </li>
-					   <li class="fix-slider-product">
-					       <img class="img-responsive" src="{{ url('Frontend') }}/img/5.jpg" alt="">
+					   <li class="fix-slider-product" lib-image ng-repeat="(key, image) in data.listLibImage">
+					       <img class="img-responsive" ng-src="{{ url('storage/images/album/title_images') }}/@{{ image.url_image }}" alt="">
 					   </li>
 					</ul>
 				</div>

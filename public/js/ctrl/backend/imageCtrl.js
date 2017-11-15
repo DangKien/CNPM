@@ -27,7 +27,8 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 		},
 		// Danh sach loai tin
 		listAlbum: function () {
-			var params = $imageService.filter($scope.data.pageImage.page, 16);
+
+			var params = $imageService.filter($scope.data.idAlbum, $scope.data.pageImage.page, 16);
 			$imageService.action.listImage(params).then(function (resp) {
 				$scope.data.listImage = resp.data.data;
 				$scope.data.pageImage = resp.data;

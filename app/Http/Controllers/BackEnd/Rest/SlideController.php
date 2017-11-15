@@ -33,7 +33,7 @@ class SlideController extends Controller
 				return response()->json(['messages' => "Không tìm thấy ảnh"], 422);
 			}
 			$slide->title       = $request->title;
-			$newModel->slug    = sanitizeTitle($request->title);
+			$slide->slug    = sanitizeTitle($request->title);
 			$slide->image       = $path;
 			$slide->content     = $request->content;
 			$slide->status      = $request->status;

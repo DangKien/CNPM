@@ -19,6 +19,7 @@ class CreateCatetogysTable extends Migration
             $table->string('slug');
             $table->string('tag')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('priority')->nullable();
             $table->integer('cate_id');
             $table->integer('user_create');
             $table->timestamps();

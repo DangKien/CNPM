@@ -59,7 +59,6 @@ Route::group(['prefix' => 'backend'], function (){
         });
 
     });
-
 });
 Route::group(['prefix' => ''], function (){
     Route::get('/', function () {
@@ -148,4 +147,11 @@ Route::group(['prefix' => 'rest'], function() {
 
 Auth::routes();
 
-
+Route::group(['prefix' => 'rest'], function (){
+    Route::group(['prefix' => 'fontend'], function (){
+        Route::get('/mainMenu', 'FrontEnd\Rest\HomeCtrl@getMainMenu');
+        Route::get('/sidler', 'FrontEnd\Rest\HomeCtrl@getSlider');
+        Route::get('/libImage', 'FrontEnd\Rest\HomeCtrl@getLibImage');
+        
+    });
+});

@@ -16,8 +16,9 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
 		return params;
 	};
 
-	service.filter = function (page = 1 , perPage = 16) {
+	service.filter = function (albumId ,page = 1 , perPage = 16) {
 		var params = {
+			albumId: albumId,
 			per_page: perPage,
 			page: page || '1',
 		};

@@ -31,6 +31,7 @@ class CateSeeder extends Seeder
         	['name' => 'Thư viện tài liệu', 'slug'=>"thu-vien-tai-lieu", 'cate_id'=>"12", 'user_create'=>"1"],
 
         	['name' => 'Tuyển sinh', 'slug'=>"tuyen-sinh", 'cate_id'=>"0", 'user_create'=>"1"],
+            ['name' => 'Thông báo', 'slug'=>"thong-bao", 'cate_id'=>"0", 'user_create'=>"1"],
         	['name' => 'Thông tin tuyển sinh', 'slug'=>"thong-tin-tuyen-sinh", 'cate_id'=>"16", 'user_create'=>"1"],
         	['name' => 'Hướng dẫn', 'slug'=>"huong-dan", 'cate_id'=>"16", 'user_create'=>"1"],
         	['name' => 'Đăng kí tuyển sinh Online', 'slug'=>"dang-ki-online", 'cate_id'=>"16", 'user_create'=>"1"],
