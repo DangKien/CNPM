@@ -22,13 +22,13 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 	$scope.actions = {
 
 		changePage: function (page) {
-			$scope.data.pageImage.page = page;
+			$scope.data.pageImage.current_page = page;
 			$scope.actions.listAlbum();
 		},
 		// Danh sach loai tin
 		listAlbum: function () {
 
-			var params = $imageService.filter($scope.data.idAlbum, $scope.data.pageImage.page, 16);
+			var params = $imageService.filter($scope.data.idAlbum, $scope.data.pageImage.current_page, 16);
 			$imageService.action.listImage(params).then(function (resp) {
 				$scope.data.listImage = resp.data.data;
 				$scope.data.pageImage = resp.data;

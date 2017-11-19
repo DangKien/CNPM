@@ -1,5 +1,5 @@
 @extends('front.layouts.default')
-@section ('title', 'Thư viện tài liệu')
+@section ('title', "Mầm non Color")
 @section ('myJs')
 	<script src="{{ url('Frontend') }}/js/ctrl/homeCtrl.js"></script>
 	<script src="{{ url('Frontend') }}/js/factory/service/homeService.js"></script>
@@ -8,6 +8,7 @@
 @section('content')
 	<section ng-controller="homeCtrl">
 		<div class="container slider-image-t">
+			{{-- slide image --}}
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
 			  <!-- Indicators -->
 				<ol class="carousel-indicators">
@@ -17,7 +18,7 @@
 			  <!-- Wrapper for slides -->
 				<div class="carousel-inner" style="min-height: 250px" role="listbox">
 				    <div ng-repeat="(key, slide) in data.listSlider" class="item" ng-class="key == 0 ? 'active' : ' ' ">
-				      <img ng-src="{{ url('storage/images/slides/images_slides') }}/@{{ slide.image }}" style="width:100%; min-height: 250px" alt="@{{  }}">
+				      <img ng-src="{{ url('storage/images/slides/images_slides') }}/@{{ slide.image }}" style="width:100%; min-height: 250px" alt="@{{ slide.title }}">
 				    </div>
 				</div>
 
@@ -31,7 +32,9 @@
 				    <span class="sr-only">Next</span>
 				</a>
 			</div>
-
+			{{-- het slide image --}}
+			
+			{{-- div tin tuc --}}
 			<div class="row" style="margin-top:15px;">
 				<div class="col-md-6 col-sm-6">
 					<div class="panel panel-success">
@@ -39,104 +42,71 @@
 							<h3 class="panel-title">Tin tức mới</h3>
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12 new">
-									<img style="width: 100%" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-12 content-news">
-										<h4 class="title">Các con vui chơi</h4>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
+							<div class="row fix-panel" ng-repeat="(key, news) in data.listNews" ng-if="(key == 0)">
+								<a href="{{ url('') }}/tin-tuc/@{{ news.slug + '-' + news.id }}">
+									<div class="col-md-12 new">
+										<img style="width: 100%" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
+									</div>
+									<div class="col-md-12 content-news">
+											<h4 class="title">@{{ news.title }}</h4>
+											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy' }}</span>
+											<p ng-bind-html="news.content | limitTo: 200"></p>
+									</div>
+								</a>
 							</div>
 
-							<div class="row lq">
-								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
-										<p class="title">Các con vui chơi</p>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
+							<div class="row lq" ng-repeat="(key, news) in data.listNews" ng-if="(key != 0)">
+								<a href="{{ url('') }}/tin-tuc/@{{ news.slug + '-' + news.id }}">
+									<div class="col-md-3 col-sm-5 col-xs-6">
+										<img style="width: 100%; height: 110px;" class="img-responsive" ng-src="{{ url('storage')}}/@{{ news.image }}" alt="@{{ new.title }}">
+									</div>
+									<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
+											<p class="title">@{{ news.title }}</p>
+											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy'}}</span>
+									</div>
+								</a>
 							</div>
-							<div class="row lq">
-								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
-										<p class="title">Các con vui chơi</p>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
-							</div>
-							<div class="row lq">
-								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
-										<p class="title">Các con vui chơi</p>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
-							</div>					
-
 						</div>
 					</div>
 				</div>
+
 				<div class="col-md-6 col-sm-6">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<h3 class="panel-title">Tin tức mới</h3>
+							<h3 class="panel-title">Thông báo</h3>
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-									<img style="width: 100%; height: 300px" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-12 content-news">
-										<h4 class="title">Các con vui chơi</h4>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
+							<div class="row fix-panel" ng-repeat="(key, news) in data.listNotifi" ng-if="(key == 0)">
+								<a href="{{ url('') }}/thong-bao/@{{ news.slug + '-' + news.id }}">
+									<div class="col-md-12 new">
+										<img style="width: 100%" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
+									</div>
+									<div class="col-md-12 content-news">
+											<h4 class="title">@{{ news.title }}</h4>
+											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy'}}</span>
+											<p ng-bind-html="news.content | limitTo: 200"></p>
+									</div>
+								</a>
 							</div>
 
-							<div class="row lq">
-								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
-										<p class="title">Các con vui chơi</p>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
+							<div class="row lq" ng-repeat="(key, news) in data.listNotifi" ng-if="(key != 0)">
+								<a href="{{ url('') }}/thong-bao/@{{ news.slug + '-' + news.id }}">
+									<div class="col-md-3 col-sm-5 col-xs-6">
+										<img style="width: 100%; height: 110px;" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}" alt="">
+									</div>
+									<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
+											<p class="title">@{{ news.title }}</p>
+											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy'}}</span>
+									
+									</div>
+								</a>
 							</div>
-							<div class="row lq">
-								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
-										<p class="title">Các con vui chơi</p>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
-							</div>
-							<div class="row lq">
-								<div class="col-md-3 col-sm-5 col-xs-6">
-									<img style="width: 100%; height: 110px;" class="img-responsive" src="{{ url('Frontend') }}/img/3.jpg" alt="">
-								</div>
-								<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
-										<p class="title">Các con vui chơi</p>
-										<span>20-11-2017</span>
-										<p>Đi khắp thế gian không ai tốt bằng mẹ. Gánh nặng cuộc đời không ai khổ bằng cha. Một năm có 365 ngày, 365 lời cảm ơn…  </p>
-								</div>
-							</div>					
-
 						</div>
 					</div>
 				</div>
 			</div>
-			
+			{{-- het tin tuc --}}
+
 			<!-- video -->
 			<div class="row">
 				<div class="col-md-8">
@@ -144,7 +114,7 @@
 					<div class="embed-responsive embed-responsive-16by9">
 						<!-- <iframe src="image/logo1.png?rel=0"></iframe> -->
 						<video id="video-home" class=" embed-responsive-item" poster="{{ url('Frontend') }}/img/logo1.png" controls autoplay="autoplay" frameborder="0" allowfullscreen>
-						  	<source src="video/vido1.mp4" type="video/mp4">
+						  	{{-- <source src="video/vido1.mp4" type="video/mp4"> --}}
 						</video>
 						<button class="button-video-play">
 							
@@ -165,7 +135,7 @@
 				</div>
 			</div>
 			<!-- end video -->
-			
+
 			<!-- album Image -->
 			<div class="row album-image">
 				<div class="container">

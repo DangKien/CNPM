@@ -34,7 +34,12 @@
 									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nội dung: </label>
 									<div class="col-sm-8">
 										<input type="text" placeholder="Nội dung" class="form-control input-sm" ng-model="data.params.content"
-										id="demo-is-inputsmall">
+										id="demo-is-inputsmall" required>
+										<p class="text-danger" style="margin-top: 5px;"
+											ng-repeat="er in data.errors.content"
+										>
+										    @{{ er }}
+										</p>
 									</div>
 								</div>
 

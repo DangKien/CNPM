@@ -16,7 +16,7 @@ ngApp.factory('$slideService', function ($http, $httpParamSerializer){
 
 
 	service.action.listSlide = function (page) {
-		var url = SiteUrl + "/rest/slide/?" + $httpParamSerializer(page);
+		var url = SiteUrl + "/rest/backend/slide/?" + $httpParamSerializer(page);
         return $http.get(url);
 	};
 
@@ -29,12 +29,12 @@ ngApp.factory('$slideService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/slide";
+		var url = SiteUrl + "/rest/backend/slide";
         return $http.post(url, params, config);
 	};
 
 	service.action.editSlide= function (idslide) {
-		var url = SiteUrl + "/rest/slide/" + idslide;
+		var url = SiteUrl + "/rest/backend/slide/" + idslide;
         return $http.get(url);
 	};
 
@@ -46,12 +46,12 @@ ngApp.factory('$slideService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/slide/" + idslide;
+		var url = SiteUrl + "/rest/backend/slide/" + idslide;
         return $http.post(url, params, config);
 	};
 
 	service.action.deleteSlide = function (idslide) {
-		var url = SiteUrl + "/rest/slide/" + idslide;
+		var url = SiteUrl + "/rest/backend/slide/" + idslide;
         return $http.delete(url);
 	};
 

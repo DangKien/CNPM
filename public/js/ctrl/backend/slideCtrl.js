@@ -16,13 +16,13 @@ ngApp.controller('slideCtrl', function ($scope, $apply, $slideService, $conf) {
 	$scope.actions = {
 
 		changePage: function (page) {
-			$scope.data.pageSlide.currentPage = page;
+			$scope.data.pageSlide.current_page = page;
 			$scope.actions.listSlide();
 		},
 
 		listSlide : function () {
 			// lay du lieu tim kiem va page
-			$slideService.action.listSlide($scope.data.pageSlide.curentPage).then(function (resp) {
+			$slideService.action.listSlide($scope.data.pageSlide.current_page).then(function (resp) {
 				$scope.data.listSlides = resp.data.data;
 				$scope.data.pageSlide  = resp.data;
 			  }, function (error) {

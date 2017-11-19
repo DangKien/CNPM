@@ -3,6 +3,8 @@ ngApp.controller('homeCtrl', function ($apply, $rootScope, $scope, $homeService)
 	$scope.data = {
 		listSlider: {},
 		listLibImage: {},
+		listNews: {},
+		listNotifi: {},
 	};
 	$scope.actions = {
 		listSlider: function () {
@@ -20,7 +22,29 @@ ngApp.controller('homeCtrl', function ($apply, $rootScope, $scope, $homeService)
 				console.log(error);
 			});
 		},
+
+		listNews: function () {
+			$homeService.action.getNews('tin-tuc').then(function (resp) {
+				$scope.data.listNews = resp.data;
+			}, function (error) {
+				console.log(error);
+			});
+		},
+
+		listNotifi: function () {
+			$homeService.action.getNews('thong-bao').then(function (resp) {
+				$scope.data.listNotifi = resp.data;
+			}, function (error) {
+				console.log(error);
+			});
+		},
+
+
 	}
 	$scope.actions.listSlider();
+	$scope.actions.listNews();
+	$scope.actions.listNotifi();
 	$scope.actions.libImage();
+	
 });
+

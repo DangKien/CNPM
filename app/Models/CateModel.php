@@ -24,6 +24,7 @@ class CateModel extends MyModel
 
     function filterStatus($status){
         $this->setFunctionCond('where', ['status', $status]);
+
         return $this;
     }
 }

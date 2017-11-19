@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\CateModel;
 use App\Models\SlideModel;
 use App\Models\FileImageModel;
+use App\Models\NewModel;
 
 
 Class HomeCtrl extends Controller {
 
     public function getMainMenu (CateModel $cateModel){
-        $cate = $cateModel::select('id', 'name')
+        $cate = $cateModel::select('id', 'name', 'slug')
                             ->where('cate_id', 0)
                             ->orderBy('priority', 'asc')
                             ->get();
@@ -36,6 +37,17 @@ Class HomeCtrl extends Controller {
 	    					  ->get();
 
 	    return response()->json($libImage);			
+    }
+
+    public function getNews(NewModel $newModel, $slug) {
+
+        $news = $newModel->filterSlug($slug)
+                        ->buildCond()
+                        ->with('cates')
+                        ->orderBy('created_at', 'desc')
+                        ->limit('4')
+                        ->get();
+        return  response()->json($news);
     }
     
 }

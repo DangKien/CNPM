@@ -11,11 +11,11 @@ ngApp.controller('fileCtrl', function ($apply, $fileService, $scope, $conf) {
 	};
 	$scope.actions = {
 		changePage: function (page) {
-			$scope.data.pageFile.page = page;
+			$scope.data.pageFile.current_page = page;
 			$scope.actions.listFile();
 		},
 		filterParams: function () {
-			var params = $fileService.filter($scope.data.pageFile.page, 10);
+			var params = $fileService.filter($scope.data.pageFile.current_page, 10);
 			return params;
 		},
 

@@ -64,7 +64,9 @@ class NewController extends Controller
 			try {
 				$new = $newModel::find($id);
 				if ($request->hasFile('file')){
+					$this->validateImage($request);
 					$path = Storage::disk('public')->putFile('images/news', $request->file);
+
 				}else {
 					$path = $new->image;
 				}
@@ -95,6 +97,8 @@ class NewController extends Controller
 			DB::beginTransaction();
 			try {
 				$new = NewModel::find($id);
+
+				$new->delete();
 				DB::commit();
 
 				return response()->json(['status' => true], 200); 
@@ -128,10 +132,16 @@ class NewController extends Controller
 	    return $this->validate($request, [
 			'title'   => 'required',
 			'content' => 'required',
-			'file'    => 'image',
 	    	], [
 			'title.required'   => 'Nội dung không được để trống',
 			'content.required' => 'Nội dung không được bỏ trống',
+	    	]
+		);
+	}
+	public function validateImage($request) {
+		return $this->validate($request, [
+			'file'    => 'image',
+	    	], [
 			'file.image'       => 'File không phải hình ảnh',
 	    	]
 		);

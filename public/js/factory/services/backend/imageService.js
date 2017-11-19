@@ -25,7 +25,7 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
 		return params;
 	};
 	service.action.listImage = function (filter) {
-		var url = SiteUrl + "/rest/image/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/image/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
@@ -37,12 +37,12 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/image";
+		var url = SiteUrl + "/rest/backend/image";
         return $http.post(url, params, config);
 	};
 
 	service.action.editAlbum = function (idAlbum) {
-		var url = SiteUrl + "/rest/album/" + idAlbum;
+		var url = SiteUrl + "/rest/backend/album/" + idAlbum;
         return $http.get(url);
 	};
 
@@ -54,12 +54,12 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/album/" + idAlbum;
+		var url = SiteUrl + "/rest/backend/album/" + idAlbum;
         return $http.post(url, params, config);
 	};
 
 	service.action.deleteImage = function (idAlbum) {
-		var url = SiteUrl + "/rest/image/" + idAlbum;
+		var url = SiteUrl + "/rest/backend/image/" + idAlbum;
         return $http.delete(url);
 	};
 

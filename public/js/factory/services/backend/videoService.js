@@ -26,7 +26,7 @@ ngApp.factory('$videoService', function ($http, $httpParamSerializer){
 		return params;
 	};
 	service.action.listVideo = function (filter) {
-		var url = SiteUrl + "/rest/video/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/video/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
@@ -38,12 +38,12 @@ ngApp.factory('$videoService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/video";
+		var url = SiteUrl + "/rest/backend/video";
         return $http.post(url, params, config);
 	};
 
 	service.action.editVideo = function (idVideo) {
-		var url = SiteUrl + "/rest/video/" + idVideo;
+		var url = SiteUrl + "/rest/backend/video/" + idVideo;
         return $http.get(url);
 	};
 
@@ -55,12 +55,12 @@ ngApp.factory('$videoService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/video/" + idVideo;
+		var url = SiteUrl + "/rest/backend/video/" + idVideo;
         return $http.post(url, params, config);
 	};
 
 	service.action.deleteVideo = function (idVideo) {
-		var url = SiteUrl + "/rest/video/" + idVideo;
+		var url = SiteUrl + "/rest/backend/video/" + idVideo;
         return $http.delete(url);
 	};
 

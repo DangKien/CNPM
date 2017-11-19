@@ -12,7 +12,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 	}; 
 	$scope.actions = {
 		changePage: function (page) {
-			$scope.data.pageUser.currentPage = page;
+			$scope.data.pageUser.current_page = page;
 			$scope.actions.listUser();
 		},
 
@@ -22,7 +22,7 @@ ngApp.controller('userCtrl', function ($scope, $apply, $userService, $conf) {
 			var phone  = $scope.data.filter.phone;
 			var email  = $scope.data.filter.email;
 			var status = $('#statusFilter').val();
-			var current_page = $scope.data.pageUser.currentPage;
+			var current_page = $scope.data.pageUser.current_page;
 			var params = $userService.filter(name, phone, email, status, current_page);
 			// thuc hien tim kiem
 			$userService.action.listUser(params).then(function (resp) {

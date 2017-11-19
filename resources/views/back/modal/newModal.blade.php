@@ -54,7 +54,7 @@
 								<div class="form-group">
 									<label class="control-label" for="demo-is-inputsmall">Ảnh minh họa: </label>
 									<div class="">
-										<input required name="fileImg" type="file" placeholder="Tên người dùng" class="form-control input-sm image-support"
+										<input name="fileImg" type="file" placeholder="Tên người dùng" class="form-control input-sm image-support"
 										id="demo-is-inputsmall">
 										<img class="image-support img-responsive" src="{{ url('Nifty') }}/img/av6.png" alt="" style="width: 140px; height: 150px;">
 										<p class="text-danger" style="margin-top: 5px;"

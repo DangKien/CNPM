@@ -18,8 +18,8 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 	$scope.actions = {
 
 		changePage: function (page) {
-			$scope.data.pageNew.currentPage = page;
-			$scope.actions.listUser();
+			$scope.data.pageNew.current_page = page;
+			$scope.actions.listNew();
 		},
 
 		allListCate: function () {
@@ -53,12 +53,13 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 			//lay du lieu tim kiem va page
 			var title         = $scope.filter.title;
 			var cate         = $scope.filter.cate;
-			var current_page = $scope.data.pageNew.currentPage;
+			var current_page = $scope.data.pageNew.current_page;
 			var params       = $newService.filter(title, cate, current_page, 10);
 			//thuc hien tim kiem
 			$newService.action.listNew(params).then(function (resp) {
 				$scope.data.listNews = resp.data.data;
 				$scope.data.pageNew  = resp.data;
+				console.log($scope.data.pageNew);
 			  }, function (error) {
 			  	console.log(error);
 			  });
@@ -83,15 +84,14 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 			
 		},
 
-		saveNew: function (data) {
-			$scope.actions.listNew();
-			$scope.actions.allListCate();
+		saveNew: function (data) {		
 			if (data == true) {
 				if ($scope.data.idNew) {
 					$conf.confirmNotifi('success', 'Cập nhật tin thành công');
 				} else {
 					$conf.confirmNotifi('success', 'Thêm mới tin thành công');
 				}
+				$scope.actions.listNew();
 				$($scope.domNewModal).modal('hide');
 			}else {
 				$scope.data.errors = data.errors;
@@ -100,13 +100,19 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 		},
 
 		deleteNew: function (idNew) {
-			$newService.action.deleteNew(idNew).then(function (resp) {
-				$conf.confirmNotifi('success', 'Xóa tin thành công');
-			}, function (error) {
-				$conf.confirmNotifi('error', 'Xóa tin thất bại', "fa fa-ban");
-			});
-			$scope.actions.listNew();
-			$scope.actions.allListCate();
+			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+				if (respon == true){
+					$newService.action.deleteNew(idNew).then(function (resp) {
+						$conf.confirmNotifi('success', 'Xóa tin thành công');
+						$scope.actions.listNew();
+						$scope.actions.allListCate();
+					}, function (error) {
+						$conf.confirmNotifi('error', 'Xóa tin thất bại', "fa fa-ban");
+					});
+				}
+			});	
+			
+			
 		}
 
 	}

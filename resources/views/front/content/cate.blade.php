@@ -1,0 +1,45 @@
+@extends('front.layouts.default')
+@section ('title', $nameCate)
+@section ('myJs')
+	<script src="{{ url('Frontend') }}/js/ctrl/cateNewCtrl.js"></script>
+	<script src="{{ url('Frontend') }}/js/factory/service/cateNewService.js"></script>
+@endsection
+
+@section('content')
+	<section>
+		<div class="container">
+			<div class="panel">
+			  	<div class="panel-body">
+	  				<div class="menu-left padding-left-0 col-md-3 col-sm-5 text-center">
+		  					<ul>
+		  					    <li class="active-li">
+		  					    	<a> {{ $nameCate }} </a>
+		  					    </li>
+		  					    @if (isset($menu)) 
+		  		                    @foreach ($menu as $item) 
+			  		                	<li class="{{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">
+			  		                		<a class="color-theme-medium" href="{{ url('',  ["$slug" ,"$item->slug"]) }} ">{{ $item->name }}</a>
+			  		                	</li>
+		  		              		@endforeach
+		  		              	@endif
+		  					</ul>
+	  					</div>
+	  				<div class="col-sm-9 col-md-8 col-lg-9 padding-topbot-15px">
+	  					<div class="post-content" role="tabpanel" ng-controller="cateNewCtrl">
+	  						<h2 class="text-center title"> @{{ data.listPost.title }} </h2>
+	  						<p ng-bind-html="data.listPost.content"></p>
+	  						<br>
+	  						<br>
+	  						<div class="text-right">
+	  							<p><i><b>Người đăng bài: </b> @{{ data.listPost.users.name }}</i></p>
+	  							<p><i><b>Số lượt xem: </b> @{{ data.listPost.view }}</i></p>
+	  							<p><i><b>Ngày đăng bài: </b> @{{ data.listPost.updated_at | formatDate : data.listPost.updated_at : 'mm-dd-yyy' }}</i></p>
+	  						</div>
+	  					</div>
+	  					
+	  				</div>
+			  	</div>
+			</div>
+		</div>
+	</section>
+@endsection

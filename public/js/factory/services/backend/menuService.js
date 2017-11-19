@@ -25,12 +25,12 @@ ngApp.factory('$menuService', function ($http, $httpParamSerializer){
 		return params;
 	};
 	service.action.listMenu = function (filter) {
-		var url = SiteUrl + "/rest/menu/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/menu/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
 	service.action.listCateMenu = function () {
-		var url = SiteUrl + "/rest/cate-menu";
+		var url = SiteUrl + "/rest/backend/cate-menu";
         return $http.get(url);
 	};
 
@@ -43,12 +43,12 @@ ngApp.factory('$menuService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/menu";
+		var url = SiteUrl + "/rest/backend/menu";
         return $http.post(url, params, config);
 	};
 
 	service.action.editMenu = function (idMenu) {
-		var url = SiteUrl + "/rest/menu/" + idMenu;
+		var url = SiteUrl + "/rest/backend/menu/" + idMenu;
         return $http.get(url);
 	};
 
@@ -60,12 +60,12 @@ ngApp.factory('$menuService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/menu/" + idMenu;
+		var url = SiteUrl + "/rest/backend/menu/" + idMenu;
         return $http.post(url, params, config);
 	};
 
 	service.action.deleteMenu = function (idMenu) {
-		var url = SiteUrl + "/rest/menu/" + idMenu;
+		var url = SiteUrl + "/rest/backend/menu/" + idMenu;
         return $http.delete(url);
 	};
 

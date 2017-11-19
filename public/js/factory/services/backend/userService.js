@@ -37,7 +37,7 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
     };
 
     $service.action.listUser = function (filter) {
-        var url = SiteUrl + "/rest/user?" + $httpParamSerializer(filter);
+        var url = SiteUrl + "/rest/backend/user?" + $httpParamSerializer(filter);
         return $http.get(url);
     };
     
@@ -49,12 +49,12 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
                     'contentType': false,
                 },
             };
-        var url = SiteUrl + "/rest/user";
+        var url = SiteUrl + "/rest/backend/user";
         return $http.post(url, data, config);
     };
     
     $service.action.editUser = function (id) {
-        var url = SiteUrl + "/rest/user/" + id;
+        var url = SiteUrl + "/rest/backend/user/" + id;
         return $http.get(url);
     };
     
@@ -66,12 +66,12 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
                     'contentType': false,
                 },
             };
-        var url = SiteUrl + "/rest/user-update/" + id;
+        var url = SiteUrl + "/rest/backend/user-update/" + id;
         return $http.post(url, data, config);
     };
     
     $service.action.deleteUser = function (id) {
-        var url = SiteUrl + "/rest/user/" + id;
+        var url = SiteUrl + "/rest/backend/user/" + id;
         return $http.delete(url);
     };
     

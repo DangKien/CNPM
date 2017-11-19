@@ -101,14 +101,14 @@
 									<td style="min-width: 150px; max-width: 200px;">@{{ new.title }}</td>
 									<td style="min-width: 150px;"><img class="img-responsive" style="width: 100px; height: 100px;" ng-src="{{ url('storage/')}}/@{{ new.image }}" alt="@{{ new.title }}"></td>
 									{{-- in ra html angular  --}}
-									<td ng-click="actions.seeMore(new.id)" ng-bind-html="new.content | ellipsis:100">
+									<td ng-click="actions.seeMore(new.id)" ng-bind-html="new.content | ellipsis:200 ">
 									</td>
 									<td style="min-width: 100px;"> @{{ new.cates.name }} </td>
 									<td style="min-width: 100px;"> @{{ new.users.name }} </td>
 									<td style="min-width: 50px;"> @{{ new.view }} </td>
 									<td style="min-width: 100px;">
 										<button ng-click= "actions.showModal(new.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-										<button ng-click= "actions.deleteCate(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+										<button ng-click= "actions.deleteNew(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
 									</td>
 								</tr>
 							</tbody>

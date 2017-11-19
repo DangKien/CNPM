@@ -5,10 +5,12 @@ ngApp.directive('myCkeditor', function($apply) {
         link: function(scope, element, attrs, ngModel) {
             var ck = CKEDITOR.replace(element[0], {
                 language: 'vi',
-                filebrowserImageBrowseUrl: SiteUrl + '/js/plugin/ckfinder/ckfinder.html?type=Images',     
-                filebrowserFlashBrowseUrl: SiteUrl + '/js/plugin/ckfinder/ckfinder.html?type=Flash', 
-                filebrowserImageUploadUrl: SiteUrl + '/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',                
-                filebrowserFlashUploadUrl: SiteUrl + '/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                filebrowserBrowseUrl      : SiteUrl + '/js/plugin/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl : SiteUrl + '/js/plugin/ckfinder/ckfinder.html?type=Images',
+                filebrowserFlashBrowseUrl : SiteUrl + '/js/plugin/ckfinder/ckfinder.html?type=Flash',
+                filebrowserUploadUrl      : SiteUrl + '/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl : SiteUrl + '/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                filebrowserFlashUploadUrl : SiteUrl + '/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
             }); 
             if (!ngModel) return;
             ck.on('instanceReady', function () {

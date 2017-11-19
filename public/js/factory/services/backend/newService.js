@@ -27,7 +27,7 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
 	};
 
 	service.action.listNew = function (filter) {
-		var url = SiteUrl + "/rest/new/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/new/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
@@ -39,12 +39,12 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/new";
+		var url = SiteUrl + "/rest/backend/new";
         return $http.post(url, params, config);
 	};
 
 	service.action.editNew = function (idnew) {
-		var url = SiteUrl + "/rest/new/" + idnew;
+		var url = SiteUrl + "/rest/backend/new/" + idnew;
         return $http.get(url);
 	};
 
@@ -56,12 +56,12 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/new/" + idnew;
+		var url = SiteUrl + "/rest/backend/new/" + idnew;
         return $http.post(url, params, config);
 	};
 
 	service.action.deleteNew = function (idnew) {
-		var url = SiteUrl + "/rest/new/" + idnew;
+		var url = SiteUrl + "/rest/backend/new/" + idnew;
         return $http.delete(url);
 	};
 

@@ -4,6 +4,8 @@
 {{-- apply --}}
 <script src="{{ url('') }}/js/factory/apply.js"></script>
 <script src="{{ url('Frontend') }}/js/directive/libImage.js"></script>
+<script src="{{ url('Frontend') }}/js/directive/fixPanel.js"></script>
+<script src="{{ url('') }}/js/directives/myFormatdate.js"></script>
 
 {{-- main menu --}}
 <script src="{{ url('Frontend') }}/js/ctrl/mainMenuCtrl.js"></script>

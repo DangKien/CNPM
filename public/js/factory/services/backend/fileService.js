@@ -23,7 +23,7 @@ ngApp.factory('$fileService', function ($http, $httpParamSerializer){
 	};
 
 	service.action.listFile = function (filter) {
-		var url = SiteUrl + "/rest/file/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/file/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
@@ -35,12 +35,12 @@ ngApp.factory('$fileService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/file";
+		var url = SiteUrl + "/rest/backend/file";
         return $http.post(url, params, config);
 	};
 
 	service.action.editFile = function (idFile) {
-		var url = SiteUrl + "/rest/file/" + idFile;
+		var url = SiteUrl + "/rest/backend/file/" + idFile;
         return $http.get(url);
 	};
 
@@ -52,12 +52,12 @@ ngApp.factory('$fileService', function ($http, $httpParamSerializer){
                     'contentType': false,
             },
 		};
-		var url = SiteUrl + "/rest/file/" + idFile;
+		var url = SiteUrl + "/rest/backend/file/" + idFile;
         return $http.post(url, params, config);
 	};
 
 	service.action.deleteFile = function (idFile) {
-		var url = SiteUrl + "/rest/file/" + idFile;
+		var url = SiteUrl + "/rest/backend/file/" + idFile;
         return $http.delete(url);
 	};
 

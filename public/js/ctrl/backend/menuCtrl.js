@@ -40,13 +40,13 @@ ngApp.controller('menuCtrl', function ($apply, $menuService, $scope, changStatus
 
 		changePage: function (page) {
 			console.log(page);
-			$scope.data.pageMenu.page = page;
+			$scope.data.pageMenu.current_page = page;
 			$scope.actions.listMenu();
 		},
 
 		// Danh sach loai tin
 		listMenu: function () {
-			var params = $menuService.filter($scope.data.pageMenu.page, 10);
+			var params = $menuService.filter($scope.data.pageMenu.current_page, 10);
 			$menuService.action.listMenu().then(function (resp) {
 				$scope.data.listMenu = resp.data.data;
 				$scope.data.pageMenu = resp.data;

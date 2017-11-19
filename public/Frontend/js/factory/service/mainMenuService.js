@@ -5,7 +5,7 @@ ngApp.factory('$mainMenuService', function ($http, $httpParamSerializer){
 	};
 
 	service.action.mainMenu = function () {
-		var url = SiteUrl + "/rest/fontend/mainMenu";
+		var url = SiteUrl + "/rest/fontend/mainMenu?";
         return $http.get(url);
 	};
 

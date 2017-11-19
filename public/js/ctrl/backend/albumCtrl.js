@@ -16,13 +16,13 @@ ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStat
 
 		changePage: function (page) {
 			console.log(page);
-			$scope.data.pageAlbum.page = page;
+			$scope.data.pageAlbum.current_page = page;
 			$scope.actions.listAlbum();
 		},
 
 		// Danh sach loai tin
 		listAlbum: function () {
-			var params = $albumService.filter($scope.data.pageAlbum.page, 8);
+			var params = $albumService.filter($scope.data.pageAlbum.current_page, 8);
 			$albumService.action.listAlbum(params).then(function (resp) {
 				$scope.data.listAlbum = resp.data.data;
 				$scope.data.pageAlbum = resp.data;
@@ -54,8 +54,8 @@ ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStat
 
 ngApp.config(['$routeProvider','$locationProvider',
     function($routeProvider, $locationProvider) {
-        var urlAlbum = SiteUrl + "/backend/album";
-        var urlImage = SiteUrl + "/backend/fileAlbum";
+        var urlAlbum = SiteUrl + "/backend/view/album";
+        var urlImage = SiteUrl + "/backend/view/fileAlbum";
         $routeProvider.
         when('/', {
             templateUrl: urlAlbum,

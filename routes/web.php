@@ -14,61 +14,67 @@
 Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
 
 Route::group(['prefix' => 'backend'], function (){
-    Route::get('/', 'BackEnd\View\ViewController@user');
-    Route::get('/user', 'BackEnd\View\ViewController@user')->name('user');
-    Route::get('/slide', 'BackEnd\View\ViewController@slide')->name('slide');
-    Route::get('/cate-new', 'BackEnd\View\ViewController@cateNew')->name('cate-new');
-    Route::get('/new', 'BackEnd\View\ViewController@new')->name('new');
-    Route::get('/menu', 'BackEnd\View\ViewController@menu')->name('menu');
-    Route::get('/addmission', 'BackEnd\View\ViewController@addmission')->name('addmission');
-    Route::get('/class', 'BackEnd\View\ViewController@class')->name('class');
-    Route::get('/file-image', 'BackEnd\View\ViewController@fileImage')->name('file-image');
-    Route::get('/file-video', 'BackEnd\View\ViewController@fileVideo')->name('file-video');
-    Route::get('/file-music', 'BackEnd\View\ViewController@fileMusic')->name('file-music');
-    Route::get('/file', 'BackEnd\View\ViewController@file')->name('file');
-    Route::get('/fileAlbum', function(){
-        return view('back.content.libary.image.albumImage');
-     })->name('fileAlbum');
-    Route::get('/album', function(){
-        return view('back.content.libary.image.image');
-     });
-    // youtube
-    Route::group(['prefix' => config('youtube.routes.prefix')], function() {
-        /**
-         * Authentication
-         */
-        Route::get(config('youtube.routes.authentication_uri'), function()
-        {
-            return redirect()->to(Youtube::createAuthUrl());
+    Route::group(['prefix' => 'view'], function (){
+        Route::get('/', 'BackEnd\View\ViewController@user');
+        Route::get('/user', 'BackEnd\View\ViewController@user')->name('user');
+        Route::get('/slide', 'BackEnd\View\ViewController@slide')->name('slide');
+        Route::get('/cate-new', 'BackEnd\View\ViewController@cateNew')->name('cate-new');
+        Route::get('/new', 'BackEnd\View\ViewController@new')->name('new');
+        Route::get('/menu', 'BackEnd\View\ViewController@menu')->name('menu');
+        Route::get('/addmission', 'BackEnd\View\ViewController@addmission')->name('addmission');
+        Route::get('/class', 'BackEnd\View\ViewController@class')->name('class');
+        Route::get('/file-image', 'BackEnd\View\ViewController@fileImage')->name('file-image');
+        Route::get('/file-video', 'BackEnd\View\ViewController@fileVideo')->name('file-video');
+        Route::get('/file-music', 'BackEnd\View\ViewController@fileMusic')->name('file-music');
+        Route::get('/file', 'BackEnd\View\ViewController@file')->name('file');
+        Route::get('/fileAlbum', function(){
+            return view('back.content.libary.image.albumImage');
+         })->name('fileAlbum');
+        Route::get('/album', function(){
+            return view('back.content.libary.image.image');
+         });
+        // youtube
+        Route::group(['prefix' => config('youtube.routes.prefix')], function() {
+            /**
+             * Authentication
+             */
+            Route::get(config('youtube.routes.authentication_uri'), function()
+            {
+                return redirect()->to(Youtube::createAuthUrl());
+            });
+
+            /**
+             * Redirect
+             */
+            Route::get(config('youtube.routes.redirect_uri'), function(Illuminate\Http\Request $request)
+            {
+                if(!$request->has('code')) {
+                    throw new Exception('$_GET[\'code\'] is not set. Please re-authenticate.');
+                }
+
+                $token = Youtube::authenticate($request->get('code'));
+
+                Youtube::saveAccessTokenToDB($token);
+
+                return redirect(config('youtube.routes.redirect_back_uri', '/'));
+            });
         });
-
-        /**
-         * Redirect
-         */
-        Route::get(config('youtube.routes.redirect_uri'), function(Illuminate\Http\Request $request)
-        {
-            if(!$request->has('code')) {
-                throw new Exception('$_GET[\'code\'] is not set. Please re-authenticate.');
-            }
-
-            $token = Youtube::authenticate($request->get('code'));
-
-            Youtube::saveAccessTokenToDB($token);
-
-            return redirect(config('youtube.routes.redirect_back_uri', '/'));
-        });
-
     });
 });
 Route::group(['prefix' => ''], function (){
-    Route::get('/', function () {
-    return view('front.content.home');
-})->name('home');
+    Route::get('', function () {
+        return view('front.content.home');
+    })->name('home');
+
+    // Route::get('gioi-thieu', 'FrontEnd\View\IntroduceCtrl@getIntroduce')->name('home');
+    Route::get('/{cate}',"FrontEnd\View\ViewCateCtrl@getViewCate");
+    Route::get('/{cate}/{slug}',"FrontEnd\View\ViewCateCtrl@getDetail");
+    Route::get('/{cate}/{slug}-{idNew}',"FrontEnd\View\ViewCateCtrl@getDetailId");
 });
 
 
 
-Route::group(['prefix' => 'rest'], function() {
+Route::group(['prefix' => 'rest/backend'], function() {
 
     // người dùng
 	Route::get('/user', 'BackEnd\Rest\UserController@getList');
@@ -152,6 +158,10 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/mainMenu', 'FrontEnd\Rest\HomeCtrl@getMainMenu');
         Route::get('/sidler', 'FrontEnd\Rest\HomeCtrl@getSlider');
         Route::get('/libImage', 'FrontEnd\Rest\HomeCtrl@getLibImage');
-        
+        Route::get('/album', 'FrontEnd\Rest\ImageCtrl@getAlbumImage');
+        Route::get('/news/{slugNew}', 'FrontEnd\Rest\HomeCtrl@getNews');
+        Route::get('/one-news/{cate}/{slugNew}', 'FrontEnd\Rest\CateNewCtrl@getOnePost');
+
+        Route::get('/tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');
     });
 });

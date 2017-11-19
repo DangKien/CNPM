@@ -26,32 +26,32 @@ ngApp.factory('$cateService', function ($http, $httpParamSerializer){
 		return params;
 	};
 	service.action.listCate = function (filter) {
-		var url = SiteUrl + "/rest/cate/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/cate/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
 	service.action.allListCate = function (filter) {
-		var url = SiteUrl + "/rest/cate/?" + $httpParamSerializer(filter);
+		var url = SiteUrl + "/rest/backend/cate/?" + $httpParamSerializer(filter);
         return $http.get(url);
 	};
 
 	service.action.insertCate = function (params) {
-		var url = SiteUrl + "/rest/cate";
+		var url = SiteUrl + "/rest/backend/cate";
         return $http.post(url, params);
 	};
 
 	service.action.editCate = function (idCate) {
-		var url = SiteUrl + "/rest/cate/" + idCate;
+		var url = SiteUrl + "/rest/backend/cate/" + idCate;
         return $http.get(url);
 	};
 
 	service.action.updateCate = function (idCate, params) {
-		var url = SiteUrl + "/rest/cate/" + idCate;
+		var url = SiteUrl + "/rest/backend/cate/" + idCate;
         return $http.put(url, params);
 	};
 
 	service.action.deleteCate = function (idCate) {
-		var url = SiteUrl + "/rest/cate/" + idCate;
+		var url = SiteUrl + "/rest/backend/cate/" + idCate;
         return $http.delete(url);
 	};
 
