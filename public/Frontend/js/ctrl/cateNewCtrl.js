@@ -1,5 +1,5 @@
 ngApp.controller('cateNewCtrl', function ($apply, $rootScope, $scope, $cateNewService) {
-	
+	$scope.idNews = idNews;
 	$scope.data = {
 		listPost: {},
 	};
@@ -8,12 +8,25 @@ ngApp.controller('cateNewCtrl', function ($apply, $rootScope, $scope, $cateNewSe
 			if (path) {
 				$cateNewService.action.onePost(path).then(function (resp) {
 					$scope.data.listPost = resp.data;
-					console.log($scope.data.listPost);
 				}, function (error) {
 					console.log(error);
 				});
 			}
 		},
+
+		onePostDetail: function () {
+			console.log($scope.idNews);
+			$cateNewService.action.onePostDetail($scope.idNews).then(function (resp) {
+				$scope.data.listPost = resp.data;
+			}, function (error) {
+				console.log(error);
+			});
+		},
 	}
-	$scope.actions.listPost();
+
+	if (!$scope.idNews) {
+		$scope.actions.listPost();
+	} else {
+		$scope.actions.onePostDetail();
+	}
 });

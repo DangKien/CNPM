@@ -6,8 +6,6 @@ ngApp.directive('fileModal', function($apply, $fileService){
 			var title   = scope.data.params.title;
 			var image  = $('input[name*="image-title"]')[0].files[0];
 			var file   = $('input[name*="file"]')[0].files[0];
-			console.log(image);
-			console.log(file);
 			var params = $fileService.data (title, image, file);
 
 			return params;

@@ -10,3 +10,6 @@
 {{-- main menu --}}
 <script src="{{ url('Frontend') }}/js/ctrl/mainMenuCtrl.js"></script>
 <script src="{{ url('Frontend') }}/js/factory/service/mainMenuService.js"></script>
+
+{{-- slideImage BLue --}}
+<script src="{{ url('') }}/js/plugin/blueimp-gallery.min.js"></script>

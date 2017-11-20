@@ -43,13 +43,13 @@
 						</div>
 						<div class="panel-body">
 							<div class="row fix-panel" ng-repeat="(key, news) in data.listNews" ng-if="(key == 0)">
-								<a href="{{ url('') }}/tin-tuc/@{{ news.slug + '-' + news.id }}">
+								<a href="{{ url('') }}/tin-tuc/@{{ news.slug + '/post-' + news.id }}">
 									<div class="col-md-12 new">
 										<img style="width: 100%" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
 									</div>
 									<div class="col-md-12 content-news">
 											<h4 class="title">@{{ news.title }}</h4>
-											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy' }}</span>
+											<span>@{{ news.created_at | formatDate }}</span>
 											<p ng-bind-html="news.content | limitTo: 200"></p>
 									</div>
 								</a>
@@ -62,7 +62,7 @@
 									</div>
 									<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
 											<p class="title">@{{ news.title }}</p>
-											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy'}}</span>
+											<span>@{{ news.created_at | formatDate }}</span>
 									</div>
 								</a>
 							</div>
@@ -83,7 +83,7 @@
 									</div>
 									<div class="col-md-12 content-news">
 											<h4 class="title">@{{ news.title }}</h4>
-											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy'}}</span>
+											<span>@{{ news.created_at | formatDate }}</span>
 											<p ng-bind-html="news.content | limitTo: 200"></p>
 									</div>
 								</a>
@@ -96,7 +96,7 @@
 									</div>
 									<div class="col-md-9 col-sm-7 col-xs-6 content-lq">
 											<p class="title">@{{ news.title }}</p>
-											<span>@{{ news.created_at | formatDate : news.created_at : 'mm-dd-yyy'}}</span>
+											<span>@{{ news.created_at | formatDate }}</span>
 									
 									</div>
 								</a>

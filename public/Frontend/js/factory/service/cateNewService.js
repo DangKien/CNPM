@@ -9,5 +9,11 @@ ngApp.factory('$cateNewService', function ($http, $httpParamSerializer){
         return $http.get(url);
 	};
 
+	service.action.onePostDetail = function (idNews) {
+		var url = SiteUrl + "/rest/fontend/news-deltail/" + idNews.trim();
+		console.log(url);
+        return $http.get(url);
+	};
+
 	return service;
 })

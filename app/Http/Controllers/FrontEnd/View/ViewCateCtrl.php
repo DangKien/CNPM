@@ -14,7 +14,10 @@ Class ViewCateCtrl extends Controller {
     public function getViewCate ($cate, CateModel $cateModel) {
     	$cateId = $cateModel::select('id', 'slug', 'name')
     							->where('slug', $cate)
-    							->first();				
+    							->first();	
+        if (empty($cateId)) {
+            return view('errors.404');
+        }			
     	$menu   = $cateModel::select('id', 'slug', 'name')
     						  ->where('cate_id', $cateId->id)
     						  ->get();
@@ -39,10 +42,14 @@ Class ViewCateCtrl extends Controller {
      public function getDetail ($cate, $slug, CateModel $cateModel) {
         $cateId = $cateModel::select('id', 'slug', 'name')
                                 ->where('slug', $cate)
-                                ->first();              
+                                ->first(); 
+        if (empty($cateId)) {
+            return view('errors.404',[], 404);
+        }                
         $menu   = $cateModel::select('id', 'slug', 'name')
                               ->where('cate_id', $cateId->id)
                               ->get();
+
         $url    = request()->path();
         
         switch ($url) {
@@ -51,6 +58,9 @@ Class ViewCateCtrl extends Controller {
                 break;
             case 'thu-vien/thu-vien-anh':
                 return view('front.content.album.albumTitle', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
+            case 'thu-vien/thu-vien-tai-lieu':
+                return view('front.content.file.file', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
             case 'thong-bao':
                 return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
@@ -65,17 +75,16 @@ Class ViewCateCtrl extends Controller {
         }
     }
 
-    public function getDetailId($cate, $slug, $id, CateModel $cateModel){
+     public function getDetailId($cate, $slug, $id, CateModel $cateModel){
         $cateId = $cateModel::select('id', 'slug', 'name')
                                 ->where('slug', $cate)
-                                ->first(); 
-                                return $cateId;             
+                                ->first();        
         $menu   = $cateModel::select('id', 'slug', 'name')
                               ->where('cate_id', $cateId->id)
                               ->get();
         $url    = request()->path();
         
-        return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+        return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu, 'idNews'=>$id]);
     }
     
 }

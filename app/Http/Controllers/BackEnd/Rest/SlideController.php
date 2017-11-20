@@ -75,6 +75,13 @@ class SlideController extends Controller
 				$path          = $request->imageSlide->hashName('');
 				$newImageTitle = Image::make($request->imageSlide)->resize(380, 133)->encode('png');
 				$newImageSlide = Image::make($request->imageSlide)->resize(1000, 350)->encode('png');
+				$imageSlide = Storage::disk('public')->put('images/slides/images_slides/'.$path, $newImageSlide);
+				// chov vao lam anh quan li
+				$imageTitle = Storage::disk('public')->put('images/slides/title_slides/'.$path, $newImageTitle);
+				$slideImage = public_path().'/storage/images/slides/images_slides/'.$url_image_slide;
+				$slideTitle = public_path().'/storage/images/slides/title_slides/'.$url_image_slide;
+				File::delete([$slideImage, $slideImage]);
+
 			} else {
 				$path = $url_image_slide;
 			}
@@ -89,14 +96,10 @@ class SlideController extends Controller
 				$slide->user_create = 1;
 				$slide->save();  
 
-				$imageSlide = Storage::disk('public')->put('images/slides/images_slides/'.$path, $newImageSlide);
-				// chov vao lam anh quan li
-				$imageTitle = Storage::disk('public')->put('images/slides/title_slides/'.$path, $newImageTitle);
+				
 
 				DB::commit();
-				$slideImage = public_path().'/storage/images/slides/images_slides/'.$url_image_slide;
-				$slideTitle = public_path().'/storage/images/slides/title_slides/'.$url_image_slide;
-				File::delete([$slideImage, $slideImage]);
+				
 				return response()->json(['status' => true], 200);
 
 			} catch (Exception $e) {

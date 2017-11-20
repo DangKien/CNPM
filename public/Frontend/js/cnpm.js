@@ -3,8 +3,7 @@ var ngApp = angular.module('ngApp', ['bw.paging', 'ngSanitize']);
 ngApp.filter('formatDate', function(dateFilter) {
    var formattedDate = '';
    return function(dt) { 
-    formattedDate = dateFilter(new Date(dt.split('-').join('/')), 'd/M/yyyy');   
+   	formattedDate = moment(dt, 'yyyy/mm/dd HH:mm:ss').format('DD-MM-YYYY');   
     return formattedDate;
-   }
-     
+   }  
 });   

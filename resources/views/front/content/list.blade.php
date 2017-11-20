@@ -23,7 +23,7 @@
                     </div>
                     <div class="content-main col-md-9 col-sm-8 padding-left-right">
                         <div class="con-index-news">
-                            <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true"></i> Sống khỏe
+                            <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true"></i> {{ $nameCate }}
                         </div>
                         <h3 class="text-center text-title-content">
                             {{ $nameCate }}
@@ -31,7 +31,7 @@
                         <div class="row" ng-controller="listNewCtrl">
                             <div class="content-list col-md-12 col-sm-12 padding-left-right" ng-repeat="(key, listPost) in data.listPost">
                                 <div class="">
-                                    <a href="{{ url('', $slug) }}/@{{ listPost.slug + '-' + listPost.id }}">
+                                    <a href="{{ url('', $slug) }}/@{{ listPost.slug + '/post-' + listPost.id }}">
                                         <div class="col-md-5 col-sm-6 padding-left-right">
                                             <img class="image-list" ng-src="{{ url('storage') }}/@{{ listPost.image }}" alt="">
                                         </div>
@@ -39,7 +39,7 @@
                                             <h4 class="title-tt">
                                                 @{{ listPost.title }}
                                             </h4>
-                                            <p class="date-post">@{{ listPost.created_at | formatDate: listPost.created_at: "dd-mm-yyyy" }} &nbsp&nbsp&nbsp<i class="fa fa-eye" aria-hidden="true"> @{{ listPost.view }}</i></p>
+                                            <p class="date-post">@{{ listPost.created_at | formatDate }} &nbsp&nbsp&nbsp<i class="fa fa-eye" aria-hidden="true"> @{{ listPost.view }}</i></p>
                                             <p ng-bind-html="listPost.content | ellipsis:200"></p>
                                         </div>
                                     </a>

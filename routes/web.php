@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
 Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
 
 Route::group(['prefix' => 'backend'], function (){
@@ -65,11 +65,11 @@ Route::group(['prefix' => ''], function (){
     Route::get('', function () {
         return view('front.content.home');
     })->name('home');
-
     // Route::get('gioi-thieu', 'FrontEnd\View\IntroduceCtrl@getIntroduce')->name('home');
     Route::get('/{cate}',"FrontEnd\View\ViewCateCtrl@getViewCate");
     Route::get('/{cate}/{slug}',"FrontEnd\View\ViewCateCtrl@getDetail");
-    Route::get('/{cate}/{slug}-{idNew}',"FrontEnd\View\ViewCateCtrl@getDetailId");
+    Route::get('/{cate}/{slug}/post-{idNew}',"FrontEnd\View\ViewCateCtrl@getDetailId");
+    Route::get('/{cate}/{slug}/album-{idNew}',"FrontEnd\View\ViewImageCtrl@getDetailImage");
 });
 
 
@@ -155,13 +155,21 @@ Auth::routes();
 
 Route::group(['prefix' => 'rest'], function (){
     Route::group(['prefix' => 'fontend'], function (){
-        Route::get('/mainMenu', 'FrontEnd\Rest\HomeCtrl@getMainMenu');
-        Route::get('/sidler', 'FrontEnd\Rest\HomeCtrl@getSlider');
-        Route::get('/libImage', 'FrontEnd\Rest\HomeCtrl@getLibImage');
-        Route::get('/album', 'FrontEnd\Rest\ImageCtrl@getAlbumImage');
-        Route::get('/news/{slugNew}', 'FrontEnd\Rest\HomeCtrl@getNews');
-        Route::get('/one-news/{cate}/{slugNew}', 'FrontEnd\Rest\CateNewCtrl@getOnePost');
+        Route::get('/mainMenu', 'FrontEnd\Rest\HomeCtrl@getMainMenu'); //menu
 
-        Route::get('/tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');
+        Route::get('/sidler', 'FrontEnd\Rest\HomeCtrl@getSlider'); // slide anh home
+
+        Route::get('/libImage', 'FrontEnd\Rest\HomeCtrl@getLibImage'); // imgae cuoi trang home
+        Route::get('/album', 'FrontEnd\Rest\ImageCtrl@getAlbumImage'); //danh sach album anh
+        Route::get('/image-album/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getImage'); //lay anh trong album
+        Route::get('/album-name/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getAlbum'); //danh sach album anh
+
+        Route::get('/file', 'FrontEnd\Rest\FileCtrl@getFile');// lay file
+
+        Route::get('/news/{slugNew}', 'FrontEnd\Rest\HomeCtrl@getNews'); //tin tuc
+        Route::get('/news-deltail/{idNew}', 'FrontEnd\Rest\CateNewCtrl@getDetailNews'); // chi tiet tin tuc
+        Route::get('/one-news/{cate}/{slugNew}', 'FrontEnd\Rest\CateNewCtrl@getOnePost');// chi tiet tin 1 cate
+        Route::get('/tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');// danh sach tin tuc
+        
     });
 });

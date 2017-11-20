@@ -1,5 +1,7 @@
 @extends('front.layouts.default')
-@section ('title', $nameCate)
+@if(isset($nameCate))
+	@section ('title', $nameCate)   
+@endif
 @section ('myJs')
 @endsection
 

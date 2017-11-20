@@ -13,11 +13,30 @@ a:hover{
 	width: 100%;
 	max-height: 190px;
 }
+.pad-all p {
+	padding-left: 15px;
+}
+.bg-color .panel{
+	background-color: rgba(243, 233, 237, 0.58);
+}
+.image-file-fix{
+	width: 120px;
+	height: 120px;
+}
 .active-li {
 	background-color: #2d6d92;
 }
 .fix-panel {
 	min-height: 450px;
+}
+.fix-thumbnail {
+	min-height: 250px;
+	max-height: 250px;
+    overflow: hidden;
+}
+
+.fix-thumbnail img{
+	min-height: 250px;
 }
 .fix-height-img-album {
 	height: 280px;
@@ -37,9 +56,12 @@ a:hover{
 	font-weight: 600;
 }
 .con-index-news .breadcrumb-fix {
-	font-weight: normal;
-	font-size: 12px;
-	margin: 0 7px;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0px 2px;
+    margin-bottom: 15px;
+    font-style: oblique;
+    text-transform: initial;
 }
 .style-home {
 	color: blue;

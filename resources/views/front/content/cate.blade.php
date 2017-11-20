@@ -1,6 +1,9 @@
 @extends('front.layouts.default')
 @section ('title', $nameCate)
 @section ('myJs')
+	<script>
+		var idNews = '@if (isset($idNews)) {{ $idNews }} @endif';
+	</script>
 	<script src="{{ url('Frontend') }}/js/ctrl/cateNewCtrl.js"></script>
 	<script src="{{ url('Frontend') }}/js/factory/service/cateNewService.js"></script>
 @endsection
@@ -24,8 +27,16 @@
 		  		              	@endif
 		  					</ul>
 	  					</div>
-	  				<div class="col-sm-9 col-md-8 col-lg-9 padding-topbot-15px">
-	  					<div class="post-content" role="tabpanel" ng-controller="cateNewCtrl">
+	  				<div class="col-sm-9 col-md-8 col-lg-9 padding-topbot-15px" ng-controller="cateNewCtrl">
+	  					<div class="con-index-news" >
+                            <i class="fa fa-home style-home"></i>
+                            <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">{{ $nameCate }}</i>
+                            <span ng-if="data.listPost.cates.name">
+                            	<i   class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">@{{ data.listPost.cates.name }}</i> 
+                            </span>		
+                            <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">@{{ data.listPost.title }}</i>
+                        </div>
+	  					<div class="post-content" role="tabpanel">
 	  						<h2 class="text-center title"> @{{ data.listPost.title }} </h2>
 	  						<p ng-bind-html="data.listPost.content"></p>
 	  						<br>
@@ -33,7 +44,7 @@
 	  						<div class="text-right">
 	  							<p><i><b>Người đăng bài: </b> @{{ data.listPost.users.name }}</i></p>
 	  							<p><i><b>Số lượt xem: </b> @{{ data.listPost.view }}</i></p>
-	  							<p><i><b>Ngày đăng bài: </b> @{{ data.listPost.updated_at | formatDate : data.listPost.updated_at : 'mm-dd-yyy' }}</i></p>
+	  							<p><i><b>Ngày đăng bài: </b> @{{ data.listPost.created_at | formatDate }}</i></p>
 	  						</div>
 	  					</div>
 	  					

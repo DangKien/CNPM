@@ -17,4 +17,22 @@ Class ImageCtrl extends Controller {
                             
         return  response()->json($album);
     }
+
+    public function getAlbum(AlbumModel $albumModel, $idAlbum) {
+        $album = $albumModel::find($idAlbum);
+                            
+        return  response()->json($album);
+    }
+
+    public function getImage(FileImageModel $fileImageModel, $idAlbum) {
+        if (!$idAlbum) {
+        	return response()->json(['messages'=> "Không tìm thấy id"], 422);
+        }
+
+        $image = $fileImageModel->filterAlbumId($idAlbum)
+        						->buildCond()
+        						->paginate(21);
+                            
+        return  response()->json($image);
+    }
 }
