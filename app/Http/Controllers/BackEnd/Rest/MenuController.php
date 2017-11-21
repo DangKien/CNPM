@@ -11,7 +11,7 @@ use App\Models\CateMenuModel;
 class MenuController extends Controller
 {
 	public function getList(Request $request, MenuModel $menuModel) {
-		$menu = $menuModel->paginate(10);
+		$menu = $menuModel->with('cates')->paginate(10);
 		return response()->json($menu);
 	}
 

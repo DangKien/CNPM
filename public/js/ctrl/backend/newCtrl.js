@@ -59,7 +59,6 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 			$newService.action.listNew(params).then(function (resp) {
 				$scope.data.listNews = resp.data.data;
 				$scope.data.pageNew  = resp.data;
-				console.log($scope.data.pageNew);
 			  }, function (error) {
 			  	console.log(error);
 			  });
@@ -68,17 +67,19 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 		showModal: function (idNew) {
 			$scope.data.idNew = idNew;
 			$scope.data.errors = {};
+			$('input[name*="fileImg"]').val('');
 			$($scope.domNewForm).parsley().reset();
 			$($scope.domNewModal).modal('show');
 			if ($scope.data.idNew) {
 				$newService.action.editNew($scope.data.idNew).then(function (resp) {
 					$scope.data.params = resp.data;
+					$('.image-support').attr('src', SiteUrl + "/storage/" + $scope.data.params.image)
 				}, function (error) {
-
 				});
 				$scope.data.title = "Cập nhật tin tức";
 			} else {
 				$scope.data.params = {};
+				$('.image-support').attr('src', ' ');
 				$scope.data.title = "Thêm mới tin tức";
 			}
 			

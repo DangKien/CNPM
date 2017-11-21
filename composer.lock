@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "51a3b08756ef1bec86d5dbe928c0e06c",
+    "content-hash": "399475ebfd7e3dbdf27606410987fde9",
     "packages": [
         {
             "name": "dangtrungkien/ytb",

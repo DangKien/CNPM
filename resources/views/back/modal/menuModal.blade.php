@@ -65,8 +65,9 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Loại: </label>
 									<div class="col-sm-8">
-										<select class="form-control" ng-model="data.params.cateId">
-											<option ng-repeat="(key, cateMenu) in data.listCateMenu" ng-value="cateMenu.id" ng-selected="(cateMenu.id == data.params.cateId )">
+										<select class="form-control" ng-model="data.params.cateId" ng-selected="(cateMenu.id == data.params.cateId )">
+											<option value="">Chọn lứa tuổi</option>
+											<option ng-repeat="(key, cateMenu) in data.listCateMenu" value="@{{ cateMenu.id }}" >
 												@{{ cateMenu.name }}
 											</option>
 										</select>
@@ -86,7 +87,7 @@
 										<p class="text-danger" ng-repeat="(key, err) in data.errors.imageAlbum">
 											@{{ err }}
 										</p>
-										<img class="avatar" src="{{ url('Nifty') }}/img/av6.png" alt="" style="width: 140px; height: 150px;">
+										<img class="avatar" src="" alt="" style="width: 140px; height: 150px;" alt="...">
 										<br>
 									</div>
 								</div>

@@ -112,8 +112,8 @@
 									<td>@{{ menu.week }}</td>
 									<td>@{{ menu.month }}</td>
 									<td>@{{ menu.year }}</td>
-									<td>@{{ menu.url_image }}</td>
-									<td>@{{ menu.cate_menu }}</td>
+									<td><img style="height: 100px; width: 100px;" ng-src="{{ url('storage/images/menu/title_menu') }}/@{{ menu.url_image }}" alt=""></td>
+									<td>@{{ menu.cates.name }}</td>
 									<td>
 										<button ng-click= "actions.showModalMenu(menu.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
 										<button ng-click= "actions.deleteMenu(menu.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>

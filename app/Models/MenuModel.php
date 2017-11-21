@@ -9,6 +9,10 @@ class MenuModel extends MyModel
 {
     protected $table = 'menus';
 
+    public function cates() {
+        return $this->belongsTo('App\Models\CateMenuModel', 'cate_menu', 'id');
+    }
+
   //   public function fillterName ($param) {
   //   	if (!empty($param))
   //   	{

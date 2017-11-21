@@ -34,6 +34,8 @@ ngApp.controller('AlbumCtrl', function ($apply, $albumService, $scope, changStat
 		showModal: function () {
 			$($scope.domAlbumModal).modal('show');
 			$scope.data.errors = {};
+			$("#image-album").val('');
+			$('.avatar').attr('src', SiteUrl + '/Nifty/img/av6.png');
 			$($scope.domAlbumForm).parsley().reset()
 			$scope.data.title = "Thêm mới album";
 		},

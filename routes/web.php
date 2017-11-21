@@ -171,5 +171,6 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/one-news/{cate}/{slugNew}', 'FrontEnd\Rest\CateNewCtrl@getOnePost');// chi tiet tin 1 cate
         Route::get('/tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');// danh sach tin tuc
         
+        Route::post('/contact', 'FrontEnd\Rest\ContactCtrl@getContact');
     });
 });
