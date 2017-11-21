@@ -39,7 +39,7 @@
 							<p><b>Tên tài liệu:</b> @{{ file.title }} </p>
 							<p><b>Loại File:</b> @{{ file.cate_file }} </p>
 							<p><b>Ngày đăng:</b> @{{ file.updated_at }} </p>
-							<a href="">
+							<a href="{{ url('download/file') }}/@{{ file.id }}">
 								<p class="text-center text-primary">
 									<b> Download </b>
 									<i class="fa fa-download" aria-hidden="true"></i>

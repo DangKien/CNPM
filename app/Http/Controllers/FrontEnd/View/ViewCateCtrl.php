@@ -68,6 +68,9 @@ Class ViewCateCtrl extends Controller {
              case 'gioi-thieu/gioi-thieu-chung':
                 return view('front.content.introduce.introduce', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
+            case 'chuong-trinh-hoc/ngay-cua-be':
+                return view('front.content.oneday.oneday', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
 
             default:
                  return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);

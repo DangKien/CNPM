@@ -149,6 +149,12 @@ Route::group(['prefix' => 'rest/backend'], function() {
     Route::get('/video/{id}', 'BackEnd\Rest\VideoController@getEdit');
     Route::post('/video/{id}', 'BackEnd\Rest\VideoController@getUpdate');
     Route::delete('/video/{id}', 'BackEnd\Rest\VideoController@getDelete');
+
+    Route::get('/addmission', 'BackEnd\Rest\AddMissionController@getList');
+    Route::get('/addmission/{id}', 'BackEnd\Rest\AddMissionController@getCheck');
+
+    Route::get('/contact', 'BackEnd\Rest\AddMissionController@getContact');
+
 });
 
 Auth::routes();
@@ -172,5 +178,7 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');// danh sach tin tuc
         
         Route::post('/contact', 'FrontEnd\Rest\ContactCtrl@getContact');
+
+        Route::post('/addmission', 'FrontEnd\Rest\AddmissionCtrl@getAddmission');
     });
 });

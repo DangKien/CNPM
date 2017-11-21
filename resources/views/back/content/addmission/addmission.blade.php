@@ -1,8 +1,11 @@
 @extends('back.layouts.default')
-@section ('title', 'Loại tin')
-
+@section ('title', 'Đăng kí học')
+@section ('myJs')
+	<script src="{{ url('')}}/js/ctrl/backend/addmissionCtrl.js"></script>
+	<script src="{{ url('')}}/js/factory/services/backend/addmissionService.js"></script>
+@endsection
 @section('content')
-	<div id="content-container">
+	<div id="content-container" ng-controller="addmissionCtrl">
 		
 		<!--Page Title-->
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -17,21 +20,7 @@
 		<!--===================================================-->
 		<div id="page-content">
 			<div class="row">
-				<div class="col-md-6 col-sm-6">
-					<div class="searchbox">
-						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Tìm kiếm..">
-							<span class="input-group-btn">
-								<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5 col-sm-5 pull-right search-nc">
-					<button type="button" class="btn btn-primary pull-right" data-target="#demo-panel-collapse-default"
-					        data-toggle="collapse">Tìm kiếm nâng cao
-					</button>
-				</div>
+				
 			</div>
 			<div class="panel">
 				<!--Data Table-->
@@ -41,27 +30,50 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th class="text-center">Invoice</th>
-									<th>Bài viết</th>
-									<th>Ảnh minh họa</th>
-									<th>Nội dung</th>
-									<th>Lượng người xem</th>
-									<th>Loại tin</th>
-									<th>Người đăng tin</th>
+									<th>Tên học sinh</th>
+									<th>Giới tính</th>
+									<th>Ngày sinh</th>
+									<th>Họ tên mẹ, cha</th>
+									<th>Số điện thoại</th>
+									<th>Email</th>
+									<th>Địa chỉ</th>
+									<th>Tin nhắn</th>
 									<th>Trạng thái</th>
-									<th>Hành động</th>
+									<th>Thao tác</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><a class="btn-link" href="#"> Order #53431</a></td>
-									<td>Steve N. Horton</td>
-									<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-									<td>$45.00</td>
+								<tr ng-repeat="(key, addmission) in data.listAddmission">
+									<td>@{{ addmission.name_student }}</td>
 									<td>
-										<div class="label label-table label-success">Paid</div>
+										<span ng-if="(addmission.gender == 'MALE')">
+											Nam
+										</span>
+										<span ng-if="(addmission.gender == 'FEMALE')">
+											Nữ
+										</span>
+										<span ng-if="(addmission.gender == 'ORTHER')">
+											Khác
+										</span>
 									</td>
-									<td>-</td>
+									<td>@{{ addmission.birthday }}</td>
+									<td>@{{ addmission.name_parent }}</td>
+									<td>@{{ addmission.phone }}</td>
+									<td>@{{ addmission.email }}</td>
+									<td>@{{ addmission.address }}</td>
+									<td>@{{ addmission.message }}</td>
+									<td><div class="label" ng-class=" {'label-warning': addmission.status == 'PENDING',  'label-success': addmission.status == 'AVAILABLE' }">
+										<span ng-if="(addmission.status == 'PENDING')">
+											Đang đợi
+										</span>
+										<span ng-if="(addmission.status == 'AVAILABLE')">
+											Đã liên hệ
+										</span>
+									</div></td>
+									<td>
+										<button ng-click="actions.checkAdd(addmission.id)"
+						            	class="btn btn-default btn-icon btn-circle icon-lg fa fa-check"></button>
+						        	</td>
 								</tr>
 							</tbody>
 						</table>
@@ -69,6 +81,16 @@
 				</div>
 				<!--===================================================-->
 				<!--End Data Table-->
+				<div class="row text-center">
+				   <div class="page-oum">
+				       <div paging
+				           page="page"
+				           page-size = "data.pageAddmission.per_page"
+				           total="data.pageAddmission.total"
+				           paging-action="actions.changePage(page)">
+				       </div>
+				   </div>
+				</div>
 			</div>
 		</div>
 		<!--===================================================-->

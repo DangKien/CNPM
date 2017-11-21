@@ -16,15 +16,14 @@ class CreateAddmisstionTable extends Migration
         Schema::create('addmission', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name_student');
-            $table->integer('gender');
+            $table->string('gender',20);
             $table->date('birthday');
-            $table->string('class_add');
             $table->string('name_parent');
             $table->string('phone');
             $table->string('email');
-            $table->string('slug');
+            $table->text('message');
             $table->string('address');
-            $table->integer('status');
+            $table->string('status')->default('PENDING');
             $table->timestamps();
         });
     }

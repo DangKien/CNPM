@@ -1,16 +1,17 @@
 @extends('back.layouts.default')
 @section ('title', 'Loại tin')
 @section ('myJs')
-	<script src=""></script>
+	<script src="{{ url('')}}/js/ctrl/backend/contactCtrl.js"></script>
+	<script src="{{ url('')}}/js/factory/services/backend/contactService.js"></script>
 @endsection
 
 @section('content')
-	<div id="content-container">
+	<div id="content-container" ng-controller="contactCtrl">
 		
 		<!--Page Title-->
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">@if(isset($title) ) {{ $title }} @endif</h1>
+			<h1 class="page-header text-overflow">Liên hệ</h1>
 			<!--Searchbox-->
 		</div>
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -20,131 +21,11 @@
 		<!--===================================================-->
 		<div id="page-content">
 			<div class="row">
-				<div class="col-md-6 col-sm-6">
-					<div class="searchbox">
-						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Tìm kiếm..">
-							<span class="input-group-btn">
-								<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5 col-sm-5 pull-right search-nc">
-					<button type="button" class="btn btn-primary pull-right" data-target="#demo-panel-collapse-default"
-					        data-toggle="collapse">Tìm kiếm nâng cao
-					</button>
-				</div>
+				
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="panel">
-					    <!--Panel body-->
-					    <div id="demo-panel-collapse-default" class="collapse">
-					        <form>
-					            <div class="panel-body">
-					                <div class="row">
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Họ tên: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Email: </label>
-					                            <input type="text" class="form-control">
-					                        </div>
-					                    </div>
-					                </div>
-					                <div class="row">
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Số điện thoại</label>
-					                            <input type="email" class="form-control">
-					                        </div>
-					                    </div>
-					                    <div class="col-sm-6">
-					                        <div class="form-group">
-					                            <label class="control-label">Trạng thái: </label>
-					                            <br>
-					                            <select class="selectpicker" data-width="100%">
-					                                <option>Hoạt động</option>
-					                                <option>Không hoạt động</option>
-					                            </select>
-					                        </div>
-					                    </div>
-					                    
-					                    
-					                </div>
-					            </div>
-					            <div class="panel-footer text-right">
-					                <button class="btn btn-info" type="submit"><i class="fa fa-search"> Tìm kiếm</i>
-					                </button>
-					            </div>
-					        </form>
-					    </div>
-					</div>
-				</div>
-		</div>
-			<div class="row">
-				<div class="col-sm-5">
-					<div class="panel">
-						<!-- insert cate -->
-						<form action="" method="get" accept-charset="utf-8">
-							<div class="panel-heading">
-								<h3 class="panel-title">Thêm mới lớp học</h3>
-							</div>
-							<div class="panel-body">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên lớp học: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Năm học: </label>
-									<div class="col-sm-8">
-										<input type="text" placeholder="Tài khoản" class="form-control input-sm"
-										id="demo-is-inputsmall">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall"> Loại lớp học: </label>
-									<div class="col-sm-8 mar-btm">
-										<select class="selectpicker" data-width="100%">
-											<option>Mẫu giáo bé</option>
-											<option>Mẫu giáo nhỡ</option>
-											<option>Mẫu giáo lớn</option>
-											<option>Lớp học thử</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="demo-is-inputsmall">Trạng thái: </label>
-									<div class="col-sm-8 text-left">
-										<label class="form-radio form-normal active form-text"><input type="radio" checked="" name="def-w-label"> Hoạt động</label>
-										<label class="form-radio form-normal active form-text"><input type="radio" name="def-w-label"> Không hoạt động</label>
-									</div>
-									
-								</div>
-
-								
-							</div>
-							<div class="modal-footer">
-							    <button type="button" class="btn btn-primary">Cập nhật</button>
-							</div>
-
-						</form>
-						<!-- end cate -->
-					</div>
-				</div>
+			<div class="row">			
 				<!-- datatable -->
-				<div class="col-sm-7">
+				<div class="col-sm-12">
 					<div class="panel">
 						<!--Data Table-->
 						<!--===================================================-->
@@ -153,24 +34,22 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th class="text-center">STT</th>
-											<th>Tên lớp</th>
-											<th>Năm học</th>
-											<th>Loại lớp học</th>
-											<th>Trạng thái</th>
-											<th>Hành động</th>
+											<th>Họ Tên</th>
+											<th>Địa chỉ</th>
+											<th>Số điện thoại</th>
+											<th>Email</th>
+											<th>Nội dung</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td><a class="btn-link" href="#"> Order #53431</a></td>
-											<td>Steve N. Horton</td>
-											<td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-											<td>$45.00</td>
+										<tr ng-repeat="(key, contact) in data.listContact">
+											<td>@{{ contact.name }}</td>
+											<td>@{{ contact.address }}</td>
+											<td>@{{ contact.phone }}</td>
+											<td>@{{ contact.email }}</td>
 											<td>
-												<div class="label label-table label-success">Paid</div>
+												@{{ contact.content }}
 											</td>
-											<td>-</td>
 										</tr>
 									</tbody>
 								</table>
