@@ -3,6 +3,7 @@
 @section ('myJs')
 	<script>
 		var idNews = '@if (isset($idNews)) {{ $idNews }} @endif';
+		var slug   = '@if (isset($slug)) {{ $slug }} @endif';
 	</script>
 	<script src="{{ url('Frontend') }}/js/ctrl/cateNewCtrl.js"></script>
 	<script src="{{ url('Frontend') }}/js/factory/service/cateNewService.js"></script>

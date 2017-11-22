@@ -12,12 +12,22 @@ use App\Models\NewModel;
 Class ListPostCtrl extends Controller {
 
     public function getListPost(NewModel $newModel, $slug) {
-        $album = $newModel->filterSlug($slug)
+        $newPost = $newModel->filterSlug($slug)
 	                      ->buildCond()
 	                      ->with('cates')
 	                      ->orderBy('created_at', 'desc')
-        				  ->paginate(5);
+        				  ->paginate(10);
                             
-        return  response()->json($album);
+        return  response()->json($newPost);
+    }
+
+    public function getPost(NewModel $newModel, $slug, $slugDetail) {
+        $newPost = $newModel->filterSlug($slugDetail)
+	                      ->buildCond()
+	                      ->with('cates')
+	                      ->orderBy('created_at', 'desc')
+        				  ->paginate(10);
+                            
+        return  response()->json($newPost);
     }
 }

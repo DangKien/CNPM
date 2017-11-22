@@ -33,13 +33,16 @@ Class ViewCateCtrl extends Controller {
             case 'tin-tuc':
                 return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
+            case 'chuong-trinh-hoc':
+                return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
             default:
                  return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
         }
     }
 
-     public function getDetail ($cate, $slug, CateModel $cateModel) {
+    public function getDetail ($cate, $slug, CateModel $cateModel) {
         $cateId = $cateModel::select('id', 'slug', 'name')
                                 ->where('slug', $cate)
                                 ->first(); 
@@ -62,23 +65,32 @@ Class ViewCateCtrl extends Controller {
             case 'thu-vien/thu-vien-tai-lieu':
                 return view('front.content.file.file', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'thong-bao':
-                return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
-                break;
              case 'gioi-thieu/gioi-thieu-chung':
                 return view('front.content.introduce.introduce', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
             case 'chuong-trinh-hoc/ngay-cua-be':
                 return view('front.content.oneday.oneday', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
+            case 'chuong-trinh-hoc/hoat-dong-ngoai-khoa':
+                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
 
+            case 'chuong-trinh-hoc/chuong-trinh':
+                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break; 
+            case 'chuong-trinh-hoc/thuc-don':
+                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
+            case 'chuong-trinh-hoc/su-kien':
+                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
             default:
                  return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
         }
     }
 
-     public function getDetailId($cate, $slug, $id, CateModel $cateModel){
+    public function getDetailId($cate, $slug, $id, CateModel $cateModel){
         $cateId = $cateModel::select('id', 'slug', 'name')
                                 ->where('slug', $cate)
                                 ->first();        

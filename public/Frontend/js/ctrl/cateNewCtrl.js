@@ -15,7 +15,6 @@ ngApp.controller('cateNewCtrl', function ($apply, $rootScope, $scope, $cateNewSe
 		},
 
 		onePostDetail: function () {
-			console.log($scope.idNews);
 			$cateNewService.action.onePostDetail($scope.idNews).then(function (resp) {
 				$scope.data.listPost = resp.data;
 			}, function (error) {

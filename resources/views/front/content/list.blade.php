@@ -11,24 +11,25 @@
                 <div class="panel-body content-body">
                     <div class="menu-left padding-left-0 col-md-3 col-sm-5 text-center">
                         <ul>
-                            <li class="active-li"><a href="{{ url('lien-he') }}"> {{ $nameCate }} </a></li>
+                            <li class="active-li"><a href="{{ url('') }}/{{ request()->path() }}"> {{ $nameCate }} </a></li>
                             @if (isset($menu)) 
                                 @foreach ($menu as $item) 
-                                    <li >
-                                        <a class="color-theme-medium" href="{{ url('',  ["$slug" ,"$item->slug"]) }} ">{{ $item->name }}</a>
+                                    <li class="{{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">
+
+                                        <a class="color-theme-medium" href="{{ url('',  ["$slug" ,"$item->slug"]) }}">{{ $item->name }}</a>
                                     </li>
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div class="content-main col-md-9 col-sm-8 padding-left-right">
+                    <div class="content-main col-md-9 col-sm-8 padding-left-right" ng-controller="listNewCtrl">
                         <div class="con-index-news">
-                            <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true"></i> {{ $nameCate }}
+                            <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">{{ $nameCate }}</i> 
                         </div>
                         <h3 class="text-center text-title-content">
-                            {{ $nameCate }}
+                            @{{  data.listPost[0].cates.name }}
                         </h3>
-                        <div class="row" ng-controller="listNewCtrl">
+                        <div class="row" >
                             <div class="content-list col-md-12 col-sm-12 padding-left-right" ng-repeat="(key, listPost) in data.listPost">
                                 <div class="">
                                     <a href="{{ url('', $slug) }}/@{{ listPost.slug + '/post-' + listPost.id }}">

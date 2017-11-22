@@ -175,8 +175,9 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/news/{slugNew}', 'FrontEnd\Rest\HomeCtrl@getNews'); //tin tuc
         Route::get('/news-deltail/{idNew}', 'FrontEnd\Rest\CateNewCtrl@getDetailNews'); // chi tiet tin tuc
         Route::get('/one-news/{cate}/{slugNew}', 'FrontEnd\Rest\CateNewCtrl@getOnePost');// chi tiet tin 1 cate
-        Route::get('/tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');// danh sach tin tuc
-        
+        Route::get('/ds-tin-tuc/{slugNew}', 'FrontEnd\Rest\ListPostCtrl@getListPost');// danh sach tin tuc
+        Route::get('/ds-tin-tuc/{slugNew}/{slugDetail}', 'FrontEnd\Rest\ListPostCtrl@getPost');
+
         Route::post('/contact', 'FrontEnd\Rest\ContactCtrl@getContact');
 
         Route::post('/addmission', 'FrontEnd\Rest\AddmissionCtrl@getAddmission');

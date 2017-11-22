@@ -11,7 +11,6 @@ ngApp.factory('$cateNewService', function ($http, $httpParamSerializer){
 
 	service.action.onePostDetail = function (idNews) {
 		var url = SiteUrl + "/rest/fontend/news-deltail/" + idNews.trim();
-		console.log(url);
         return $http.get(url);
 	};
 

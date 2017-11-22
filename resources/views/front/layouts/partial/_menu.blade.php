@@ -12,7 +12,7 @@
 			  		<a href="{{ url('gioi-thieu/gioi-thieu-chung') }}">Giới thiệu</a>
 			  	</li>
 			  	<li class="{{ request()->is('chuong-trinh-hoc') || request()->is('chuong-trinh-hoc/*') ? 'active-li' : ''}}">
-			  		<a href="{{ url('chuong-trinh-hoc') }}">Chương trình học</a>
+			  		<a href="{{ url('chuong-trinh-hoc/chuong-trinh') }}">Chương trình học</a>
 			  	</li>
 			  	<li class="{{ request()->is('tin-tuc') || request()->is('tin-tuc/*') ? 'active-li' : ''}}">
 			  		<a href="{{ url('tin-tuc') }}">Tin tức</a>

@@ -11,7 +11,7 @@ class NewModel extends MyModel
    protected $table = 'news';
 
     public function users(){
-        return $this->belongsTo('App\Models\UserModel', 'user_id');
+        return $this->belongsTo('App\Models\UserModel', 'user_id', 'id');
     }
 
 

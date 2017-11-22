@@ -56,7 +56,7 @@
 							</div>
 
 							<div class="row lq" ng-repeat="(key, news) in data.listNews" ng-if="(key != 0)">
-								<a href="{{ url('') }}/tin-tuc/@{{ news.slug + '-' + news.id }}">
+								<a href="{{ url('') }}/tin-tuc/@{{ news.slug + '/post-' + news.id }}">
 									<div class="col-md-3 col-sm-5 col-xs-6">
 										<img style="width: 100%; height: 110px;" class="img-responsive" ng-src="{{ url('storage')}}/@{{ news.image }}" alt="@{{ new.title }}">
 									</div>
@@ -77,7 +77,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row fix-panel" ng-repeat="(key, news) in data.listNotifi" ng-if="(key == 0)">
-								<a href="{{ url('') }}/thong-bao/@{{ news.slug + '-' + news.id }}">
+								<a href="{{ url('') }}/thong-bao/@{{ news.slug + '/post-' + news.id }}">
 									<div class="col-md-12 new">
 										<img style="width: 100%" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
 									</div>
@@ -90,7 +90,7 @@
 							</div>
 
 							<div class="row lq" ng-repeat="(key, news) in data.listNotifi" ng-if="(key != 0)">
-								<a href="{{ url('') }}/thong-bao/@{{ news.slug + '-' + news.id }}">
+								<a href="{{ url('') }}/thong-bao/@{{ news.slug + '/post-' + news.id }}">
 									<div class="col-md-3 col-sm-5 col-xs-6">
 										<img style="width: 100%; height: 110px;" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}" alt="">
 									</div>

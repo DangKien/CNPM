@@ -18,7 +18,7 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->string('slug');
-            $table->text('content');
+            $table->longText('content');
             $table->string('tag')->nullable();
             $table->integer('view')->default(0);
             $table->integer('cate');

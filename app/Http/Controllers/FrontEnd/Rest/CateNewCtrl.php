@@ -30,10 +30,7 @@ Class CateNewCtrl extends Controller {
         if (!$id) {
             return response()->json(['messages'=> "Không tìm thấy id"], 422);
         }
-        $news = $newModel::find($id)
-                          ->with('users')
-                          ->first();
-
+        $news = $newModel::where('id',$id)->with('users')->first();
         return  response()->json($news);
     }
    

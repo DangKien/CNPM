@@ -9,7 +9,7 @@ ngApp.factory('$listNewService', function ($http, $httpParamSerializer){
 		}
 	};
 	service.action.listNew = function (slugList, params) {
-		var url = SiteUrl + "/rest/fontend/tin-tuc/" + slugList + "?" + $httpParamSerializer(params);
+		var url = SiteUrl + "/rest/fontend/ds-tin-tuc/" + slugList + "?" + $httpParamSerializer(params);
         return $http.get(url);
 	};
 
