@@ -51,7 +51,6 @@ Class AddmissionCtrl extends Controller {
 			'nameParent'  => 'required',
 			'phone'       => 'required|numeric|digits_between:6,15',
 			'address'     => 'required',
-			'message'     => 'required',
 			'email'       => 'required|email',
             ], [
 			'nameStudent.required' => 'Tên học sinh không được để trống',
@@ -63,7 +62,6 @@ Class AddmissionCtrl extends Controller {
 			'phone.numeric'        => 'Số điện thoại không đúng định dạng',
 			'phone.digits_between' => 'Số điện thoại từ 6 số đến 15 số',
 			'address.required'     => 'Địa chỉ không được để trống',
-			'mesage.required'      => 'Tin nhắn không được để trống',
 			'email.required'       => 'Email bạn không được để trống',
 			'email.email'          => 'Email bạn không đúng định dạng',
             ]

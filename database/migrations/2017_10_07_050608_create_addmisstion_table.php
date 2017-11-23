@@ -21,7 +21,7 @@ class CreateAddmisstionTable extends Migration
             $table->string('name_parent');
             $table->string('phone');
             $table->string('email');
-            $table->text('message');
+            $table->text('message')->nullable();
             $table->string('address');
             $table->string('status')->default('PENDING');
             $table->timestamps();

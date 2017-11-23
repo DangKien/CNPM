@@ -142,7 +142,7 @@
 							  	<div class="col-md-12">
 							  		<div class="form-group">
 							  		    <label for="message">Tin nhắn: </label>
-							  		    <textarea ng-model="data.params.message" required id="message" class="form-control" rows="5"></textarea>
+							  		    <textarea ng-model="data.params.message" id="message" class="form-control" rows="5"></textarea>
 							  		    <ul>
 							    		    <li class="text-danger text-left" style="margin-top: 5px;"
 							    		      	ng-repeat="er in data.errors.message"
