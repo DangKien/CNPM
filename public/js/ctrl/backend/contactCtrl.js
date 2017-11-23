@@ -10,8 +10,7 @@ ngApp.controller('contactCtrl', function ($apply, $contactService, $scope, chang
 		},
 		listContact: function () {
 			$contactService.action.listContact().then(function (resp) {
-				$scope.data.listContact = resp.data.data;
-				$scope.data.pageContact = resp.data;
+
 			}, function (error) {
 				console.log(error);
 			});

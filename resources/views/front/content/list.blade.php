@@ -24,7 +24,9 @@
                     </div>
                     <div class="content-main col-md-9 col-sm-8 padding-left-right" ng-controller="listNewCtrl">
                         <div class="con-index-news">
-                            <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">{{ $nameCate }}</i> 
+                            <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">{{ $nameCate }}</i>
+                            <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">@{{  data.listPost[0].cates.name }}</i> 
+                             
                         </div>
                         <h3 class="text-center text-title-content">
                             @{{  data.listPost[0].cates.name }}

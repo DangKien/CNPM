@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="col-md-5 col-sm-5 pull-right search-nc">
-					<button type="button" class="btn btn-primary pull-right" >Xóa Album</button>
+					<button type="button" class="btn btn-primary pull-right" ng-click="actions.removeAlbum()" >Xóa Album</button>
 					<button type="button" class="btn btn-primary pull-right" ng-click="actions.showModalAlbum(data.idAlbum)" style="margin-right: 10px;">Chỉnh sửa Album</button>
 				</div>
 			</div>

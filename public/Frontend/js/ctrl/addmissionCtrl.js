@@ -1,4 +1,4 @@
-ngApp.controller('addmissionCtrl', function ($apply, $rootScope, $scope, $addmissionService) {
+ngApp.controller('addmissionCtrl', function ($apply, $rootScope, $scope, $addmissionService, $conf) {
 	$scope.data = {
 		listAddMiss: {},
 		params: {},
@@ -22,7 +22,6 @@ ngApp.controller('addmissionCtrl', function ($apply, $rootScope, $scope, $addmis
 			if ($($scope.formVal).parsley().validate()) {
 				var params = $scope.actions.paramsAdd();
 				$addmissionService.action.insertAddmission(params).then(function (resp) {
-					$scope.data.listPost = resp.data;
 					$scope.data.errors = {};
 					$scope.data.params = {};
 				}, function (error) {

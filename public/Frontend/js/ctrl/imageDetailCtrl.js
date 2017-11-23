@@ -24,7 +24,6 @@ ngApp.controller('imageDetailCtrl', function ($apply, $rootScope, $scope, $image
 			$imageService.action.image($scope.idAlbum).then(function (resp) {
 				$scope.data.albumImage = resp.data.data;
 				$scope.data.pageImage  = resp.data;
-				console.log($scope.data.pageImage);
 			}, function (error) {
 				console.log(error);
 			});

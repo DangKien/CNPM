@@ -515,3 +515,39 @@ li {
 	margin-top: 10px;
 	margin-bottom: 25px;
 }
+.fc-toolbar .fc-left button {
+	cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 1.42857;
+    height: auto;
+    vertical-align: middle;
+    box-shadow: none;
+    text-shadow: none;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+    text-transform: capitalize;
+    background-image: none;
+    background-color: #fbfbfb;
+    border: 1px solid #cdd6e1;
+    color: #515151;
+}
+.fc-toolbar .fc-right button {
+	cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 1.42857;
+    height: auto;
+    vertical-align: middle;
+    box-shadow: none;
+    text-shadow: none;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+    text-transform: capitalize;
+    background-image: none;
+    background-color: #fbfbfb;
+    border: 1px solid #cdd6e1;
+    color: #515151;
+}

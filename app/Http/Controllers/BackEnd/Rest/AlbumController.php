@@ -77,7 +77,8 @@ Class AlbumController extends Controller {
             
             DB::beginTransaction();
             try {
-                $album = AlbumModel::find($id);
+                $album = FileImageModel::where('album_id', $id)
+                                        ->first();
                 if (!$request->hasFile('imageAlbum')) {
                     $path = $album->image;
                     $this->validateUpdate($request);
@@ -95,10 +96,9 @@ Class AlbumController extends Controller {
                     //cho anh vao title image
                     $url_image = Storage::disk('public')->put('images/album/title_images/'.$path, $newImage);
                 }
-                
+                return $path;
                 $album->name  = $request->name;
                 $album->slug  = sanitizeTitle($request->name);
-                $album->image = $path;
                 $album->cate  = "IMAGE";
                 $album->save();
 
@@ -117,19 +117,21 @@ Class AlbumController extends Controller {
         }
     }
 
-    public function getDelete($id) {
+    public function getDelete($id, FileImageModel $fileImageModel) {
 
         if (isset($id) && !empty($id)) {
             DB::beginTransaction();
             try {
-                $album = AlbumModel::find($id)->delete();
-              
+                $album = AlbumModel::find($id)
+                                    ->delete();
+                $fileImageModel::where('album_id', $id)
+                                ->delete();
                 DB::commit();
                 return response()->json(['status' => true], 200);
 
             } catch (Exception $e) {
-                return response()->json(['messages' => 'Lỗi hệ thống'], 422);
                 DB::rollback();
+                return response()->json(['messages' => 'Lỗi hệ thống'], 422); 
             }
         } else {
             return response()->json(['messages' => 'Id không tồn tại'], 422);

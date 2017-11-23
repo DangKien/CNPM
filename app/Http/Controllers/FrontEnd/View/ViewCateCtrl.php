@@ -24,20 +24,25 @@ Class ViewCateCtrl extends Controller {
         $url    = request()->path();
        	
         switch ($url) {
-            case 'lien-he':
-                return view('front.content.contact.contact', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.lien-he.url'):
+                return view(config('viewCate.lien-he.view'),
+                            ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'thong-bao':
-                return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.thong-bao.url'):
+                return view(config('viewCate.thong-bao.view'), 
+                            ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'tin-tuc':
-                return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.tin-tuc.url'):
+                return view(config('viewCate.tin-tuc.view'), 
+                            ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'chuong-trinh-hoc':
-                return view('front.content.list', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.chuong-trinh-hoc.url'):
+                return view(config('viewCate.chuong-trinh-hoc.url'), 
+                            ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
             default:
-                 return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                 return view('front.content.cate', 
+                            ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
         }
     }
@@ -56,33 +61,39 @@ Class ViewCateCtrl extends Controller {
         $url    = request()->path();
         
         switch ($url) {
-            case 'tuyen-sinh/dang-ki-online':
-                return view('front.content.addmission.addmission', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.dk-online.url'):
+                return view(config('viewCate.dk-online.view'), 
+                            ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'thu-vien/thu-vien-anh':
-                return view('front.content.album.albumTitle', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.thu-vien-anh.url'):
+                return view(config('viewCate.thu-vien-anh.view'),
+                        ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'thu-vien/thu-vien-tai-lieu':
-                return view('front.content.file.file', ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.thu-vien-tai-lieu.url'):
+                return view(config('viewCate.thu-vien-tai-lieu.view'),
+                        ['slug'=>$cate,'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-             case 'gioi-thieu/gioi-thieu-chung':
-                return view('front.content.introduce.introduce', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+             case config('viewCate.gioi-thieu-chung.url'):
+                return view(config('viewCate.gioi-thieu-chung.view'), 
+                        ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'chuong-trinh-hoc/ngay-cua-be':
-                return view('front.content.oneday.oneday', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.ngay-cua-be.url'):
+                return view(config('viewCate.ngay-cua-be.view'), 
+                        ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'chuong-trinh-hoc/hoat-dong-ngoai-khoa':
-                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.hoat-dong-ngoai-khoa.url'):
+                return view(config('viewCate.hoat-dong-ngoai-khoa.view'), 
+                    ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
 
-            case 'chuong-trinh-hoc/chuong-trinh':
-                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.chuong-trinh.url'):
+                return view(config('viewCate.chuong-trinh.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break; 
             case 'chuong-trinh-hoc/thuc-don':
                 return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
-            case 'chuong-trinh-hoc/su-kien':
-                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+            case config('viewCate.su-kien.url'):
+                return view(config('viewCate.su-kien.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
             default:
                  return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);

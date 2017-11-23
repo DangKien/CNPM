@@ -91,7 +91,25 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 			} else {
 				$scope.data.errors.upload = data.errors;
 			}
-		}
+		},
+
+		removeAlbum: function () {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+				if (respon == true){
+					$albumService.action.deleteAlbum($scope.data.idAlbum).then(function (resp){
+						if (resp.data.status == true) {
+							$conf.confirmNotifi('success', 'Xóa thành công thành công');
+							$scope.actions.listAlbum();
+							window.location = SiteUrl + "/backend/view/file-image";
+						}
+					}, function (error) {
+						$conf.confirmNotifi('error', 'Xóa ảnh thất bại!!!', "fa fa-ban");
+					});
+				}
+			});
+
+			
+		},
 
 
 	};
