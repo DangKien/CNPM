@@ -58,6 +58,10 @@ class ViewController extends Controller
 		return view('back.content.libary.file', ['active'=>'file'])->with('title', 'Thư viện tài liệu');
 	}
 
+	public function event(){
+		return view('back.content.event.event', ['active'=>'file'])->with('title', 'Sự kiện');
+	}
+
 
 
 }

@@ -1,20 +1,40 @@
-ngApp.controller('eventCtrl', function ($apply, $scope)
+ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
 {  
     $scope.calendar;
     $scope.title;
     $scope.data = {
+        listEvent: {},
+        date: {},
         todayDate: moment(),
+        listEvents: function () {
+            $eventService.action.listEvent().then(function (resp) {
+                $scope.calendarConfig.events = $scope.action.processEvent(resp.data);
+                $apply(function () {
+                    $scope.calendarConfig.events = $scope.calendarConfig.events;
+                    $scope.calendar.fullCalendar('gotoDate', moment($scope.data.date.beginDate));
+                })
+            }).catch(function (err) {
+
+            }); 
+        },
     };
+    
     $scope.action = {
-        
         calendar: {
             prev: function () {
-                $scope.calendar.fullCalendar('prev');
+                $$scope.data.date.beginDate = moment($scope.data.date.beginDate, 'YYYY-MM-DD').subtract(1, 'months').startOf('month').format('YYYY-MM-DD');
+                $scope.data.date.endDate = moment($scope.data.date.endDate, 'YYYY-MM-DD').subtract(1, 'months').endOf('month').format('YYYY-MM-DD');
+                $scope.data.listEvents();
             },
             next: function () {
-                $scope.calendar.fullCalendar('next');
+               $scope.data.date.beginDate = moment($scope.data.date.beginDate, 'YYYY-MM-DD').subtract(-1, 'months').startOf('month').format('YYYY-MM-DD');
+                $scope.data.date.endDate = moment($scope.data.date.endDate, 'YYYY-MM-DD').subtract(-1, 'months').endOf('month').format('YYYY-MM-DD');
+                $scope.data.listEvents();
             },
             today: function () {
+                $scope.data.date.beginDate = moment().startOf('month').format('YYYY-MM-DD');
+                $scope.data.date.endDate = moment().endOf('month').format('YYYY-MM-DD');
+                $scope.data.listEvents();
                 $scope.calendar.fullCalendar('today');
             },
             viewRender: function (view, element) {
@@ -23,10 +43,31 @@ ngApp.controller('eventCtrl', function ($apply, $scope)
                 });
             }
         },
-        itemClick: function(event, jsEvent, view){
-            alert(1);
+        itemClick: function (event, jsEvent, view) {
+            $apply(function () {
+                $scope.idEvent = event.id;
+                console.log($scope.idEvent)
+               
+            });
+
+        },
+
+        processEvent: function (data) {
+            var listMeeting = [];
+            angular.forEach(data, function(value, key){
+                listMeeting.push({
+                    id:    value.id,
+                    title: value.name,
+                    start: value.begin_date
+                });
+            });
+            return listMeeting;
         }
+        
     }
+
+
+
     $scope.calendarConfig = {
         header: {
             left: '',
@@ -53,29 +94,12 @@ ngApp.controller('eventCtrl', function ($apply, $scope)
         ],
         viewRender: $scope.action.calendar.viewRender,
         eventClick: $scope.action.itemClick,
-        events: [
-            {
-                title: 'All Day Event',
-                start: '2017-09-01'
-            },
-            {
-                title: 'Long Event',
-                start: '2017-09-07',
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2017-09-09T16:00:00'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2017-09-16T16:00:00'
-            },
-        ]
+        events : [],
     };
     $scope.changeDate = function () {
         console.log($scope.calendar);
         $scope.calendar.fullCalendar('gotoDate', new Date('2017-08-01'));
     }
+
+    $scope.data.listEvents();
 });

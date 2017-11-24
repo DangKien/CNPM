@@ -12,7 +12,7 @@
 */
 Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
 Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
-
+// backend view
 Route::group(['prefix' => 'backend'], function (){
     Route::group(['prefix' => 'view'], function (){
         Route::get('/', 'BackEnd\View\ViewController@user');
@@ -27,6 +27,7 @@ Route::group(['prefix' => 'backend'], function (){
         Route::get('/file-video', 'BackEnd\View\ViewController@fileVideo')->name('file-video');
         Route::get('/file-music', 'BackEnd\View\ViewController@fileMusic')->name('file-music');
         Route::get('/file', 'BackEnd\View\ViewController@file')->name('file');
+        Route::get('/event', 'BackEnd\View\ViewController@event')->name('event');
         Route::get('/fileAlbum', function(){
             return view('back.content.libary.image.albumImage');
          })->name('fileAlbum');
@@ -61,6 +62,7 @@ Route::group(['prefix' => 'backend'], function (){
         });
     });
 });
+// fontendview
 Route::group(['prefix' => ''], function (){
     Route::get('', function () {
         return view('front.content.home');
@@ -150,6 +152,13 @@ Route::group(['prefix' => 'rest/backend'], function() {
     Route::post('/video/{id}', 'BackEnd\Rest\VideoController@getUpdate');
     Route::delete('/video/{id}', 'BackEnd\Rest\VideoController@getDelete');
 
+    // su kien
+    Route::get('/event', 'BackEnd\Rest\EventController@getList');
+    Route::post('/event', 'BackEnd\Rest\EventController@getInsert');
+    Route::get('/event/{id}', 'BackEnd\Rest\EventController@getEdit');
+    Route::post('/event/{id}', 'BackEnd\Rest\EventController@getUpdate');
+    Route::delete('/event/{id}', 'BackEnd\Rest\EventController@getDelete');
+
     Route::get('/addmission', 'BackEnd\Rest\AddMissionController@getList');
     Route::get('/addmission/{id}', 'BackEnd\Rest\AddMissionController@getCheck');
 
@@ -171,6 +180,7 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/album-name/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getAlbum'); //danh sach album anh
 
         Route::get('/file', 'FrontEnd\Rest\FileCtrl@getFile');// lay file
+        Route::get('/event', 'FrontEnd\Rest\EventCtrl@getEvent');
 
         Route::get('/news/{slugNew}', 'FrontEnd\Rest\HomeCtrl@getNews'); //tin tuc
         Route::get('/news-deltail/{idNew}', 'FrontEnd\Rest\CateNewCtrl@getDetailNews'); // chi tiet tin tuc

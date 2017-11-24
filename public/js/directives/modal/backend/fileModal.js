@@ -2,16 +2,17 @@ ngApp.directive('fileModal', function($apply, $fileService){
 	templateUrl = SiteUrl + '/modal/uploadFileModal';
 
 	var link = function (scope) {
-		scope.dataParams = function () {
-			var title   = scope.data.params.title;
-			var image  = $('input[name*="image-title"]')[0].files[0];
-			var file   = $('input[name*="file"]')[0].files[0];
-			var params = $fileService.data (title, image, file);
-
-			return params;
-		};
 
 		scope.actions = {
+
+			dataParams = function () {
+				var title   = scope.data.params.title;
+				var image  = $('input[name*="image-title"]')[0].files[0];
+				var file   = $('input[name*="file"]')[0].files[0];
+				var params = $fileService.data (title, image, file);
+
+				return params;
+			},
 
 			insertFile : function () {
 				var params = scope.dataParams();

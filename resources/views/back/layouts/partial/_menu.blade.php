@@ -94,6 +94,12 @@
 								<a href="{{ route('addmission') }}"><i class="fa fa-suitcase"></i> Đăng kí học Online</a></li>
 							</ul>
 						</li>
+						<li class="{{ request()->is('*/event') ? 'active active-link' : '' }}">
+							<a href="{{ route('event') }}">
+								<i class="fa fa-sliders"></i>
+								<span class="menu-title"> Sự kiện</span>
+							</a>				
+						</li>
 
 						<li class="{{ request()->is('*/slide') ? 'active active-link' : '' }}">
 							<a href="{{ route('slide') }}">

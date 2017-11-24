@@ -8,21 +8,9 @@ ngApp.directive('myCalendar', function ($apply) {
         };
 
         scope.$watchCollection('config', function (newVal, oldVal) {
-            if (scope.calendar) {
-                var eventSources = newVal.eventSources;
-                var oldEventSources = oldVal.eventSources;
-                //xoa
-                scope.calendar.fullCalendar('removeEventSources' );
-                
-                //them moi
-                for(var key in eventSources)
-                {
-                    scope.calendar.fullCalendar('addEventSource', eventSources[key] );
-                }
-            }
-            else {
+            $apply(function () {
                 scope.initCalendar(newVal);
-            }
+            });
         });
     };
 

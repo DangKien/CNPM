@@ -2,7 +2,7 @@
 @section ('title', $nameCate)
 @section ('myJs')
 	<script src="{{ url('Frontend') }}/js/ctrl/eventCtrl.js"></script>
-	<script src="{{ url('Frontend') }}/js/factory/service/cateNewService.js"></script>
+	<script src="{{ url('Frontend') }}/js/factory/service/eventService.js"></script>
 	<script src="{{ url('Frontend') }}/js/directive/myCalendar.js"></script>
 @endsection
 
@@ -29,10 +29,9 @@
 	  					<div class="con-index-news" >
                             <i class="fa fa-home style-home"></i>
                             <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">{{ $nameCate }}</i>
-
                         </div>
 	  					<div class="post-content" role="tabpanel">
-	  						<my-calendar calendar='calendar' config="calendarConfig"></my-calendar>
+	  						<my-calendar calendar='calendar' config="calendarConfig" event="data.listEvent"></my-calendar>
 	  					</div>
 	  					
 	  				</div>
