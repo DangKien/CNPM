@@ -51,6 +51,15 @@
 						    				</div>
 						    			</div>
 						    		</div>
+									<div class="form-group" ng-if="data.check">
+						    			<label class="col-sm-3 control-label" for="demo-is-inputsmall"></label>
+						    			<div class="col-sm-12 text-center">
+						    				<div class="text-success" style="margin-top: 5px; font-weight: 600; font-size: 16px;">
+						    				    Bạn đã gửi yêu cầu thành công
+						    				</div>
+						    			</div>
+							    	</div>    		
+
 						    		<div class="form-group">
 						    		    <label for="name" class="col-md-2 col-sm-4 control-label">Họ tên bạn: </label>
 						    		    <div class="col-sm-9">

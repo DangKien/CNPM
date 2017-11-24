@@ -38,13 +38,22 @@
 						<form ng-enter = "actions.insertAddMission()" ng-dom="formVal">
 							<div class="panel panel-default content-post row">
 								<div class="form-group">
-						    			<label class="col-sm-3 control-label" for="demo-is-inputsmall"></label>
-						    			<div class="col-sm-12 text-center">
-						    				<div class="text-danger" style="margin-top: 5px;">
-						    				    @{{ data.errors.messages }}
-						    				</div>
-						    			</div>
-						    		</div>
+					    			<label class="col-sm-3 control-label" for="demo-is-inputsmall"></label>
+					    			<div class="col-sm-12 text-center">
+					    				<div class="text-danger" style="margin-top: 5px;">
+					    				    @{{ data.errors.messages }}
+					    				</div>
+					    			</div>
+						    	</div>
+						    	<div class="form-group" ng-if="data.check">
+					    			<label class="col-sm-3 control-label" for="demo-is-inputsmall"></label>
+					    			<div class="col-sm-12 text-center">
+					    				<div class="text-success" style="margin-top: 5px; ; font-weight: 600; font-size: 16px;">
+					    				    Bạn đã đăng kí thành công
+					    				</div>
+					    			</div>
+						    	</div>
+						    	
 							  	<div class="panel-body col-md-6 ">
 							  		<h5 class="text-center"> Thông tin học sinh </h5>
 							    		<div class="form-group">

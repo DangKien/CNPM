@@ -22,7 +22,9 @@ ngApp.controller('contactCtrl', function ($apply, $rootScope, $scope, $contactSe
 				if (vericaptcha) {
 					var params = $scope.actions.paramsSubmit();
 					$contactService.action.contact(params).then(function (resp) {
-						$scope.data.listPost = resp.data;
+						$scope.data.check    = resp.data.status;
+						$scope.data.errors = {};
+						$scope.data.params = {};
 					}, function (error) {
 						$scope.data.errors = error.data.errors;
 					});

@@ -24,6 +24,7 @@ ngApp.controller('addmissionCtrl', function ($apply, $rootScope, $scope, $addmis
 				$addmissionService.action.insertAddmission(params).then(function (resp) {
 					$scope.data.errors = {};
 					$scope.data.params = {};
+					$scope.data.check  = resp.data.status;
 				}, function (error) {
 					$scope.data.errors = error.data.errors;
 				});

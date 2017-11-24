@@ -10,8 +10,7 @@ use DB;
 
 Class AddmissionCtrl extends Controller {
 
-    public function getAddmission (Request $request, AddMissionModel $addMissionModel){
-    	return 123;
+    public function getAddmission (Request $request, AddMissionModel $addMissionModel) {
     	$this->validateInsert($request);
     	$nameStudent = $request->nameStudent;
     	$gender      = $request->gender ;
