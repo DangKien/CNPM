@@ -1,22 +1,25 @@
-ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
+ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
 {  
     $scope.calendar;
     $scope.title;
     $scope.chosseEventModal;
+    $scope.calendarConfig = {};
     $scope.data = {
         listEvent: {},
         date: {},
         todayDate: moment(),
         listEvents: function () {
-            $eventService.action.listEvent().then(function (resp) {
-                $scope.calendarConfig.events = $scope.action.processEvent(resp.data);
-                $scope.$digest();
-                $scope.$apply();
-            }).catch(function (err) {
-
-            }); 
+            return new Promise(function (resolve, reject) {
+                    $eventService.action.listEvent().then(function (resp) {
+                        $scope.calendarConfig.events = $scope.action.processEvent(resp.data);
+                        resolve(true);
+                    }).catch(function (err) {
+                        reject(false);
+                    });
+                });
         },
     };
+    
     
     $scope.action = {
         calendar: {
@@ -92,6 +95,14 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
         console.log($scope.calendar);
         $scope.calendar.fullCalendar('gotoDate', new Date('2017-08-01'));
     }
+    Promise.all([$scope.data.listEvents()]).then(function () {
+        var events = [
 
-    $scope.data.listEvents();
+        ]
+        $apply(function () {
+            $scope.calendarConfig.events = events;
+            console.log($scope.calendarConfig.events)
+            }); 
+        }).catch(function (err) {
+    });
 });

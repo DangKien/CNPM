@@ -7,14 +7,13 @@ ngApp.directive('eventModal', function ($apply, $eventService) {
 			oneEvent: function (idEvent) {
 				$eventService.action.oneEvent(idEvent).then(function (resp) {
 				  scope.event = resp.data;
-				  console.log(scope.event)
 				}).catch(function (err) {
 
 				}); 
 			}
 
 		}
-		scope.$watch('idEvent', function(newValue, oldValue, scope) {
+		scope.$watchCollection('idEvent', function(newValue, oldValue, scope) {
 			scope.action.oneEvent(newValue);
 		});
 		

@@ -6,7 +6,6 @@ ngApp.directive('myCalendar', function ($apply) {
                 scope.calendar = $(scope.domCalendar).fullCalendar(config);
             });
         };
-
         scope.$watchCollection('config', function (newVal, oldVal) {
             $apply(function () {
                 scope.initCalendar(newVal);

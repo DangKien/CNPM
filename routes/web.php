@@ -11,9 +11,9 @@
 |
 */
 Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
-Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
+Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal')->middleware('loginback');
 
-Route::get('/modal/frontend/{view}', 'FrontEnd\Modal\ModalCtrl@modal')->middleware('loginback');
+Route::get('/modal/frontend/{view}', 'FrontEnd\Modal\ModalCtrl@modal');
 
 Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
 
