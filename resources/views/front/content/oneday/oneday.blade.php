@@ -8,7 +8,7 @@
 		<div class="container">
 			<div class="panel">
 			  	<div class="panel-body">
-	  				<div class="menu-left padding-left-0 col-md-3 col-sm-5 text-center">
+	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 		  					<ul>
 		  					    <li class="active-li">
 		  					    	<a> {{ $nameCate }} </a>
@@ -22,7 +22,7 @@
 		  		              	@endif
 		  					</ul>
 	  					</div>
-	  				<div class="col-sm-9 col-md-8 col-lg-9 padding-topbot-15px">
+	  				<div class="col-sm-12 col-md-8 col-lg-9 padding-topbot-15px">
 	  					<img style="width: 100%;" src="{{ url('Frontend/img/onday.png') }}" alt="" class="img-responsive">
 	  					
 	  				</div>

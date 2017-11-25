@@ -13,9 +13,16 @@
 Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
 Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
 
-Route::get('/modal/frontend/{view}', 'FrontEnd\Modal\ModalCtrl@modal');
+Route::get('/modal/frontend/{view}', 'FrontEnd\Modal\ModalCtrl@modal')->middleware('loginback');
+
+Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
+
+Route::get('backend/view/login', 'BackEnd\Login\LoginController@login')->name('getLogin');
+Route::post('backend/view/login', 'BackEnd\Login\LoginController@postlogin')->name('login');
+Route::get('backend/view/logout', 'Auth\LoginController@logout')->name('logout');
+
 // backend view
-Route::group(['prefix' => 'backend'], function (){
+Route::group(['prefix' => 'backend', 'middleware'=>'loginback'], function (){
     Route::group(['prefix' => 'view'], function (){
         Route::get('/', 'BackEnd\View\ViewController@user');
         Route::get('/user', 'BackEnd\View\ViewController@user')->name('user');
@@ -77,8 +84,8 @@ Route::group(['prefix' => ''], function (){
 });
 
 
-
-Route::group(['prefix' => 'rest/backend'], function() {
+//backend
+Route::group(['prefix' => 'rest/backend', 'middleware'=>'loginback'], function() {
 
     // người dùng
 	Route::get('/user', 'BackEnd\Rest\UserController@getList');
@@ -167,8 +174,6 @@ Route::group(['prefix' => 'rest/backend'], function() {
     Route::get('/contact', 'BackEnd\Rest\AddMissionController@getContact');
 
 });
-
-Auth::routes();
 
 Route::group(['prefix' => 'rest'], function (){
     Route::group(['prefix' => 'fontend'], function (){

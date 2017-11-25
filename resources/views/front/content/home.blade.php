@@ -36,7 +36,7 @@
 			
 			{{-- div tin tuc --}}
 			<div class="row" style="margin-top:15px;">
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-6 col-sm-12">
 					<div class="panel panel-success">
 						<div class="panel-heading">
 							<h3 class="panel-title">Tin tức mới</h3>
@@ -70,7 +70,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-6 col-sm-12">
 					<div class="panel panel-success">
 						<div class="panel-heading">
 							<h3 class="panel-title">Thông báo</h3>

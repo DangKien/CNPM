@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="panel">
 			  	<div class="panel-body">
-	  				<div class="menu-left padding-left-0 col-md-3 col-sm-5 text-center">
+	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 		  					<ul>
 		  					    <li class="active-li">
 		  					    	<a> {{ $nameCate }} </a>
@@ -26,7 +26,7 @@
 		  		              	@endif
 		  					</ul>
 	  					</div>
-	  				<div class="col-sm-9 col-md-8 col-lg-9 padding-topbot-15px" ng-controller="eventCtrl">
+	  				<div class="col-sm-12 col-md-9 col-lg-9 padding-topbot-15px" ng-controller="eventCtrl">
 	  					<div class="con-index-news" >
                             <i class="fa fa-home style-home"></i>
                             <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">{{ $nameCate }}</i>

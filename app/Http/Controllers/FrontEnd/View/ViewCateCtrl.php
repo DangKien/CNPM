@@ -52,7 +52,7 @@ Class ViewCateCtrl extends Controller {
                                 ->where('slug', $cate)
                                 ->first(); 
         if (empty($cateId)) {
-            return view('errors.404',[], 404);
+            return view('errors.404');
         }                
         $menu   = $cateModel::select('id', 'slug', 'name')
                               ->where('cate_id', $cateId->id)

@@ -12,7 +12,7 @@
 		<div class="container" ng-controller="addmissionCtrl">
 			<div class="panel">
 			  	<div class="panel-body content-body">
-						<div class="menu-left padding-left-0 col-md-3 col-sm-5 text-center">
+						<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 		  					<ul>
 		  					    <li class="active-li">
 		  					    	<a> {{ $nameCate }} </a>
@@ -26,7 +26,7 @@
 		  		              	@endif
 		  					</ul>
 	  					</div>
-						<div class="content-main col-md-9 col-sm-8 padding-left-right">
+						<div class="content-main col-md-9 col-sm-12 padding-left-right">
 							<div class="con-index-news">
 							<i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">{{ $nameCate }}</i>
 							<i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">Đăng kí tuyển sinh Online</i>  

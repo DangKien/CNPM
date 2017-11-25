@@ -305,7 +305,7 @@ footer ul li {
 	opacity: 0;
 }
 /*Small devices (landscape phones, 576px and up)*/
-@media (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
 	.fix-nav .icon {
 		font-weight: 700;
 	    padding: 10px;
@@ -361,6 +361,56 @@ footer ul li {
 @media (max-width: 776px) and (min-width: 506px) { 
 	.image-list {
 		max-height: 350px;
+	}
+	.fix-nav .icon {
+		font-weight: 700;
+	    padding: 10px;
+	    float: right;
+	    font-size: 30px;
+	    display: block;
+	    cursor: pointer;
+	}
+	.nav-bar-ul ul li a {
+		display: block;
+	    background: linear-gradient(#3e3e3e, #383838);
+	    border-top: 1px solid #484848;
+	    border-bottom: 1px solid #2E2E2E;
+	    color: white;
+	    padding: 15px;
+	}
+	.fix-nav .bg-nav{
+		background-color: transparent;
+		border: none;
+		height: 100%;
+	}
+	.fix-nav ul li:last-child {
+		border-right: none;
+	}
+	.nav-bar-ul{
+		display: none;
+	}
+	.nav-bar-ul {
+		position: fixed;
+	    width: 250px;
+	    left: 0px;
+	    top: 0px;
+	    z-index: 100;
+	    min-height: 100%;	
+	    background: linear-gradient(#3e3e3e, #383838);
+	    overflow-y: auto;
+	}
+	.fix-nav .nav-bar-ul li {
+		width: 250px;
+		border: none;
+	}
+	.hotline {
+		margin-bottom:150px;
+	}
+	footer .department, .menu-footer, .hotline {
+		padding: 0px;
+	}
+	.new img {
+		height: 200px;
 	}
 }
 
