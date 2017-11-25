@@ -33,7 +33,7 @@ Class CateNewCtrl extends Controller {
         return  response()->json($news);
     }
 
-    public function getDetailNews(NewModel $newModel, $id) {
+    public function getDetailNews(NewModel $newModel, $id, Request $request) {
         if (!$id) {
             return response()->json(['messages'=> "Không tìm thấy id"], 422);
         }
@@ -41,7 +41,7 @@ Class CateNewCtrl extends Controller {
                             ->with('users')
                             ->first();
         $flag = Session::get('views');
-        if ($flag == Request::ip().'_'.$id) {
+        if ($flag != $request->ip().'_'.$id) {
             $news->view = $news->view + 1;
             $news->save();
             Session::put('views', $request->ip()."_".$id);
