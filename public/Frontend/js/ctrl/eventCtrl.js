@@ -2,6 +2,7 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
 {  
     $scope.calendar;
     $scope.title;
+    $scope.chosseEventModal;
     $scope.data = {
         listEvent: {},
         date: {},
@@ -9,10 +10,8 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
         listEvents: function () {
             $eventService.action.listEvent().then(function (resp) {
                 $scope.calendarConfig.events = $scope.action.processEvent(resp.data);
-                $apply(function () {
-                    $scope.calendarConfig.events = $scope.calendarConfig.events;
-                    $scope.calendar.fullCalendar('gotoDate', moment($scope.data.date.beginDate));
-                })
+                $scope.$digest();
+                $scope.$apply();
             }).catch(function (err) {
 
             }); 
@@ -22,18 +21,12 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
     $scope.action = {
         calendar: {
             prev: function () {
-                $$scope.data.date.beginDate = moment($scope.data.date.beginDate, 'YYYY-MM-DD').subtract(1, 'months').startOf('month').format('YYYY-MM-DD');
-                $scope.data.date.endDate = moment($scope.data.date.endDate, 'YYYY-MM-DD').subtract(1, 'months').endOf('month').format('YYYY-MM-DD');
                 $scope.data.listEvents();
             },
             next: function () {
-               $scope.data.date.beginDate = moment($scope.data.date.beginDate, 'YYYY-MM-DD').subtract(-1, 'months').startOf('month').format('YYYY-MM-DD');
-                $scope.data.date.endDate = moment($scope.data.date.endDate, 'YYYY-MM-DD').subtract(-1, 'months').endOf('month').format('YYYY-MM-DD');
                 $scope.data.listEvents();
             },
-            today: function () {
-                $scope.data.date.beginDate = moment().startOf('month').format('YYYY-MM-DD');
-                $scope.data.date.endDate = moment().endOf('month').format('YYYY-MM-DD');
+            today: function () {  
                 $scope.data.listEvents();
                 $scope.calendar.fullCalendar('today');
             },
@@ -46,8 +39,7 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService)
         itemClick: function (event, jsEvent, view) {
             $apply(function () {
                 $scope.idEvent = event.id;
-                console.log($scope.idEvent)
-               
+                $($scope.chosseEventModal).modal('show'); 
             });
 
         },

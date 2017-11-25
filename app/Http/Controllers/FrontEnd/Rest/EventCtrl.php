@@ -15,5 +15,11 @@ Class EventCtrl extends Controller {
 
         return response()->json($event);
     }
+
+    public function oneEvent (EventModel $eventModel, $idEvent){
+        $event = $eventModel::find($idEvent);
+
+        return response()->json($event);
+    }
     
 }

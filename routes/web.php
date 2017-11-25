@@ -12,6 +12,8 @@
 */
 Route::get('download/file/{idFile}',"FrontEnd\Download\FileCtrl@getDownload");
 Route::get('/modal/{view}', 'BackEnd\View\ViewController@modal');
+
+Route::get('/modal/frontend/{view}', 'FrontEnd\Modal\ModalCtrl@modal');
 // backend view
 Route::group(['prefix' => 'backend'], function (){
     Route::group(['prefix' => 'view'], function (){
@@ -180,7 +182,9 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/album-name/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getAlbum'); //danh sach album anh
 
         Route::get('/file', 'FrontEnd\Rest\FileCtrl@getFile');// lay file
+
         Route::get('/event', 'FrontEnd\Rest\EventCtrl@getEvent');
+        Route::get('/event/{id}', 'FrontEnd\Rest\EventCtrl@oneEvent');
 
         Route::get('/news/{slugNew}', 'FrontEnd\Rest\HomeCtrl@getNews'); //tin tuc
         Route::get('/news-deltail/{idNew}', 'FrontEnd\Rest\CateNewCtrl@getDetailNews'); // chi tiet tin tuc

@@ -4,6 +4,7 @@
 	<script src="{{ url('Frontend') }}/js/ctrl/eventCtrl.js"></script>
 	<script src="{{ url('Frontend') }}/js/factory/service/eventService.js"></script>
 	<script src="{{ url('Frontend') }}/js/directive/myCalendar.js"></script>
+	<script src="{{ url('Frontend') }}/js/directive/modal/eventModal.js"></script>
 @endsection
 
 @section('content')
@@ -33,11 +34,12 @@
 	  					<div class="post-content" role="tabpanel">
 	  						<my-calendar calendar='calendar' config="calendarConfig" event="data.listEvent"></my-calendar>
 	  					</div>
-	  					
+	  					<event-modal id-event="idEvent" event-modal="chosseEventModal"> </event-modal>
 	  				</div>
 			  	</div>
 			</div>
 		</div>
+
 	</section>
 @endsection
 

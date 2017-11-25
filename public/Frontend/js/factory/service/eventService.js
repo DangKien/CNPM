@@ -9,5 +9,10 @@ ngApp.factory('$eventService', function ($http, $httpParamSerializer){
         return $http.get(url);
 	};
 
+	service.action.oneEvent = function (idEvent) {
+		var url = SiteUrl + "/rest/fontend/event/" + idEvent;
+        return $http.get(url);
+	};
+
 	return service;
 })
