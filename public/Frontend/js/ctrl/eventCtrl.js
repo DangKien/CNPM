@@ -4,6 +4,7 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
     $scope.title;
     $scope.chosseEventModal;
     $scope.calendarConfig = {};
+
     $scope.data = {
         listEvent: {},
         date: {},
@@ -12,7 +13,7 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
             return new Promise(function (resolve, reject) {
                     $eventService.action.listEvent().then(function (resp) {
                         $scope.calendarConfig.events = $scope.action.processEvent(resp.data);
-                        resolve(true);
+                        resolve($scope.calendarConfig.events);
                     }).catch(function (err) {
                         reject(false);
                     });
@@ -91,18 +92,15 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
         eventClick: $scope.action.itemClick,
         events : [],
     };
-    $scope.changeDate = function () {
-        console.log($scope.calendar);
-        $scope.calendar.fullCalendar('gotoDate', new Date('2017-08-01'));
-    }
-    Promise.all([$scope.data.listEvents()]).then(function () {
-        var events = [
-
-        ]
-        $apply(function () {
-            $scope.calendarConfig.events = events;
-            console.log($scope.calendarConfig.events)
+    a = $scope.data.listEvents();
+    $scope.events = function () {
+        a.then(function (value) {
+            $apply(function () {
+                $scope.calendarConfig.events = value;
             }); 
-        }).catch(function (err) {
-    });
+            }).catch(function (err) {
+        });
+    };
+    $scope.events();
+    
 });
