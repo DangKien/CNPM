@@ -1,4 +1,4 @@
-ngApp.controller('addmissionCtrl', function ($apply, $addmissionService, $scope, changStatus, $conf) {
+ngApp.controller('addmissionCtrl', function ($apply, $addmissionService, $scope, changStatus, $conf, $socketIo) {
 	$scope.data = {
 		listCate: {},
 		pageAddmission: {},
@@ -34,7 +34,14 @@ ngApp.controller('addmissionCtrl', function ($apply, $addmissionService, $scope,
 		}
 
 		
-	}
+	};
+
+	$socketIo.on('addmission', function (data) {
+		if (data) {
+			$scope.actions.listAddmission();
+		}
+		
+	});
 
 	$scope.actions.listAddmission();
 	

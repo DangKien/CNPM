@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AddMissionModel;
 use DB;
+use App\Libs\EventSocket;
 
 
 Class AddmissionCtrl extends Controller {
 
-    public function getAddmission (Request $request, AddMissionModel $addMissionModel) {
+    public function getAddmission (Request $request, AddMissionModel $addMissionModel, EventSocket $redis) {
     	$this->validateInsert($request);
     	$nameStudent = $request->nameStudent;
     	$gender      = $request->gender ;
@@ -32,9 +33,11 @@ Class AddmissionCtrl extends Controller {
 			$addMissionModel->message      = $message;
 			$addMissionModel->save();
 			DB::commit();
+            $redis->socketIO('addmission', $addMissionModel);
 			return response()->json(['status'=>true], 200);
 
 		} catch (Exception $e) {
+			DB::rollback();
 			return response()->json(['message'=>'Lỗi hệ thống'], 422);
 		}
 		

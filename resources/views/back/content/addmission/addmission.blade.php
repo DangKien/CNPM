@@ -3,6 +3,7 @@
 @section ('myJs')
 	<script src="{{ url('')}}/js/ctrl/backend/addmissionCtrl.js"></script>
 	<script src="{{ url('')}}/js/factory/services/backend/addmissionService.js"></script>
+	<script src="{{ url('')}}/js/factory/socketIo.js"></script>
 @endsection
 @section('content')
 	<div id="content-container" ng-controller="addmissionCtrl">
@@ -56,7 +57,7 @@
 											Khác
 										</span>
 									</td>
-									<td>@{{ addmission.birthday }}</td>
+									<td>@{{ addmission.birthday | formatDate }}</td>
 									<td>@{{ addmission.name_parent }}</td>
 									<td>@{{ addmission.phone }}</td>
 									<td>@{{ addmission.email }}</td>
@@ -71,8 +72,12 @@
 										</span>
 									</div></td>
 									<td>
-										<button ng-click="actions.checkAdd(addmission.id)"
-						            	class="btn btn-default btn-icon btn-circle icon-lg fa fa-check"></button>
+										<span ng-if="(addmission.status == 'PENDING')">
+											<button ng-click="actions.checkAdd(addmission.id)"
+						            				class="btn btn-default btn-icon btn-circle icon-lg fa fa-check">
+						            					
+						            		</button>
+										</span>
 						        	</td>
 								</tr>
 							</tbody>
