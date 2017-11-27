@@ -9,6 +9,8 @@
 	<script src="{{ url('Frontend') }}/js/factory/service/eventService.js"></script>
 	
 	<script src="{{ url('Frontend') }}/js/ctrl/eventCtrl.js"></script>
+
+	
 @endsection
 
 @section('content')
@@ -36,13 +38,21 @@
                             <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">{{ $nameCate }}</i>
                         </div>
 	  					<div class="post-content" role="tabpanel">
-	  						<my-calendar calendar='calendar' config="calendarConfig" event="data.listEvent"></my-calendar>
+	  						<div id='calendar' class="my-calendar" config="calendarConfig"></div>
+	  						{{-- <my-calendar calendar='calendar' config="calendarConfig"></my-calendar> --}}
 	  					</div>
+
 	  					<event-modal id-event="idEvent" event-modal="chosseEventModal"> </event-modal>
 	  				</div>
 			  	</div>
 			</div>
 		</div>
+
+		<div class="modal" id="modalLoader">
+		    <div id="loader-wrapper">
+		        <div id="loader"></div>
+		    </div>
+		</div><!-- /.modal -->
 
 	</section>
 @endsection

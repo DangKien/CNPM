@@ -11,13 +11,14 @@
 
 {{-- main menu --}}
 <script src="{{ url('') }}/js/plugin/bootbox.min.js"></script>
-<script src="{{ url('Frontend') }}/js/ctrl/mainMenuCtrl.js"></script>
-<script src="{{ url('Frontend') }}/js/factory/service/mainMenuService.js"></script>
+
 <script src="{{ url('') }}/js/factory/conf.js"></script>
 <script src="{{ url('') }}/js/directives/ngEnter.js"></script>
 <script src="{{ url('') }}/js/directives/ngdom.js"></script>
 
 {{-- slideImage BLue --}}
 <script src="{{ url('') }}/js/plugin/blueimp-gallery.min.js"></script>
-
+<script src="{{ url('Frontend') }}/js/ctrl/mainMenuCtrl.js"></script>
+<script src="{{ url('Frontend') }}/js/factory/service/mainMenuService.js"></script>
+<script src="{{ url('Frontend') }}/js/factory/myLoader.js"></script>
 

@@ -1,9 +1,8 @@
-ngApp.directive('myCalendar', function ($apply) {
+ngApp.directive('myCalendar', function ($apply, $myLoader) {
     var link = function (scope, elm, attrs) {
-        scope.domCalendar;
         scope.initCalendar = function (config) {
             $apply(function () {
-                scope.calendar = $(scope.domCalendar).fullCalendar(config);
+                $(elm).fullCalendar(config);
             });
         };
         scope.$watchCollection('config', function (newVal, oldVal) {
@@ -14,12 +13,10 @@ ngApp.directive('myCalendar', function ($apply) {
     };
 
     return {
-        restrict: 'E',
+        restrict: 'C',
         scope: {
             config: '=',
-            calendar: '='
         },
         link: link,
-        template: '<div ng-dom="domCalendar"></div>'
     }
 })

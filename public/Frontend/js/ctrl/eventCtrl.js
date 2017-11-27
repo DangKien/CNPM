@@ -1,4 +1,4 @@
-ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
+ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout, $myLoader)
 {  
     $scope.calendar;
     $scope.title;
@@ -9,8 +9,9 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
         listEvent: {},
         date: {},
         todayDate: moment(),
-        listEvents: function () {
-            return new Promise(function (resolve, reject) {
+    };
+    
+    var p1 = new Promise(function (resolve, reject) {
                     $eventService.action.listEvent().then(function (resp) {
                         $scope.calendarConfig.events = $scope.action.processEvent(resp.data);
                         resolve($scope.calendarConfig.events);
@@ -18,9 +19,6 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
                         reject(false);
                     });
                 });
-        },
-    };
-    
     
     $scope.action = {
         calendar: {
@@ -54,7 +52,8 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
                 listMeeting.push({
                     id:    value.id,
                     title: value.name,
-                    start: value.begin_date
+                    start: value.begin_date,
+                    end: value.end_date,
                 });
             });
             return listMeeting;
@@ -62,9 +61,11 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
         
     }
     $scope.events = function () {
-        a = $scope.data.listEvents();
-        $scope.data.listEvents().then(function (value) {
-            $scope.calendarConfig.events = value;
+        p1.then(function (value) {
+            $apply(function () {
+                $scope.calendarConfig.events = value;
+                $myLoader.hide();
+            })
             }).catch(function (err) {
         });
     };
@@ -97,7 +98,5 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
         eventClick: $scope.action.itemClick,
         events : [],
     };
-    
-    
     $scope.events();
 });
