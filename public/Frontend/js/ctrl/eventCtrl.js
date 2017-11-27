@@ -61,9 +61,14 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
         }
         
     }
-
-
-
+    $scope.events = function () {
+        a = $scope.data.listEvents();
+        $scope.data.listEvents().then(function (value) {
+            $scope.calendarConfig.events = value;
+            }).catch(function (err) {
+        });
+    };
+    
     $scope.calendarConfig = {
         header: {
             left: '',
@@ -92,15 +97,7 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout)
         eventClick: $scope.action.itemClick,
         events : [],
     };
-    a = $scope.data.listEvents();
-    $scope.events = function () {
-        a.then(function (value) {
-            $apply(function () {
-                $scope.calendarConfig.events = value;
-            }); 
-            }).catch(function (err) {
-        });
-    };
-    $scope.events();
     
+    
+    $scope.events();
 });

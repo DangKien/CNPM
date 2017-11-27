@@ -83,19 +83,19 @@ class ClassController extends Controller {
 
     public function validateInsert($request) {
         return $this->validate($request, [
-                    'name' => 'required',
-                    ], [
-                    'name.required' => 'Tên không được để trống',
-                    ]
+            'name'          => 'required',
+            ], [
+            'name.required' => 'Tên không được để trống',
+            ]
         );
     }
 
     public function validateUpdate($request) {
         return $this->validate($request, [
-                    'name' => 'required',
-                        ], [
-                    'name.required' => 'Tên không được để trống',
-                    ]
+            'name' => 'required',
+            ], [
+            'name.required' => 'Tên không được để trống',
+            ]
         );
     }
 

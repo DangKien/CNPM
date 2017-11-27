@@ -18,7 +18,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label fix-form-cate" for="demo-is-inputsmall">Tên loại tin: </label>
+								<label class="col-sm-3 control-label fix-form-cate" for="demo-is-inputsmall">Tên loại tin *: </label>
 								<div class="col-sm-8">
 									<input required type="text" placeholder="Tên loại tin" class="form-control input-sm"
 									id="demo-is-inputsmall" ng-model = "data.params.name">
@@ -31,7 +31,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label fix-form-cate" for="demo-is-inputsmall">Loại tin cha: </label>
+								<label class="col-sm-3 control-label fix-form-cate" for="demo-is-inputsmall">Loại tin cha *: </label>
 								<div class="col-sm-8">
 									<select id = "idCate" class="form-control">
 										<option ng-selected="data.params.cate_id == '0'" value="0">Loại tin cha </option>

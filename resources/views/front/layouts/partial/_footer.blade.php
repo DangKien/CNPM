@@ -9,8 +9,30 @@
 			<div class="menu-footer col-md-4 col-sm-4 col-xs-6 text-left">
 				<h3>Danh mục</h3>
 				<ul>
-				    <li><a href="">Trang chủ</a></li>
-				    <li ng-repeat="(key, menu) in data.listMainMenu"><a href="">@{{ menu.name }}</a></li>
+				  	<li class="{{ request()->is('/*') ? 'active-li-footer' : ''}}  ">
+				  		<a href="{{ route('home') }}">Trang chủ</a>
+				  	</li>
+				  	<li class="{{ request()->is('gioi-thieu') || request()->is('gioi-thieu/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('gioi-thieu/gioi-thieu-chung') }}">Giới thiệu</a>
+				  	</li>
+				  	<li class="{{ request()->is('chuong-trinh-hoc') || request()->is('chuong-trinh-hoc/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('chuong-trinh-hoc/chuong-trinh') }}">Chương trình học</a>
+				  	</li>
+				  	<li class="{{ request()->is('tin-tuc') || request()->is('tin-tuc/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('tin-tuc') }}">Tin tức</a>
+				  	</li>
+				  	<li class="{{ request()->is('thu-vien') || request()->is('thu-vien/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('thu-vien/thu-vien-anh') }}">Thư viện</a>
+				  	</li>
+				  	<li class="{{ request()->is('tuyen-sinh') || request()->is('tuyen-sinh/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('tuyen-sinh/thong-tin-tuyen-sinh') }}">Tuyển sinh</a>
+				  	</li>
+				  	<li class="{{ request()->is('thong-bao') || request()->is('thong-bao/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('thong-bao') }}">Thông báo</a>
+				  	</li>
+				  	<li class="{{ request()->is('lien-he') ||  request()->is('lien-he/*') ? 'active-li-footer' : ''}}">
+				  		<a href="{{ url('lien-he') }}">Liên hệ</a>x
+				  	</li>
 				</ul>
 			</div>
 			<div class="hotline col-md-4 col-sm-4 col-xs-6 text-left">

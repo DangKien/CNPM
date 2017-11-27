@@ -148,7 +148,7 @@ class MenuController extends Controller
 	public function validateUpdate($request){
 	    return $this->validate($request, [
 			'name'        => 'required',
-			'speacies'       => 'required',
+			'speacies'    => 'required',
 			'description' => 'required',
 	    	], [
 			'name.required'        => 'Tên mớn không được để trống',

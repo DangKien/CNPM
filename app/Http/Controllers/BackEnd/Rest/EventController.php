@@ -105,35 +105,39 @@ class EventController extends Controller {
 
     public function validateInsert($request) {
         return $this->validate($request, [
-                    'name'      => 'required',
-                    'beginDate' => 'required|date_format:"Y-m-d"',
-                    'endDate'   => 'required|date_format:"Y-m-d"',
-                    'content'   => 'required',
-                    ], [
-                    'name.required'         => 'Tên không được để trống',
-                    'beginDate.required'    => 'Ngày bắt đầu không được để trống',
-                    'beginDate.date_format' => 'Ngày bắt đầu không đúng định dạng',
-                    'endDate.required'      => 'Ngày kết thúc không được để trống',
-                    'endDate.date_format'   => 'Ngày kết thúc không đúng định dạng',
-                    'content.required'      => 'Nội dung sự kiện không được để trống',
-                    ]
+            'name'      => 'required| between:1,255',
+            'beginDate' => 'required| date_format:"Y-m-d"',
+            'endDate'   => 'required| date_format:"Y-m-d"',
+            'content'   => 'required| between:1,1000',
+            ], [
+            'name.required'         => 'Tên không được để trống',
+            'name.between'          => 'Tên không vượt quá 255 kí tự',
+            'beginDate.required'    => 'Ngày bắt đầu không được để trống',
+            'beginDate.date_format' => 'Ngày bắt đầu không đúng định dạng',
+            'endDate.required'      => 'Ngày kết thúc không được để trống',
+            'endDate.date_format'   => 'Ngày kết thúc không đúng định dạng',
+            'content.required'      => 'Nội dung sự kiện không được để trống',
+            'content.between'       => 'Nội dung khôg vượt quá 1000 kí tự',
+            ]
         );
     }
 
     public function validateUpdate($request) {
         return $this->validate($request, [
-                    'name'      => 'required',
-                    'beginDate' => 'required|date_format:"Y-m-d"',
-                    'endDate'   => 'required|date_format:"Y-m-d"',
-                    'content'   => 'required',
-                    ], [
-                    'name.required'         => 'Tên không được để trống',
-                    'beginDate.required'    => 'Ngày bắt đầu không được để trống',
-                    'beginDate.date_format' => 'Ngày bắt đầu không đúng định dạng',
-                    'endDate.required'      => 'Ngày kết thúc không được để trống',
-                    'endDate.date_format'   => 'Ngày kết thúc không đúng định dạng',
-                    'content.required'      => 'Nội dung sự kiện không được để trống',
-                    ]
+            'name'      => 'required| between:1,255',
+            'beginDate' => 'required| date_format:"Y-m-d"',
+            'endDate'   => 'required| date_format:"Y-m-d"',
+            'content'   => 'required| between:1,1000',
+            ], [
+            'name.required'         => 'Tên không được để trống',
+            'beginDate.required'    => 'Ngày bắt đầu không được để trống',
+            'name.between'          => 'Tên không vượt quá 255 kí tự',
+            'beginDate.date_format' => 'Ngày bắt đầu không đúng định dạng',
+            'endDate.required'      => 'Ngày kết thúc không được để trống',
+            'endDate.date_format'   => 'Ngày kết thúc không đúng định dạng',
+            'content.required'      => 'Nội dung sự kiện không được để trống',
+            'content.between'       => 'Nội dung khôg vượt quá 1000 kí tự',
+            ]
         );
     }
 

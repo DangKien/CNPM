@@ -140,13 +140,14 @@ Class AlbumController extends Controller {
 
     public function validateInsert($request) {
         return $this->validate($request, [
-                    'name'       => 'required',
-                    'imageAlbum' =>'required|image'
-                    ], [
-                    'name.required' => 'Tên không được để trống',
-                    'imageAlbum.required' => 'Ảnh không được để trống',
-                    'imageAlbum.image' => 'Tệp tin không phải ảnh',
-                    ]
+            'name'       => 'required| between:1,255',
+            'imageAlbum' => 'required| image'
+            ], [
+            'name.required'       => 'Tên không được để trống',
+            'name.between'        => 'Tên Album không quá 255 kí tự',
+            'imageAlbum.required' => 'Ảnh không được để trống',
+            'imageAlbum.image'    => 'Tệp tin không phải ảnh',
+            ]
         );
     }
 

@@ -18,7 +18,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên album: </label>
+								<label class="col-sm-3 control-label" for="demo-is-inputsmall">Tên album *: </label>
 								<div class="col-sm-8">
 									<input type="text" ng-model="data.params.name" placeholder="Tên album" class="form-control input-sm"
 									id="demo-is-inputsmall" required>
@@ -30,7 +30,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="demo-vs-definput" class="control-label col-sm-3">Ảnh đại diện: </label>
+								<label for="demo-vs-definput" class="control-label col-sm-3">Ảnh đại diện *: </label>
 								<div class="col-md-8">
 									<input id="image-album" accept= "image/*" class="image-support" type="file" >
 									<br>

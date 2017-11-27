@@ -124,13 +124,14 @@ class UploadFileController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-			'image' => 'required|image',
-			'file'  => 'required',
-			'title' => 'required',
-	    	], [
+			'image'          => 'required| image',
+			'file'           => 'required',
+			'title'          => 'required| between:1,255',
+			], [
 			'image.required' => 'Ảnh minh họa không được bỏ trống',
 			'image.image'    => 'Ảnh minh họa không đúng định dạng',
 			'title.required' => 'Tiêu đề không được bỏ trống',
+			'title.between'  => 'Tiêu đề không được quá 255 kí tự',
 			'file.required'  => 'Tài liệu không được trống',
 	    	]
 		);

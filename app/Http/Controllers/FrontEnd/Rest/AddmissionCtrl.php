@@ -47,25 +47,30 @@ Class AddmissionCtrl extends Controller {
 
     public function validateInsert($request) {
     	return $this->validate($request, [
-			'nameStudent' => 'required',
-			'gender'      => 'required',
-			'birthday'    => 'required|date_format:"Y-m-d"',
-			'nameParent'  => 'required',
-			'phone'       => 'required|numeric|digits_between:6,15',
-			'address'     => 'required',
-			'email'       => 'required|email',
+			'nameStudent' => 'required| between: 1,255',
+			'gender'      => 'required| between: 1,11',
+			'birthday'    => 'required| date_format:"Y-m-d"',
+			'nameParent'  => 'required| between: 1,255',
+			'phone'       => 'required| numeric| digits_between:6,15',
+			'address'     => 'required| between: 1,255',
+			'email'       => 'required| email| between: 1,255',
             ], [
 			'nameStudent.required' => 'Tên học sinh không được để trống',
+			'nameStudent.between'  => 'Tên học sinh không được quá 255 kí tự',
 			'gender.required'      => 'Giới tính không được để trống',
+			'gender.between'       => 'Giới tính không được quá 11 kí tự',
 			'birthday.required'    => 'Ngày sinh không được để trống',
 			'birthday.date_format' => 'Ngày sinh không đúng định dạng',
 			'nameParent.required'  => 'Tên phụ huynh không được để trống',
+			'nameParent.between'   => 'Tên phụ huynh không được quá 255 kí tự',
 			'phone.required'       => 'Số điện thoại không được để trống',
 			'phone.numeric'        => 'Số điện thoại không đúng định dạng',
 			'phone.digits_between' => 'Số điện thoại từ 6 số đến 15 số',
 			'address.required'     => 'Địa chỉ không được để trống',
+			'address.between'      => 'Địa chỉ không quá 255 kí tự',
 			'email.required'       => 'Email bạn không được để trống',
 			'email.email'          => 'Email bạn không đúng định dạng',
+			'email.between'        => 'Email bạn không quá 255 kí tự',
             ]
     	);
     }

@@ -1,10 +1,14 @@
 @extends('front.layouts.default')
 @section ('title', $nameCate)
 @section ('myJs')
-	<script src="{{ url('Frontend') }}/js/ctrl/eventCtrl.js"></script>
-	<script src="{{ url('Frontend') }}/js/factory/service/eventService.js"></script>
+	
+	<script src="{{ url('Frontend') }}/plugin/fullcalendar/fullcalendar.min.js"></script>
 	<script src="{{ url('Frontend') }}/js/directive/myCalendar.js"></script>
+
 	<script src="{{ url('Frontend') }}/js/directive/modal/eventModal.js"></script>
+	<script src="{{ url('Frontend') }}/js/factory/service/eventService.js"></script>
+	
+	<script src="{{ url('Frontend') }}/js/ctrl/eventCtrl.js"></script>
 @endsection
 
 @section('content')

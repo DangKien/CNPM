@@ -140,26 +140,28 @@ class SlideController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-			'title'      =>'required',
-			'content'      =>'required',
+			'title'      =>'required| between:1,255',
+			'content'    =>'required| between:1,255',
 			'imageSlide' => 'required|image',
-	    	], [
+			], [
 			'imageSlide.required' => 'Ảnh không được để trống',
 			'imageSlide.image'    => 'File không phải ảnh ',
-			'title.required'         => 'Tiêu đề không được bỏ trống ',
-			'content.required'         => 'Nội dung không được bỏ trống',
+			'title.required'      => 'Tiêu đề không được bỏ trống ',
+			'title.between'       => 'Tiêu đề không được quá 255 kí tự ',
+			'content.required'    => 'Nội dung không được bỏ trống',
+			'content.between'     => 'Nội dung không được quá 255 kí tự',
 	    	]
 		);
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
 			'imageSlide' => 'image',
-			'content'      =>'required',
+			'content'    =>'required',
 			'title'      =>'required'
 	    	], [
 			'imageSlide.image' => 'File không phải ảnh ',
-			'title.required'      => 'Tiêu đề không được bỏ trống ',
-			'content.required'         => 'Nội dung không được bỏ trống',
+			'title.required'   => 'Tiêu đề không được bỏ trống ',
+			'content.required' => 'Nội dung không được bỏ trống',
 	    	]
 		);
 	}

@@ -107,18 +107,18 @@ class CateController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-			'name'        => 'required|unique:catetogys,name',
-	    	], [
-			'name.required'        => 'Tên tiêu đề không được để trống',
-			'name.unique'          => 'Đã có tên tiêu đề này',
+			'name'          => 'required|unique:catetogys,name',
+			], [
+			'name.required' => 'Tên tiêu đề không được để trống',
+			'name.unique'   => 'Đã có tên tiêu đề này',
 	    	]
 		);
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-			'name'        => 'required',
-	    	], [
-			'name.required'        => 'Tên tiêu đề không được để trống',
+			'name'          => 'required',
+			], [
+			'name.required' => 'Tên tiêu đề không được để trống',
 	    	]
 		);
 	}

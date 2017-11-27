@@ -44,7 +44,7 @@ Class ContactCtrl extends Controller {
 			'phone'       => 'required',
 			'email'       => 'required|email',
 			'content'     => 'required',
-			'vericaptcha' =>'required',
+			'vericaptcha' => 'required',
             ], [
 			'name.required'        => 'Tên không được để trống',
 			'address.required'     => 'Địa chỉ không được để trống',

@@ -116,13 +116,15 @@ class NewController extends Controller
 
 	public function validateInsert($request){
 	    return $this->validate($request, [
-			'title'   => 'required|unique:news,title',
-			'content' => 'required',
-			'file'    => 'required|image',
-	    	], [
+			'title'   => 'required| unique:news,title| between:1,255',
+			'content' => 'required| between:1,50000',
+			'file'    => 'required| image',
+			], [
 			'title.required'   => 'Tiêu đề không được để trống',
+			'title.between'    => 'Tiêu đề không được quá 255 kí tự',
 			'title.unique'     => 'Đã có tên tiêu đề này',
 			'content.required' => 'Nội dung không được bỏ trống',
+			'content.between'  => 'Nội dung không được quá 50000 kí tự',
 			'file.required'    => 'Ảnh minh họa không được bỏ trống',
 			'file.image'       => 'File không phải hình ảnh',
 	    	]
@@ -130,11 +132,17 @@ class NewController extends Controller
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-			'title'   => 'required',
-			'content' => 'required',
-	    	], [
-			'title.required'   => 'Nội dung không được để trống',
+			'title'   => 'required| unique:news,title| between:1,255',
+			'content' => 'required| between:1,50000',
+			'file'    => 'required| image',
+			], [
+			'title.required'   => 'Tiêu đề không được để trống',
+			'title.between'    => 'Tiêu đề không được quá 255 kí tự',
+			'title.unique'     => 'Đã có tên tiêu đề này',
 			'content.required' => 'Nội dung không được bỏ trống',
+			'content.between'  => 'Nội dung không được quá 50000 kí tự',
+			'file.required'    => 'Ảnh minh họa không được bỏ trống',
+			'file.image'       => 'File không phải hình ảnh',
 	    	]
 		);
 	}

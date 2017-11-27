@@ -20,4 +20,4 @@
 {{-- slideImage BLue --}}
 <script src="{{ url('') }}/js/plugin/blueimp-gallery.min.js"></script>
 
-<script src="{{ url('Frontend') }}/plugin/fullcalendar/fullcalendar.min.js"></script>
+
