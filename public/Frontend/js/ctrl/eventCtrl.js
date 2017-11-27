@@ -64,7 +64,7 @@ ngApp.controller('eventCtrl', function ($apply, $scope, $eventService, $timeout,
         p1.then(function (value) {
             $apply(function () {
                 $scope.calendarConfig.events = value;
-                $myLoader.hide();
+                
             })
             }).catch(function (err) {
         });

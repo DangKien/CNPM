@@ -1,4 +1,4 @@
-ngApp.directive('myCalendar', function ($apply, $myLoader) {
+ngApp.directive('myCalendar', function ($apply, $myLoader, $timeout) {
     var link = function (scope, elm, attrs) {
         scope.initCalendar = function (config) {
             $apply(function () {
@@ -6,9 +6,14 @@ ngApp.directive('myCalendar', function ($apply, $myLoader) {
             });
         };
         scope.$watchCollection('config', function (newVal, oldVal) {
-            $apply(function () {
-                scope.initCalendar(newVal);
-            });
+            $myLoader.show();
+            $timeout(function() {
+                $apply(function () {
+                    scope.initCalendar(newVal);
+                    $myLoader.hide();
+                });
+            }, 1000);
+            
         });
     };
 
