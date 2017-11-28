@@ -52,9 +52,9 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 		listNew : function () {
 			//lay du lieu tim kiem va page
 			var title         = $scope.filter.title;
-			var cate         = $scope.filter.cate;
+			var cateId         = $scope.filter.cateId;
 			var current_page = $scope.data.pageNew.current_page;
-			var params       = $newService.filter(title, cate, current_page, 10);
+			var params       = $newService.filter(title, cateId, current_page, 10);
 			//thuc hien tim kiem
 			$newService.action.listNew(params).then(function (resp) {
 				$scope.data.listNews = resp.data.data;

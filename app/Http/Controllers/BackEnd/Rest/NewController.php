@@ -13,7 +13,7 @@ class NewController extends Controller
 	public function getList(NewModel $newModel, Request $request) {
 
 		$new = $newModel->filterTitle($request->title)
-						->filterCate($request->cate_id)
+						->filterCate($request->cateId)
 					    ->buildCond()
 					    ->with('users')
 					    ->with('cates')

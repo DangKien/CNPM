@@ -62,7 +62,8 @@
 					                    <div class="col-sm-6">
 					                        <div class="form-group">
 					                            <label class="control-label">Loại tin: </label>
-					                            <select class="form-control" data-width="100%">
+					                            <select class="form-control" data-width="100%" ng-model="filter.cateId">
+					                            	<option value="">Chọn loại tin</option>
 					                                <option ng-repeat="(key, cate) in data.nameCate" value="@{{ cate.id }}"> @{{ cate.name }} </option>
 					                            </select>
 					                        </div>

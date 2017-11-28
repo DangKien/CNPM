@@ -16,10 +16,10 @@ ngApp.factory('$newService', function ($http, $httpParamSerializer){
 		return params;
 	};
 
-	service.filter = function (name, status, page = 1 , perPage = 10) {
+	service.filter = function (name, cateId, page = 1 , perPage = 10) {
 		var params = {
 			title: name || '',
-			status: status || '',
+			cateId: cateId || '',
 			per_page: perPage,
 			page: page || '1',
 		};
