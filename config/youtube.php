@@ -35,7 +35,7 @@ return [
         /**
          * The prefix for the below URI's
          */
-        'prefix' => 'youtube',
+        'prefix' => 'backend/youtube',
 
         /**
          * Redirect URI

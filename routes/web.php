@@ -43,32 +43,6 @@ Route::group(['prefix' => 'backend', 'middleware'=>'loginback'], function (){
         Route::get('/album', function(){
             return view('back.content.libary.image.image');
          });
-        // youtube
-        Route::group(['prefix' => config('youtube.routes.prefix')], function() {
-            /**
-             * Authentication
-             */
-            Route::get(config('youtube.routes.authentication_uri'), function()
-            {
-                return redirect()->to(Youtube::createAuthUrl());
-            });
-
-            /**
-             * Redirect
-             */
-            Route::get(config('youtube.routes.redirect_uri'), function(Illuminate\Http\Request $request)
-            {
-                if(!$request->has('code')) {
-                    throw new Exception('$_GET[\'code\'] is not set. Please re-authenticate.');
-                }
-
-                $token = Youtube::authenticate($request->get('code'));
-
-                Youtube::saveAccessTokenToDB($token);
-
-                return redirect(config('youtube.routes.redirect_back_uri', '/'));
-            });
-        });
     });
 });
 // fontendview
@@ -200,5 +174,27 @@ Route::group(['prefix' => 'rest'], function (){
         Route::post('/contact', 'FrontEnd\Rest\ContactCtrl@getContact');
 
         Route::post('/addmission', 'FrontEnd\Rest\AddmissionCtrl@getAddmission');
+    });
+});
+
+Route::group(['prefix' => config('youtube.routes.prefix')], function() {
+/**
+ * Authentication
+ */
+    Route::get(config('youtube.routes.authentication_uri'), function()
+    {
+        return redirect()->to(Youtube::createAuthUrl());
+    });
+    /**
+     * Redirect
+     */
+    Route::get(config('youtube.routes.redirect_uri'), function(Illuminate\Http\Request $request)
+    {
+        if(!$request->has('code')) {
+            throw new Exception('$_GET[\'code\'] is not set. Please re-authenticate.');
+        }
+        $token = Youtube::authenticate($request->get('code'));
+        Youtube::saveAccessTokenToDB($token);
+        return redirect(config('youtube.routes.redirect_back_uri', '/'));
     });
 });

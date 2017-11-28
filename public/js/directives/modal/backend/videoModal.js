@@ -38,18 +38,9 @@ ngApp.directive('videoModal', function($apply, $videoService){
 			// },
 
 			saveVideo: function () {
-				scope.actions.insertVideo();	
-				if (!scope.data.idAlbum) {
-					if ($('#album-form').parsley().validate())
-					{
-						scope.actions.insertAlbum();
-					}
-					
-				}else {
-					if ($('#form-cate').parsley().validate())
-					{
-						scope.actions.updateAlbum(scope.data.idAlbum);
-					}
+				//scope.actions.insertVideo();	
+				if ($('#album-form').parsley().validate()) {
+					scope.actions.insertVideo();
 				}
 			}
 		}

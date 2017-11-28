@@ -18,7 +18,7 @@ Class VideoController extends Controller {
 
     public function getInsert(Request $request, VideoModel $videoModel) {
 
-        //$this->validateInsert($request);
+        $this->validateInsert($request);
         if (!$request->hasFile('video') || !$request->hasFile('image')) {
             return response()->json(['message' => 'Video hoặc ảnh không tồn tại'], 422);
         } 
@@ -29,7 +29,7 @@ Class VideoController extends Controller {
             $newImage  = Image::make($request->image)->resize(500, 500, function ($constraint) {
                  $constraint->aspectRatio();
             })->encode('png');
-
+            
             $video = Youtube::upload($request->video->getRealPath(), [
                 'title'       => $request->title,
                 'description' => $request->content,
@@ -126,6 +126,25 @@ Class VideoController extends Controller {
         } else {
             return response()->json(['status' => 'Id không tồn tại'], 422);
         }
+    }
+
+    public function validateInsert($request) {
+        return $this->validate($request, [
+            'title'   => 'required| between: 1,255',
+            'content' => 'required| between: 1,255',
+            'video'   => 'required| mimes: "mp4", "x-flv", "x-mpegURL", "MP2T", "3gpp", "quicktime", "x-msvideo", "x-ms-wmv"',
+            'image'   => 'required| image',
+            ], [
+            'title.required'   => 'Tên video không được để trống',
+            'title.between'    => 'Tên video không được quá 255 kí tự',
+            'content.required' => 'Nội dung video không được để trống',
+            'content.between'  => 'Nội dung không quá 255 kí tự',
+            'video.required'   => 'Video không được để trống',
+            'video.mimes'       => 'Video phải dạng avi, mpeg, mp4, mov, flv, 3gpp,...',
+            'image.required'   => 'Ảnh không được để trống',
+            'image.image'      => 'Ảnh phải dạng jpg, png, jpeg,...',
+            ]
+        );
     }
 
 }

@@ -13,7 +13,7 @@ Class ContactCtrl extends Controller {
 
     public function getContact (Request $request, ContactModel $contactModel){
     	$this->validateInsert($request);
-		$name    = $request->name;
+		$name    = ucwords($request->name);
 		$address = $request->address;
 		$phone   = $request->phone;
 		$email   = $request->email;
@@ -39,19 +39,25 @@ Class ContactCtrl extends Controller {
 
     public function validateInsert($request) {
     	return $this->validate($request, [
-			'name'        => 'required',
-			'address'     => 'required',
-			'phone'       => 'required',
-			'email'       => 'required|email',
-			'content'     => 'required',
+			'name'        => 'required| between: 1,255',
+			'address'     => 'required| between: 1,255',
+			'phone'       => 'required| numeric| digits_between:6,15',
+			'email'       => 'required| email| between: 1,255',
+			'content'     => 'required| between: 1,255',
 			'vericaptcha' => 'required',
             ], [
 			'name.required'        => 'Tên không được để trống',
+			'name.between'         => 'Tên phụ huynh không được quá 255 kí tự',
 			'address.required'     => 'Địa chỉ không được để trống',
+			'address.between'      => 'Địa chỉ không quá 255 kí tự',
 			'phone.required'       => 'Số điện thoại không được để trống',
+			'phone.numeric'        => 'Số điện thoại không đúng định dạng',
+			'phone.digits_between' => 'Số điện thoại từ 6 số đến 15 số',
 			'email.required'       => 'Email không được để trống',
 			'email.email'          => 'Email không đúng định dạng',
+			'email.between'        => 'Email không quá 255 kí tự',
 			'content.required'     => 'Nội dung không được để trống',
+			'content.between'      => 'Nội dung không quá 255 kí tự',
 			'vericaptcha.required' => 'Xác nhận bạn không phải là robot',
             ]
     	);

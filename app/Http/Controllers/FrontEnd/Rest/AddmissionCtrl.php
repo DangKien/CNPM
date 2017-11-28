@@ -13,10 +13,10 @@ Class AddmissionCtrl extends Controller {
 
     public function getAddmission (Request $request, AddMissionModel $addMissionModel, EventSocket $redis) {
     	$this->validateInsert($request);
-    	$nameStudent = $request->nameStudent;
+    	$nameStudent = ucwords($request->nameStudent);
     	$gender      = $request->gender ;
     	$birthday    = $request->birthday ;
-    	$nameParent  = $request->nameParent ;
+    	$nameParent  = ucwords($request->nameParent);
     	$email       = $request->email;
     	$phone       = $request->phone;
     	$address     = $request->address;
