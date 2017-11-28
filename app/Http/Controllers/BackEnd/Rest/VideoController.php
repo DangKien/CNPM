@@ -17,7 +17,7 @@ Class VideoController extends Controller {
     }
 
     public function getInsert(Request $request, VideoModel $videoModel) {
-
+        set_time_limit(60*30);
         $this->validateInsert($request);
         if (!$request->hasFile('video') || !$request->hasFile('image')) {
             return response()->json(['message' => 'Video hoặc ảnh không tồn tại'], 422);
@@ -29,7 +29,7 @@ Class VideoController extends Controller {
             $newImage  = Image::make($request->image)->resize(500, 500, function ($constraint) {
                  $constraint->aspectRatio();
             })->encode('png');
-            
+
             $video = Youtube::upload($request->video->getRealPath(), [
                 'title'       => $request->title,
                 'description' => $request->content,

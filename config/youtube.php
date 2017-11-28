@@ -50,7 +50,7 @@ return [
         /**
          * The redirect back URI
          */
-        'redirect_back_uri' => '/',
+        'redirect_back_uri' => '/backend/view',
 
     ]
 

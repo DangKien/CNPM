@@ -184,7 +184,7 @@ Route::group(['prefix' => config('youtube.routes.prefix')], function() {
     Route::get(config('youtube.routes.authentication_uri'), function()
     {
         return redirect()->to(Youtube::createAuthUrl());
-    });
+    })->name('registerYoutube');
     /**
      * Redirect
      */

@@ -107,6 +107,12 @@
 								<span class="menu-title"> Slide Ảnh</span>
 							</a>				
 						</li>
+						<li>
+							<a href="{{ route('registerYoutube') }}">
+								<i class="fa fa-sliders"></i>
+								<span class="menu-title"> Đăng kí youtube</span>
+							</a>				
+						</li>
 					</ul>
 				</div>
 			</div>
