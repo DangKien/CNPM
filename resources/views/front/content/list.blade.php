@@ -11,7 +11,7 @@
                 <div class="panel-body content-body">
                     <div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
                         <ul>
-                            <li class="active-li"><a href="{{ url('') }}/{{ request()->path() }}"> {{ $nameCate }} </a></li>
+                            <li class="active-li"><a href=""> {{ $nameCate }} </a></li>
                             @if (isset($menu)) 
                                 @foreach ($menu as $item) 
                                     <li class="{{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">

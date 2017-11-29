@@ -12,7 +12,7 @@
 			  	<div class="panel-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center col-xs-12">
 	  					<ul>
-	  					    <li class="active-li"><a href="{{ url('lien-he') }}"> {{ $nameCate }}</a></li>
+	  					    <li class="active-li"><a href=""> {{ $nameCate }}</a></li>
 	  					    @if (isset($menu)) 
 	
 	  		                    @foreach ($menu as $item) 

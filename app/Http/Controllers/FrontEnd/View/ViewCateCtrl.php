@@ -15,7 +15,7 @@ Class ViewCateCtrl extends Controller {
     	$cateId = $cateModel::select('id', 'slug', 'name')
     							->where('slug', $cate)
     							->first();	
-        if (empty($cateId)) {
+        if (empty($cateId) || request()->path() == 'gioi-thieu') {
             return view('errors.404');
         }			
     	$menu   = $cateModel::select('id', 'slug', 'name')
