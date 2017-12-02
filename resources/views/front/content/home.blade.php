@@ -38,8 +38,8 @@
 			<div class="row" style="margin-top:15px;">
 				<div class="col-md-6 col-sm-12">
 					<div class="panel panel-success">
-						<div class="panel-heading">
-							<h3 class="panel-title">Tin tức mới</h3>
+						<div class="panel-heading panel-bg">
+							<a href="{{ url('tin-tuc') }}"><h3 class="panel-title"><span> Tin tức mới </span></h3></a>
 						</div>
 						<div class="panel-body">
 							<div class="row fix-panel" ng-repeat="(key, news) in data.listNews" ng-if="(key == 0)">
@@ -72,8 +72,8 @@
 
 				<div class="col-md-6 col-sm-12">
 					<div class="panel panel-success">
-						<div class="panel-heading">
-							<h3 class="panel-title">Thông báo</h3>
+						<div class="panel-heading panel-bg">
+							<a href="{{ url('thong-bao') }}"><h3 class="panel-title"> <span>Thông báo</span></h3></a>
 						</div>
 						<div class="panel-body">
 							<div class="row fix-panel" ng-repeat="(key, news) in data.listNotifi" ng-if="(key == 0)">
@@ -109,28 +109,34 @@
 
 			<!-- video -->
 			<div class="row">
-				<div class="col-md-8">
-
-					<div class="embed-responsive embed-responsive-16by9">
-						<!-- <iframe src="image/logo1.png?rel=0"></iframe> -->
-						<video id="video-home" class=" embed-responsive-item" poster="{{ url('Frontend') }}/img/logo1.png" controls autoplay="autoplay" frameborder="0" allowfullscreen>
-						  	{{-- <source src="video/vido1.mp4" type="video/mp4"> --}}
-						</video>
-						<button class="button-video-play">
-							
-						</button>
-
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div>
-						
-					</div>
-					<div>
-						
-					</div>
-					<div>
-						
+				<div class="col-md-12">
+					<div class="panel panel-success">
+						<div class="panel-heading panel-bg">
+							<h3 class="panel-title"> <span><a href="{{ url('') }}">Video</a></span></h3>
+						</div>
+						<div class="panel-body">
+							<div class="col-md-8">
+								
+								<div class="embed-responsive embed-responsive-16by9 div-video" >
+									<!-- <iframe src="image/logo1.png?rel=0"></iframe> -->
+									<video preload="metadata" id="video-home" class=" embed-responsive-item" controls >
+									  	<source src="{{ url('storage/videos/video1.mp4') }}#t=0.5" type="video/mp4" autostart= "false">
+									</video>
+									
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div>
+									
+								</div>
+								<div>
+									
+								</div>
+								<div>
+									
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -138,12 +144,21 @@
 
 			<!-- album Image -->
 			<div class="row album-image">
-				<div class="container">
-					<ul id="lightSlider">
-					   <li class="fix-slider-product" lib-image ng-repeat="(key, image) in data.listLibImage">
-					       <img class="img-responsive" ng-src="{{ url('storage/images/album/title_images') }}/@{{ image.url_image }}" alt="">
-					   </li>
-					</ul>
+				<div class="col-md-12">
+					<div class="panel panel-success">
+						<div class="panel-heading panel-bg">
+							<a href="{{ url('') }}"><h3 class="panel-title"> <span>Một số hình ảnh về trường</span></h3></a>
+						</div>
+						<div class="row">
+							<div class="col-md-12" style="padding-left: 26px;  padding-right: 26px;">
+								<ul id="lightSlider">
+								   <li class="fix-slider-product" lib-image ng-repeat="(key, image) in data.listLibImage">
+								       <img class="img-responsive" ng-src="{{ url('storage/images/album/title_images') }}/@{{ image.url_image }}" alt="">
+								   </li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- end album image -->

@@ -48,4 +48,10 @@ $(document).ready(function () {
 	        }, 600);
 	    });
 	}
+
+
+	$('#video-home').click(function() {
+		
+		this.paused ? this.play() : this.pause();
+	});
 });

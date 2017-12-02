@@ -9,6 +9,39 @@ a:hover{
 .padding-left-0 {
 	padding-left: 0px;
 }
+.panel-bg-fix {
+	background-color: transparent;
+	border: transparent;
+}
+
+.div-hide-video {
+	z-index: 1000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	max-height: 404px;
+	width: 100%;
+}
+
+.panel-bg-fix .panel-header {
+	background-color: transparent;
+	border: transparent;
+}
+.panel-title {
+	margin: 5px;
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+}
+.panel-title span {
+	border-bottom: 4px solid #e14f3b;
+}
+.panel-success .panel-bg {
+	background-color: #fff;
+    border-color: #fff;
+}
 .content-post ul {
 	padding-left: 0px;
 }
