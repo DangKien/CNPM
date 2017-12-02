@@ -55,6 +55,7 @@ Route::group(['prefix' => ''], function (){
     Route::get('/{cate}/{slug}',"FrontEnd\View\ViewCateCtrl@getDetail");
     Route::get('/{cate}/{slug}/post-{idNew}',"FrontEnd\View\ViewCateCtrl@getDetailId");
     Route::get('/{cate}/{slug}/album-{idNew}',"FrontEnd\View\ViewImageCtrl@getDetailImage");
+    Route::get('/{cate}/{slug}/thuc-don-cho-be-{idNew}',"FrontEnd\View\ViewMenuCtrl@getDetailMenu");
 });
 
 
@@ -174,6 +175,9 @@ Route::group(['prefix' => 'rest'], function (){
         Route::post('/contact', 'FrontEnd\Rest\ContactCtrl@getContact');
 
         Route::post('/addmission', 'FrontEnd\Rest\AddmissionCtrl@getAddmission');
+
+        Route::get('/listMenu', 'FrontEnd\Rest\MenuCtrl@getList');
+        Route::get('/detailMenu', 'FrontEnd\Rest\MenuCtrl@getDetail');
     });
 });
 

@@ -59,7 +59,7 @@ Class ViewCateCtrl extends Controller {
                               ->get();
 
         $url    = request()->path();
-        
+
         switch ($url) {
             case config('viewCate.dk-online.url'):
                 return view(config('viewCate.dk-online.view'), 
@@ -89,11 +89,12 @@ Class ViewCateCtrl extends Controller {
             case config('viewCate.chuong-trinh.url'):
                 return view(config('viewCate.chuong-trinh.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break; 
-            case 'chuong-trinh-hoc/thuc-don':
-                return view('front.content.list', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
-                break;
+
             case config('viewCate.su-kien.url'):
                 return view(config('viewCate.su-kien.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
+            case config('viewCate.thuc-don.url'):
+                return view(config('viewCate.thuc-don.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
             default:
                  return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);

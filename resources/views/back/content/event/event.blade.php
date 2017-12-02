@@ -66,7 +66,7 @@
 						<div class="row text-center">
 						   <div class="page-oum">
 						       <div paging
-						           page="page"
+						           page="data.pageEvent.current_page"
 						           page-size = "data.pageEvent.per_page"
 						           total="data.pageEvent.total"
 						           paging-action="actions.changePage(page)">

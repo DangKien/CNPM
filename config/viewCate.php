@@ -13,6 +13,7 @@ return [
     'ngay-cua-be'          =>['url' => 'chuong-trinh-hoc/ngay-cua-be', 'view' => 'front.content.oneday.oneday'],
     'hoat-dong-ngoai-khoa' =>['url' => 'chuong-trinh-hoc/hoat-dong-ngoai-khoa', 'view' => 'front.content.list'],
     'chuong-trinh'         =>['url' => 'chuong-trinh-hoc/chuong-trinh', 'view' => 'front.content.list'],
+    'thuc-don'             =>['url' => 'chuong-trinh-hoc/thuc-don', 'view' => 'front.content.menu.list'],
     'su-kien'              =>['url' => 'chuong-trinh-hoc/su-kien', 'view' => 'front.content.event.event'],
     
 ];
