@@ -13,7 +13,15 @@ a:hover{
 	background-color: transparent;
 	border: transparent;
 }
-
+.div-play {
+	background-image: url('../img/play-button.png');
+    background-position: center;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 32%;
+    left: 42%;
+}
 .div-hide-video {
 	z-index: 1000;
 	position: absolute;

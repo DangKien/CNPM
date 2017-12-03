@@ -126,14 +126,13 @@
 								</div>
 							</div>
 							<div class="col-md-4">
-								<div>
-									
+								<div style="margin-bottom: 10px; overflow: auto; position: relative;">
+									<img style="max-height: 190px; width: 100%;" class="img-responsive" ng-src="{{ url('Frontend/img/1.jpg') }}" alt="">
+									<div class="div-play"></div>
 								</div>
-								<div>
-									
-								</div>
-								<div>
-									
+								<div style="margin-bottom: 10px; overflow: auto; position: relative;">
+									<img style="max-height: 190px; width: 100%" class="img-responsive" ng-src="{{ url('Frontend/img/3.jpg') }}" alt="">
+									<div class="div-play"></div>
 								</div>
 							</div>
 						</div>
