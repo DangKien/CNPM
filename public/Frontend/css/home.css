@@ -13,6 +13,13 @@ a:hover{
 	background-color: transparent;
 	border: transparent;
 }
+.form-control:focus{
+	color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.4rem rgba(0,123,255,.25)
+}
 .div-play {
 	background-image: url('../img/play-button.png');
     background-position: center;
