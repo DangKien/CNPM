@@ -26,8 +26,6 @@ class LoginController extends Controller
             $errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
             return redirect()->back()->withInput()->withErrors($errors);
         }
-       
-
     }
 
 
