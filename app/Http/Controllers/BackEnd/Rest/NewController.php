@@ -17,6 +17,7 @@ class NewController extends Controller
 					    ->buildCond()
 					    ->with('users')
 					    ->with('cates')
+					    ->orderBy('id','desc')
 					    ->paginate(10);
 		return response()->json($new);
 	}

@@ -1,5 +1,5 @@
 <div class="modal fade fix-upload-image" ng-dom="imageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog fix-upload" role="document">
+	<div class="modal-dialog fix-upload" role="document" ng-enter="actions.saveUploadImg()">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="myModalLabel">Đăng ảnh</h5>

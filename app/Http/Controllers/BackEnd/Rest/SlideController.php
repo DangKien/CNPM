@@ -12,6 +12,7 @@ class SlideController extends Controller
 {
 	public function getList() {
 		$slide = SlideModel::select('*')
+						   ->orderBy('id','desc')
 						   ->paginate(10);
 		return response()->json($slide);
 	}

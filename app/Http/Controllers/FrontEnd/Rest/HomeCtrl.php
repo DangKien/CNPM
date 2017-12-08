@@ -8,6 +8,7 @@ use App\Models\CateModel;
 use App\Models\SlideModel;
 use App\Models\FileImageModel;
 use App\Models\NewModel;
+use App\Models\VideoModel;
 
 
 Class HomeCtrl extends Controller {
@@ -48,6 +49,15 @@ Class HomeCtrl extends Controller {
                         ->limit('4')
                         ->get();
         return  response()->json($news);
+    }
+
+    public function getVideo(VideoModel $videoModel) {
+
+        $video = $videoModel
+                        ->orderBy('created_at', 'desc')
+                        ->limit('2')
+                        ->get();
+        return  response()->json($video);
     }
     
 }

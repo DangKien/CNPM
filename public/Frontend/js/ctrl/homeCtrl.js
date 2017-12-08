@@ -39,12 +39,22 @@ ngApp.controller('homeCtrl', function ($apply, $rootScope, $scope, $homeService)
 			});
 		},
 
+		listVideos: function () {
+			$homeService.action.getVideo().then(function (resp) {
+				$scope.data.listVideo = resp.data;
+			}, function (error) {
+				console.log(error);
+			});
+		},
+
 
 	}
 	$scope.actions.listSlider();
 	$scope.actions.listNews();
 	$scope.actions.listNotifi();
 	$scope.actions.libImage();
+	$scope.actions.listNews();
+	$scope.actions.listVideos();
 	
 });
 

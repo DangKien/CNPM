@@ -16,6 +16,7 @@ class UserController extends Controller
 					 ->filterPhone($request->phone)
 					 ->filterStatus($request->status)
 					 ->buildCond()
+					 ->orderBy('id','desc')
 					 ->paginate(8);
 		return response()->json($user);
 	}

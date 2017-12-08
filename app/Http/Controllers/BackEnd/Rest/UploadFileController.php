@@ -12,7 +12,8 @@ class UploadFileController extends Controller
 {
 	public function getList(FileModel $fileModel, Request $request) {
 
-		$file = $fileModel->paginate(8);
+		$file = $fileModel->orderBy('id','desc')
+						->paginate(8);
 		return response()->json($file);
 	}
 

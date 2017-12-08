@@ -69,6 +69,16 @@
 						</div>
 						<!--===================================================-->
 						<!--End Data Table-->
+						<div class="row text-center">
+						   <div class="page-oum">
+						       <div paging
+						           page="data.pageVideo.current_page"
+						           page-size = "data.pageVideo.per_page"
+						           total="data.pageVideo.total"
+						           paging-action="actions.changePage(page)">
+						       </div>
+						   </div>
+						</div>	
 					</div>
 				</div>
 				<!-- end datatable -->

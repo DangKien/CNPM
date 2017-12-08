@@ -7,8 +7,8 @@ ngApp.factory('$contactService', function ($http, $httpParamSerializer){
 		filter: {},
 	};
 
-	service.action.listContact = function () {
-		var url = SiteUrl + "/rest/backend/contact";
+	service.action.listContact = function (params) {
+		var url = SiteUrl + "/rest/backend/contact?" + $httpParamSerializer(params);
         return $http.get(url);
 	};
 	return service;

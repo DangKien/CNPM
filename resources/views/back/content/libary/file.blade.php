@@ -58,7 +58,7 @@
 			<div class="row text-center">
 			   <div class="page-oum">
 			       <div paging
-			           page="page"
+			           page="data.pageFile.current_page"
 			           page-size = "data.pageFile.per_page"
 			           total="data.pageFile.total"
 			           paging-action="actions.changePage(page)">

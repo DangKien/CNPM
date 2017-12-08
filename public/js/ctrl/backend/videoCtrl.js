@@ -4,19 +4,22 @@ ngApp.controller('videoCtrl', function ($apply, $videoService, $scope, changStat
 		idVideo:{},
 		params: {},
 		listVideo: {},
+		pageVideo: {},
 	};
 
 	$scope.actions = {
 
-		// changePage: function (page) {
-		// 	$scope.data.pageAlbum.current_page = page;
-		// 	$scope.actions.listAlbum();
-		// },
+		changePage: function (page) {
+			$scope.data.pageVideo.current_page = page;
+			$scope.actions.listVideo();
+		},
 
 		// Danh sach loai tin
 		listVideo: function () {
-			$videoService.action.listVideo().then(function (resp) {
+
+			$videoService.action.listVideo({page: $scope.data.pageVideo.current_page}).then(function (resp) {
 				$scope.data.listVideo = resp.data.data;
+				$scope.data.pageVideo = resp.data;
 			}, function (error) {
 				console.log(error);
 			});
@@ -45,8 +48,8 @@ ngApp.controller('videoCtrl', function ($apply, $videoService, $scope, changStat
 				} else {
 					$conf.confirmNotifi('success', 'Cập nhật thành công');
 				}
-				$('#album').modal('hide');
-				$scope.actions.listAlbum();
+				$('#video').modal('hide');
+				$scope.actions.listVideo();
 			} else {
 				$scope.data.errors = data.errors;
 			}
@@ -67,6 +70,6 @@ ngApp.controller('videoCtrl', function ($apply, $videoService, $scope, changStat
 		},
 
 	};
-	 $scope.actions.listVideo();
+	$scope.actions.listVideo();
 });
 

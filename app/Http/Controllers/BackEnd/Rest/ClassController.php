@@ -10,7 +10,7 @@ use App\Models\ClassModel;
 class ClassController extends Controller {
 
     public function getList() {
-        $class = ClassModel::all();
+        $class = ClassModel::orderBy('id','desc')->get();
         return response()->json($class);
     }
 

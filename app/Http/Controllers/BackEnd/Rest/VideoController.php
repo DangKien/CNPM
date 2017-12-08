@@ -11,7 +11,8 @@ use App\Models\VideoModel;
 Class VideoController extends Controller {
 
     public function getList(Request $request, VideoModel $videoModel) {
-        $video = $videoModel->paginate(10);
+        $video = $videoModel->orderBy('id','desc')
+                            ->paginate(10);
 
         return response()->json($video);
     }

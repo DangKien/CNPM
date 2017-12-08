@@ -1,5 +1,5 @@
 <div class="modal fade" id="edit-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog" role="document" ng-enter="">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="myModalLabel">Sửa thông tin người dùng</h5>

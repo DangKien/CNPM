@@ -162,6 +162,7 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/album-name/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getAlbum'); //danh sach album anh
 
         Route::get('/file', 'FrontEnd\Rest\FileCtrl@getFile');// lay file
+        Route::get('/video-home', 'FrontEnd\Rest\HomeCtrl@getVideo');
 
         Route::get('/event', 'FrontEnd\Rest\EventCtrl@getEvent');
         Route::get('/event/{id}', 'FrontEnd\Rest\EventCtrl@oneEvent');

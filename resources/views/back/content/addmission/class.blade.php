@@ -57,9 +57,20 @@
 						</div>
 						<!--===================================================-->
 						<!--End Data Table-->
+						<div class="row text-center">
+						   <div class="page-oum">
+						       <div paging
+						           page="data.pageContact.current_page"
+						           page-size = "data.pageContact.per_page"
+						           total="data.pageContact.total"
+						           paging-action="actions.changePage(page)">
+						       </div>
+						   </div>
+						</div>
 					</div>
 				</div>
 				<!-- end datatable -->
+
 			</div>	
 		</div>
 		<!--===================================================-->

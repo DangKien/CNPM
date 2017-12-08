@@ -89,7 +89,7 @@
 				<div class="row text-center">
 				   <div class="page-oum">
 				       <div paging
-				           page="page"
+				           page="data.pageAddmission.current_page"
 				           page-size = "data.pageAddmission.per_page"
 				           total="data.pageAddmission.total"
 				           paging-action="actions.changePage(page)">

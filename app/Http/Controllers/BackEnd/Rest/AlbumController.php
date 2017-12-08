@@ -15,6 +15,7 @@ Class AlbumController extends Controller {
         $album = $albumModel->filterName($request->name)
                             ->buildCond()
                             ->with('images')
+                            ->orderBy('id','desc')
                             ->paginate(8);
 
         return response()->json($album);

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\AddMissionModel;
 use DB;
 use App\Libs\EventSocket;
+use Carbon\Carbon;
+use Illuminate\Support\MessageBag;
 
 
 Class AddmissionCtrl extends Controller {
@@ -21,6 +23,13 @@ Class AddmissionCtrl extends Controller {
     	$phone       = $request->phone;
     	$address     = $request->address;
     	$message     = $request->message;
+		$toDay         = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->year;
+		$birthdayCheck = Carbon::createFromFormat('Y-m-d', $birthday)->year;
+
+    	if ($toDay-$birthdayCheck >= 5 || $toDay-$birthdayCheck <= 1 ) {
+    		$errors = new MessageBag(['birthday' => 'Học sinh phải từ 2 đến 5 tuổi']);
+    		return response()->json(['errors'=> $errors], 422);
+    	}
 		DB::beginTransaction();
 		try {
 			$addMissionModel->name_student = $nameStudent;
