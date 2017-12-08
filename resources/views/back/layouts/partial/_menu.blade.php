@@ -62,9 +62,6 @@
 								<li class="{{ request()->is('*/file-video') ? 'active active-link' : '' }}">
 									<a href="{{ route('file-video') }}"><i class="fa fa-video-camera"></i> Thứ viện video</a>
 								</li >
-								<li class="{{ request()->is('*/file-music') ? 'active active-link' : '' }}">
-									<a href="{{ route('file-music') }}"><i class="fa fa-music"></i> Thư viện nhạc</a>
-								</li>
 								<li class="{{ request()->is('*/file') ? 'active active-link' : '' }}">
 									<a href="{{ route('file') }}"><i class="fa fa-file-text-o"></i> Thư viện tài liệu</a>
 								</li>
@@ -88,7 +85,7 @@
 							<!--Submenu-->
 							<ul class="collapse">
 								<li class="{{ request()->is('*/class') ? 'active active-link' : '' }}"
-								><a href="{{ route('class') }}"><i class="fa fa-users"></i> Lớp học</a>
+								><a href="{{ route('class') }}"><i class="fa fa-users"></i> Liên hệ</a>
 								</li>
 								<li class="{{ request()->is('*/addmission') ? 'active active-link' : '' }}">
 								<a href="{{ route('addmission') }}"><i class="fa fa-suitcase"></i> Đăng kí học Online</a></li>
