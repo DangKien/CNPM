@@ -35,6 +35,7 @@ ngApp.controller('slideCtrl', function ($scope, $apply, $slideService, $conf) {
 				if (resp == true) {
 					$slideService.action.deleteSlide(id).then(function (resp) {
 						$conf.confirmNotifi('success', 'Xóa loại tin thành công');
+						$scope.actions.listSlide();
 					  }, function (error) {
 					  	$conf.confirmNotifi('danger', 'Xóa loại tin thất bại', "fa fa-ban");
 					  });
