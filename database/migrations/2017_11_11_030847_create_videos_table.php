@@ -21,6 +21,7 @@ class CreateVideosTable extends Migration
             $table->string('url_video');
             $table->string('cate_video', 20);
             $table->string('video_ytb_id', 50);
+            $table->integer('view')->default(0);
             $table->string('slug');
             $table->timestamps();
         });

@@ -96,6 +96,9 @@ Class ViewCateCtrl extends Controller {
             case config('viewCate.thuc-don.url'):
                 return view(config('viewCate.thuc-don.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;
+            case config('viewCate.thu-vien-video.url'):
+                return view(config('viewCate.thu-vien-video.view'), ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
+                break;
             default:
                  return view('front.content.cate', ['slug'=>$cate, 'nameCate'=>$cateId->name, 'menu'=> $menu]);
                 break;

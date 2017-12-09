@@ -118,7 +118,9 @@ a:hover{
     margin-bottom: 15px;
     font-style: oblique;
     text-transform: initial;
+    padding-top: 15px;
 }
+
 .style-home {
 	color: blue;
 	font-size: 15px;
@@ -575,8 +577,15 @@ li {
 .menu-left ul .active-li:hover a{
 	color:#fff;
 }
+.panel-fix {
+	background: transparent;
+}
 .active-li {
 	background-color: #2d6d92;
+}
+.content-main {
+	background: #fff;
+    border-radius: 5px;
 }
 
 .content-post {

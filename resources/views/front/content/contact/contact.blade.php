@@ -11,7 +11,7 @@
 @section('content')
 	<section>
 		<div class="container" ng-controller="contactCtrl">
-			<div class="panel">
+			<div class="panel panel-fix">
 			  	<div class="panel-body content-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 	  					<ul>
@@ -135,7 +135,7 @@
     		                            </div>
     		                        </div>	
 
-						    		<button ng-click="actions.submitForm()" type="button" class="btn btn-warning pull-right button-fix">Phản hồi</button>
+						    		<button ng-click="actions.submitForm()" type="button" class="btn btn-warning pull-right button-fix ">Phản hồi</button>
 						    	</form>
 						  	</div>
 						</div>

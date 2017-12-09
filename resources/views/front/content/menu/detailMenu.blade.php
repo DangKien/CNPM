@@ -7,7 +7,7 @@
 @section('content')
 	<section>
 		<div class="container">
-			<div class="panel">
+			<div class="panel panel-fix">
 			  	<div class="panel-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 		  					<ul>
@@ -23,7 +23,7 @@
 		  		              	@endif
 		  					</ul>
 	  					</div>
-	  				<div class="col-sm-12 col-md-8 col-lg-9 padding-topbot-15px">
+	  				<div class="col-sm-12 col-md-8 col-lg-9 padding-topbot-15px content-main">
 	  					<div class="con-index-news" >
                             <i class="fa fa-home style-home"></i>
                             <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">{{ $nameCate }}</i>
@@ -37,7 +37,7 @@
 	  							<img class="img-responsive" src="{{ url('storage/images/menu/menu', $detail['url_image']) }}" style="width: 100%;" alt="">
 	  						<br>
 	  						<br>
-	  						<iframe src="{{ url('public/uploads/files/CommonTestCase.xls') }}" style="width: 100%; height:100% "></iframe>
+	  						{{-- <iframe src="{{ url('public/uploads/files/CommonTestCase.xls') }}" style="width: 100%; height:100% "></iframe> --}}
 	  					</div>
 	  					
 	  				</div>

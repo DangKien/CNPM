@@ -8,7 +8,7 @@
 @section('content')
 	<section>
 		<div class="container">
-			<div class="panel col-md-12">
+			<div class="panel panel-fix col-md-12">
 			  	<div class="panel-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center col-xs-12">
 	  					<ul>
@@ -23,7 +23,7 @@
 	  		              	@endif
 	  					</ul>
 	  				</div>
-	  				<div class="col-sm-12 col-md-9 col-xs-12 padding-topbot-15px">
+	  				<div class="content-main col-sm-12 col-md-9 col-xs-12 padding-topbot-15px">
 	  					<div class="dashboard-content">
 	  						<div class="tab-content">
 	  							<div id="gioithieuchung" class="tab-pane fade in active">

@@ -8,7 +8,7 @@
 @section('content')
 	<section>
 		<div class="container">
-			<div class="panel">
+			<div class="panel panel-fix">
 			  	<div class="panel-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 		  					<ul>
@@ -24,7 +24,7 @@
 		  		              	@endif
 		  					</ul>
 	  					</div>
-	  				<div class="content-main col-md-9 col-sm-12 padding-left-right" ng-controller="menuCtrl">
+	  				<div class="content-main col-md-9 col-sm-12" ng-controller="menuCtrl">
                         <div class="con-index-news">
                             <i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">{{ $nameCate }}</i>
                             <i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true">Thực đơn</i> 

@@ -55,6 +55,7 @@ Route::group(['prefix' => ''], function (){
     Route::get('/{cate}/{slug}',"FrontEnd\View\ViewCateCtrl@getDetail");
     Route::get('/{cate}/{slug}/post-{idNew}',"FrontEnd\View\ViewCateCtrl@getDetailId");
     Route::get('/{cate}/{slug}/album-{idNew}',"FrontEnd\View\ViewImageCtrl@getDetailImage");
+    Route::get('/{cate}/{slug}/video-{idNew}',"FrontEnd\View\ViewImageCtrl@getDetailVideo");
     Route::get('/{cate}/{slug}/thuc-don-cho-be-{idNew}',"FrontEnd\View\ViewMenuCtrl@getDetailMenu");
 });
 
@@ -160,6 +161,9 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/album', 'FrontEnd\Rest\ImageCtrl@getAlbumImage'); //danh sach album anh
         Route::get('/image-album/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getImage'); //lay anh trong album
         Route::get('/album-name/{idAlbum}', 'FrontEnd\Rest\ImageCtrl@getAlbum'); //danh sach album anh
+
+        Route::get('/listVideo', 'FrontEnd\Rest\VideoCtrl@getList'); //lay anh trong album
+        Route::get('/videoDetail/{idAlbum}', 'FrontEnd\Rest\VideoCtrl@getDetail'); 
 
         Route::get('/file', 'FrontEnd\Rest\FileCtrl@getFile');// lay file
         Route::get('/video-home', 'FrontEnd\Rest\HomeCtrl@getVideo');

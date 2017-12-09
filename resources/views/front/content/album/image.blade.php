@@ -13,7 +13,7 @@
 @section('content')
 	<section>
 		<div class="container">
-			<div class="panel">
+			<div class="panel panel-fix">
 			  	<div class="panel-body content-body">
 
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
@@ -28,7 +28,7 @@
 	  		              	@endif
 	  					</ul>
 	  				</div>
-	  				<div class="col-md-9 col-sm-12 padding-left-right" ng-controller="imageDetailCtrl">
+	  				<div class="col-md-9 col-sm-12 content-main" ng-controller="imageDetailCtrl">
 	  					
 	  					<div class="con-index-news">
 							<i class="fa fa-home style-home"></i>

@@ -6,7 +6,7 @@
 @section('content')
 	<section>
 		<div class="container">
-			<div class="panel">
+			<div class="panel panel-fix">
 			  	<div class="panel-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 		  					<ul>

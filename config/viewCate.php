@@ -8,6 +8,7 @@ return [
 
     'dk-online'            =>['url' => 'tuyen-sinh/dang-ki-online', 'view' => 'front.content.addmission.addmission'],
     'thu-vien-anh'         =>['url' => 'thu-vien/thu-vien-anh', 'view' => 'front.content.album.albumTitle'],
+    'thu-vien-video'       =>['url' => 'thu-vien/thu-vien-video', 'view' => 'front.content.video.listVideo'],
     'thu-vien-tai-lieu'    =>['url' => 'thu-vien/thu-vien-tai-lieu', 'view' => 'front.content.file.file'],
     'gioi-thieu-chung'     =>['url' => 'gioi-thieu/gioi-thieu-chung', 'view' => 'front.content.introduce.introduce'],
     'ngay-cua-be'          =>['url' => 'chuong-trinh-hoc/ngay-cua-be', 'view' => 'front.content.oneday.oneday'],
