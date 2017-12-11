@@ -16,6 +16,7 @@
 	padding-bottom: 20px;
 	margin-right: 5px;
 }
+
 .fix-album{
 	position: absolute;
 	bottom: 0px;
@@ -38,11 +39,24 @@
 	right: 2%;
 	top: 2%;
 	display: none;
-	background-color: transparent;
+	background-color: #fff;
+}
+.image-lib .edit-images {
+	position: absolute;
+	z-index: 100;
+	right: 16%;
+	top: 2%;
+	display: none;
+	background-color: #fff;
 }
 .image-lib:hover .remove-images {
 	display: block;
 }
+
+.image-lib:hover .edit-images {
+	display: block;
+}
+
 .sda{
 	color: red;
 }

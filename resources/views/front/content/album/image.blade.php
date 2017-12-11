@@ -65,7 +65,7 @@
 							</div>
 						  	<div class="row" id="links">
 						  	  	<div  class="col-sm-6 col-md-4" ng-repeat="(key, image) in data.albumImage">
-							  	    <a href="{{ url('storage/images/album/lib_images') }}/@{{ image.url_image }}" title="...." data-gallery alt="....">
+							  	    <a href="{{ url('storage/images/album/lib_images') }}/@{{ image.url_image }}" title="@{{ image.title }}" data-gallery alt="....">
 	                    	       <div class="thumbnail fix-thumbnail">
 		                    	   	    <img class="img-responsive" 
 		                    	         ng-src="{{ url('storage/images/album/title_images') }}/@{{ image.url_image }}"

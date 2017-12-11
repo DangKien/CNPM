@@ -3,19 +3,24 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 	$scope.domAlbumForm;
 	$scope.domImageModal;
 	$scope.domImageForm;
+	$scope.domEditImageModal;
+	$scope.domEditImageForm;
 	$scope.data = {
 		listAlbum: {},
 		listImage:{},
+		paramsEditImage: {},
 		params: {},
 		filter: {},
 		title: "",
 		idAlbum: '',
 		pageImage: {},
+		idEditImage: {},
 		allListAlbum:{},
 		errors: {
 			album: {},
 			upload:{}
 		},
+		errorsEditImage: {},
 	};
 
 	$scope.data.idAlbum = $routeParams.id;
@@ -52,6 +57,29 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 		showModalUpload: function () {
 			$scope.data.errors.upload = {};
 			$($scope.domImageModal).modal('show');
+		},
+
+		showEditImageModal: function (idEditImage) {
+			$($scope.domEditImageForm).parsley().reset();
+			$scope.data.idEditImage = idEditImage;
+			$scope.data.errorsEditImage = {};
+			$imageService.action.editImage(idEditImage).then(function (resp) {
+				$scope.data.paramsEditImage = resp.data;
+				console.log($scope.data.paramsEditImage);
+			}, function (error) {
+				console.log(error);
+			});
+			$($scope.domEditImageModal).modal('show');
+		},
+
+		saveEditImage: function (data) {
+			if (data == true) {
+				$conf.confirmNotifi('success', 'Cập nhật tiêu đề ảnh thành công!!!');
+				$($scope.domEditImageModal).modal('hide');
+				$scope.actions.listAlbum();
+			} else {
+				$scope.data.errorsEditImage = data.errors;
+			}
 		},
 
 		saveModalAlbum: function (data) {

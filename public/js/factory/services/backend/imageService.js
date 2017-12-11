@@ -16,6 +16,13 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
 		return params;
 	};
 
+	service.editImageData = function (name) {
+		var params = {
+			name: name,
+		}
+		return params;
+	};
+
 	service.filter = function (albumId ,page = 1 , perPage = 16) {
 		var params = {
 			albumId: albumId,
@@ -63,6 +70,15 @@ ngApp.factory('$imageService', function ($http, $httpParamSerializer){
         return $http.delete(url);
 	};
 
+	service.action.updateImage = function (idAlbum, params) {
+		var url = SiteUrl + "/rest/backend/image/" + idAlbum;
+        return $http.post(url, params);
+	};
+
+	service.action.editImage = function (idImage) {
+		var url = SiteUrl + "/rest/backend/image/" + idImage;
+        return $http.get(url);
+	};
 
 
 	return service;

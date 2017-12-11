@@ -7,6 +7,7 @@
 	<script src="{{ url('')}}/js/factory/services/backend/imageService.js"></script>
 	<script src="{{ url('')}}/js/directives/modal/backend/albumModal.js"></script>
 	<script src="{{ url('')}}/js/directives/modal/backend/uploadImageModal.js"></script>
+	<script src="{{ url('')}}/js/directives/modal/backend/editImageModal.js"></script>
 @endsection
 
 @section('content')

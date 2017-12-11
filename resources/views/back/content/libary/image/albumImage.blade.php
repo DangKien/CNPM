@@ -47,14 +47,16 @@
 	                <div id="links" class="row">
 	                    <div class="col-md-3 col-sm-6 image-lib" ng-repeat="(key, listImage) in data.listImage">
 	                    	<a href="{{ url('storage/images/album/lib_images') }}/@{{ listImage.url_image }}"
-	                    	   title="" data-gallery>
+	                    	   title="@{{ listImage.title }}" data-gallery>
                     	       <div class="thumbnail fix-thumbnail">
 	                    	   	    <img class="img-responsive" 
 	                    	         ng-src="{{ url('storage/images/album/title_images') }}/@{{ listImage.url_image }}"
 	                    	         alt="">
 	                    	    </div>
 	                    	</a>
-	                    	<button style="z-index: 10000;" ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
+	                    	<button style="z-index: 10000;" ng-click="actions.showEditImageModal(listImage.id)" class="edit-images btn btn-default btn-icon btn-circle icon-lg fa fa-edit">
+                    	    </button>
+                    	    <button style="z-index: 10000;" ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
                     	    </button>
 	                    </div>
 	                </div>
@@ -81,4 +83,5 @@
 	</button>
 	<album-modal dom-album-modal="domAlbumModal" dom-album-form="domAlbumForm" data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>
 	<upload-image-modal dom-image-modal="domImageModal"  id-album-image="data.idAlbum" upload-save="actions.saveModalUploadImg(data)" data="data" dom-image-form="domImageForm"> </upload-image-modal>
+	<edit-image-modal data="data" image-save="actions.saveEditImage(data)" dom-edit-image-modal="domEditImageModal" dom-edit-image-form="domEditImageForm"> </edit-image-modal>
 </div>

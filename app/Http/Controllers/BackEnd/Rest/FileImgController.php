@@ -50,6 +50,27 @@ class FileImgController extends Controller
 		}
 	}
 
+	public function getEdit(FileImageModel $fileImageModel, Request $request, $id) {
+		$fileImage = $fileImageModel::find($id);
+
+		return response()->json($fileImage);
+	}
+
+	public function getUpdate(Request $request, $id, FileImageModel $fileImageModel) { 
+		DB::beginTransaction();
+		try {
+			$fileImage = $fileImageModel::find($id);
+			
+			$fileImage->title = $request->name;
+			$fileImage->save();
+			DB::commit();
+			return response()->json(['status' => true], 200);
+
+		} catch (Exception $e) {
+			DB::rollback();
+		}
+	}
+
 	public function getDelete($id, FileImageModel $fileImageModel) {
 
 		if (isset($id)) {
@@ -85,5 +106,6 @@ class FileImgController extends Controller
 	    	]
 		);
 	}
+
 
 }
