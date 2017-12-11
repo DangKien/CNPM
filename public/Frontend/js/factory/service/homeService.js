@@ -20,7 +20,7 @@ ngApp.factory('$homeService', function ($http, $httpParamSerializer){
 	};
 
 	service.action.getVideo = function () {
-		var url = SiteUrl + "/rest/fontend/video-home/";
+		var url = SiteUrl + "/rest/fontend/video-home/video";
         return $http.get(url);
 	};
 

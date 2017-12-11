@@ -13,6 +13,21 @@ a:hover{
 	background-color: transparent;
 	border: transparent;
 }
+.fix-nav {
+	position: relative;
+}
+.fix-nav .menu-c2 {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	min-width: 100%;
+	background-color: #31aad3;
+}
+
+.nav-bar-ul li:hover .menu-c2 {
+	display: block;
+}
+
 .form-control:focus{
 	color: #495057;
     background-color: #fff;
@@ -83,7 +98,7 @@ a:hover{
 	background-color: #2d6d92;
 }
 .fix-panel {
-	min-height: 450px;
+	/* min-height: 400px; */
 }
 .fix-thumbnail {
 	min-height: 250px;
@@ -138,6 +153,9 @@ a:hover{
 	color: #e200bc;
 	text-transform: uppercase;
 }
+.content-news {
+	min-height: 150px;
+}
 .content-news span {
 	font-size: 11px;
     color: #f74df2;
@@ -190,7 +208,7 @@ body {
 }
 #bg-header {
 	height: 340px;
-	background: url(../img/image.jpg) no-repeat top center;
+	background: url('../img/image.jpg') no-repeat top center;
 	position: relative;
 }
 #hottel {
@@ -411,11 +429,17 @@ footer ul li {
 	.new img {
 		height: 200px;
 	}
+	.lq {
+		margin-top: 0px;
+	}
 	
 }
 @media (max-width: 768px) and (min-width: 506px) { 
 	.image-list {
 		max-height: 350px;
+	}
+	.lq {
+		margin-top: 0px;
 	}
 	.fix-nav .icon {
 		font-weight: 700;
@@ -475,9 +499,19 @@ footer ul li {
 		background-color: #00c6e6;
 		border: #00c6e6;
 	}
+	.fix-nav ul li .menu-c2 li {
+		min-width: 220px;
+	}
+	.fix-nav ul li .menu-c2 li {
+		border: none;
+	}
+	.lq {
+		margin-top: 0px;
+	}
 	.image-list {
 		width: 100%;
-		max-height: 400px;
+    	height: 400px;
+
 	}
 	.fix-nav .icon {
 		display: none;
@@ -510,11 +544,22 @@ footer ul li {
 		background-color: #00c6e6;
 		border: #00c6e6;
 	}
+	#bg-header {
+	    height: 340px;
+	    background: url('../img/image2.jpg') no-repeat top center;
+	    position: relative;
+	}
 	.fix-nav .icon {
 		display: none;
 	}
 	.fix-nav ul li{
 		min-width: 100px;
+	}
+	.fix-nav ul li .menu-c2 li {
+		min-width: 250px;
+	}
+	.fix-nav ul li .menu-c2 li {
+		border: none;
 	}
 	.menu-footer h3, ul{
 		padding-left: 25%;
@@ -527,8 +572,13 @@ footer ul li {
 		background-color: #00c6e6;
 		border: #00c6e6;	
 	}
+	#bg-header {
+	    height: 340px;
+	    background: url('../img/image2.jpg') no-repeat top center;
+	    position: relative;
+	}
 	.fix-nav ul li a{
-		padding: 20px 30px;
+		padding: 10px 26px;
 	}
 	.menu-footer h3, ul{
 		padding-left: 25%;
@@ -558,7 +608,7 @@ li {
 .menu-left ul li a{
 	color: #fff;
 	font-weight: 600;
-	padding:10px 0px;
+	padding:10px 21px;
 	display: block;
 	width: 100%;
 }
@@ -568,8 +618,8 @@ li {
 }
 .menu-left ul li:hover {
 	background-color: #f1f1f1;
-
 }
+
 .menu-left ul .active-li:hover {
 	background-color:  rgb(37, 125, 177);
 	color:#fff;
@@ -579,6 +629,10 @@ li {
 }
 .panel-fix {
 	background: transparent;
+	padding: 0px;
+}
+.panel-fix .panel-body {
+	padding: 0px;
 }
 .active-li {
 	background-color: #2d6d92;

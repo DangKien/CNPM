@@ -166,7 +166,7 @@ Route::group(['prefix' => 'rest'], function (){
         Route::get('/videoDetail/{idAlbum}', 'FrontEnd\Rest\VideoCtrl@getDetail'); 
 
         Route::get('/file', 'FrontEnd\Rest\FileCtrl@getFile');// lay file
-        Route::get('/video-home', 'FrontEnd\Rest\HomeCtrl@getVideo');
+        Route::get('/video-home/video', 'FrontEnd\Rest\HomeCtrl@getVideo');
 
         Route::get('/event', 'FrontEnd\Rest\EventCtrl@getEvent');
         Route::get('/event/{id}', 'FrontEnd\Rest\EventCtrl@oneEvent');

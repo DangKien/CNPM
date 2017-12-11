@@ -18,7 +18,7 @@
 	  					    <li class="active-li"><a href=""> {{ $nameCate }} </a></li>
 	  					    @if (isset($menu)) 
 	  		                    @foreach ($menu as $item) 
-		  		                	<li class="{{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">
+		  		                	<li class="text-left {{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">
 		  		                		<a class="color-theme-medium" href="{{ url('',  ["$slug" ,"$item->slug"]) }} ">{{ $item->name }}</a>
 		  		                	</li>
 	  		              		@endforeach
@@ -30,7 +30,7 @@
 							<i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix">{{ $nameCate }}</i> 
 						</div>
 	  					<h3 class="text-center text-title-content">
-	  						Thư viện ảnh
+	  						Thư viện tài liệu
 	  					</h3>
 						<div class="col-md-4 col-sm-4 ng-scope bg-color"  ng-repeat="(key, file) in data.listFile">
 					  		<div class="panel text-center">

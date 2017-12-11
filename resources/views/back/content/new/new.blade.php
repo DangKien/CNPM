@@ -55,7 +55,7 @@
 					                <div class="row">
 					                    <div class="col-sm-6">
 					                        <div class="form-group">
-					                            <label class="control-label">Tiêu đề: </label>
+					                            <label class="control-label">Bài viết: </label>
 					                            <input ng-model="filter.title" type="text" class="form-control">
 					                        </div>
 					                    </div>

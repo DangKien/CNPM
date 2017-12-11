@@ -17,7 +17,7 @@
 	  					    <li class="active-li"><a href=""> {{ $nameCate }} </a></li>
 	  					    @if (isset($menu)) 
 	  		                    @foreach ($menu as $item) 
-		  		                	<li class="{{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">
+		  		                	<li class="text-left {{ request()->is($slug."/".$item->slug) ? "active-li-sp" : " "  }} ">
 		  		                		<a class="color-theme-medium" href="{{ url('',  ["$slug" ,"$item->slug"]) }} ">{{ $item->name }}</a>
 		  		                	</li>
 	  		              		@endforeach

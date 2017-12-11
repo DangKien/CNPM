@@ -15,7 +15,7 @@
 			  	<div class="panel-body content-body">
 	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
 	  					<ul>
-	  					    <li class="active-li"><a href="{{ url('lien-he') }}"> Liên hệ </a></li>
+	  					    <li class="text-left active-li"><a href="{{ url('lien-he') }}"> Liên hệ </a></li>
 	  					    @if (isset($menu)) 
 	  		                    @foreach ($menu as $item) 
 		  		                	<li>

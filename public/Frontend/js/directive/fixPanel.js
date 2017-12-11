@@ -3,22 +3,22 @@ ngApp.directive('fixPanel', function($apply) {
         restrict: 'C',
         link: function(scope, element, attrs) {
             var maxh = 0;
-            $('.fix-panel').each(function() {
+            $('.content-news').each(function() {
                h = $(this).height();
                if (h >= maxh){
                 maxh = h;
                }
             });
-            $('.fix-panel').height(maxh);
+            $('.content-news').height(maxh);
             var maxxh = 0;
-            $('.lq').each(function() {
-                h1 = $(this).height();
-                if (h1 >= maxxh){
-                    maxxh = h1;
-               }
-            });
-            $('.lq').height(maxxh);
-
+            // $('.lq').each(function() {
+            //     h1 = $(this).height();
+            //     if (h1 >= maxxh){
+            //         maxxh = h1;
+            //    }
+            // });
+            // $('.lq').height(maxxh);
+            // console.log(maxh);
         }
     };
 });
