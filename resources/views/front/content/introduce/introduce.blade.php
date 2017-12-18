@@ -53,21 +53,6 @@
 	  									
 	  								</div>
 	  							</div>
-	  							<div id="cosovatchat" class="tab-pane fade">
-	  								<div class="tab-pane active" id="tabs-guide-index" role="tabpanel">
-	  										tab cơ sở vật chất
-	  								</div>
-	  							</div>
-	  							<div id="giaovien" class="tab-pane fade">
-	  								<div class="tab-pane active" id="tabs-guide-index" role="tabpanel">
-	  										tab đội ngũ giáo viên
-	  								</div>
-	  							</div>
-	  							<div id="giaoduc" class="tab-pane fade">
-	  								<div class="tab-pane active" id="tabs-guide-index" role="tabpanel">
-	  										tab phương pháp giáo dục
-	  								</div>
-	  							</div>
 	  						</div>
 	  					</div>
 	  					

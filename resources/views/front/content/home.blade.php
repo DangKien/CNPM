@@ -127,7 +127,7 @@
 							</div>
 							<div class="col-md-4" ng-repeat="(key, videos) in data.listVideo">
 								<div style="margin-bottom: 10px; overflow: auto; position: relative;">
-									<a href="{{ url('') }}">
+									<a href="{{ url('') }}/thu-vien/thu-vien-video/video-@{{ videos.id }}">
 										<img style="max-height: 190px; width: 100%;" 
 										class="img-responsive" 
 										ng-src="{{ url('storage/images/video/') }}/@{{ videos.url_image }}" alt="">

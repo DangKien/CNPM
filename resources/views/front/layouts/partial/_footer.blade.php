@@ -37,9 +37,13 @@
 			</div>
 			<div class="hotline col-md-4 col-sm-4 col-xs-6 text-left">
 				<h3>Kênh hỗ trợ</h3>
-				<p><span>Hotline:</span> 01659901941</p>
-				<p><span>Email: </span>  dangtrungkien96@gmail.com</p>
-				<p><span>FanPgae:</span> fb.com/kiendang</p>
+				<p><span><i class="fa fa-phone" aria-hidden="true"></i> Hotline:</span> 01659901941</p>
+				<p><span><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: </span>  dangtrungkien96@gmail.com</p>
+				<p><a style="color: #fff;" href="https://www.facebook.com/KienDang.2112"><span><i class="fa fa-facebook-square" aria-hidden="true"></i></span></a>
+				&nbsp &nbsp
+				<a style="color: #fff;" href="https://www.youtube.com/channel/UCKkT3-X31PfhdNq3YhVbi4g?view_as=subscriber"><span><i class="fa fa-youtube-play" aria-hidden="true"></i></span></a>
+				</p>
+				
 			</div>
 		</div>
 	</div>

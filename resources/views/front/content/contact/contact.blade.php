@@ -12,20 +12,17 @@
 	<section>
 		<div class="container" ng-controller="contactCtrl">
 			<div class="panel panel-fix">
-			  	<div class="panel-body content-body">
-	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
-	  					<ul>
-	  					    <li class="text-left active-li"><a href="{{ url('lien-he') }}"> Liên hệ </a></li>
-	  					    @if (isset($menu)) 
-	  		                    @foreach ($menu as $item) 
-		  		                	<li>
-		  		                		<a class="color-theme-medium" href="{{ url('',  ["$slug" ,"$item->slug"]) }} ">{{ $item->name }}</a>
-		  		                	</li>
-	  		              		@endforeach
-	  		              	@endif
-	  					</ul>
+			  	<div class="panel-body content-body" style="background-color: #fff;">
+	  				<div class="menu-left padding-left-0 col-md-5 col-sm-12 text-center" style="margin-top: 40px;">
+	  					<h2>Trường mầm nom Color House</h2>
+	  					<br>
+	  					<br>
+	  					<p><i class="fa fa-address-card" aria-hidden="true"></i> Địa chỉ: Lệ Mật,Việt Hưng, Long Biên, Hà Nội </p>
+	  					<p><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Email: colorhouse@gmail.com</p>
+	  					<p><i class="fa fa-phone" aria-hidden="true"></i> Số điện thoại: 01659901941</p>
+	  					<img class="img-responsive" src="{{ url('Frontend/img/gioithieu') }}/map.png" style="width: 100%; padding-left: 10px;padding-top: 15px;" alt="">
 	  				</div>
-	  				<div class="content-main col-md-9 col-sm-12">
+	  				<div class="content-main col-md-7 col-sm-12">
 	  					<div class="con-index-news">
 							<i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true"></i> Sống khỏe
 						</div>
