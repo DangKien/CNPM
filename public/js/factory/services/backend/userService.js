@@ -30,8 +30,6 @@ ngApp.factory('$userService', function ($http, $httpParamSerializer) {
         params.append('job', $job || '');
         params.append('avatar', $avatar || '');
         params.append('status', $status || '');
-
-
         return params;
         
     };
