@@ -19,7 +19,7 @@ ngApp.controller('addmissionCtrl', function ($apply, $addmissionService, $scope,
 		},
 
 		checkAdd: function (id) {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+			$conf.confirmDelete ('small', 'Bạn đã liên hệ với người đăng kí?', function (respon) {
 					if (respon == true){
 						$addmissionService.action.checkAddmission(id).then(function (resp){
 							if (resp.data.status == true) {

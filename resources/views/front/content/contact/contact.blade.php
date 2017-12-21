@@ -24,10 +24,10 @@
 	  				</div>
 	  				<div class="content-main col-md-7 col-sm-12">
 	  					<div class="con-index-news">
-							<i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true"></i> Sống khỏe
+							<i class="fa fa-home style-home"></i><i class="fa fa-chevron-right fa-chevron-right-1 breadcrumb-fix" aria-hidden="true"></i> Liên hệ
 						</div>
 	  					<h3 class="text-center text-title-content">
-	  						Đăng kí tuyển sinh trực tuyến
+	  						Liên hệ với chúng tôi
 	  					</h3>
 						<div class="title">
 							<p>
@@ -132,7 +132,7 @@
     		                            </div>
     		                        </div>	
 
-						    		<button ng-click="actions.submitForm()" type="button" class="btn btn-warning pull-right button-fix ">Phản hồi</button>
+						    		<button style="margin-bottom: 10px;" ng-click="actions.submitForm()" type="button" class="btn btn-warning pull-right button-fix ">Phản hồi</button>
 						    	</form>
 						  	</div>
 						</div>

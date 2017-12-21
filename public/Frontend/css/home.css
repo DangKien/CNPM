@@ -23,6 +23,9 @@ a:hover{
 	min-width: 100%;
 	background-color: #31aad3;
 }
+.panel-fix .panel-default .fix-panel-add {
+	padding: 15px;
+}
 
 
 .nav-bar-ul li:hover .menu-c2 {

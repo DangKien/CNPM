@@ -52,9 +52,9 @@
                             <div class="row text-center">
                                <div class="">
                                    <div paging
-                                       page="data.pageList.current_page"
-                                       page-size = "data.pageList.per_page"
-                                       total="data.pageList.total"
+                                       page="1"
+                                       page-size = "1"
+                                       total="1"
                                        paging-action="actions.changePage(page)">
                                    </div>
                                </div>

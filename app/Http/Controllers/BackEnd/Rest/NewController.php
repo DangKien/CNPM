@@ -133,7 +133,7 @@ class NewController extends Controller
 	}
 	public function validateUpdate($request){
 	    return $this->validate($request, [
-			'title'   => 'required| unique:news,title| between:1,255',
+			'title'   => 'required| between:1,255',
 			'content' => 'required| between:1,50000',
 			'file'    => 'required| image',
 			], [

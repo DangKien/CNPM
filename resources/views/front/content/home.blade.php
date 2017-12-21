@@ -112,7 +112,7 @@
 				<div class="col-md-12">
 					<div class="panel panel-success">
 						<div class="panel-heading panel-bg">
-							<h3 class="panel-title"> <span><a href="{{ url('') }}">Video</a></span></h3>
+							<h3 class="panel-title"> <span><a href="{{ url('thu-vien/thu-vien-video') }}">Video</a></span></h3>
 						</div>
 						<div class="panel-body">
 							<div class="col-md-8">
@@ -146,7 +146,7 @@
 				<div class="col-md-12">
 					<div class="panel panel-success">
 						<div class="panel-heading panel-bg">
-							<a href="{{ url('') }}"><h3 class="panel-title"> <span>Một số hình ảnh về trường</span></h3></a>
+							<a href="{{ url('thu-vien/thu-vien-anh') }}"><h3 class="panel-title"> <span>Một số hình ảnh về trường</span></h3></a>
 						</div>
 						<div class="row">
 							<div class="col-md-12" style="padding-left: 26px;  padding-right: 26px;">

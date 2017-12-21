@@ -2,7 +2,7 @@
 	<div id="footer" class="col-md-12 image-footer" ng-controller="mainMenuCtrl">
 		<div class="container">
 			<div class="department col-md-4 col-sm-4 text-left">
-				<h3>Trường mần non acb Kid</h3>
+				<h3>Trường mần non Color House</h3>
 				<p><span>Địa chỉ:
 				 </span> Số 20 - Khu đô thị Long Biên - Phường Việt Hưng - Quận Long Biên - TP. Hà Nội</p>
 			</div>
@@ -31,7 +31,7 @@
 				  		<a href="{{ url('thong-bao') }}">Thông báo</a>
 				  	</li>
 				  	<li class="{{ request()->is('lien-he') ||  request()->is('lien-he/*') ? 'active-li-footer' : ''}}">
-				  		<a href="{{ url('lien-he') }}">Liên hệ</a>x
+				  		<a href="{{ url('lien-he') }}">Liên hệ</a>
 				  	</li>
 				</ul>
 			</div>

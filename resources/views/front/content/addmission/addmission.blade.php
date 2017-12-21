@@ -54,7 +54,7 @@
 					    			</div>
 						    	</div>
 						    	
-							  	<div class="panel-body col-md-6 ">
+							  	<div class="panel-body col-md-6 fix-panel-add">
 							  		<h5 class="text-center"> Thông tin học sinh </h5>
 							    		<div class="form-group">
 							    		    <label for="nameStudent">Tên học sinh:</label>
@@ -87,7 +87,7 @@
 
 							    		<div class="form-group">
 							    		    <label for="birthday">Ngày sinh:</label>
-							    		    <input type="text" class="form-control" id="birthday" placeholder="Ngày sinh" ng-model="data.params.birthday" required >
+							    		    <input type="text" class="form-control" id="birthday" placeholder="dd-mm-yyyy" ng-model="data.params.birthday" required >
 							    		    <ul>
 							    		        <li class="text-danger text-left" style="margin-top: 5px;"
 							    		      	ng-repeat="er in data.errors.birthday"
@@ -98,7 +98,7 @@
 							    		</div>
 							  	</div>
 
-							  	<div class="panel-body col-md-6 boder-fix-content">
+							  	<div class="panel-body col-md-6 boder-fix-content fix-panel-add">
 							  		<h5 class="text-center"> Thông tin phụ huynh </h5>
 							    		<div class="form-group">
 							    		    <label for="nameParent">Tên phụ huynh:</label>

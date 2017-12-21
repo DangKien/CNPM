@@ -11,7 +11,7 @@ use Session;
 Class MenuCtrl extends Controller {
 
     public function getList(MenuModel $menuModel, Request $request) {
-        $menu = $menuModel::all();
+        $menu = $menuModel::select('*')->orderBy('created_at', 'desc')->get();
 
         return  response()->json($menu);
     }
