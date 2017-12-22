@@ -54,9 +54,9 @@
 	                    	         alt="">
 	                    	    </div>
 	                    	</a>
-	                    	<button style="z-index: 10000;" ng-click="actions.showEditImageModal(listImage.id)" class="edit-images btn btn-default btn-icon btn-circle icon-lg fa fa-edit">
+	                    	<button style="z-index: 10000;" ng-click="actions.showEditImageModal(listImage.id)" class="edit-images btn btn-default btn-icon btn-circle icon-lg fa fa-edit" title="Chỉnh sửa ảnh">
                     	    </button>
-                    	    <button style="z-index: 10000;" ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times">
+                    	    <button style="z-index: 10000;" ng-click="actions.removeImage(listImage.id)" class="remove-images btn btn-default btn-icon btn-circle icon-lg fa fa-times" title="Xóa ảnh">
                     	    </button>
 	                    </div>
 	                </div>
@@ -78,7 +78,7 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	ng-click="actions.showModalUpload()"
+	ng-click="actions.showModalUpload()" title="Thêm mới ảnh" 
 	>
 	</button>
 	<album-modal dom-album-modal="domAlbumModal" dom-album-form="domAlbumForm" data="data" album-save="actions.saveModalAlbum(data)"> </album-modal>

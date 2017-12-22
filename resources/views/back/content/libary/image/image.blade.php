@@ -103,7 +103,7 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	ng-click="actions.showModal()"
+	ng-click="actions.showModal()" title="Thêm mới album ảnh" 
 	>
 	</button>
 	<album-modal data="data" album-save="actions.saveModalAlbum(data)" dom-album-form = "domAlbumForm" dom-album-modal="domAlbumModal"> </album-modal>

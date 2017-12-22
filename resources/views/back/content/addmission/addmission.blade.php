@@ -74,7 +74,8 @@
 									<td>
 										<span ng-if="(addmission.status == 'PENDING')">
 											<button ng-click="actions.checkAdd(addmission.id)"
-						            				class="btn btn-default btn-icon btn-circle icon-lg fa fa-check">
+						            				class="btn btn-default btn-icon btn-circle icon-lg fa fa-check"
+						            				title="Đã liên hệ">
 						            					
 						            		</button>
 										</span>

@@ -58,9 +58,11 @@
 											<td>@{{ video.title }}</td>
 											<td>
 												<button ng-click="actions.showModalVideo(video.id)"
-												        class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
+												        class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"
+												        title="Cập nhật video"></button>
 												<button ng-click="actions.deleteVideo(video.id)" 
-														class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+														class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"
+														title="Xóa video"></button>
 											</td>
 										</tr>
 									</tbody>
@@ -89,7 +91,7 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	ng-click="actions.showModalVideo()"
+	ng-click="actions.showModalVideo()" title="Thêm mới video" 
 	>
 	</button>
 

@@ -108,8 +108,8 @@
 									<td style="min-width: 100px;"> @{{ new.users.name }} </td>
 									<td style="min-width: 50px;"> @{{ new.view }} </td>
 									<td style="min-width: 100px;">
-										<button ng-click= "actions.showModal(new.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-										<button ng-click= "actions.deleteNew(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+										<button ng-click= "actions.showModal(new.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit" title="Cập nhật tin tức"></button>
+										<button ng-click= "actions.deleteNew(new.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash" title="Xóa tin"></button>
 									</td>
 								</tr>
 							</tbody>
@@ -135,7 +135,7 @@
 		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	ng-click="actions.showModal()"
+	ng-click="actions.showModal()" title="Thêm mới tin tức" 
 	>
 	</button>
 

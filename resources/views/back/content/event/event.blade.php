@@ -55,8 +55,10 @@
 											<td>@{{ event.end_date | formatDate }}</td>
 											<td>@{{ event.content }}</td>
 											<td>
-												<button ng-click= "actions.showEventModal(event.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-												<button ng-click= "actions.deleteEvent(event.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+												<button ng-click= "actions.showEventModal(event.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"
+												title="Cập nhật sự kiện"></button>
+												<button ng-click= "actions.deleteEvent(event.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"
+												title="Xóa sự kiện"></button>
 											</td>
 										</tr>
 									</tbody>
@@ -85,7 +87,7 @@
 	<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	ng-click="actions.showEventModal()"
+	ng-click="actions.showEventModal()" title="Thêm mới sự kiện" 
 	>
 	</button>
 	<event-modal data="data" form-validate="eventForm" event-chosse-modal="eventModal" save-event="actions.saveEvent(data)"> </event-modal>

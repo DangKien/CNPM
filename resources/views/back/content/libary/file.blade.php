@@ -48,9 +48,11 @@
 						</div>
 						<div class="pad-btm">
 						    <button ng-click="actions.showModalFile(file.id)"
-						            class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
+						            class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"
+						            title="Cập nhật tài liệu"></button>
 						    <button ng-click="actions.removeFile(file.id)" 
-						    		class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+						    		class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"
+						    		title="Xóa tài liệu"></button>
 						</div>
 					</div>
 				</div>
@@ -72,6 +74,7 @@
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
 	ng-click="actions.showModalFile()"
+	title="Thêm mới tài liệu" 
 	>
 	</button>
 

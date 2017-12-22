@@ -69,7 +69,7 @@
 	                    	       <div class="thumbnail fix-thumbnail">
 		                    	   	    <img class="img-responsive" 
 		                    	         ng-src="{{ url('storage/images/album/title_images') }}/@{{ image.url_image }}"
-		                    	         alt="....">
+		                    	         alt="@{{ image.title }}">
 		                    	    </div>
 		                    	</a>
 						  	    </div>

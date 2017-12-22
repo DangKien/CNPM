@@ -113,8 +113,8 @@
 									<td><img style="height: 100px; width: 100px;" ng-src="{{ url('storage/images/menu/title_menu') }}/@{{ menu.url_image }}" alt=""></td>
 									<td>@{{ menu.cates.name }}</td>
 									<td>
-										<button ng-click= "actions.showModalMenu(menu.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-										<button ng-click= "actions.deleteMenu(menu.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+										<button ng-click= "actions.showModalMenu(menu.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit" title="Cập nhật thực đơn"></button>
+										<button ng-click= "actions.deleteMenu(menu.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash" title="Xóa thực đơn"></button>
 									</td>
 								</tr>
 							</tbody>
@@ -140,7 +140,7 @@
 		<button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-	ng-click="actions.showModalMenu()"
+	ng-click="actions.showModalMenu()" title="Thêm mới thực đơn" 
 	>
 	</button>
 	

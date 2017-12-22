@@ -60,8 +60,8 @@
 											<td>@{{ slide.content }}</td>
 											<td>@{{ slide.status }}</td>
 											<td>
-												<button ng-click= "actions.showModal(slide.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
-												<button ng-click= "actions.deleteSlide(slide.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
+												<button ng-click= "actions.showModal(slide.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit" title="Cập nhật slide"></button>
+												<button ng-click= "actions.deleteSlide(slide.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash" title="Xóa slide"></button>
 											</td>
 										</tr>
 									</tbody>
@@ -91,7 +91,7 @@
 		<button 
 		class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 		style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
-		ng-click="actions.showModal()"
+		ng-click="actions.showModal()" title="Thêm mới slide" 
 		>
 		</button>
 		<slide-modal data="data" save-slide="actions.saveSlide(data)" dom-slide-form="domSlideForm" dom-slide-modal="domSlideModal"></slide-modal>
