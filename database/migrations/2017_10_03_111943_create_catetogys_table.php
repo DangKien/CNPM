@@ -15,7 +15,7 @@ class CreateCatetogysTable extends Migration
     {
         Schema::create('catetogys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('slug');
             $table->string('tag')->nullable();
             $table->integer('status')->default(1);

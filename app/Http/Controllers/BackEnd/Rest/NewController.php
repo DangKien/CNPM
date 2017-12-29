@@ -135,7 +135,6 @@ class NewController extends Controller
 	    return $this->validate($request, [
 			'title'   => 'required| between:1,255',
 			'content' => 'required| between:1,50000',
-			'file'    => 'required| image',
 			], [
 			'title.required'   => 'Tiêu đề không được để trống',
 			'title.between'    => 'Tiêu đề không được quá 255 kí tự',
