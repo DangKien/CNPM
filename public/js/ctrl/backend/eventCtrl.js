@@ -58,7 +58,7 @@ ngApp.controller('eventCtrl', function ($apply, $eventService, $scope, changStat
 		},
 
 		deleteEvent: function (idEvent) {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa sự kiện tin này?', function (resp) {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa sự kiện này?', function (resp) {
 				if (resp == true){
 					$eventService.action.deleteEvent(idEvent).then(function (resp) {
 						if (resp) {

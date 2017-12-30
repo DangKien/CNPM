@@ -71,7 +71,7 @@ ngApp.controller('fileCtrl', function ($apply, $fileService, $scope, $conf) {
 		},
 
 		removeFile: function (idImage) {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa tài liệu này?', function (respon) {
 				if (respon == true){
 					$fileService.action.deleteFile(idImage).then(function (resp){
 						if (resp.data.status == true) {

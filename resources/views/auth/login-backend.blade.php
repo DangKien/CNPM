@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Đăng nhập </title>
-    @includeif('back.Layouts.partial._default_css')
-    @includeif ('back.Layouts.partial._angular')
-    @includeif('back.Layouts.partial._css')
+    @includeif('back.layouts.partial._default_css')
+    @includeif ('back.layouts.partial._angular')
+    @includeif('back.layouts.partial._css')
     @yield('myCss')
     <script>
         var SiteUrl = '{{url("/")}}';
@@ -78,8 +78,8 @@
                 </div>
             </div>
         </div>
-        @includeif('back.Layouts.partial._default_js')
-        @includeif('back.Layouts.partial._js')
+        @includeif('back.layouts.partial._default_js')
+        @includeif('back.layouts.partial._js')
         @yield('myJs')
 </body>
 </html>

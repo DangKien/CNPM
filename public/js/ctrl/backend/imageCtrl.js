@@ -122,16 +122,16 @@ ngApp.controller('ImageCtrl', function ($apply, $albumService, $imageService, $s
 		},
 
 		removeAlbum: function () {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa album này?', function (respon) {
 				if (respon == true){
 					$albumService.action.deleteAlbum($scope.data.idAlbum).then(function (resp){
 						if (resp.data.status == true) {
-							$conf.confirmNotifi('success', 'Xóa thành công thành công');
+							$conf.confirmNotifi('success', 'Xóa thành công');
 							$scope.actions.listAlbum();
 							window.location = SiteUrl + "/backend/view/file-image";
 						}
 					}, function (error) {
-						$conf.confirmNotifi('error', 'Xóa ảnh thất bại!!!', "fa fa-ban");
+						$conf.confirmNotifi('error', 'Xóa thất bại!!!', "fa fa-ban");
 					});
 				}
 			});

@@ -31,13 +31,13 @@ ngApp.controller('slideCtrl', function ($scope, $apply, $slideService, $conf) {
 		},
 
 		deleteSlide: function (id) {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa loại tin này?', function (resp) {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa slide ảnh này?', function (resp) {
 				if (resp == true) {
 					$slideService.action.deleteSlide(id).then(function (resp) {
-						$conf.confirmNotifi('success', 'Xóa loại tin thành công');
+						$conf.confirmNotifi('success', 'Xóa slide ảnh thành công');
 						$scope.actions.listSlide();
 					  }, function (error) {
-					  	$conf.confirmNotifi('danger', 'Xóa loại tin thất bại', "fa fa-ban");
+					  	$conf.confirmNotifi('danger', 'Xóa slide ảnh thất bại', "fa fa-ban");
 					  });
 				}
 			});

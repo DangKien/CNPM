@@ -101,7 +101,7 @@ ngApp.controller('newCtrl', function ($scope, $apply, $newService, $conf, $cateS
 		},
 
 		deleteNew: function (idNew) {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa tin này?', function (respon) {
 				if (respon == true){
 					$newService.action.deleteNew(idNew).then(function (resp) {
 						$conf.confirmNotifi('success', 'Xóa tin thành công');

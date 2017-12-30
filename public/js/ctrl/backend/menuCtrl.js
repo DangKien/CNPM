@@ -108,7 +108,7 @@ ngApp.controller('menuCtrl', function ($apply, $menuService, $scope, changStatus
 		},
 
 		deleteMenu: function (idMenu) {
-			$conf.confirmDelete ('small', 'Bạn muốn xóa ảnh này?', function (respon) {
+			$conf.confirmDelete ('small', 'Bạn muốn xóa thực đơn này?', function (respon) {
 				if (respon == true){
 					$menuService.action.deleteMenu(idMenu).then(function (resp){
 							$conf.confirmNotifi('success', 'Xóa thực đơn thành công');
