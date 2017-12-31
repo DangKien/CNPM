@@ -92,7 +92,7 @@
         <div class="col-md-3" ng-repeat="(key, data) in data.listUsers" my-repeat-directive>
             <div class="panel text-center">
                 <div class="panel-body fix-panel-body-user" ng-click="actions.showModal(data.id)">
-                    <img alt="Avatar" class="img-md img-circle img-border mar-btm" ng-src="{{ url('storage/images/avatar')}}/@{{ data.avatar }}">
+                    <img alt="Avatar" class="img-md img-circle img-border mar-btm" ng-src="{{ url('Nifty/img/av3.png')}}">
                     <h4 class="mar-no">@{{ data.name }}</h4>
                     <p>@{{ data.job }}</p>
                 </div>
