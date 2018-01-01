@@ -11,12 +11,22 @@ use App\Models\NewModel;
 
 Class ListPostCtrl extends Controller {
 
-    public function getListPost(NewModel $newModel, $slug) {
-        $newPost = $newModel->filterSlug($slug)
-	                      ->buildCond()
-	                      ->with('cates')
-	                      ->orderBy('created_at', 'desc')
-        				  ->paginate(10);
+    public function getListPost(NewModel $newModel, $slug, Request $request) {
+
+        $perPage = empty($request->perPgae) ? 10 : $request->perPgae;
+        if ($request->view == 'AVAILABLE') {
+            $newPost = $newModel->filterSlug($slug)
+                              ->buildCond()
+                              ->with('cates')
+                              ->orderBy('view', 'desc')
+                              ->get();
+        } else {
+            $newPost = $newModel->filterSlug($slug)
+                          ->buildCond()
+                          ->with('cates')
+                          ->orderBy('created_at', 'desc')
+                          ->paginate($perPage);
+        }
                             
         return  response()->json($newPost);
     }

@@ -94,7 +94,7 @@
 											<th>Tag</th>
 											<th>Trạng thái</th>
 											<th>Người sửa</th>
-											<th>Thao tác</th>
+											<!-- <th>Thao tác</th> -->
 										</tr>
 									</thead>
 									<tbody>
@@ -104,10 +104,10 @@
 											<td> @{{ cate.tag }} </td>
 											<td> @{{ cate.status }} </td>
 											<td> @{{ cate.users.name }} </td>
-											<td> 
+											<!-- <td> 
 												<button ng-click= "actions.showModal(cate.id)" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></button>
 												<button ng-click= "actions.deleteCate(cate.id)" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></button>
-											</td>
+											</td> -->
 										</tr>
 									</tbody>
 								</table>
@@ -133,12 +133,12 @@
 		</div>
 		<!--===================================================-->
 		<!--End page content-->
-	<button 
+	<!-- <button 
 	class="btn btn-primary btn-icon btn-circle icon-lg fa fa-plus pull-right"
 	style="position: fixed; right: 15px; bottom: 20px; z-index: 500;"
 	ng-click="actions.showModal()"
 	>
-	</button>
+	</button> -->
 	<cate-modal cate-data="data" cate-save="actions.save(data)" dom-cate-form="domCateForm" dom-cate-modal="domCateModal"> </cate-modal>	
 	</div>
 @endsection

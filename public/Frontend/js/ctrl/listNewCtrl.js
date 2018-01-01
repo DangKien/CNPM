@@ -27,3 +27,31 @@ ngApp.controller('listNewCtrl', function ($apply, $rootScope, $scope, $listNewSe
 	}
 	$scope.actions.listPost();
 });
+
+ngApp.controller('listCtrl', function ($apply, $rootScope, $scope, $listNewService) {
+	
+	$scope.data = {
+		listPostHot: {},
+		checkList: true,
+		pageList: {},
+	};
+	$scope.actions = {
+		checkNew: function () {
+			console.log(slug)
+			if (slug.trim() == 'tin-tuc' || slug.trim() == 'thong-bao') {
+				$scope.data.checkList = false;
+				var params = {
+					perPage: 4,
+					view: 'AVAILABLE'
+				}
+				$listNewService.action.listNew(slug.trim(), params).then(function (resp) {
+					$scope.data.listPostHot = resp.data;
+					console.log($scope.data.listPostHot);
+				}, function (error) {
+					console.log(error);
+				});
+			}
+		}
+	}
+	$scope.actions.checkNew();
+});

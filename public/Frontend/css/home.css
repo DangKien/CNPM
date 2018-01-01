@@ -13,6 +13,9 @@ a:hover{
 	background-color: transparent;
 	border: transparent;
 }
+.content-main {
+	min-height: 650px;
+}
 .fix-nav {
 	position: relative;
 }

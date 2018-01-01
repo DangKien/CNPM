@@ -7,6 +7,8 @@
 	</script>
 	<script src="{{ url('Frontend') }}/js/ctrl/cateNewCtrl.js"></script>
 	<script src="{{ url('Frontend') }}/js/factory/service/cateNewService.js"></script>
+	<script src="{{ url('Frontend') }}/js/ctrl/listNewCtrl.js"></script>
+    <script src="{{ url('Frontend') }}/js/factory/service/listNewService.js"></script>
 @endsection
 
 @section('content')
@@ -14,8 +16,8 @@
 		<div class="container">
 			<div class="panel panel-fix">
 			  	<div class="panel-body">
-	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center">
-		  					<ul>
+	  				<div class="menu-left padding-left-0 col-md-3 col-sm-12 text-center" ng-controller="listCtrl">
+		  					<ul ng-if="data.checkList">
 		  					    <li class="active-li">
 		  					    	<a> {{ $nameCate }} </a>
 		  					    </li>
@@ -27,6 +29,46 @@
 		  		              		@endforeach
 		  		              	@endif
 		  					</ul>
+		  					<div class="panel" ng-if="(data.checkList == false)">
+		  					    <div class="panel-heading">
+		  					        <h3 class="panel-title text-left""> <span style="border-bottom: 3px solid #e14f3b">{{ $nameCate }} nổi bật </span></h3>
+		  					    </div>
+		  					    <div class="panel-body">
+		  					       <div style="padding: 5px;" class="row" ng-repeat="(key, news) in data.listPostHot"
+		  					            ng-if="(key == 0)"
+		  					        >
+		  					            <a href="{{ url('') }}/tin-tuc/@{{ news.slug + '/post-' + news.id }}">
+		  					                <div class="col-md-12">
+		  					                    <img style="width: 100%;" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
+		  					                </div>
+		  					                <div class="col-md-12 text-left">
+		  					                        <h4 class="title" style="color:#e200bc;">@{{ news.title }}</h4>
+		  					                        <span style="font-size: 12px;">@{{ news.created_at | formatDate }}</span>
+		  					                </div>
+		  					            </a>
+		  					       </div>
+		  					       <div style="padding: 5px; padding-left: 15px;" class="row" ng-repeat="(key, news) in data.listPostHot" ng-if="(key != 0)">
+		  					            <a href="{{ url('') }}/tin-tuc/@{{ news.slug + '/post-' + news.id }}">
+		  					                <div class="col-md-9 col-sm-7 col-xs-6 text-left" style="color: #e200bc;">
+		  					                        <p class="title">@{{ news.title }}</p>
+		  					                         <span style="font-size: 10px;">@{{ news.created_at | formatDate }}</span>
+		  					                </div>
+		  					            </a>
+		  					       </div>
+		  					    </div>
+		  					</div>
+		  					<div class="panel" ng-if="(data.checkList == false)">
+		  					    <div class="panel-heading" style="padding-bottom: 0px;">
+		  					        <h3 class="panel-title text-left" style="padding-bottom: 0px;"> <span style="border-bottom: 3px solid #e14f3b"> Thư viện </span></h3>
+		  					    </div>
+		  					    <div class="panel-body">
+		  					        <ol class="text-left" style="padding: 10px; padding-left: 25px;">
+		  					            <li><a style="color: #b733b3;" href="{{ url('thu-vien/thu-vien-anh') }}">Thư viện ảnh</a></li>
+		  					            <li><a style="color: #b733b3;" href="{{ url('thu-vien/thu-vien-video') }}">Thư viện video</a></li>
+		  					            <li><a style="color: #b733b3;" href="{{ url('thu-vien/thu-vien-tai-lieu') }}">Thư viện tài liệu</a></li>
+		  					        </ol>
+		  					    </div>
+		  					</div>
 	  					</div>
 	  				<div class="content-main col-sm-12 col-md-8 col-lg-9 padding-topbot-15px" ng-controller="cateNewCtrl">
 	  					<div class="con-index-news" >
