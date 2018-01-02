@@ -19,6 +19,9 @@ a:hover{
 .fix-nav {
 	position: relative;
 }
+.padding-ed li {
+	padding-bottom: 15px;
+}
 .fix-nav ul li:hover {
 	background-color: #2d6d92;
 }

@@ -34,7 +34,7 @@
                                 >
                                     <a href="{{ url('', $slug) }}/@{{ news.slug + '/post-' + news.id }}">
                                         <div class="col-md-12">
-                                            <img style="width: 100%;" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
+                                            <img style="width: 100%; height: 200px" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
                                         </div>
                                         <div class="col-md-12 text-left">
                                                 <h4 class="title" style="color:#e200bc;">@{{ news.title }}</h4>
@@ -58,7 +58,7 @@
                                 <h3 class="panel-title text-left" style="padding-bottom: 0px;"> <span style="border-bottom: 3px solid #e14f3b"> Thư viện </span></h3>
                             </div>
                             <div class="panel-body">
-                                <ol class="text-left" style="padding: 10px; padding-left: 25px;">
+                                <ol class="text-left padding-ed" style="padding: 10px; padding-left: 25px; font-size: 16px;">
                                     <li><a style="color: #b733b3;" href="{{ url('thu-vien/thu-vien-anh') }}">Thư viện ảnh</a></li>
                                     <li><a style="color: #b733b3;" href="{{ url('thu-vien/thu-vien-video') }}">Thư viện video</a></li>
                                     <li><a style="color: #b733b3;" href="{{ url('thu-vien/thu-vien-tai-lieu') }}">Thư viện tài liệu</a></li>
