@@ -37,8 +37,8 @@
                                             <img style="width: 100%; height: 200px" class="img-responsive" ng-src="{{ url('storage') }}/@{{ news.image }}">
                                         </div>
                                         <div class="col-md-12 text-left">
-                                                <h4 class="title" style="color:#e200bc;">@{{ news.title }}</h4>
-                                                <span style="font-size: 12px;">@{{ news.created_at | formatDate }}</span>
+                                                <h4 class="title" style="color:#e200bc; ">@{{ news.title }}</h4>
+                                                <span style="font-size: 12px; color: #b733b3;">@{{ news.created_at | formatDate }}</span>
                                         </div>
                                     </a>
                                </div>

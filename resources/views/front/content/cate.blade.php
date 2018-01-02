@@ -51,7 +51,7 @@
 		  					            <a href="{{ url('') }}/tin-tuc/@{{ news.slug + '/post-' + news.id }}">
 		  					                <div class="col-md-9 col-sm-7 col-xs-6 text-left" style="color: #e200bc;">
 		  					                        <p class="title">@{{ news.title }}</p>
-		  					                         <span style="font-size: 10px;">@{{ news.created_at | formatDate }}</span>
+		  					                         <span style="font-size: 10px; color: #b733b3;">@{{ news.created_at | formatDate }}</span>
 		  					                </div>
 		  					            </a>
 		  					       </div>
