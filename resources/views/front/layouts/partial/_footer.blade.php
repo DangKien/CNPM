@@ -4,7 +4,7 @@
 			<div class="department col-md-4 col-sm-4 text-left">
 				<h3>Trường mần non Color House</h3>
 				<p><span>Địa chỉ:
-				 </span> Số 20 - Khu đô thị Long Biên - Phường Việt Hưng - Quận Long Biên - TP. Hà Nội</p>
+				 </span> Số 20 - Phường Việt Hưng - Quận Long Biên - TP. Hà Nội</p>
 			</div>
 			<div class="menu-footer col-md-4 col-sm-4 col-xs-6 text-left">
 				<h3>Danh mục</h3>
