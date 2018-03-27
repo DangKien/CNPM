@@ -7,7 +7,7 @@ use App\MyModel;
 
 class CateModel extends MyModel
 {
-    protected $table = 'catetogys';
+    protected $table = 'catetogy';
 
     public function users()
     {

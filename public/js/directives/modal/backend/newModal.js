@@ -10,6 +10,7 @@ ngApp.directive('newModal', function ($apply, $newService) {
 				var image   = $('input[name*="fileImg"]')[0].files[0];
 				var content = scope.data.params.content;
 				var params  = $newService.data(title, cate, tag, image, content);
+				
 				return params;
 			},
 			insertNew: function () {
